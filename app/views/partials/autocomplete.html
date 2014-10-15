@@ -1,0 +1,11 @@
+<input
+    type="text"
+    class="control-group"
+    placeholder="{{placeholder_text}}"
+    autocomplete="off"
+    ng-model="">
+<ul class="autocomplete-dropdown" ng-show="autocomplete_list">
+    <li ng-repeat="option in autocomplete_list" data-option_id="{{option.id}}">
+    <a>{{option.name}}</a>
+    </li>
+</ul>

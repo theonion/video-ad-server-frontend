@@ -1,0 +1,48 @@
+<style>
+	
+	.new-pixel:hover{
+		background-color: rgba(25, 25, 200, 0.5);
+	}
+	.new-pixel{
+		border: 0px none black;
+	}
+	.new-pixel:focus{
+		outline: none;
+	}
+    .pixel-group {
+        width: 400px;
+    }
+    .pixel-group .pixel{
+    	overflow: auto;
+    	margin-bottom: 10px;
+        overflow: hidden;
+    }
+    .pixel-group .pixel .btn{
+    	padding: 0;
+    	color: darkred;
+        line-height: 20px;
+    }
+</style>
+
+<div id="pixels-wrapper">
+	<table id="pixel-list" class="table table-striped">
+		<tr>
+			<th>Event</th>
+			<th>Pixel URLs</th>
+		</tr>
+		<tr ng-repeat="(event, urls) in videoad.pixels" data-event="{{event}}">
+			<td>{{event}}</td>
+			<td>
+				<div class="pull-left pixel-group">
+					<div class="pixel" ng-repeat="url in urls track by $index">
+						<div class="pull-left" style="width: 90%; overflow: hidden;">{{url}}</div><div class="pull-right" ng-click="removePixel(event, $index);"><span class="btn glyphicon glyphicon-remove"></span></div>
+					</div>
+					<div class="new-pixel-container input-group">
+						<input class="form-control" type="text" placeholder="Add new pixel" />
+						<div class="input-group-btn"><button class="btn btn-primary" ng-click="addPixel($event)">Add</button></div>
+					</div>
+				</div>
+			</td>
+		</tr>
+	</table>
+</div>
