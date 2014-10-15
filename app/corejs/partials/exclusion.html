@@ -1,0 +1,51 @@
+<style>
+    .alert{
+        position: fixed;
+        z-index: 5000;
+        width: 100%;
+        left: 0;
+        top: 0;
+        text-align: center;
+        display: none;
+    }
+    .delivery {
+        height: 34px;
+        line-height: 34px;
+        margin-bottom: 0;
+    }
+</style>
+<div class="row">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <a class="navbar-brand" href="/">Onion Video Ads</a>
+    </nav>
+
+    <div class="alert alert-success">Success</div>
+    <div class="alert alert-danger">Error</div>
+    <div class="col-md-12">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label for="name" class="col-md-3 control-label">Name</label>
+                <div class="col-md-6">
+                    <input type="text" class="form-control" placeholder="Name" ng-model="exclusion.name">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="targeting" class="col-md-3 control-label">Page Targeting</label>
+                <div class="col-md-6 targeting" targeting target="exclusion.targeting.page">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="targeting" class="col-md-3 control-label">User Targeting</label>
+                <div class="col-md-6 targeting" targeting target="exclusion.targeting.user">
+                </div>
+            </div>
+            <div id="save-button" class="form-group">
+                <label for="targeting" class="col-md-3 control-label">Save</label>
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn-primary" ng-click="save();">Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+    <Tracking event="start"><![CDATA[http://reporting.theonion.com/videoadtracker/track.gif?videoAd={{ ad.id }}&event=start]]></Tracking>
+{% for pixel in ad.get_pixels.start %}
+    <Tracking event="start"><![CDATA[{{pixel|safe}}]]></Tracking>
+{% endfor %}
+{% for pixel in ad.get_pixels.firstQuartile %}
+    <Tracking event="firstQuartile"><![CDATA[{{pixel|safe}}]]></Tracking>
+{% endfor %}
+{% for pixel in ad.get_pixels.midpoint %}
+    <Tracking event="midpoint"><![CDATA[{{pixel|safe}}]]></Tracking>
+{% endfor %}
+{% for pixel in ad.get_pixels.thirdQuartile %}
+    <Tracking event="thirdQuartile"><![CDATA[{{pixel|safe}}]]></Tracking>
+{% endfor %}
+{% for pixel in ad.get_pixels.complete %}
+    <Tracking event="complete"><![CDATA[{{pixel|safe}}]]></Tracking>
+{% endfor %}

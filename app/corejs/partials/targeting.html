@@ -1,0 +1,91 @@
+<style>
+	.targeting-group{
+		border: 1px solid rgba(161, 191, 215, 1);
+		border-radius: 4px;
+		margin: 0 0 10px 0;
+		padding: 5px;
+        clear: left;
+	}
+	.targeting-row .form-control{
+		float: left;
+		margin: 5px 2px 5px 2px;
+	}
+	.targeting-row-container{
+		margin: 0px auto 0px auto;
+	}
+	.targeting-group .col { padding: 0 2px; }
+	.targeting-row-and{
+		clear: left;
+		text-align: center;
+	}
+	.add-targeting-button{
+		margin: 4px auto 4px auto;
+	}
+	.targeting-row-container .col .btn { width: auto; }
+</style>
+
+<div class="targeting-group" ng-repeat="group in target" ng-show="group && group['rules'].length > 0">
+
+	<div class="row">
+	    <div class="targeting-rows">
+	    	<div class="col-md-12">
+				<div class="targeting-row" ng-repeat="row in group['rules']" ng-show="row">
+					<div class="targeting-row-container row">
+						<div class="col-md-4 col">
+							<input placeholder="Key" class="form-control" ng-model="row[0]">
+						</div>
+						<div class="col-md-3 col">
+							<select class="form-control" ng-model="row[1]">
+								<option value="is">is</option>
+								<option value="is not">is not</option>
+							</select>
+						</div>
+						<div class="col-md-4 col">
+							<input placeholder="Value" class="form-control" ng-model="row[2]">
+						</div>
+						<div class="col-md-1 col">
+							<button class="btn btn-danger form-control" type="submit" ng-click="removeTargetingRow($parent.$index, $index);">
+								<i class="glyphicon glyphicon-remove"></i></button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-12">
+			<div class="targeting-row">
+				<div class="targeting-row-container row">
+			        <div class="col-md-8 col">
+			        	<button class="btn btn-success btn-sm form-control add-targeting-button" type="submit" ng-click="addTargetingRow($index);"><i class="glyphicon glyphicon-plus"></i> Add Row</button>
+
+				        <button class="btn btn-sm btn-warning remove-group form-control" ng-click="removeTargetingGroup($index);"><i class="glyphicon glyphicon-remove"></i> Delete group</button>
+		        	</div>
+		        	<div class="priority col-md-3 col">
+				    	<select class="form-control" ng-model="group['priority']" ng-options="priority for priority in priorities"></select>
+				    </div>
+	        	</div>
+        	</div>
+    	</div>
+	</div>
+
+</div>
+<div class="targeting-button">
+    <button class="btn btn-success" type="submit" ng-click="addTargetingGroup();">Add group</button>
+</div>
+
+<div id="confirm-remove-group-modal" tabindex="-1" role="dialog" aria-labelledby="confirmRemoveGroupModal" aria-hidden="true" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">Confirm Remove Group</h4>
+			</div>
+			<div class="modal-body">
+				Are you sure you want to remove this targeting group?
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+				<button id="confirm-remove-group-modal-button" type="button" class="btn btn-danger">Remove Group</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

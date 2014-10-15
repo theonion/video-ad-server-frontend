@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="video-ads">
+<html lang="en" ng-app="video-ads-dev">
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- TODO: Can't use this block title thing.  -->
@@ -24,22 +24,35 @@
 		<div class="container" ng-view>
 		</div>
         <!-- TODO: change this over to work with bower crap, reference django-bulbs  -->
-        <script type="text/javascript">var STATIC_URL = "{{ STATIC_URL }}";</script>
+        <script type="text/javascript">var STATIC_URL = "/views/";</script>
 		<script type="application/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js" ></script>
 		<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 
-		<script type="application/javascript" src="scripts/libs/jquery-video-upload.js" ></script>
+		<script type="application/javascript" src="scripts/jquery-video-upload.js" ></script>
 		<script type="application/javascript" src="/videos/videoAttrs.js" ></script>
 
 		<script type="text/javascript" src="bower_components/moment/moment.js"></script>
       	<script type="text/javascript" src="bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-      	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.2/angular.min.js"></script>
-      	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+      	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.2/angular.js"></script>
+      	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.js"></script>
       	<script type="text/javascript" src="bower_components/angular-cookies/angular-cookies.js"></script>
-      	<script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+        <script type="text/javascript" src="bower_components/angular-mocks/angular-mocks.js"></script>
+      	<script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
       	<script type="text/javascript" src="bower_components/underscore/underscore-min.js"></script>
+        <script type="text/javascript" src="mocks/app.js"></script>
+        <script type="text/javascript" src="mocks/api.js"></script>
       	<script type="text/javascript" src="scripts/app.js"></script>
-      	<script type="text/javascript" src="scripts/libs/autocomplete.js"></script>
-        <!-- TODO: More django junk -->
+      	<script type="text/javascript" src="scripts/autocomplete.js"></script>
+        <script type="text/javascript" src="scripts/controllers/exclusion.js"></script>
+        <script type="text/javascript" src="scripts/controllers/form.js"></script>
+        <script type="text/javascript" src="scripts/controllers/list.js"></script>
+        <script type="text/javascript" src="scripts/directives/delivery.js"></script>
+        <script type="text/javascript" src="scripts/directives/pixels.js"></script>
+        <script type="text/javascript" src="scripts/directives/targeting.js"></script>
+        <script type="text/javascript" src="scripts/directives/videoupload.js"></script>
+        <script type="text/javascript" src="scripts/filters/converttolocal.js"></script>
+        <script type="text/javascript">
+            angular.module('video-ads-dev', ["video-ads", "video-ads.mockApi"]);
+        </script>
 	</body>
 </html>

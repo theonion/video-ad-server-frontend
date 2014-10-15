@@ -79,7 +79,6 @@ module.exports = function (grunt) {
               connect.static('.tmp'),
               connect().use(
                 '/bower_components',
-                  //TODO: Change here to point bower_components to point to new directory
                 connect.static('./bower_components')
               ),
               connect.static(appConfig.app)

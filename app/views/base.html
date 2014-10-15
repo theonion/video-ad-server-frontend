@@ -2,10 +2,8 @@
 <html lang="en" ng-app="video-ads">
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- TODO: Can't use this block title thing.  -->
 		<title>{% block title %}Onion Video Ad Server{% endblock %}</title>
 
-        <!-- TODO: change this over to work with bower crap, reference django-bulbs  -->
 		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" media="all" href="{{ STATIC_URL }}css/daterangepicker-bs3.css" />
 		<link rel="stylesheet" type="text/css" media="all" href="{{ STATIC_URL }}videos/css/jquery-video-upload.css" />
@@ -21,11 +19,9 @@
 		</style>
 	</head>
 	<body>
-        <!-- TODO: mock csrf-token, get that working better.  -->
 		{% csrf_token %}
 		<div class="container" ng-view>
 		</div>
-        <!-- TODO: change this over to work with bower crap, reference django-bulbs  -->
         <script type="text/javascript">var STATIC_URL = "{{ STATIC_URL }}";</script>
 		<script type="application/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js" ></script>
 		<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
@@ -42,7 +38,18 @@
       	<script type="text/javascript" src="{{ STATIC_URL }}lib/underscore-min.js"></script>
       	<script type="text/javascript" src="{{ STATIC_URL }}js/app.js"></script>
       	<script type="text/javascript" src="{{ STATIC_URL }}js/autocomplete.js"></script>
-        <!-- TODO: More django junk -->
+
+      	<!-- FILTERS -->
+      	<script type="text/javascript" src="{{ STATIC_URL }}js/filters/converttolocal.js"></script>
+      	<!-- CONTROLLERS -->
+      	<script type="text/javascript" src="{{ STATIC_URL }}js/controllers/exclusion.js"></script>
+      	<script type="text/javascript" src="{{ STATIC_URL }}js/controllers/list.js"></script>
+      	<script type="text/javascript" src="{{ STATIC_URL }}js/controllers/form.js"></script>
+      	<!-- DIRECTIVES -->
+      	<script type="text/javascript" src="{{ STATIC_URL }}js/directives/targeting.js"></script>
+      	<script type="text/javascript" src="{{ STATIC_URL }}js/directives/videoupload.js"></script>
+      	<script type="text/javascript" src="{{ STATIC_URL }}js/directives/pixels.js"></script>
+      	<script type="text/javascript" src="{{ STATIC_URL }}js/directives/delivery.js"></script>
       	{% block js %}
       	{% endblock %}
 	</body>
