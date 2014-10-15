@@ -1,7 +1,0 @@
-<input type="text" class="form-control fake-input" value="{{videoad.video.name}}" disabled>
-<label class="btn btn-default pull-right s3uploadButton" ng-click="chooseFile();" ng-show="!videoad.video.status || videoad.video.status == 0 || videoad.video.status == 3">Choose File</label>
-<label class="btn btn-danger pull-right s3uploadButton" ng-click="clearFile();" ng-show="videoad.video.status == 1">Clear</label>
-<label class="btn btn-danger pull-right s3uploadButton" ng-click="abort();" ng-show="videoad.video.status == 2">Abort</label>
-<div class="progress progress-striped active s3uploadProgress" style="display:none;"><div class="progress-bar" style="width: 0%"><span class="pull-left">Encoding...</span></div></div>
-
-<input type="file" name="video" class="form-control" style="position:absolute; left:-6000px;" />

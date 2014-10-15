@@ -5,7 +5,7 @@ angular.module('video-ads.mockApi', ['ngMockE2E']).run(
       $httpBackend.whenGET(/partials/).passThrough();
       $httpBackend.whenGET(/exclusion\/global\/partials*/).passThrough();
       $httpBackend.when("GET", videoAddListRegex).respond(mockApiData.videoadd.list);
-      $httpBackend.when("POST", /\/new/).respond(3);
+      $httpBackend.when("POST", /\/new/).respond(function(){ console.log("bacon"); return 3; });
     }
   ]
 ).value('mockApiData', {
