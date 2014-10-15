@@ -5,7 +5,7 @@
 angular.module('video-ads', [
   'ngCookies', 
   'ngRoute', 
-  'ui.bootstrap', 
+  'ui.bootstrap',
   'autocomplete'
 ])
 .config(function ($locationProvider, $httpProvider, $routeProvider, $sceDelegateProvider) {

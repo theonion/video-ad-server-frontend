@@ -32,7 +32,9 @@ angular.module('video-ads')
 				})
 			}).success(function(data){
 				$location.path('/edit/' + data);
-			});
+			}).error(function(data){
+        console.log(data);
+      });
 		}
 
 		$scope.changePage = function(page){

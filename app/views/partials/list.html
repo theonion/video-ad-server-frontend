@@ -31,7 +31,7 @@
 	</table>
 </div>
 <div class="row">
-	<pagination total-items="totalItems" page="currentPage" items-per-page="20" on-select-page="changePage(page);"></pagination>
+    <pagination total-items="totalItems" ng-model="currentPage" ng-change="changePage(page);"></pagination>
 </div>
 <div class="row">
     <a class="btn btn-primary" href="/exclusion/global/">Manage Exclusions</a>
