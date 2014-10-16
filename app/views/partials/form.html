@@ -15,9 +15,7 @@
     }
 </style>
 <div class="row">
-	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-		<a class="navbar-brand" href="/">Onion Video Ads</a>
-	</nav>
+	<div ng-include src='"views/partials/navbar.html"'></div>
 
 	<div class="alert alert-success">Success</div>
 	<div class="alert alert-danger">Error</div>
@@ -93,6 +91,12 @@
 			<div class="form-group">
 				<label for="pixels" class="col-md-3 control-label">Pixels</label>
 				<div class="col-md-6 pixels" pixels videoad="videoad">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="preview" class="col-md-3 control-label">Preview</label>
+				<div class="col-md-6">
+					<img class="video-preview" src="../../images/preview.png" alt=""/>
 				</div>
 			</div>
 			<div id="save-button" class="form-group">

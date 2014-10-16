@@ -8024,3 +8024,62 @@ button.close {
     display: none !important;
   }
 }
+/* line 13, app.scss */
+.table > tbody > tr > th {
+  border-top: 0;
+}
+
+/* line 19, app.scss */
+.navbar-inverse {
+  background-color: #f5f5f5;
+}
+
+/* line 23, app.scss */
+.navbar-form {
+  border: 0;
+}
+
+/* line 28, app.scss */
+.navbar-brand img {
+  max-height: 23px;
+}
+
+/* line 34, app.scss */
+.navbar-header button {
+  background-color: #333;
+}
+
+/* line 41, app.scss */
+.sidebar {
+  background-color: #f5f5f5;
+  border-right: 1px solid #eee;
+  bottom: 0;
+  display: block;
+  left: 0;
+  padding: 20px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: fixed;
+  top: 51px;
+  z-index: 1000;
+}
+
+/* line 55, app.scss */
+.nav-sidebar {
+  padding-bottom: 1rem;
+}
+
+/* line 59, app.scss */
+.add-btn {
+  width: 100%;
+}
+
+/* line 65, app.scss */
+.video-preview {
+  width: 100%;
+}
+
+/* line 71, app.scss */
+.video-poster {
+  max-width: 250px;
+}

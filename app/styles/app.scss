@@ -2,3 +2,75 @@
 // components. Override or extend here
 
 @import "bootstrap-custom";
+
+//Global Variables
+
+$drk-gray: #333;
+$lt-gray: #f5f5f5;
+
+
+//Table Overrides
+.table > tbody > tr > th {
+	border-top: 0;
+}
+
+//Navbar Overrides
+
+.navbar-inverse {
+	background-color: $lt-gray;
+}
+
+.navbar-form {
+	border: 0;
+}
+
+.navbar-brand {
+	img {
+		max-height: 23px;
+	}
+}
+
+.navbar-header {
+	button {
+		background-color: $drk-gray;
+	}
+}
+
+//Sidebar
+
+.sidebar {
+	background-color: #f5f5f5;
+	border-right: 1px solid #eee;	
+	bottom: 0;
+	display: block;
+	left: 0;
+	padding: 20px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	position: fixed;
+	top: 51px;
+	z-index: 1000;
+}
+
+.nav-sidebar {
+	padding-bottom: 1rem;
+}
+
+.add-btn {
+	width: 100%;
+}
+
+//Form View
+
+.video-preview {
+	width: 100%;
+}
+
+//List View
+
+.video-poster {
+	max-width: 250px;
+}
+
+
+

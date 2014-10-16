@@ -4,6 +4,7 @@ angular.module('video-ads')
 	.controller('ListCtrl', function ($scope, $http, $location) {
 		$scope.videoads = [];
 		$scope.params = {};
+		$scope.show_search_bar = true;
 
 		$scope.update_list = function(){
 			$scope.params = _.extend($scope.params, $location.search());
