@@ -1,1 +1,1 @@
-angular.module('video-ads.mockApi', ['ngMockE2E']);
+var videoAdsMockApi = angular.module('video-ads.mockApi', ['ngMockE2E']);
