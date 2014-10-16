@@ -8030,26 +8030,31 @@ button.close {
 }
 
 /* line 19, app.scss */
+.nav li > a {
+  cursor: pointer;
+}
+
+/* line 23, app.scss */
 .navbar-inverse {
   background-color: #f5f5f5;
 }
 
-/* line 23, app.scss */
+/* line 27, app.scss */
 .navbar-form {
   border: 0;
 }
 
-/* line 28, app.scss */
+/* line 32, app.scss */
 .navbar-brand img {
   max-height: 23px;
 }
 
-/* line 34, app.scss */
+/* line 38, app.scss */
 .navbar-header button {
   background-color: #333;
 }
 
-/* line 41, app.scss */
+/* line 45, app.scss */
 .sidebar {
   background-color: #f5f5f5;
   border-right: 1px solid #eee;
@@ -8064,22 +8069,26 @@ button.close {
   z-index: 1000;
 }
 
-/* line 55, app.scss */
+/* line 59, app.scss */
 .nav-sidebar {
   padding-bottom: 1rem;
 }
+/* line 61, app.scss */
+.nav-sidebar button {
+  margin-bottom: 1rem;
+}
 
-/* line 59, app.scss */
+/* line 66, app.scss */
 .add-btn {
   width: 100%;
 }
 
-/* line 65, app.scss */
+/* line 72, app.scss */
 .video-preview {
   width: 100%;
 }
 
-/* line 71, app.scss */
+/* line 78, app.scss */
 .video-poster {
   max-width: 250px;
 }
