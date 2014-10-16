@@ -8,6 +8,7 @@
         <!-- TODO: change this over to work with bower crap, reference django-bulbs  -->
 		<link rel="stylesheet" type="text/css" media="all" href="bower_components/bootstrap-daterangepicker/daterangepicker-bs3.css" />
 		<link rel="stylesheet" type="text/css" media="all" href="styles/jquery-video-upload.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="bower_components/videojs/dist/video-js/video-js.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="all" href="styles/app.css" />
 
 		<style type="text/css">
@@ -62,6 +63,10 @@
     <script type="text/javascript" src="scripts/directives/targeting.js"></script>
     <script type="text/javascript" src="scripts/directives/videoupload.js"></script>
     <script type="text/javascript" src="scripts/filters/converttolocal.js"></script>
+    <script src="bower_components/videojs/dist/video-js/video.js"></script>
+    <script>
+      videojs.options.flash.swf = "bower_components/videojs/dist/video-js/video-js.swf"
+    </script>
     <script type="text/javascript">
         angular.module('video-ads-dev', ["video-ads", "video-ads.mockApi"]);
     </script>

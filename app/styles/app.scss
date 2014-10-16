@@ -16,6 +16,10 @@ $lt-gray: #f5f5f5;
 
 //Navbar Overrides
 
+.nav li > a {
+	cursor: pointer;
+}
+
 .navbar-inverse {
 	background-color: $lt-gray;
 }
@@ -54,6 +58,9 @@ $lt-gray: #f5f5f5;
 
 .nav-sidebar {
 	padding-bottom: 1rem;
+	button {
+		margin-bottom: 1rem;
+	}
 }
 
 .add-btn {
