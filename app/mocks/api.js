@@ -1,105 +1,44 @@
 angular.module('video-ads.mockApi', ['ngMockE2E']).run(
-  ['$httpBackend', 'mockApiData',
-    function ($httpBackend, mockApiData) {
-      var videoAddListRegex = /^\/api\/v1\/videoads\/\?*/;
+   ['$httpBackend', 'mockVideoAdFactory',
+    function ($httpBackend, mockVideoAdFactory) {
+      //TODO: Refine regex to be more precise, better reflect URL structure
+      var videoAdListRegex = /^\/api\/v1\/videoads\/\?*/;
+      var videoAdDetailRegex = /^\/api\/v1\/videoads\/[0-9]\//;
       $httpBackend.whenGET(/partials/).passThrough();
       $httpBackend.whenGET(/exclusion\/global\/partials*/).passThrough();
-      $httpBackend.whenGET(videoAddListRegex).respond(mockApiData.videoadd.list);
+      $httpBackend.whenGET(/https\:\/\/app.zencoder\.com*/)
+      $httpBackend.whenGET(videoAdDetailRegex).respond(mockVideoAdFactory.videoad.detail);
+      $httpBackend.whenGET(videoAdListRegex).respond(mockVideoAdFactory.videoad.list);
       $httpBackend.whenPOST(/\/new/).respond(200, 2);
     }
   ]
-).value('mockApiData', {
-    "videoadd": {
-      "list": {
-        "count": 1,
-        "next": null,
-        "previous": null,
-        "results": [
-          {
-            "start": "2014-10-15T05:00:00Z",
-            "end": "2014-10-17T05:00:00Z",
-            "targeting": {
-              "page": [
-                {
-                  "priority": "medium",
-                  "rules": [
-                    [
-                      "Page Targeting 1",
-                      "is",
-                      "bacon"
-                    ],
-                    [
-                      "Page Targeting 2",
-                      "is not",
-                      "bacon"
-                    ]
-                  ]
-                }
-              ],
-              "user": [
-                {
-                  "priority": "medium",
-                  "rules": [
-                    [
-                      "User Targeting group 1",
-                      "is",
-                      "bacon"
-                    ]
-                  ]
-                },
-                {
-                  "priority": "medium",
-                  "rules": [
-                    [
-                      "User Targeting group 2",
-                      "is",
-                      "bacon"
-                    ]
-                  ]
-                }
-              ]
-            },
-            "pixels": {
-              "impression": [
-                "asf"
-              ],
-              "complete": [
-                "zxcv"
-              ],
-              "thirdQuartile": [
-                "zzzz"
-              ],
-              "clickThrough": [
-                "asdf"
-              ],
-              "midpoint": [
-                "eeee"
-              ],
-              "start": [
+).factory("mockVideoAdFactory", function (){
+	var _numberOfVideoAds = 0;
+	var _getNewVideoAd = function(){
+		var newVideoAd = _.clone(videoAd);
+		_numberOfVideoAds++;
+		newVideoAd.id = _numberOfVideoAds;
+		return newVideoAd;
+	};
 
-              ],
-              "firstQuartile": [
+	var _getListOfNewVideoAds = function(numberOfAds) {
+		var videoAdArray = [];
+		_.times(numberOfAds, function(){
+			videoAdArray.push(_getNewVideoAd());
+		});
+		return videoAdArray;
+	};
 
-              ]
-            },
-            "video": {
-              "id": 3,
-              "name": "spacetestSMALL_512kb.mp4",
-              "status": 2,
-              "job_id": 120463745
-            },
-            "is_running": true,
-            "impressions": 0,
-            "delivery": "0.00",
-            "url": "http://videoads.theonion.com/vast/3.xml",
-            "id": 3,
-            "name": "Name of Video Add",
-            "impression_target": 9000,
-            "click_through": "http://www.google.com",
-            "gam_attribute": "gamattr",
-            "vast_url": "http://www.example.com"
-          }
-        ]
-      }
-    }}
-);
+	return {
+		"videoad": {
+			"list": {
+					"count": 10,
+					"next": null,
+					"previous": null,
+					"results": _getListOfNewVideoAds(10)
+			},
+			"detail": _getNewVideoAd()
+		}
+	};
+
+});
