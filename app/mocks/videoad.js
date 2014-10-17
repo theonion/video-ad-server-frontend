@@ -69,7 +69,7 @@ var videoAd = {
   },
   "is_running": true,
   "impressions": 0,
-  "delivery": "0.00",
+  "delivery": null,
   "url": "http://videoads.theonion.com/vast/3.xml",
   "id": null,
   "name": "Name of Video Add",

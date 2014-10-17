@@ -14,17 +14,21 @@ angular.module('video-ads.mockApi', ['ngMockE2E']).run(
   ]
 ).factory("mockVideoAdFactory", function (){
 	var _numberOfVideoAds = 0;
-	var _getNewVideoAd = function(){
+	var _getVideoAd = function(){
 		var newVideoAd = _.clone(videoAd);
 		_numberOfVideoAds++;
 		newVideoAd.id = _numberOfVideoAds;
+		newVideoAd.name += " " + _numberOfVideoAds;
+		//Create a random number for delivery for graph prettyness
+		newVideoAd.delivery = _.random(100);
+
 		return newVideoAd;
 	};
 
-	var _getListOfNewVideoAds = function(numberOfAds) {
+	var _getListOfVideoAds = function(numberOfAds) {
 		var videoAdArray = [];
 		_.times(numberOfAds, function(){
-			videoAdArray.push(_getNewVideoAd());
+			videoAdArray.push(_getVideoAd());
 		});
 		return videoAdArray;
 	};
@@ -33,11 +37,11 @@ angular.module('video-ads.mockApi', ['ngMockE2E']).run(
 		"videoad": {
 			"list": {
 					"count": 10,
-					"next": null,
+					"next": "/api/v1/videoads/?page=2",
 					"previous": null,
-					"results": _getListOfNewVideoAds(10)
+					"results": _getListOfVideoAds(10)
 			},
-			"detail": _getNewVideoAd()
+			"detail": _getVideoAd()
 		}
 	};
 
