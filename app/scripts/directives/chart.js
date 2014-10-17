@@ -6,15 +6,22 @@ angular.module('video-ads')
       restrict: 'E',
       templateUrl: STATIC_URL + 'partials/chart.html',
       scope: {
-        foo: '@foo'
+        impressions: '@impressions'
       },
       controller: function($scope) {
+        $scope.chartOptions = {
+          animation: false,
+        },
         $scope.impressionsChart = [
           {
-            value: $scope.foo,
-            color:"#F7464A",
-            highlight: "#FF5A5E",
-            //label: "Impressions"
+            value: parseInt($scope.impressions),
+            color:"#5cb85c",
+            label: "% Complete"
+          },
+          {
+            value: (100 - parseInt($scope.impressions)),
+            color: "#5b90bf",
+            label: "% Remaining"
           }
         ];
       },
