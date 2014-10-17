@@ -8024,44 +8024,54 @@ button.close {
     display: none !important;
   }
 }
-/* line 13, app.scss */
+/* line 14, app.scss */
+body {
+  color: #3A3A3A;
+}
+
+/* line 18, app.scss */
+a {
+  color: #33C5F3;
+}
+
+/* line 23, app.scss */
 .table > tbody > tr > th {
   border-top: 0;
 }
 
-/* line 19, app.scss */
+/* line 29, app.scss */
 .nav li > a {
   cursor: pointer;
 }
 
-/* line 23, app.scss */
+/* line 33, app.scss */
 .navbar-inverse {
-  background-color: #f5f5f5;
+  background-color: #f4f2f2;
 }
 
-/* line 27, app.scss */
+/* line 37, app.scss */
 .navbar-form {
   border: 0;
 }
 
-/* line 32, app.scss */
+/* line 42, app.scss */
 .navbar-brand img {
   max-height: 23px;
 }
 
-/* line 38, app.scss */
+/* line 48, app.scss */
 .navbar-header button {
-  background-color: #333;
+  background-color: #333333;
 }
 
-/* line 45, app.scss */
+/* line 55, app.scss */
 .sidebar {
   background-color: #f5f5f5;
   border-right: 1px solid #eee;
   bottom: 0;
   display: block;
   left: 0;
-  padding: 20px;
+  padding: 1%;
   overflow-x: hidden;
   overflow-y: auto;
   position: fixed;
@@ -8069,26 +8079,28 @@ button.close {
   z-index: 1000;
 }
 
-/* line 59, app.scss */
+/* line 69, app.scss */
 .nav-sidebar {
   padding-bottom: 1rem;
 }
-/* line 61, app.scss */
+/* line 71, app.scss */
 .nav-sidebar button {
   margin-bottom: 1rem;
 }
 
-/* line 66, app.scss */
+/* line 76, app.scss */
 .add-btn {
   width: 100%;
 }
 
-/* line 72, app.scss */
+/* line 82, app.scss */
 .video-preview {
   width: 100%;
 }
 
-/* line 78, app.scss */
+/* line 88, app.scss */
 .video-poster {
+  border: 1px solid #f4f2f2;
   max-width: 250px;
+  padding: 2%;
 }
