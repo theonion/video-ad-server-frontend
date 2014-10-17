@@ -5,9 +5,19 @@
 
 //Global Variables
 
-$drk-gray: #333;
-$lt-gray: #f5f5f5;
+$body-color: #3A3A3A;
+$drk-gray: #333333;
+$lt-gray: #f4f2f2;
+$link-color: #33C5F3;
 
+
+body {
+	color: $body-color;
+}
+
+a {
+	color: $link-color;
+}
 
 //Table Overrides
 .table > tbody > tr > th {
@@ -48,7 +58,7 @@ $lt-gray: #f5f5f5;
 	bottom: 0;
 	display: block;
 	left: 0;
-	padding: 20px;
+	padding: 1%;
 	overflow-x: hidden;
 	overflow-y: auto;
 	position: fixed;
@@ -76,7 +86,9 @@ $lt-gray: #f5f5f5;
 //List View
 
 .video-poster {
+	border: 1px solid $lt-gray;
 	max-width: 250px;
+	padding: 2%;
 }
 
 

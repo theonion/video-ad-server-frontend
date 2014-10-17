@@ -6,7 +6,8 @@ angular.module('video-ads', [
   'ngCookies', 
   'ngRoute', 
   'ui.bootstrap',
-  'autocomplete'
+  'autocomplete',
+  'angles'
 ])
 .config(function ($locationProvider, $httpProvider, $routeProvider, $sceDelegateProvider) {
   $sceDelegateProvider.resourceUrlWhitelist(['self', 'http://assets.onionstatic.com/videoads/*']);

@@ -38,20 +38,22 @@
 		<table class="table table-hover">
 			<tr>
 				<th>Name</th>
-				<th>Delivery</th>
 				<th>Start</th>
 				<th>End</th>
 				<th>External URL/Video</th>
+				<th>Impression Target</th>
 				<th>Preview</th>
 			</tr>
 			<tr ng-repeat="videoad in videoads">
 				<td><a href="/edit/{{videoad.id}}/">{{videoad.name}}</a></td>
-				<td>{{videoad.delivery}}%</td>
 				<td>{{videoad.start|convertToLocal}}</td>
 				<td>{{videoad.end|convertToLocal}}</td>
 				<td ng-show="videoad.vast_url">{{videoad.vast_url}}</td>
 				<td ng-hide="videoad.vast_url">{{videoad.video.name}}</td>
-				<td><img class="video-poster"src="images/thumb.png" alt=""/></td>
+				<td>
+					<impressionschart impressions="{{videoad.delivery}}"></impressionschart>
+				</td>
+				<td><img class="video-poster" src="images/thumb.png" alt=""/></td>
 			</tr>
 		</table>
     	<pagination total-items="totalItems" items-per-page="5" ng-model="currentPage" ng-change="changePage(page);"></pagination>
