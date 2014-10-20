@@ -16,12 +16,12 @@ angular.module('video-ads')
         $scope.impressionsChart = [
           {
             value: parseInt($scope.impressions),
-            color:"#5cb85c",
+            color:"#19A7F5",
             label: "% Complete"
           },
           {
             value: (100 - parseInt($scope.impressions)),
-            color: "#5b90bf",
+            color: "#ecebeb",
             label: "% Remaining"
           }
         ];
