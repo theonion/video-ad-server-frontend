@@ -1,4 +1,4 @@
-angular.module('video-ads.mockApi', ['ngMockE2E']).run(
+angular.module('video-ads.mockApi').run(
    ['$httpBackend', 'mockVideoAdFactory',
     function ($httpBackend, mockVideoAdFactory) {
       //TODO: Refine regex to be more precise, better reflect URL structure
@@ -36,10 +36,10 @@ angular.module('video-ads.mockApi', ['ngMockE2E']).run(
 	return {
 		"videoad": {
 			"list": {
-					"count": 10,
+					"count": 20,
 					"next": "/api/v1/videoads/?page=2",
 					"previous": null,
-					"results": _getListOfVideoAds(10)
+					"results": _getListOfVideoAds(5)
 			},
 			"detail": _getVideoAd()
 		}

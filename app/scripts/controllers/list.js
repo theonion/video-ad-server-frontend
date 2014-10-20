@@ -4,9 +4,9 @@ angular.module('video-ads')
 	.controller('ListCtrl', function ($scope, $http, $location) {
 		$scope.videoads = [];
 		$scope.params = {};
-		$scope.show_search_bar = true;
+		$scope.showSearchBar = true;
 
-		$scope.update_list = function(){
+		$scope.updateList = function(){
 			$scope.params = _.extend($scope.params, $location.search());
 			if ($scope.params.filter === undefined) {
 				$scope.params.filter = "active";
@@ -38,16 +38,16 @@ angular.module('video-ads')
 
 		$scope.changePage = function(page){
 			$location.search(_.extend($location.search(), {'page':page}));
-			$scope.update_list();
+			$scope.updateList();
 		}
 		$scope.changeFilter = function(key, value){
 			var obj = {};
 			obj[key] = value;
 			obj['page'] = 1;
 			$location.search(_.extend($location.search(), obj));
-			$scope.update_list();
+			$scope.updateList();
 		}
 
-		$scope.update_list();
+		$scope.updateList();
 
 	});
