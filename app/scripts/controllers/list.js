@@ -5,6 +5,8 @@ angular.module('video-ads')
 		$scope.videoads = [];
 		$scope.params = {};
 		$scope.show_search_bar = true;
+		$scope.predicate = '-delivery';
+		$scope.active = 'delivery'
 
 		$scope.update_list = function(){
 			$scope.params = _.extend($scope.params, $location.search());

@@ -5,7 +5,9 @@
 // Reset and dependencies
 @import "../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/normalize";
 @import "../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/print";
-@import "../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/glyphicons";
+// TODO: We are currently including the CDN version of Bootstrap Glyphicons since
+// this is not properly importing
+//@import "../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/glyphicons";
 
 // Core CSS
 @import "../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/scaffolding";
