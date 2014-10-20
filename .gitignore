@@ -34,3 +34,5 @@ bower_components
 
 # Sass Cache
 .sass-cache
+
+dist/

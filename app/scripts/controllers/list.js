@@ -1,25 +1,24 @@
 'use strict';
 
 angular.module('video-ads')
-	.controller('ListCtrl', function ($scope, $http, $location) {
+	.controller('ListCtrl', function ($scope, $http, $location, videoAdService) {
 		$scope.videoads = [];
 		$scope.params = {};
 		$scope.showSearchBar = true;
+
+		videoAdService.getList().then(function(data){
+			console.log(data);
+		});
 
 		$scope.updateList = function(){
 			$scope.params = _.extend($scope.params, $location.search());
 			if ($scope.params.filter === undefined) {
 				$scope.params.filter = "active";
 			}
-			$http({
-				method: 'GET',
-				url: '/api/v1/videoads/',
-				params: $scope.params
-			}).success(function(data){
-				$scope.videoads = data.results;
-				$scope.totalItems = data.count;
-			}).error(function(data, status){
-				console.log(status);
+			
+			videoAdService.getList([$scope.params]).then(function(data){
+				$scope.videoads = data;
+				$scope.totalItems = data.meta.count;
 			});
 		}
 
