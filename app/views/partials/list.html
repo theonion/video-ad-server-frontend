@@ -13,16 +13,16 @@
 	<div class="col-sm-3 col-md-2 sidebar">
 		<ul class="nav nav-sidebar">
 			<li>
-				<button class="btn btn-default add-btn btn-success" ng-click="newVideoAd();">Add Video</button>
+				<button class="btn btn-default add-btn btn-success" ng-click="newVideoAd();"><i class="fa fa-file-video-o"></i> Add Video</button>
 			</li>
-			<li ng-class="{'selected': (params.filter === undefined || params.filter == 'active')}">
-				<a ng-click="changeFilter('filter', 'active');">Active</a>
+			<li>
+				<a ng-click="changeFilter('filter', 'active');" ng-class="{'active': (params.filter === undefined || params.filter == 'active')}"><i class="fa fa-toggle-off" ng-class="{'fa-toggle-on' : (params.filter === undefined || params.filter == 'active')}"></i> Active</a>
 			</li>
-	        <li ng-class="{'selected': (params.filter == 'future')}">
-	        	<a ng-click="changeFilter('filter', 'future');">Future</a>
+	        <li>
+	        	<a ng-click="changeFilter('filter', 'future');" ng-class="{'active': (params.filter == 'future')}"><i class="fa fa-toggle-off" ng-class="{'fa-toggle-on' : (params.filter === undefined || params.filter == 'future')}"></i> Future</a>
 	        </li>
-			<li ng-class="{'selected': (params.filter == 'all')}">
-				<a ng-click="changeFilter('filter', 'all');">All</a>
+			<li>
+				<a ng-click="changeFilter('filter', 'all');" ng-class="{'active': (params.filter == 'all')}"><i class="fa fa-toggle-off" ng-class="{'fa-toggle-on' : (params.filter === undefined || params.filter == 'all')}"></i> All</a>
 			</li>
 		</ul>
 		<ul class="nav nav-sidebar">
@@ -41,18 +41,18 @@
 				<th>Name</th>
 				<th>
 					<a href="" ng-click="predicate = 'start'; reverse=!reverse; active = 'start'" ng-class="{active:active == 'start'}">
-						Start <span class="glyphicon" ng-class="{'glyphicon-chevron-up' : predicate == 'start', 'glyphicon-chevron-down' : predicate == 'start' && !reverse}"></span>
+						<i class="fa fa-calendar"></i> Start <i class="fa" ng-class="{'fa-chevron-up' : predicate == 'start', 'fa-chevron-down' : predicate == 'start' && !reverse}"></i>
 					</a>
 				</th>
 				<th>
 					<a href="" ng-click="predicate = 'end'; reverse=!reverse; active = 'end'" ng-class="{active:active == 'end'}">
-						End <span class="glyphicon" ng-class="{'glyphicon-chevron-up' : predicate == 'end', 'glyphicon-chevron-down' : predicate == 'end' && !reverse}"></span>
+						<i class="fa fa-calendar"></i> End <i class="fa" ng-class="{'fa-chevron-up' : predicate == 'end', 'fa-chevron-down' : predicate == 'end' && !reverse}"></i>
 					</a>
 				</th>
 				<th>External URL/Video</th>
 				<th>
 					<a href="" ng-click="predicate = '-delivery'; reverse=!reverse; active = 'delivery'" ng-class="{active:active == 'delivery'}">
-						Impression Target <span class="glyphicon" ng-class="{'glyphicon-chevron-up' : predicate == '-delivery', 'glyphicon-chevron-down' : predicate == '-delivery' && !reverse}"></span>
+						<i class="fa fa-bar-chart"></i> Delivery % <i class="fa" ng-class="{'fa-chevron-up' : predicate == '-delivery', 'fa-chevron-down' : predicate == '-delivery' && !reverse}"></i>
 					</a>
 				</th>
 				<th>Preview</th>

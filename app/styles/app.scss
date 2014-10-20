@@ -10,6 +10,7 @@ $drk-gray: #333333;
 $lt-gray: #f4f2f2;
 $link-color: #33C5F3;
 $active: #2a6496;
+$orange: #FE621E;
 
 body {
 	color: $body-color;
@@ -82,6 +83,11 @@ a {
 
 .add-btn {
 	width: 100%;
+}
+
+.fa-toggle-off,
+.fa-toggle-on {
+	color: $orange;
 }
 
 //Form View

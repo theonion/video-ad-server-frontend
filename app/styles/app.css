@@ -7006,56 +7006,56 @@ button.close {
     display: none !important;
   }
 }
-/* line 14, app.scss */
+/* line 15, app.scss */
 body {
   color: #3A3A3A;
   padding-top: 70px;
 }
 
-/* line 19, app.scss */
+/* line 20, app.scss */
 a {
   color: #33C5F3;
 }
-/* line 21, app.scss */
+/* line 22, app.scss */
 a.active {
   color: #2a6496;
 }
 
-/* line 27, app.scss */
+/* line 28, app.scss */
 .table > tbody > tr > th {
   border-top: 0;
 }
-/* line 29, app.scss */
+/* line 30, app.scss */
 .table > tbody > tr > th a {
   text-decoration: none;
 }
 
-/* line 36, app.scss */
+/* line 37, app.scss */
 .nav li > a {
   cursor: pointer;
 }
 
-/* line 40, app.scss */
+/* line 41, app.scss */
 .navbar-inverse {
   background-color: #f4f2f2;
 }
 
-/* line 44, app.scss */
+/* line 45, app.scss */
 .navbar-form {
   border: 0;
 }
 
-/* line 49, app.scss */
+/* line 50, app.scss */
 .navbar-brand img {
   max-height: 23px;
 }
 
-/* line 55, app.scss */
+/* line 56, app.scss */
 .navbar-header button {
   background-color: #333333;
 }
 
-/* line 62, app.scss */
+/* line 63, app.scss */
 .sidebar {
   background-color: #f5f5f5;
   border-right: 1px solid #eee;
@@ -7070,26 +7070,32 @@ a.active {
   z-index: 1000;
 }
 
-/* line 76, app.scss */
+/* line 77, app.scss */
 .nav-sidebar {
   padding-bottom: 1rem;
 }
-/* line 78, app.scss */
+/* line 79, app.scss */
 .nav-sidebar button {
   margin-bottom: 1rem;
 }
 
-/* line 83, app.scss */
+/* line 84, app.scss */
 .add-btn {
   width: 100%;
 }
 
-/* line 89, app.scss */
+/* line 88, app.scss */
+.fa-toggle-off,
+.fa-toggle-on {
+  color: #FE621E;
+}
+
+/* line 95, app.scss */
 .video-preview {
   width: 100%;
 }
 
-/* line 95, app.scss */
+/* line 101, app.scss */
 .video-poster {
   border: 1px solid #f4f2f2;
   max-width: 250px;
