@@ -19,16 +19,16 @@ angular.module('video-ads', [
 
   $routeProvider
     .when('/', {
-      templateUrl: 'views/partials/list.html', 
+      templateUrl: '/views/partials/list.html', 
       controller: 'ListCtrl', 
       reloadOnSearch: false
     })
     .when('/edit/:videoAdId/', {
-      templateUrl: 'views/partials/form.html', 
+      templateUrl: '/views/partials/form.html', 
       controller: 'FormCtrl'
     })
     .when('/exclusion/:exclusionName/', {
-      templateUrl: 'views/partials/exclusion.html', 
+      templateUrl: '/views/partials/exclusion.html', 
       controller: 'ExclusionCtrl'
     })
     .otherwise({
