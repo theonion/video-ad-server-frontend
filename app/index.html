@@ -9,17 +9,8 @@
 		<link rel="stylesheet" type="text/css" media="all" href="bower_components/bootstrap-daterangepicker/daterangepicker-bs3.css" />
 		<link rel="stylesheet" type="text/css" media="all" href="styles/jquery-video-upload.css" />
     <link rel="stylesheet" type="text/css" media="all" href="bower_components/videojs/dist/video-js/video-js.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="all" href="styles/app.css" />
-
-		<style type="text/css">
-			body { padding-top: 70px; }
-			.navbar input.name {
-				width: 230px;
-			}
-			.navbar input.impression-target {
-				width: 125px;
-			}
-		</style>
 	</head>
 	<body>
     <!-- <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -47,10 +38,11 @@
   	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.js"></script>
   	<script type="text/javascript" src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script type="text/javascript" src="bower_components/angular-mocks/angular-mocks.js"></script>
-    <!--<script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>-->
   	<script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script type="text/javascript" src="bower_components/restangular/dist/restangular.js"></script>
   	<script type="text/javascript" src="bower_components/underscore/underscore-min.js"></script>
+    <script type="text/javascript" src="bower_components/chartjs/Chart.min.js" ></script>
+    <script type="text/javascript" src="bower_components/angles/angles.js"></script>
     <script type="text/javascript" src="mocks/videoad.js"></script>
     <script type="text/javascript" src="mocks/app.js"></script>
     <script type="text/javascript" src="mocks/api.js"></script>
@@ -64,8 +56,9 @@
     <script type="text/javascript" src="scripts/directives/targeting.js"></script>
     <script type="text/javascript" src="scripts/directives/videoupload.js"></script>
     <script type="text/javascript" src="scripts/services/video-ad.js"></script>
+    <script type="text/javascript" src="scripts/directives/chart.js"></script>
     <script type="text/javascript" src="scripts/filters/converttolocal.js"></script>
-    <script src="bower_components/videojs/dist/video-js/video.js"></script>
+    <script type="text/javascript" src="bower_components/videojs/dist/video-js/video.js"></script>
     <script>
       videojs.options.flash.swf = "bower_components/videojs/dist/video-js/video-js.swf"
     </script>

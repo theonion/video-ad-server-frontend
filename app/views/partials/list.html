@@ -15,13 +15,13 @@
 			<li>
 				<button class="btn btn-default add-btn btn-success" ng-click="newVideoAd();">Add Video</button>
 			</li>
-			<li ng-class="{'active': (params.filter === undefined || params.filter == 'active')}">
+			<li ng-class="{'selected': (params.filter === undefined || params.filter == 'active')}">
 				<a ng-click="changeFilter('filter', 'active');">Active</a>
 			</li>
-	        <li ng-class="{'active': (params.filter == 'future')}">
+	        <li ng-class="{'selected': (params.filter == 'future')}">
 	        	<a ng-click="changeFilter('filter', 'future');">Future</a>
 	        </li>
-			<li ng-class="{'active': (params.filter == 'all')}">
+			<li ng-class="{'selected': (params.filter == 'all')}">
 				<a ng-click="changeFilter('filter', 'all');">All</a>
 			</li>
 		</ul>
@@ -37,21 +37,37 @@
 	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 		<table class="table table-hover">
 			<tr>
+				<th>Client</th>
 				<th>Name</th>
-				<th>Delivery</th>
-				<th>Start</th>
-				<th>End</th>
+				<th>
+					<a href="" ng-click="predicate = 'start'; reverse=!reverse; active = 'start'" ng-class="{active:active == 'start'}">
+						Start <span class="glyphicon" ng-class="{'glyphicon-chevron-up' : predicate == 'start', 'glyphicon-chevron-down' : predicate == 'start' && !reverse}"></span>
+					</a>
+				</th>
+				<th>
+					<a href="" ng-click="predicate = 'end'; reverse=!reverse; active = 'end'" ng-class="{active:active == 'end'}">
+						End <span class="glyphicon" ng-class="{'glyphicon-chevron-up' : predicate == 'end', 'glyphicon-chevron-down' : predicate == 'end' && !reverse}"></span>
+					</a>
+				</th>
 				<th>External URL/Video</th>
+				<th>
+					<a href="" ng-click="predicate = '-delivery'; reverse=!reverse; active = 'delivery'" ng-class="{active:active == 'delivery'}">
+						Impression Target <span class="glyphicon" ng-class="{'glyphicon-chevron-up' : predicate == '-delivery', 'glyphicon-chevron-down' : predicate == '-delivery' && !reverse}"></span>
+					</a>
+				</th>
 				<th>Preview</th>
 			</tr>
-			<tr ng-repeat="videoad in videoads">
+			<tr ng-repeat="videoad in videoads | orderBy:predicate:reverse">
+				<td>Old Spice</td>
 				<td><a href="/edit/{{videoad.id}}/">{{videoad.name}}</a></td>
-				<td>{{videoad.delivery}}%</td>
 				<td>{{videoad.start|convertToLocal}}</td>
 				<td>{{videoad.end|convertToLocal}}</td>
 				<td ng-show="videoad.vast_url">{{videoad.vast_url}}</td>
 				<td ng-hide="videoad.vast_url">{{videoad.video.name}}</td>
-				<td><img class="video-poster"src="images/thumb.png" alt=""/></td>
+				<td>
+					<impressionschart impressions="{{videoad.delivery}}"></impressionschart>
+				</td>
+				<td><img class="video-poster" src="images/thumb.png" alt=""/></td>
 			</tr>
 		</table>
     	<pagination total-items="totalItems" items-per-page="5" ng-model="currentPage" ng-change="changePage(page);"></pagination>

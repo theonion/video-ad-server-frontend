@@ -5,6 +5,8 @@ angular.module('video-ads')
 		$scope.videoads = [];
 		$scope.params = {};
 		$scope.showSearchBar = true;
+		$scope.predicate = '-delivery';
+		$scope.active = 'delivery'
 
 		videoAdService.getList().then(function(data){
 			console.log(data);
