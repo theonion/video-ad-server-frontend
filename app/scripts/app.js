@@ -6,7 +6,8 @@ angular.module('video-ads', [
   'ngCookies', 
   'ngRoute', 
   'ui.bootstrap',
-  'autocomplete'
+  'autocomplete',
+  'angles'
 ])
 .constant("STATIC_URL", "/static/")
 .config(function ($locationProvider, $httpProvider, $routeProvider, $sceDelegateProvider) {
