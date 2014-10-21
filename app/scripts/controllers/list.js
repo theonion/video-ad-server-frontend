@@ -35,5 +35,4 @@ angular.module('video-ads')
     });
 
     $scope.updateList();
-
   });
