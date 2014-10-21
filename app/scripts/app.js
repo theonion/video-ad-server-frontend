@@ -7,8 +7,10 @@ angular.module('video-ads', [
   'ngRoute', 
   'ui.bootstrap',
   'autocomplete',
+  'restangular',
   'angles'
 ])
+.constant("STATIC_URL", "/static/")
 .config(function ($locationProvider, $httpProvider, $routeProvider, $sceDelegateProvider) {
   $sceDelegateProvider.resourceUrlWhitelist(['self', 'http://assets.onionstatic.com/videoads/*']);
   
@@ -18,16 +20,16 @@ angular.module('video-ads', [
 
   $routeProvider
     .when('/', {
-      templateUrl: STATIC_URL + 'partials/list.html', 
+      templateUrl: '/views/partials/list.html', 
       controller: 'ListCtrl', 
       reloadOnSearch: false
     })
     .when('/edit/:videoAdId/', {
-      templateUrl: STATIC_URL + 'partials/form.html', 
+      templateUrl: '/views/partials/form.html', 
       controller: 'FormCtrl'
     })
     .when('/exclusion/:exclusionName/', {
-      templateUrl: STATIC_URL + 'partials/exclusion.html', 
+      templateUrl: '/views/partials/exclusion.html', 
       controller: 'ExclusionCtrl'
     })
     .otherwise({
