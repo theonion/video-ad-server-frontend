@@ -1,6 +1,6 @@
 angular.module('video-ads.mockApi').run(
-  ['$httpBackend', 'mockVideoAdFactory',
-    function ($httpBackend, mockVideoAdFactory) {
+  ['$httpBackend', 'mockVideoAdFactory', 'zenCoderProgress',
+    function ($httpBackend, mockVideoAdFactory, zenCoderProgress) {
       //TODO: Refine regex to be more precise, better reflect URL structure
       var videoAdListRegex = /^\/api\/v1\/videoads\/\?*/;
       var videoAdDetailRegex = /^\/api\/v1\/videoads\/[0-9]+\//;
@@ -12,7 +12,7 @@ angular.module('video-ads.mockApi').run(
       $httpBackend.whenPOST(videoAdListRegex).respond(200, 2);
       $httpBackend.whenGET(/app.zencoder.com\/.*/).respond(zenCoderProgress);
     }]
-).factory("mockVideoAdFactory", function () {
+).factory("mockVideoAdFactory", ['videoAd', function (videoAd) {
   var _getVideoAd = function (id) {
     var newVideoAd = _.clone(videoAd);
     newVideoAd.id = _.isUndefined(id) ? _.random(100) : id;
@@ -42,4 +42,4 @@ angular.module('video-ads.mockApi').run(
     }
   };
 
-});
+}]);
