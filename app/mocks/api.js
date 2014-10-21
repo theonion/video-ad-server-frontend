@@ -11,6 +11,7 @@ angular.module('video-ads.mockApi').run(
       $httpBackend.whenGET(videoAdListRegex).respond(mockVideoAdFactory.videoad.list);
       $httpBackend.whenPOST(videoAdListRegex).respond(200, 2);
       $httpBackend.whenGET(/app.zencoder.com\/.*/).respond(zenCoderProgress);
+      $httpBackend.whenGET(/\/api\/v1\/exclusions.*/).respond(exclusions);
     }]
 ).factory("mockVideoAdFactory", function () {
   var _getVideoAd = function (id) {
