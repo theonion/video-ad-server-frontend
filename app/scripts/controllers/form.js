@@ -3,7 +3,8 @@
 angular.module('video-ads')
 	.controller('FormCtrl', function ($scope, $http, $routeParams, videoAdService) {
 		$('.user-help').popover({'content': 'Available keys are: "city", "region", and "country_code"'});
-
+		$scope.success = false;
+		$scope.errors = false;
 		$scope.videoad = {};
 		$scope.getAndInitVideoAd = function(videoAdId){
 			videoAdService.one(videoAdId).get().then(
@@ -57,9 +58,9 @@ angular.module('video-ads')
 
 			videoAdService.one($routeParams.videoAdId).PUT(data).then(
 				function(data){
-					$(".alert-success").fadeIn().delay(1000).fadeOut();
+					$scope.success = true;
 				}, function(data){
-					$(".alert-danger").fadeIn().delay(1000).fadeOut();
+					$scope.errors = true;
 				}
 			);
 		}

@@ -2,6 +2,7 @@
 
 angular.module('video-ads')
 	.directive('videoUpload', function ($http, $window, $timeout) {
+		$scope.errors = true;
 		return {
 			templateUrl: STATIC_URL + 'partials/videoUpload.html',
 			scope: {
@@ -146,7 +147,7 @@ angular.module('video-ads')
 						$scope.videoad.video.job_id = data.id;
 						updateEncodeProgress();
 					}).error(function(){
-						$(".alert-danger").fadeIn().delay(1000).fadeOut()
+						$scope.errors = true;
 					});
 				}
 
@@ -233,7 +234,7 @@ angular.module('video-ads')
 							}
 						}
 					}).error(function(data){
-						$(".alert-danger").fadeIn().delay(1000).fadeOut()
+						$scope.errors = true;
 					});
 				}
 
