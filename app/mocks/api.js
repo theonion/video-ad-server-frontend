@@ -9,7 +9,7 @@ angular.module('video-ads.mockApi').run(
       $httpBackend.whenGET(/https\:\/\/app.zencoder\.com*/)
       $httpBackend.whenGET(videoAdDetailRegex).respond(mockVideoAdFactory.videoad.detail);
       $httpBackend.whenGET(videoAdListRegex).respond(mockVideoAdFactory.videoad.list);
-      $httpBackend.whenPOST(/\/new/).respond(200, 2);
+      $httpBackend.whenPOST(videoAdListRegex).respond(200, 2);
     }
   ]
 ).factory("mockVideoAdFactory", function (){
