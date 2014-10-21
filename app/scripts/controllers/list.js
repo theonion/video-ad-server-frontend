@@ -29,7 +29,7 @@ angular.module('video-ads')
       $scope.updateList();
     };
 
-    $scope.$watch('params.filter', function (oldValue, newValue) {
+    $scope.$watch('params.filter', function () {
       $scope.params.page = 1;
       $scope.updateList();
     });
