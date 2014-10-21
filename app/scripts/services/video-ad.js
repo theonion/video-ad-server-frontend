@@ -16,7 +16,8 @@ angular.module("video-ads")
                 var results = data.results;
                 results.meta = {
                     count: data.count,
-                    prev: data.prev
+                    prev: data.prev,
+                    next: data.next
                 };
 
                 return results

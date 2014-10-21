@@ -5,67 +5,68 @@ describe('Controller: video-ads.ListCtrl', function (){
 	var $httpBackend,
 		$scope,
 		$location,
-		videoAdFactory,
-		httpMock;
+		videoAdFactory;
 
 	beforeEach(function() {
 		module('video-ads');
 		module('video-ads.mockApi');
-		inject(function ($httpBackend, $rootScope, $controller, $injector, _mockVideoAdFactory_, _$location_){
-			httpMock = $httpBackend;
+		//TODO: Fix zany injection stuff
+		inject(function (_$httpBackend_, $rootScope, $controller, $injector, _mockVideoAdFactory_, _$location_){
+			$httpBackend = _$httpBackend_;
 			$location = _$location_;
 			videoAdFactory = _mockVideoAdFactory_;
 			$scope = $rootScope.$new();
+			$scope.vidoeAdListEndpoint = /\/api\/v1\/videoads\/.*/
 			$controller("ListCtrl", {
 				$scope: $scope,
 				$location: $location,
-				$httpBackend: httpMock
+				$httpBackend: $httpBackend 
 			});
 		});
+
 	});
 
-	afterEach( function(){
-		httpMock.verifyNoOutstandingExpectation();
-		httpMock.verifyNoOutstandingRequest();
-	})
-
-
 	describe("Functions that call updateList", function(){
-		beforeEach(function(){
-			httpMock.expectGET('/api/v1/videoads/?filter=active').respond(videoAdFactory.videoad.list); 
-		});
-
-		afterEach(function(){
-			httpMock.flush();
-			var data = videoAdFactory.videoad.list;
-			expect($scope.videoads.length).toBe(data.results.length);
-			expect($scope.totalItems).toBe(data.count);
-		});
 		
 		it('updateList should populate $scope.videoads', function () {
+			$httpBackend.expectGET($scope.vidoeAdListEndpoint).respond(videoAdFactory.videoad.list); 
 			$scope.updateList();
+			$scope.$apply();
+			$httpBackend.flush();
 		});
 
 		it('changePage should populate videoads and totalItems', function(){
-			$location.path("/?page=2")
+			$httpBackend.expectGET($scope.vidoeAdListEndpoint).respond(videoAdFactory.videoad.list); 
 			$scope.changePage();
+			$scope.$apply();
+			$httpBackend.flush();
 		});
 
 		it('changeFilter should update current URL, set current page to 1, call updateList', function(){
-			httpMock.resetExpectations();
-			httpMock.expectGET('/api/v1/videoads/?filter=all&page=1').respond(videoAdFactory.videoad.list); 
+			$httpBackend.expectGET($scope.vidoeAdListEndpoint).respond(videoAdFactory.videoad.list); 
 			$scope.changeFilter("filter", "all");
+			$scope.$apply();
+			$httpBackend.flush();
 			expect($location.search().page).toBe(1);
 			expect($location.search().filter).toBe("all");
 		});
+
+		afterEach(function(){
+			var data = videoAdFactory.videoad.list;
+			expect($scope.videoads.length).toBe(data.results.length);
+			expect($scope.totalItems).toBe(data.count);
+			$httpBackend.verifyNoOutstandingRequest();
+			$httpBackend.verifyNoOutstandingExpectation();
+		});
+		
 	});
 
 	it('newVideoAd should change location to edit page of newly created ad', function(){
 		var videoAdId = _.random(1000);
 		$scope.new_video_ad_name = "bacon";
-		httpMock.expectPOST('/new').respond(200, videoAdId);
+		$httpBackend.expectPOST($scope.videoAdListEndpoint).respond(200, videoAdId);
 		$scope.newVideoAd();
-		httpMock.flush();
+		$httpBackend.flush();
 		expect($location.path()).toBe('/edit/' + videoAdId);
 	});
 
