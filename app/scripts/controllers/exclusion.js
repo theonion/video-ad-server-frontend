@@ -3,6 +3,9 @@
 angular.module('video-ads')
     .controller('ExclusionCtrl', function ($scope, $http, $routeParams) {
         $scope.exclusion = {};
+        $scope.successful = true;
+        $scope.errors = false;
+
         $http({
             method: 'GET',
             url: '/api/v1/exclusions/' + $routeParams.exclusionName + '/'
@@ -17,9 +20,9 @@ angular.module('video-ads')
                 url: '/api/v1/exclusions/' + $routeParams.exclusionName + '/',
                 data: data
             }).success(function(data){
-                $(".alert-success").fadeIn().delay(1000).fadeOut();
+                $scope.successful = true;
             }).error(function(data){
-                $(".alert-danger").fadeIn().delay(1000).fadeOut();
+                $scope.errors = true;
             });
         };
     });

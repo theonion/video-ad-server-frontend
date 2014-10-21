@@ -32,6 +32,7 @@ angular.module('video-ads')
 			$location.search(_.extend($location.search(), {'page':page}));
 			$scope.updateList();
 		}
+
 		$scope.changeFilter = function(key, value){
 			var obj = {};
 			obj[key] = value;

@@ -7,14 +7,14 @@ var videoAd = {
         "priority": "medium",
         "rules": [
           [
-            "Page Targeting 1",
+            "dfp_adchannel",
             "is",
-            "bacon"
+            "news"
           ],
           [
-            "Page Targeting 2",
+            "dfp_site",
             "is not",
-            "bacon"
+            "theonion"
           ]
         ]
       }
