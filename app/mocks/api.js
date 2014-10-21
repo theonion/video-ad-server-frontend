@@ -7,21 +7,10 @@ angular.module('video-ads.mockApi').run(
       $httpBackend.whenGET(/partials/).passThrough();
       $httpBackend.whenGET(/exclusion\/global\/partials*/).passThrough();
       $httpBackend.whenGET(/https\:\/\/app\.zencoder\.com*/);
-      $httpBackend.whenGET(videoAdDetailRegex).respond(
-        (function () {
-          console.log("Video Ad detail request received");
-          console.log(mockVideoAdFactory.videoad.detail);
-          return mockVideoAdFactory.videoad.detail;
-        }())
-      );
-      $httpBackend.whenGET(videoAdListRegex).respond(
-        (function () {
-          console.log("Video ad list request received");
-          console.log(mockVideoAdFactory.videoad.list);
-          return mockVideoAdFactory.videoad.list;
-        }())
-      );
+      $httpBackend.whenGET(videoAdDetailRegex).respond(mockVideoAdFactory.videoad.detail);
+      $httpBackend.whenGET(videoAdListRegex).respond(mockVideoAdFactory.videoad.list);
       $httpBackend.whenPOST(videoAdListRegex).respond(200, 2);
+      $httpBackend.whenGET(/app.zencoder.com\/.*/).respond(zenCoderProgress);
     }]
 ).factory("mockVideoAdFactory", function () {
   var _getVideoAd = function (id) {
