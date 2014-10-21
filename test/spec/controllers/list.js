@@ -42,15 +42,6 @@ describe('Controller: video-ads.ListCtrl', function (){
 			$httpBackend.flush();
 		});
 
-		it('changeFilter should update current URL, set current page to 1, call updateList', function(){
-			$httpBackend.expectGET($scope.vidoeAdListEndpoint).respond(videoAdFactory.videoad.list); 
-			$scope.changeFilter("filter", "all");
-			$scope.$apply();
-			$httpBackend.flush();
-			expect($location.search().page).toBe(1);
-			expect($location.search().filter).toBe("all");
-		});
-
 		afterEach(function(){
 			var data = videoAdFactory.videoad.list;
 			expect($scope.videoads.length).toBe(data.results.length);

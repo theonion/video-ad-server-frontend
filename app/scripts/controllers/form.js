@@ -63,6 +63,7 @@ angular.module('video-ads')
 				}
 			);
 		}
-			
-		$scope.getAndInitVideoAd($routeParams.videoAdId);
+		if (_.isUndefined($routeParams.videoAdId)){
+			$scope.getAndInitVideoAd($routeParams.videoAdId);
+		}
 	});

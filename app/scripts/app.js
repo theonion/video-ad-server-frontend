@@ -28,6 +28,10 @@ angular.module('video-ads', [
       templateUrl: '/views/partials/form.html', 
       controller: 'FormCtrl'
     })
+    .when('/add/', {
+      templateUrl: '/views/partials/form.html', 
+      controller: 'FormCtrl'
+    })
     .when('/exclusion/:exclusionName/', {
       templateUrl: '/views/partials/exclusion.html', 
       controller: 'ExclusionCtrl'

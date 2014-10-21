@@ -16,13 +16,13 @@
 				<button class="btn btn-default add-btn btn-success" ng-click="newVideoAd();"><i class="fa fa-file-video-o"></i> Add Video</button>
 			</li>
 			<li>
-				<a ng-click="changeFilter('filter', 'active');" ng-class="{'active': (params.filter === undefined || params.filter == 'active')}"><i class="fa fa-toggle-off" ng-class="{'fa-toggle-on' : (params.filter === undefined || params.filter == 'active')}"></i> Active</a>
+				<a ng-click="params.filter = 'active';" ng-class="{'active': (params.filter == 'active' || params.filter == undefined)}"><i class="fa fa-toggle-off" ng-class="{'fa-toggle-on' :  params.filter == 'active'}"></i> Active</a>
 			</li>
 	        <li>
-	        	<a ng-click="changeFilter('filter', 'future');" ng-class="{'active': (params.filter == 'future')}"><i class="fa fa-toggle-off" ng-class="{'fa-toggle-on' : (params.filter === undefined || params.filter == 'future')}"></i> Future</a>
+	        	<a ng-click="params.filter = 'future'" ng-class="{'active': (params.filter == 'future')}"><i class="fa fa-toggle-off" ng-class="{'fa-toggle-on' : (params.filter === undefined || params.filter == 'future')}"></i> Future</a>
 	        </li>
 			<li>
-				<a ng-click="changeFilter('filter', 'all');" ng-class="{'active': (params.filter == 'all')}"><i class="fa fa-toggle-off" ng-class="{'fa-toggle-on' : (params.filter === undefined || params.filter == 'all')}"></i> All</a>
+				<a ng-click="params.filter = 'all'" ng-class="{'active': (params.filter == 'all')}"><i class="fa fa-toggle-off" ng-class="{'fa-toggle-on' : (params.filter === undefined || params.filter == 'all')}"></i> All</a>
 			</li>
 		</ul>
 		<ul class="nav nav-sidebar">

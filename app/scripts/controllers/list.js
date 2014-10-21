@@ -5,6 +5,7 @@ angular.module('video-ads')
     $scope.videoads = [];
     $scope.params = {};
     $scope.showSearchBar = true;
+    $scope.params.filter = 'active';
 
     $scope.updateList = function () {
       $scope.params = _.extend($scope.params, $location.search());
@@ -20,29 +21,18 @@ angular.module('video-ads')
     };
     
     $scope.newVideoAd = function () {
-      videoAdService.post({
-        name: $scope.new_video_ad_name
-      })
-        .then(function (data) {
-          $location.path('/edit/' + data);
-        }, function (error) {
-          console.log(error);
-        });
+      $location.path('/add/');
     };
 
     $scope.changePage = function (page) {
-      $location.search(_.extend($location.search(), {
-        'page': page
-      }));
+      $scope.params.page = page;
       $scope.updateList();
     };
-    $scope.changeFilter = function (key, value) {
-      var obj = {};
-      obj[key] = value;
-      obj['page'] = 1;
-      $location.search(_.extend($location.search(), obj));
+
+    $scope.$watch('params.filter', function (oldValue, newValue) {
+      $scope.params.page = 1;
       $scope.updateList();
-    };
+    });
 
     $scope.updateList();
 
