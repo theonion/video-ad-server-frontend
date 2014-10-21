@@ -1,4 +1,4 @@
-// Including custom build of Bootstrap
+// Import custom build of Bootstrap
 // components. Override or extend here
 
 @import "bootstrap-custom";
@@ -10,7 +10,17 @@ $drk-gray: #333333;
 $lt-gray: #f4f2f2;
 $link-color: #33C5F3;
 $active: #2a6496;
-$orange: #FE621E;
+$clickhole-orange: #FE621E;
+
+
+//Custom Mixins 
+@mixin ease($property: all, $time: 200ms) {
+-webkit-transition: $property $time cubic-bezier(0.250, 0.250, 0.840, 0.325); 
+   -moz-transition: $property $time cubic-bezier(0.250, 0.250, 0.840, 0.325); 
+    -ms-transition: $property $time cubic-bezier(0.250, 0.250, 0.840, 0.325); 
+     -o-transition: $property $time cubic-bezier(0.250, 0.250, 0.840, 0.325); 
+        transition: $property $time cubic-bezier(0.250, 0.250, 0.840, 0.325);
+}
 
 body {
 	color: $body-color;
@@ -52,12 +62,6 @@ a {
 	}
 }
 
-.navbar-header {
-	button {
-		background-color: $drk-gray;
-	}
-}
-
 //Sidebar
 
 .sidebar {
@@ -87,7 +91,7 @@ a {
 
 .fa-toggle-off,
 .fa-toggle-on {
-	color: $orange;
+	color: $clickhole-orange;
 }
 
 //Form View
@@ -96,13 +100,32 @@ a {
 	width: 100%;
 }
 
+.alert{
+	position: fixed;
+	z-index: 5000;
+	width: 100%;
+	left: 0;
+	top: 0;
+	text-align: center;
+	display: none;
+}
+
+.delivery {
+    height: 34px;
+    line-height: 34px;
+    margin-bottom: 0;
+}
+
 //List View
+
+tr:hover {
+	img {
+		opacity: .9;		
+	}
+}
 
 .video-poster {
 	border: 1px solid $lt-gray;
 	max-width: 250px;
 	padding: 2%;
 }
-
-
-

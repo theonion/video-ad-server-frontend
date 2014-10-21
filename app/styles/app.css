@@ -7006,56 +7006,51 @@ button.close {
     display: none !important;
   }
 }
-/* line 15, app.scss */
+/* line 25, app.scss */
 body {
   color: #3A3A3A;
   padding-top: 70px;
 }
 
-/* line 20, app.scss */
+/* line 30, app.scss */
 a {
   color: #33C5F3;
 }
-/* line 22, app.scss */
+/* line 32, app.scss */
 a.active {
   color: #2a6496;
 }
 
-/* line 28, app.scss */
+/* line 38, app.scss */
 .table > tbody > tr > th {
   border-top: 0;
 }
-/* line 30, app.scss */
+/* line 40, app.scss */
 .table > tbody > tr > th a {
   text-decoration: none;
 }
 
-/* line 37, app.scss */
+/* line 47, app.scss */
 .nav li > a {
   cursor: pointer;
 }
 
-/* line 41, app.scss */
+/* line 51, app.scss */
 .navbar-inverse {
   background-color: #f4f2f2;
 }
 
-/* line 45, app.scss */
+/* line 55, app.scss */
 .navbar-form {
   border: 0;
 }
 
-/* line 50, app.scss */
+/* line 60, app.scss */
 .navbar-brand img {
   max-height: 23px;
 }
 
-/* line 56, app.scss */
-.navbar-header button {
-  background-color: #333333;
-}
-
-/* line 63, app.scss */
+/* line 67, app.scss */
 .sidebar {
   background-color: #f5f5f5;
   border-right: 1px solid #eee;
@@ -7070,32 +7065,55 @@ a.active {
   z-index: 1000;
 }
 
-/* line 77, app.scss */
+/* line 81, app.scss */
 .nav-sidebar {
   padding-bottom: 1rem;
 }
-/* line 79, app.scss */
+/* line 83, app.scss */
 .nav-sidebar button {
   margin-bottom: 1rem;
 }
 
-/* line 84, app.scss */
+/* line 88, app.scss */
 .add-btn {
   width: 100%;
 }
 
-/* line 88, app.scss */
+/* line 92, app.scss */
 .fa-toggle-off,
 .fa-toggle-on {
   color: #FE621E;
 }
 
-/* line 95, app.scss */
+/* line 99, app.scss */
 .video-preview {
   width: 100%;
 }
 
-/* line 101, app.scss */
+/* line 103, app.scss */
+.alert {
+  position: fixed;
+  z-index: 5000;
+  width: 100%;
+  left: 0;
+  top: 0;
+  text-align: center;
+  display: none;
+}
+
+/* line 113, app.scss */
+.delivery {
+  height: 34px;
+  line-height: 34px;
+  margin-bottom: 0;
+}
+
+/* line 122, app.scss */
+tr:hover img {
+  opacity: .9;
+}
+
+/* line 127, app.scss */
 .video-poster {
   border: 1px solid #f4f2f2;
   max-width: 250px;
