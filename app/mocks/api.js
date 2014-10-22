@@ -1,5 +1,5 @@
 angular.module('video-ads.mockApi').run(
-  ['$httpBackend', 'mockVideoAdFactory', 'zenCoderProgress',
+  ['$httpBackend', 'mockVideoAdFactory', 'zenCoderProgress', 'exclusions',
     function ($httpBackend, mockVideoAdFactory, zenCoderProgress, exclusions) {
       //TODO: Refine regex to be more precise, better reflect URL structure
       var videoAdListRegex = /^\/api\/v1\/videoads\/\?*.*/;
@@ -11,7 +11,7 @@ angular.module('video-ads.mockApi').run(
       $httpBackend.whenGET(videoAdListRegex).respond(mockVideoAdFactory.videoad.list);
       $httpBackend.whenPOST(videoAdListRegex).respond(200, mockVideoAdFactory.videoad.detail);
       $httpBackend.whenGET(/app.zencoder.com\/.*/).respond(zenCoderProgress);
-      $httpBackend.whenGET(/\/api\/v1\/exclusions.*/).respond(exclusions);
+      $httpBackend.whenGET(/\/api\/v1\/exclusions\//).respond(exclusions);
     }]
     //TODO: Not really a factory. think about renaming this.
 ).factory("mockVideoAdFactory", ['videoAd', function (videoAd) {
