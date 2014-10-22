@@ -226,7 +226,7 @@ var exclusions ={
         "priority":"medium",
         "rules":[
           [
-            "dfp_feature",
+            "dfp_articleid",
             "is",
             "this-is-my"
           ]
@@ -236,7 +236,7 @@ var exclusions ={
         "priority":"medium",
         "rules":[
           [
-            "dfp_contentid",
+            "dfp_articleid",
             "is",
             "204145"
           ]
@@ -246,7 +246,7 @@ var exclusions ={
         "priority":"medium",
         "rules":[
           [
-            "dfp_feature",
+            "dfp_articleid",
             "is",
             "pioneering"
           ]
@@ -266,7 +266,7 @@ var exclusions ={
         "priority":"medium",
         "rules":[
           [
-            "dfp_contentid",
+            "dfp_articleid",
             "is",
             "318"
           ],
@@ -286,7 +286,7 @@ var exclusions ={
             "clickhole"
           ],
           [
-            "dfp_slug",
+            "dfp_articleid",
             "is",
             "embed-player"
           ]
@@ -326,7 +326,7 @@ var exclusions ={
         "priority":"medium",
         "rules":[
           [
-            "dfp_contentid",
+            "dfp_articleid",
             "is",
             "519"
           ],
