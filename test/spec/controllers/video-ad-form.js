@@ -40,8 +40,7 @@ describe('Controller: video-ads.FormCtrl', function (){
         
         it('getAndInitVideoAd does not call out and properly popultes $scope.videoad', function() {
             $scope.getAndInitVideoAd(undefined);
-            expect($scope.videoad.fromServer).toBe(false);
-            expect($scope.videoad.targeting).toBe({});
+            expect($scope.videoad.fromServer).toBe(undefined);
         });
 
         it('saveVideoAd POSTS to proper path', function(){

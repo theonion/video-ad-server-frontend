@@ -1,46 +1,42 @@
 'use strict';
 
 angular.module('video-ads')
-	.controller('FormCtrl', function ($scope, $http, $routeParams, videoAdService, $location) {
-		$scope.success = false;
-		$scope.errors = false;
-		$scope.videoad = {};
+  .controller('FormCtrl', function($scope, $http, $routeParams, videoAdService, $location) {
+    $scope.success = false;
+    $scope.errors = false;
+    $scope.videoad = {};
     //TODO: Magic strings could be moved into constants?
-		$scope.page_targets = [
-			'dfp_adchannel',
-			'dfp_pagetype',
-			'dfp_viewport',
-			'dfp_channel',
-			'dfp_articletype',
-			'dfp_site',
-			'dfp_articleid'
-		];
-		$scope.user_targets = [
-			'city',
-			'region',
-			'country_code'
-		];
+    $scope.page_targets = [
+      'dfp_adchannel',
+      'dfp_pagetype',
+      'dfp_viewport',
+      'dfp_channel',
+      'dfp_articletype',
+      'dfp_site',
+      'dfp_articleid'
+    ];
+    $scope.user_targets = [
+      'city',
+      'region',
+      'country_code'
+    ];
 
-		$scope.getAndInitVideoAd = function(videoAdId){
-			videoAdService.one(videoAdId).get().then(
-				function(data){
-					$scope.videoad = data;
-					//set some defaults?
-					if(!data.targeting){
-						$scope.videoad.targeting = {};
-					}
-					if(!data.targeting.page){
-						$scope.videoad.targeting['page'] = [];
-					}
-					if(!data.targeting.user){
-						$scope.videoad.targeting['user'] = [];
-					}
-					$scope.videoad.video = data.video || {};
-					var pickerOptions = {
-						timePicker: true,
-						timePickerIncrement: 30,
-						format: 'YYYY-MM-DD hh:mm A'
-					};
+    $scope.initVideoAd = function() {
+        if (!$scope.videoad.targeting) {
+            $scope.videoad.targeting = {};
+          }
+          if (!$scope.videoad.targeting.page) {
+            $scope.videoad.targeting['page'] = [];
+          }
+          if (!$scope.videoad.targeting.user) {
+            $scope.videoad.targeting['user'] = [];
+          }
+          $scope.videoad.video = $scope.videoad.video || {};
+          var pickerOptions = {
+            timePicker: true,
+            timePickerIncrement: 30,
+            format: 'YYYY-MM-DD hh:mm A'
+          };
 
           var inputVal = "";
           if ($scope.videoad.start) {
@@ -55,31 +51,42 @@ angular.module('video-ads')
 
           $('#runtime').val(inputVal);
 
-          $('#runtime').daterangepicker(pickerOptions, function (start, end) {
+          $('#runtime').daterangepicker(pickerOptions, function(start, end) {
             $scope.videoad.start = moment(start, 'YYYY-MM-DD hh:mm A').utc().format();
             $scope.videoad.end = moment(end, 'YYYY-MM-DD hh:mm A').utc().format();
           });
+    }
+
+    $scope.getAndInitVideoAd = function() {
+        if (_.isUndefined($routeParams.videoAdId)){
+            $scope.videoAdId = {};
+            $scope.initVideoAd();
+        }
+      videoAdService.one($routeParams.videoAdId).get().then(
+        function(data) {
+            $scope.videoad = data;
+            $scope.initVideoAd();
         },
-        function (data) {
+        function(data) {
           console.log(data);
         }
       );
     };
 
-    $scope.addTargetingKey = function (key) {
+    $scope.addTargetingKey = function(key) {
       $scope.targetingKey = key;
     };
 
-    $scope.saveVideoAd = function () {
-    	if (!_.isUndefined($routeParams.videoAdId)){
-	    	$scope.videoad.save();
-    	} else {
-    		//TODO: Error messaging
-	    	videoAdService.post($scope.videoad)
-	    	.then(function (data) {
-	    		$location.path('/edit/' + data.id);
-	    	});
-    	}
+    $scope.saveVideoAd = function() {
+      if (!_.isUndefined($routeParams.videoAdId)) {
+        $scope.videoad.save();
+      } else {
+        //TODO: Error messaging
+        videoAdService.post($scope.videoad)
+          .then(function(data) {
+            $location.path('/edit/' + data.id);
+          });
+      }
     };
-    $scope.getAndInitVideoAd($routeParams.videoAdId);
+    $scope.getAndInitVideoAd();
   });
