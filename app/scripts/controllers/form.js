@@ -58,7 +58,7 @@ angular.module('video-ads')
     };
 
     $scope.saveVideoAd = function () {
-    	if (!_.isUndefined($scope.videoad.save)){
+    	if (!_.isUndefined($routeParams.videoAdId)){
 	    	$scope.videoad.save();
     	} else {
     		//TODO: Error messaging
@@ -68,7 +68,5 @@ angular.module('video-ads')
 	    	});
     	}
     };
-    if (!_.isUndefined($routeParams.videoAdId)) {
-      $scope.getAndInitVideoAd($routeParams.videoAdId);
-    }
+    $scope.getAndInitVideoAd($routeParams.videoAdId);
   });
