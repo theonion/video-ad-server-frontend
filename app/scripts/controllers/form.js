@@ -2,10 +2,25 @@
 
 angular.module('video-ads')
 	.controller('FormCtrl', function ($scope, $http, $routeParams, videoAdService) {
-		$('.user-help').popover({'content': 'Available keys are: "city", "region", and "country_code"'});
 		$scope.success = false;
 		$scope.errors = false;
 		$scope.videoad = {};
+
+		$scope.page_targets = [
+			'dfp_adchannel',
+			'dfp_pagetype',
+			'dfp_viewport',
+			'dfp_channel',
+			'dfp_articletype',
+			'dfp_site',
+			'dfp_articleid'
+		];
+		$scope.user_targets = [
+			'city',
+			'region',
+			'country_code'
+		];
+
 		$scope.getAndInitVideoAd = function(videoAdId){
 			videoAdService.one(videoAdId).get().then(
 				function(data){

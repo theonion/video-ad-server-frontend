@@ -2,13 +2,13 @@
 
 angular.module('video-ads')
 	.directive('videoUpload', function ($http, $window, $timeout) {
-		$scope.errors = true;
 		return {
 			templateUrl: STATIC_URL + 'partials/videoUpload.html',
 			scope: {
 				'videoad': '='
 			},
 			link: function($scope, elem, attrs){
+				$scope.errors = false;
 				$scope.statuses = {
 					0: "Not Started",
 					1: "Complete",

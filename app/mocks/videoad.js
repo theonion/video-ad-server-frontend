@@ -24,9 +24,9 @@ var videoAd = {
         "priority": "medium",
         "rules": [
           [
-            "User Targeting group 1",
+            "city",
             "is",
-            "bacon"
+            "st. louis"
           ]
         ]
       },
@@ -34,9 +34,9 @@ var videoAd = {
         "priority": "medium",
         "rules": [
           [
-            "User Targeting group 2",
+            "country_code",
             "is",
-            "bacon"
+            "US"
           ]
         ]
       }
