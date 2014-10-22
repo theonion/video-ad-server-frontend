@@ -1,17 +1,22 @@
-angular.module('video-ads.mockApi').run(
-  ['$httpBackend', 'mockVideoAdFactory', 'zenCoderProgress', 'exclusions',
-    function ($httpBackend, mockVideoAdFactory, zenCoderProgress, exclusions) {
-      //TODO: Refine regex to be more precise, better reflect URL structure
-      var videoAdListRegex = /^\/api\/v1\/videoads\/\?*.*/;
-      var videoAdDetailRegex = /^\/api\/v1\/videoads\/[0-9]+\//;
-      $httpBackend.whenGET(/partials/).passThrough();
-      $httpBackend.whenGET(/exclusion\/global\/partials.*/).passThrough();
-      $httpBackend.whenGET(/https\:\/\/app\.zencoder\.com.*/);
-      $httpBackend.whenGET(videoAdDetailRegex).respond(mockVideoAdFactory.videoad.detail);
-      $httpBackend.whenGET(videoAdListRegex).respond(mockVideoAdFactory.videoad.list);
-      $httpBackend.whenPOST(videoAdListRegex).respond(200, mockVideoAdFactory.videoad.detail);
-      $httpBackend.whenGET(/app.zencoder.com\/.*/).respond(zenCoderProgress);
-      $httpBackend.whenGET(/\/api\/v1\/exclusions\//).respond(exclusions);
+angular.module('video-ads.mockApi')
+.constant("testEndpoints", {
+  "videoAdList": /^\/api\/v1\/videoads\/\?*.*/,
+  "videoAdDetail": /^\/api\/v1\/videoads\/[0-9]+\//,
+  "exclusions": /\/api\/v1\/exclusions\//,
+  "zencoder": /app.zencoder.com\/.*/,
+  "partials": /partials/,
+  "exclusionPartials": /exclusion\/global\/partials.*/
+})
+.run(
+  ['$httpBackend', 'mockVideoAdFactory', 'zenCoderProgress', 'exclusions', 'testEndpoints',
+    function ($httpBackend, mockVideoAdFactory, zenCoderProgress, exclusions, testEndpoints) {
+      $httpBackend.whenGET(testEndpoints.partials).passThrough();
+      $httpBackend.whenGET(testEndpoints.exclusionPartials).passThrough();
+      $httpBackend.whenGET(testEndpoints.videoAdDetail).respond(mockVideoAdFactory.videoad.detail);
+      $httpBackend.whenGET(testEndpoints.videoAdList).respond(mockVideoAdFactory.videoad.list);
+      $httpBackend.whenPOST(testEndpoints.videoAdList).respond(200, mockVideoAdFactory.videoad.detail);
+      $httpBackend.whenGET(testEndpoints.zencoder).respond(zenCoderProgress);
+      $httpBackend.whenGET(testEndpoints.exclusions).respond(exclusions);
     }]
     //TODO: Not really a factory. think about renaming this.
 ).factory("mockVideoAdFactory", ['videoAd', function (videoAd) {
