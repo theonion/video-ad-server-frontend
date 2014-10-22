@@ -61,6 +61,7 @@ angular.module('video-ads')
     	if (!_.isUndefined($scope.videoad.save)){
 	    	$scope.videoad.save();
     	} else {
+    		//TODO: Error messaging
 	    	videoAdService.post($scope.videoad)
 	    	.then(function (data) {
 	    		$location.path('/edit/' + data.id);
