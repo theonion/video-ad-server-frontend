@@ -9,9 +9,10 @@ angular.module('video-ads.mockApi').run(
       $httpBackend.whenGET(/https\:\/\/app\.zencoder\.com*/);
       $httpBackend.whenGET(videoAdDetailRegex).respond(mockVideoAdFactory.videoad.detail);
       $httpBackend.whenGET(videoAdListRegex).respond(mockVideoAdFactory.videoad.list);
-      $httpBackend.whenPOST(videoAdListRegex).respond(200, 2);
+      $httpBackend.whenPOST(videoAdListRegex).respond(200, mockVideoAdFactory.videoad.detail);
       $httpBackend.whenGET(/app.zencoder.com\/.*/).respond(zenCoderProgress);
     }]
+    //TODO: Not really a factory. think about renaming this.
 ).factory("mockVideoAdFactory", ['videoAd', function (videoAd) {
   var _getVideoAd = function (id) {
     var newVideoAd = _.clone(videoAd);

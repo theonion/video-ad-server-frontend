@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('video-ads')
-  .controller('FormCtrl', function ($scope, $routeParams, videoAdService) {
+  .controller('FormCtrl', function ($scope, $routeParams, $location, videoAdService) {
     $('.user-help').popover({
       'content': 'Available keys are: "city", "region", and "country_code"'
     });
@@ -58,16 +58,14 @@ angular.module('video-ads')
     };
 
     $scope.saveVideoAd = function () {
-      var data = $scope.videoad;
-
-      videoAdService.one($routeParams.videoAdId).PUT(data).then(
-        function () {
-          $scope.success = true;
-        },
-        function () {
-          $scope.errors = true;
-        }
-      );
+    	if (!_.isUndefined($scope.videoad.save)){
+	    	$scope.videoad.save();
+    	} else {
+	    	videoAdService.post($scope.videoad)
+	    	.then(function (data) {
+	    		$location.path('/edit/' + data.id);
+	    	});
+    	}
     };
     if (!_.isUndefined($routeParams.videoAdId)) {
       $scope.getAndInitVideoAd($routeParams.videoAdId);
