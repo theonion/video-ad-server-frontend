@@ -1,11 +1,11 @@
 'use strict';
 
 angular.module('video-ads')
-	.controller('FormCtrl', function ($scope, $http, $routeParams, videoAdService) {
+	.controller('FormCtrl', function ($scope, $http, $routeParams, videoAdService, $location) {
 		$scope.success = false;
 		$scope.errors = false;
 		$scope.videoad = {};
-
+    //TODO: Magic strings could be moved into constants?
 		$scope.page_targets = [
 			'dfp_adchannel',
 			'dfp_pagetype',
