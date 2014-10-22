@@ -7152,12 +7152,30 @@ a.active {
   margin: 4px auto 4px auto;
 }
 
-/* line 157, app.scss */
+/* line 156, app.scss */
+.pixel-group {
+  width: 400px;
+}
+
+/* line 159, app.scss */
+.pixel-group .pixel {
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+/* line 163, app.scss */
+.pixel-group .pixel .btn {
+  color: darkred;
+  line-height: 20px;
+  padding: 0;
+}
+
+/* line 172, app.scss */
 tr:hover img {
   opacity: .9;
 }
 
-/* line 162, app.scss */
+/* line 177, app.scss */
 .video-poster {
   border: 1px solid #f4f2f2;
   max-width: 250px;

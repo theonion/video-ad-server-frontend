@@ -6,6 +6,21 @@ angular.module('video-ads')
         $scope.success = false;
         $scope.errors = false;
 
+        $scope.page_targets = [
+            'dfp_adchannel',
+            'dfp_pagetype',
+            'dfp_viewport',
+            'dfp_channel',
+            'dfp_articletype',
+            'dfp_site',
+            'dfp_articleid'
+        ];
+        $scope.user_targets = [
+            'city',
+            'region',
+            'country_code'
+        ];
+
         $http({
             method: 'GET',
             url: '/api/v1/exclusions/' + $routeParams.exclusionName + '/'
