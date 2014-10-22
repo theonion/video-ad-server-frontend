@@ -1,29 +1,3 @@
-<style>
-	.targeting-group{
-		border: 1px solid rgba(161, 191, 215, 1);
-		border-radius: 4px;
-		margin: 0 0 10px 0;
-		padding: 5px;
-        clear: left;
-	}
-	.targeting-row .form-control{
-		float: left;
-		margin: 5px 2px 5px 2px;
-	}
-	.targeting-row-container{
-		margin: 0px auto 0px auto;
-	}
-	.targeting-group .col { padding: 0 2px; }
-	.targeting-row-and{
-		clear: left;
-		text-align: center;
-	}
-	.add-targeting-button{
-		margin: 4px auto 4px auto;
-	}
-	.targeting-row-container .col .btn { width: auto; }
-</style>
-
 <div class="targeting-group" ng-repeat="group in target" ng-show="group && group['rules'].length > 0">
 
 	<div class="row">
@@ -32,7 +6,7 @@
 				<div class="targeting-row" ng-repeat="row in group['rules']" ng-show="row">
 					<div class="targeting-row-container row">
 						<div class="col-md-4 col">
-							<input placeholder="Key" class="form-control" ng-model="row[0]">
+							<select class="form-control" ng-model="row[0]" placeholder="Key" ng-options="target for target in targets"></select>
 						</div>
 						<div class="col-md-3 col">
 							<select class="form-control" ng-model="row[1]">
@@ -68,6 +42,7 @@
 	</div>
 
 </div>
+
 <div class="targeting-button">
     <button class="btn btn-success" type="submit" ng-click="addTargetingGroup();">Add group</button>
 </div>
