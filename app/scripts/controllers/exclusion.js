@@ -3,7 +3,7 @@
 angular.module('video-ads')
     .controller('ExclusionCtrl', function ($scope, $http, $routeParams) {
         $scope.exclusion = {};
-        $scope.successful = true;
+        $scope.success = false;
         $scope.errors = false;
 
         $http({

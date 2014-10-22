@@ -6,9 +6,15 @@ angular.module('video-ads')
 			templateUrl: STATIC_URL + 'partials/targeting.html',
 			scope: {
 				'target': '=',
+				'targets': '='
 			},
 			link: function($scope, elem, attrs){
-				$scope.priorities = ["low", "medium", "high"];
+				$scope.priorities = [
+					'low', 
+					'medium', 
+					'high'
+				];
+
 				$scope.addTargetingGroup = function(){
 					$scope.target.push({"priority": "medium", "rules": [['', 'is', '']]});
 				};
