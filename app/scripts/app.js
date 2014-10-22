@@ -28,7 +28,7 @@ angular.module('video-ads', [
       templateUrl: '/views/partials/form.html', 
       controller: 'FormCtrl'
     })
-    .when('/add/', {
+    .when('/new/', {
       templateUrl: '/views/partials/form.html', 
       controller: 'FormCtrl'
     })

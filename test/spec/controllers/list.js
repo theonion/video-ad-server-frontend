@@ -52,13 +52,9 @@ describe('Controller: video-ads.ListCtrl', function (){
 		
 	});
 
-	it('newVideoAd should change location to edit page of newly created ad', function(){
-		var videoAdId = _.random(1000);
-		$scope.new_video_ad_name = "bacon";
-		$httpBackend.expectPOST($scope.videoAdListEndpoint).respond(200, videoAdId);
+	it('newVideoAd should change location to create page', function(){
 		$scope.newVideoAd();
-		$httpBackend.flush();
-		expect($location.path()).toBe('/edit/' + videoAdId);
+		expect($location.path()).toBe('/new/');
 	});
 
 });

@@ -21,7 +21,7 @@ angular.module('video-ads')
     };
     
     $scope.newVideoAd = function () {
-      $location.path('/add/');
+      $location.path('/new/');
     };
 
     $scope.changePage = function (page) {

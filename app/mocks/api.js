@@ -2,11 +2,11 @@ angular.module('video-ads.mockApi').run(
   ['$httpBackend', 'mockVideoAdFactory', 'zenCoderProgress',
     function ($httpBackend, mockVideoAdFactory, zenCoderProgress, exclusions) {
       //TODO: Refine regex to be more precise, better reflect URL structure
-      var videoAdListRegex = /^\/api\/v1\/videoads\/\?*/;
+      var videoAdListRegex = /^\/api\/v1\/videoads\/\?*.*/;
       var videoAdDetailRegex = /^\/api\/v1\/videoads\/[0-9]+\//;
       $httpBackend.whenGET(/partials/).passThrough();
-      $httpBackend.whenGET(/exclusion\/global\/partials*/).passThrough();
-      $httpBackend.whenGET(/https\:\/\/app\.zencoder\.com*/);
+      $httpBackend.whenGET(/exclusion\/global\/partials.*/).passThrough();
+      $httpBackend.whenGET(/https\:\/\/app\.zencoder\.com.*/);
       $httpBackend.whenGET(videoAdDetailRegex).respond(mockVideoAdFactory.videoad.detail);
       $httpBackend.whenGET(videoAdListRegex).respond(mockVideoAdFactory.videoad.list);
       $httpBackend.whenPOST(videoAdListRegex).respond(200, mockVideoAdFactory.videoad.detail);
