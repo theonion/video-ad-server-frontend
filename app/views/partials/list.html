@@ -7,13 +7,13 @@
 				<button class="btn btn-default add-btn btn-success" ng-click="newVideoAd();">Add Video</button>
 			</li>
 			<li>
-				<a ng-click="params.filter = 'active';" ng-class="{'active': (params.filter == 'active' || params.filter == undefined)}">Active</a>
+				<a ng-click="filter = 'active';" ng-class="{'active': (filter == 'active' || filter == undefined)}">Active</a>
 			</li>
 	        <li>
-	        	<a ng-click="params.filter = 'future'" ng-class="{'active': (params.filter == 'future')}">Future</a>
+	        	<a ng-click="filter = 'future'" ng-class="{'active': (filter == 'future')}">Future</a>
 	        </li>
 			<li>
-				<a ng-click="params.filter = 'all'" ng-class="{'active': (params.filter == 'all')}">All</a>
+				<a ng-click="filter = 'all'" ng-class="{'active': (filter == 'all')}">All</a>
 			</li>
 		</ul>
 		<ul class="nav nav-sidebar">
