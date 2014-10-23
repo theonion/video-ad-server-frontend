@@ -44,7 +44,7 @@ describe('Controller: video-ads.ListCtrl', function (){
 
 		afterEach(function(){
 			var data = videoAdFactory.videoad.list;
-			expect($scope.videoads.length).toBe(data.results.length);
+			expect($scope.videoAds.length).toBe(data.results.length);
 			expect($scope.totalItems).toBe(data.count);
 			$httpBackend.verifyNoOutstandingRequest();
 			$httpBackend.verifyNoOutstandingExpectation();

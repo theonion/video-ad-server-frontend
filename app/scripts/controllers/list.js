@@ -2,7 +2,7 @@
 
 angular.module('video-ads')
   .controller('ListCtrl', function ($scope, $location, videoAdService) {
-    $scope.videoads = [];
+    $scope.videoAds = [];
     $scope.params = {};
     $scope.showSearchBar = true;
     $scope.params.filter = 'active';
@@ -13,13 +13,12 @@ angular.module('video-ads')
         $scope.params.filter = "active";
       }
       videoAdService.getList([$scope.params]).then(function (data) {
-        $scope.videoads = data;
+        $scope.videoAds = data;
         $scope.totalItems = data.meta.count;
       }, function (error) {
         console.log(error);
       });
     };
-    
     $scope.newVideoAd = function () {
       $location.path('/new/');
     };

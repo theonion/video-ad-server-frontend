@@ -1,4 +1,5 @@
 angular.module('video-ads.mockApi')
+//TODO: change to a better name, in constants syntax
 .constant("testEndpoints", {
   "videoAdList": /^\/api\/v1\/videoads\/\?*.*/,
   "videoAdDetail": /^\/api\/v1\/videoads\/[0-9]+\//,
@@ -48,5 +49,4 @@ angular.module('video-ads.mockApi')
       "detail": _getVideoAd()
     }
   };
-
 }]);

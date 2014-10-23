@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('video-ads')
-  .controller('FormCtrl', function($scope, $http, $routeParams, videoAdService, $location) {
+  .controller('FormCtrl', function ($scope, $routeParams, videoAdService, $location) {
     $scope.success = false;
     $scope.errors = false;
     $scope.videoad = {};
@@ -21,7 +21,7 @@ angular.module('video-ads')
       'country_code'
     ];
 
-    $scope.initVideoAd = function() {
+    $scope.initVideoAd = function () {
         if (!$scope.videoad.targeting) {
             $scope.videoad.targeting = {};
           }
@@ -51,39 +51,39 @@ angular.module('video-ads')
 
           $('#runtime').val(inputVal);
 
-          $('#runtime').daterangepicker(pickerOptions, function(start, end) {
+          $('#runtime').daterangepicker(pickerOptions, function (start, end) {
             $scope.videoad.start = moment(start, 'YYYY-MM-DD hh:mm A').utc().format();
             $scope.videoad.end = moment(end, 'YYYY-MM-DD hh:mm A').utc().format();
           });
-    }
+    };
 
-    $scope.getAndInitVideoAd = function() {
+    $scope.getAndInitVideoAd = function () {
         if (_.isUndefined($routeParams.videoAdId)){
             $scope.videoAdId = {};
             $scope.initVideoAd();
         }
       videoAdService.one($routeParams.videoAdId).get().then(
-        function(data) {
+        function (data) {
             $scope.videoad = data;
             $scope.initVideoAd();
         },
-        function(data) {
+        function (data) {
           console.log(data);
         }
       );
     };
 
-    $scope.addTargetingKey = function(key) {
+    $scope.addTargetingKey = function (key) {
       $scope.targetingKey = key;
     };
 
-    $scope.saveVideoAd = function() {
+    $scope.saveVideoAd = function () {
       if (!_.isUndefined($routeParams.videoAdId)) {
         $scope.videoad.save();
       } else {
         //TODO: Error messaging
         videoAdService.post($scope.videoad)
-          .then(function(data) {
+          .then(function (data) {
             $location.path('/edit/' + data.id);
           });
       }
