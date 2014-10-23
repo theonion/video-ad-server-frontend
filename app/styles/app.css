@@ -7006,92 +7006,124 @@ button.close {
     display: none !important;
   }
 }
-/* line 29, app.scss */
+/* line 26, app.scss */
+.visuallyhidden {
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  position: absolute;
+}
+
+/* line 37, app.scss */
+html {
+  font-size: 62.5%;
+}
+
+/* line 41, app.scss */
 body {
   color: #3A3A3A;
+  font-family: 'Arimo',Helvetica,Arial,sans-serif;
+  font-size: 1.4rem;
   padding-top: 70px;
 }
 
-/* line 34, app.scss */
+/* line 48, app.scss */
 a {
   color: #33C5F3;
 }
-/* line 36, app.scss */
+/* line 50, app.scss */
 a.active {
   color: #2a6496;
 }
 
-/* line 43, app.scss */
+/* line 55, app.scss */
+h2 {
+  color: white;
+  font-size: 1.3rem;
+  padding: 0 15px;
+  text-transform: uppercase;
+}
+
+/* line 64, app.scss */
 .table > tbody > tr > th {
   border-top: 0;
 }
-/* line 45, app.scss */
+/* line 66, app.scss */
 .table > tbody > tr > th a {
   text-decoration: none;
 }
 
-/* line 52, app.scss */
+/* line 73, app.scss */
 .nav li > a {
   cursor: pointer;
 }
 
-/* line 56, app.scss */
+/* line 77, app.scss */
 .navbar-inverse {
-  background-color: #f4f2f2;
+  background-color: #202729;
 }
 
-/* line 60, app.scss */
+/* line 81, app.scss */
 .navbar-form {
   border: 0;
 }
 
-/* line 65, app.scss */
+/* line 86, app.scss */
 .navbar-brand img {
   max-height: 23px;
 }
 
-/* line 72, app.scss */
+/* line 93, app.scss */
 .sidebar {
-  background-color: #f5f5f5;
-  border-right: 1px solid #eee;
+  background-color: #202729;
   bottom: 0;
   display: block;
   left: 0;
-  padding: 1%;
+  padding: 0;
   overflow-x: hidden;
   overflow-y: auto;
   position: fixed;
   top: 51px;
   z-index: 1000;
 }
-
-/* line 86, app.scss */
-.nav-sidebar {
-  padding-bottom: 1rem;
-}
-/* line 88, app.scss */
-.nav-sidebar button {
-  margin-bottom: 1rem;
-}
-
-/* line 93, app.scss */
-.add-btn {
+/* line 104, app.scss */
+.sidebar button {
+  border: 0;
+  border-radius: 0;
+  padding: 10%;
   width: 100%;
 }
+/* line 111, app.scss */
+.sidebar li a {
+  color: #BDB5B5;
+}
+/* line 113, app.scss */
+.sidebar li a.active {
+  color: #2a6496;
+}
+/* line 116, app.scss */
+.sidebar li a:hover {
+  color: #2a6496;
+  background-color: transparent;
+}
 
-/* line 97, app.scss */
+/* line 124, app.scss */
 .fa-toggle-off,
 .fa-toggle-on {
   color: #FE621E;
 }
 
-/* line 104, app.scss */
+/* line 131, app.scss */
 .video-preview {
   margin-bottom: 15px;
   padding: 0;
 }
 
-/* line 109, app.scss */
+/* line 136, app.scss */
 .alert {
   opacity: 0;
   left: 0;
@@ -7106,20 +7138,20 @@ a.active {
   -o-transition: all 200ms cubic-bezier(0.25, 0.25, 0.84, 0.325);
   transition: all 200ms cubic-bezier(0.25, 0.25, 0.84, 0.325);
 }
-/* line 118, app.scss */
+/* line 145, app.scss */
 .alert.show {
   display: block;
   opacity: 1;
 }
 
-/* line 124, app.scss */
+/* line 151, app.scss */
 .delivery {
   height: 34px;
   line-height: 3;
   margin-bottom: 0;
 }
 
-/* line 132, app.scss */
+/* line 159, app.scss */
 .targeting-group {
   border: 1px solid #a1bfd7;
   border-radius: 4px;
@@ -7128,57 +7160,63 @@ a.active {
   padding: 5px;
 }
 
-/* line 139, app.scss */
+/* line 166, app.scss */
 .targeting-row .form-control {
   float: left;
   margin: 5px 2px 5px 2px;
 }
 
-/* line 143, app.scss */
+/* line 170, app.scss */
 .targeting-row-container {
   margin: 0px auto 0px auto;
 }
-/* line 145, app.scss */
+/* line 172, app.scss */
 .targeting-row-container .btn {
   width: auto;
 }
 
-/* line 149, app.scss */
+/* line 176, app.scss */
 .targeting-group .col {
   padding: 0 2px;
 }
 
-/* line 151, app.scss */
+/* line 178, app.scss */
 .add-targeting-button {
   margin: 4px auto 4px auto;
 }
 
-/* line 157, app.scss */
+/* line 184, app.scss */
 .pixel-group {
   width: 400px;
 }
 
-/* line 160, app.scss */
+/* line 187, app.scss */
 .pixel-group .pixel {
   margin-bottom: 10px;
   overflow: hidden;
 }
 
-/* line 164, app.scss */
+/* line 191, app.scss */
 .pixel-group .pixel .btn {
   color: darkred;
   line-height: 20px;
   padding: 0;
 }
 
-/* line 173, app.scss */
+/* line 200, app.scss */
 tr:hover img {
   opacity: .9;
 }
 
-/* line 178, app.scss */
+/* line 205, app.scss */
 .video-poster {
   border: 1px solid #f4f2f2;
   max-width: 250px;
   padding: 2%;
+}
+
+/* line 216, app.scss */
+.video-ad {
+  float: left;
+  width: 25%;
 }

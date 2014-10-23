@@ -8,7 +8,7 @@
 $body-color: #3A3A3A;
 $drk-gray: #333333;
 $lt-gray: #f4f2f2;
-$link-color: #33C5F3;
+$default-link-color: #33C5F3;
 $active: #2a6496;
 $clickhole-orange: #FE621E;
 
@@ -23,19 +23,40 @@ $clickhole-orange: #FE621E;
         transition: $property $time cubic-bezier(0.250, 0.250, 0.840, 0.325);
 }
 
+.visuallyhidden { 
+  clip: rect(0 0 0 0);
+  height: 1px; width: 1px;
+  margin: -1px; padding: 0; border: 0;
+  overflow: hidden; 
+  position: absolute; 
+}
 
 //Global Elements 
 
+
+html {
+	font-size: 62.5%;
+}
+
 body {
 	color: $body-color;
+	font-family: 'Arimo',Helvetica,Arial,sans-serif;
+	font-size: 1.4rem;
 	padding-top: 70px;
 }
 
 a {
-	color: $link-color;
+	color: $default-link-color;
 	&.active {
 		color: $active;
 	}
+}
+
+h2 {
+	color: white;
+	font-size: 1.3rem;
+	padding: 0 15px;
+	text-transform: uppercase;
 }
 
 //Table Overrides
@@ -54,7 +75,7 @@ a {
 }
 
 .navbar-inverse {
-	background-color: $lt-gray;
+	background-color: #202729;
 }
 
 .navbar-form {
@@ -70,28 +91,34 @@ a {
 //Sidebar
 
 .sidebar {
-	background-color: #f5f5f5;
-	border-right: 1px solid #eee;	
+	background-color: #202729;	
 	bottom: 0;
 	display: block;
 	left: 0;
-	padding: 1%;
+	padding: 0;
 	overflow-x: hidden;
 	overflow-y: auto;
 	position: fixed;
 	top: 51px;
 	z-index: 1000;
-}
-
-.nav-sidebar {
-	padding-bottom: 1rem;
 	button {
-		margin-bottom: 1rem;
+		border: 0;
+		border-radius: 0;
+		padding: 10%;
+		width: 100%;
 	}
-}
-
-.add-btn {
-	width: 100%;
+	li {
+		a {
+			color: #BDB5B5;
+			&.active {
+				color: $active;
+			}
+			&:hover {
+				color: $active;
+				background-color: transparent;
+			}
+		}
+	}
 }
 
 .fa-toggle-off,
@@ -182,3 +209,11 @@ tr:hover {
 }
 
 
+.video-ad-container {
+	
+}
+
+.video-ad {
+	float: left;
+	width: 25%;
+}
