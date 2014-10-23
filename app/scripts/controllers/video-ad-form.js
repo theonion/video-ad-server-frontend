@@ -22,50 +22,50 @@ angular.module('video-ads')
     ];
 
     $scope.initVideoAd = function () {
-        if (!$scope.videoad.targeting) {
-            $scope.videoad.targeting = {};
-          }
-          if (!$scope.videoad.targeting.page) {
-            $scope.videoad.targeting['page'] = [];
-          }
-          if (!$scope.videoad.targeting.user) {
-            $scope.videoad.targeting['user'] = [];
-          }
-          $scope.videoad.video = $scope.videoad.video || {};
-          var pickerOptions = {
-            timePicker: true,
-            timePickerIncrement: 30,
-            format: 'YYYY-MM-DD hh:mm A'
-          };
+      if (!$scope.videoad.targeting) {
+        $scope.videoad.targeting = {};
+      }
+      if (!$scope.videoad.targeting.page) {
+        $scope.videoad.targeting.page = [];
+      }
+      if (!$scope.videoad.targeting.user) {
+        $scope.videoad.targeting.user = [];
+      }
+      $scope.videoad.video = $scope.videoad.video || {};
+      var pickerOptions = {
+        timePicker: true,
+        timePickerIncrement: 30,
+        format: 'YYYY-MM-DD hh:mm A'
+      };
 
-          var inputVal = "";
-          if ($scope.videoad.start) {
-            pickerOptions.startDate = moment.utc($scope.videoad.start).local().format('YYYY-MM-DD hh:mm A');
-            inputVal += pickerOptions.startDate;
-          }
+      var inputVal = "";
+      if ($scope.videoad.start) {
+        pickerOptions.startDate = moment.utc($scope.videoad.start).local().format('YYYY-MM-DD hh:mm A');
+        inputVal += pickerOptions.startDate;
+      }
 
-          if ($scope.videoad.end) {
-            pickerOptions.endDate = moment.utc($scope.videoad.end).local().format('YYYY-MM-DD hh:mm A');
-            inputVal += " - " + pickerOptions.endDate;
-          }
+      if ($scope.videoad.end) {
+        pickerOptions.endDate = moment.utc($scope.videoad.end).local().format('YYYY-MM-DD hh:mm A');
+        inputVal += " - " + pickerOptions.endDate;
+      }
 
-          $('#runtime').val(inputVal);
+      $('#runtime').val(inputVal);
 
-          $('#runtime').daterangepicker(pickerOptions, function (start, end) {
-            $scope.videoad.start = moment(start, 'YYYY-MM-DD hh:mm A').utc().format();
-            $scope.videoad.end = moment(end, 'YYYY-MM-DD hh:mm A').utc().format();
-          });
+      $('#runtime').daterangepicker(pickerOptions, function (start, end) {
+        $scope.videoad.start = moment(start, 'YYYY-MM-DD hh:mm A').utc().format();
+        $scope.videoad.end = moment(end, 'YYYY-MM-DD hh:mm A').utc().format();
+      });
     };
 
     $scope.getAndInitVideoAd = function () {
-        if (_.isUndefined($routeParams.videoAdId)){
-            $scope.videoAdId = {};
-            $scope.initVideoAd();
-        }
+      if (_.isUndefined($routeParams.videoAdId)) {
+        $scope.videoAdId = {};
+        $scope.initVideoAd();
+      }
       videoAdService.one($routeParams.videoAdId).get().then(
         function (data) {
-            $scope.videoad = data;
-            $scope.initVideoAd();
+          $scope.videoad = data;
+          $scope.initVideoAd();
         },
         function (data) {
           console.log(data);
