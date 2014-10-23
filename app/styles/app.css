@@ -7048,36 +7048,33 @@ h2 {
   text-transform: uppercase;
 }
 
-/* line 64, app.scss */
-.table > tbody > tr > th {
-  border-top: 0;
-}
-/* line 66, app.scss */
-.table > tbody > tr > th a {
-  text-decoration: none;
+/* line 62, app.scss */
+ul {
+  list-style: none;
+  padding: 0;
 }
 
-/* line 73, app.scss */
+/* line 69, app.scss */
 .nav li > a {
   cursor: pointer;
 }
 
-/* line 77, app.scss */
+/* line 73, app.scss */
 .navbar-inverse {
   background-color: #202729;
 }
 
-/* line 81, app.scss */
+/* line 77, app.scss */
 .navbar-form {
   border: 0;
 }
 
-/* line 86, app.scss */
+/* line 82, app.scss */
 .navbar-brand img {
   max-height: 23px;
 }
 
-/* line 93, app.scss */
+/* line 89, app.scss */
 .sidebar {
   background-color: #202729;
   bottom: 0;
@@ -7090,40 +7087,40 @@ h2 {
   top: 51px;
   z-index: 1000;
 }
-/* line 104, app.scss */
+/* line 100, app.scss */
 .sidebar button {
   border: 0;
   border-radius: 0;
   padding: 10%;
   width: 100%;
 }
-/* line 111, app.scss */
+/* line 107, app.scss */
 .sidebar li a {
   color: #BDB5B5;
 }
-/* line 113, app.scss */
+/* line 109, app.scss */
 .sidebar li a.active {
   color: #2a6496;
 }
-/* line 116, app.scss */
+/* line 112, app.scss */
 .sidebar li a:hover {
   color: #2a6496;
   background-color: transparent;
 }
 
-/* line 124, app.scss */
+/* line 120, app.scss */
 .fa-toggle-off,
 .fa-toggle-on {
   color: #FE621E;
 }
 
-/* line 131, app.scss */
+/* line 127, app.scss */
 .video-preview {
   margin-bottom: 15px;
   padding: 0;
 }
 
-/* line 136, app.scss */
+/* line 132, app.scss */
 .alert {
   opacity: 0;
   left: 0;
@@ -7138,20 +7135,20 @@ h2 {
   -o-transition: all 200ms cubic-bezier(0.25, 0.25, 0.84, 0.325);
   transition: all 200ms cubic-bezier(0.25, 0.25, 0.84, 0.325);
 }
-/* line 145, app.scss */
+/* line 141, app.scss */
 .alert.show {
   display: block;
   opacity: 1;
 }
 
-/* line 151, app.scss */
+/* line 147, app.scss */
 .delivery {
   height: 34px;
   line-height: 3;
   margin-bottom: 0;
 }
 
-/* line 159, app.scss */
+/* line 155, app.scss */
 .targeting-group {
   border: 1px solid #a1bfd7;
   border-radius: 4px;
@@ -7160,63 +7157,69 @@ h2 {
   padding: 5px;
 }
 
-/* line 166, app.scss */
+/* line 162, app.scss */
 .targeting-row .form-control {
   float: left;
   margin: 5px 2px 5px 2px;
 }
 
-/* line 170, app.scss */
+/* line 166, app.scss */
 .targeting-row-container {
   margin: 0px auto 0px auto;
 }
-/* line 172, app.scss */
+/* line 168, app.scss */
 .targeting-row-container .btn {
   width: auto;
 }
 
-/* line 176, app.scss */
+/* line 172, app.scss */
 .targeting-group .col {
   padding: 0 2px;
 }
 
-/* line 178, app.scss */
+/* line 174, app.scss */
 .add-targeting-button {
   margin: 4px auto 4px auto;
 }
 
-/* line 184, app.scss */
+/* line 180, app.scss */
 .pixel-group {
   width: 400px;
 }
 
-/* line 187, app.scss */
+/* line 183, app.scss */
 .pixel-group .pixel {
   margin-bottom: 10px;
   overflow: hidden;
 }
 
-/* line 191, app.scss */
+/* line 187, app.scss */
 .pixel-group .pixel .btn {
   color: darkred;
   line-height: 20px;
   padding: 0;
 }
 
-/* line 200, app.scss */
-tr:hover img {
-  opacity: .9;
-}
-
-/* line 205, app.scss */
-.video-poster {
-  border: 1px solid #f4f2f2;
-  max-width: 250px;
-  padding: 2%;
-}
-
-/* line 216, app.scss */
+/* line 193, app.scss */
 .video-ad {
-  float: left;
-  width: 25%;
+  margin-bottom: 1rem;
+}
+/* line 195, app.scss */
+.video-ad img {
+  border: 1px solid #f4f2f2;
+  margin-bottom: 1rem;
+  padding: 2%;
+  position: relative;
+  width: 100%;
+}
+
+/* line 204, app.scss */
+.poster-chart {
+  position: relative;
+}
+/* line 206, app.scss */
+.poster-chart .chart {
+  bottom: 10%;
+  position: absolute;
+  right: 5%;
 }

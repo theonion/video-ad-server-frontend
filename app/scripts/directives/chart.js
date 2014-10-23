@@ -11,7 +11,7 @@ angular.module('video-ads')
       controller: function($scope) {
         $scope.chartOptions = {
           animation: false,
-          tooltipFontSize: 12,
+          showTooltips: false,
         },
         $scope.impressionsChart = [
           {

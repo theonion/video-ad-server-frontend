@@ -59,13 +59,9 @@ h2 {
 	text-transform: uppercase;
 }
 
-//Table Overrides
-
-.table > tbody > tr > th {
-	border-top: 0;
-	a {
-		text-decoration: none;
-	}
+ul {
+	list-style: none;
+	padding: 0;
 }
 
 //Navbar Overrides
@@ -194,26 +190,25 @@ h2 {
 	padding: 0;
 }
 
-//List View
-
-tr:hover {
+.video-ad {
+	margin-bottom: 1rem;
 	img {
-		opacity: .9;		
+		border: 1px solid $lt-gray;
+		margin-bottom: 1rem;
+		padding: 2%;
+		position: relative;
+		width: 100%;
 	}
 }
 
-.video-poster {
-	border: 1px solid $lt-gray;
-	max-width: 250px;
-	padding: 2%;
+.poster-chart {
+	position: relative;
+	.chart {
+		bottom: 10%;
+		position: absolute;
+		right: 5%;
+	}
 }
 
 
-.video-ad-container {
-	
-}
 
-.video-ad {
-	float: left;
-	width: 25%;
-}
