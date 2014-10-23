@@ -5,10 +5,11 @@ angular.module('video-ads')
     $scope.videoAds = [];
     $scope.params = {};
     $scope.show_search_bar = true;
+    $scope.currentPage = 1;
+    $scope.totalItems = 0;
     $scope.params.filter = 'active';
 
     $scope.updateList = function () {
-      $scope.params = _.extend($scope.params, $location.search());
       if ($scope.params.filter === undefined) {
         $scope.params.filter = "active";
       }
@@ -23,14 +24,18 @@ angular.module('video-ads')
       $location.path('/new/');
     };
 
-    $scope.changePage = function (page) {
-      $scope.params.page = page;
+    $scope.$watch("currentPage", function () {
+      $scope.changePage();
+    });
+
+    $scope.changePage = function () {
+      $scope.params.page = $scope.currentPage;
       $scope.updateList();
     };
 
     $scope.$watch('params.filter', function () {
-      $scope.params.page = 1;
-      $scope.updateList();
+      //This will trigger the above watch statement, which will trigger an updateList()
+      $scope.currentPage = 1;
     });
 
     $scope.updateList();

@@ -11,19 +11,18 @@ describe('Controller: video-ads.FormCtrl', function (){
     beforeEach( function () {
         module('video-ads');
         module('video-ads.mockApi');
-        //TODO: Fix zany injection stuff
-        inject( function (_$httpBackend_, $rootScope, $controller, $injector, _mockVideoAdFactory_, _$location_) {
+        inject( function (_$httpBackend_, _$rootScope_, _$controller_, _$injector_, _mockVideoAdFactory_, _$location_) {
             $httpBackend = _$httpBackend_;
             $location = _$location_;
             videoAdFactory = _mockVideoAdFactory_;
-            $scope = $rootScope.$new();
+            $scope = _$rootScope_.$new();
             $routeParams = {};
             //TODO: get rid of these horrid regexs attached to the scope
             $scope.vidoeAdListEndpoint = /\/api\/v1\/videoads\//
             $scope.videoAdDetailRegex = /^\/api\/v1\/videoads\/[0-9]+\//;
-            $controller("FormCtrl", {
+            _$controller_("FormCtrl", {
                 $scope: $scope,
-                $location: $location,
+                $location: _$location_,
                 $httpBackend: $httpBackend,
                 $routeParams: $routeParams
             });

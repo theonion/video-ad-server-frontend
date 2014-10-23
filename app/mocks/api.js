@@ -38,13 +38,27 @@ angular.module('video-ads.mockApi')
     return videoAdArray;
   };
 
+  var _getListObject = function (arrayOfIds, pageNumber) {
+    if (_.isUndefined(arrayOfIds)){
+      arrayOfIds = _.range(5);
+    }
+    if (_.isUndefined(pageNumber)){
+      pageNumber = 1;
+    }
+    
+    return {
+      "count": 20,
+      "next": "/api/v1/videoads/?page=" + pageNumber,
+      "previous": null,
+      "results": _getListOfVideoAds(arrayOfIds)
+    };
+  };
+
   return {
     "videoad": {
-      "list": {
-        "count": 20,
-        "next": "/api/v1/videoads/?page=2",
-        "previous": null,
-        "results": _getListOfVideoAds(_.range(5))
+      "list": _getListObject(),
+      "paginatedList": function(arrayOfIds, pageNumber){
+        return _getListObject(arrayOfIds, pageNumber)
       },
       "detail": _getVideoAd()
     }
