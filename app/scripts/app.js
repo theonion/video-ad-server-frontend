@@ -20,9 +20,13 @@ angular.module('video-ads', [
 
   $routeProvider
     .when('/', {
-      templateUrl: '/views/partials/list.html', 
+      templateUrl: '/views/partials/list.html',
       controller: 'ListCtrl', 
       reloadOnSearch: false
+    })
+    .when('/login', {
+      templateUrl: '/views/partials/login.html', 
+      controller: 'LoginCtrl'
     })
     .when('/edit/:videoAdId/', {
       templateUrl: '/views/partials/form.html', 
