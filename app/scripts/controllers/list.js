@@ -2,12 +2,15 @@
 angular.module('video-ads')
   .controller('ListCtrl', function($scope, $location, videoAdService) {
     $scope.videoAds = [];
-    $scope.params = {};
+    if (_.isEmpty($location.search())) {
+      $scope.params = {};
+    } else {
+      $scope.params = $location.search();
+    }
     $scope.show_search_bar = true;
     $scope.searchTerm = "";
     $scope.currentPage = 1;
     $scope.totalItems = 0;
-    $scope.params.filter = 'active';
 
     $scope.updateList = function() {
       if ($scope.params.filter === undefined) {
