@@ -12,9 +12,9 @@
         <img src="http://www.theonion.com/static/onion/img/logo-video.png" alt="Logo"/>
       </a>
     </div>
-    <div ng-if="show_search_bar" class="navbar-collapse collapse">
+    <div ng-if="show_search_bar" class="navbar-collapse collapse" ng-submit="search();">
       <form class="navbar-form navbar-right">
-        <input type="text" class="form-control" placeholder="Search...">
+        <input type="text" class="form-control" ng-bind="searchTerm" placeholder="Search...">
       </form>
     </div>
   </div>

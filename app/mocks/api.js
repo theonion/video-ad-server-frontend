@@ -21,7 +21,7 @@ angular.module('video-ads.mockApi')
     }]
     //TODO: Not really a factory. think about renaming this.
 ).factory("mockVideoAdFactory", ['videoAd', function (videoAd) {
-  var _getVideoAd = function (id) {
+    var _getVideoAd = function (id) {
     var newVideoAd = _.clone(videoAd);
     newVideoAd.id = _.isUndefined(id) ? _.random(100) : id;
     newVideoAd.name += " " + newVideoAd.id;

@@ -1,5 +1,4 @@
 'use strict';
-
 angular.module('video-ads')
   .controller('ListCtrl', function ($scope, $location, videoAdService) {
     $scope.videoAds = [];
@@ -20,23 +19,36 @@ angular.module('video-ads')
         console.log(error);
       });
     };
+
+    $scope.updateList();
+
     $scope.newVideoAd = function () {
       $location.path('/new/');
     };
 
-    $scope.$watch("currentPage", function () {
-      $scope.changePage();
-    });
+    $scope.changeOrder = function () {
+      $scope.params.orderBy = $scope.orderBy;
+      if ($scope.reverse) {
+        $scope.params.orderBy = "-" + $scope.orderBy;
+      }
+      //Setting currentPage to 1 will trigger the currentPage watch to fire
+      $scope.currentPage = 1;
+      $scope.updateList();
+    };
+
+    $scope.changeFilter = function () {
+      //This will trigger the above watch statement, which will trigger an updateList()
+      $scope.currentPage = 1;
+      $scope.updateList();
+    };
 
     $scope.changePage = function () {
       $scope.params.page = $scope.currentPage;
       $scope.updateList();
     };
 
-    $scope.$watch('params.filter', function () {
-      //This will trigger the above watch statement, which will trigger an updateList()
-      $scope.currentPage = 1;
-    });
-
-    $scope.updateList();
+    $scope.search = function () {
+      $scope.params.search = $scope.searchTerm;
+      $scope.updateList();
+    };
   });

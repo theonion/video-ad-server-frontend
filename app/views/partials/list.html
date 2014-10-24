@@ -8,30 +8,32 @@
 		<h2>Filter</h2>
 		<ul class="nav nav-sidebar">
 			<li>
-				<a ng-click="params.filter = 'active';" ng-class="{'active': (params.filter == 'active' || params.filter == undefined)}">Active</a>
+				<a ng-click="params.filter = 'active'; changeFilter();" ng-class="{'active': (params.filter == 'active' || params.filter == undefined)}">Active</a>
 			</li>
 	        <li>
-	        	<a ng-click="params.filter = 'future'" ng-class="{'active': (params.filter == 'future')}">Future</a>
+	        	<a ng-click="params.filter = 'future'; changeFilter();" ng-class="{'active': (params.filter == 'future')}">Future</a>
 	        </li>
 			<li>
-				<a ng-click="params.filter = 'all'" ng-class="{'active': (params.filter == 'all')}">All</a>
+				<a ng-click="params.filter = 'all'; changeFilter();" ng-class="{'active': (params.filter == 'all')}">All</a>
 			</li>
 		</ul>
 		<h2>Sort</h2>
 		<ul class="nav nav-sidebar">
 			<li>					
-				<a href="" ng-click="predicate = '-delivery'; reverse=!reverse; active = 'delivery'" ng-class="{active:active == 'delivery'}">
-					<i class="fa fa-bar-chart"></i> Delivery <i class="fa" ng-class="{'fa-chevron-up' : predicate == '-delivery', 'fa-chevron-down' : predicate == '-delivery' && !reverse}"></i>
+				<a href="" ng-click="orderBy = 'delivery'; reverse=!reverse; changeOrder();" ng-class="{active:active == 'delivery'}">
+					<i class="fa fa-bar-chart"></i> Delivery <i class="fa" ng-class="{'fa-chevron-up' : orderBy == 'delivery', 'fa-chevron-down' : orderBy == 'delivery' && !reverse}"></i>
 				</a>
 			</li>
 			<li>
-				<a ng-click="predicate = 'start'; reverse=!reverse; active = 'start'" ng-class="{active:active == 'start'}">
-					<i class="fa fa-calendar"></i> Start Date
+				<a ng-click="orderBy = 'start'; reverse=!reverse; changeOrder();" ng-class="{active:orderBy == 'start'}">
+					<i class="fa fa-calendar"></i> Start Date 
+					<i class="fa" ng-class="{'fa-chevron-up' : orderBy == 'start', 'fa-chevron-down' : orderBy == 'start' && !reverse}"></i>
 				</a>
 			</li>
 			<li>
-				<a href="" ng-click="predicate = 'end'; reverse=!reverse; active = 'end'" ng-class="{active:active == 'end'}">
+				<a href="" ng-click="orderBy = 'end'; reverse=!reverse; changeOrder();" ng-class="{active:orderBy == 'end'}">
 					<i class="fa fa-calendar"></i> End Date
+					<i class="fa" ng-class="{'fa-chevron-up' : orderBy == 'end', 'fa-chevron-down' : orderBy == 'end' && !reverse}"></i>
 				</a>
 			</li>
 		</ul>
@@ -47,7 +49,7 @@
 	</div>
 	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 		<ul class="video-ad-container col-md-12">
-			<li ng-repeat="videoad in videoAds | orderBy:predicate:reverse" class="video-ad col-md-3">
+			<li ng-repeat="videoad in videoAds" class="video-ad col-md-3">
 				<ul>
 					<li class="poster-chart">
 						<img src="images/thumb.png" alt=""/>
