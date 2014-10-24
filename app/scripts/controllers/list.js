@@ -4,8 +4,6 @@ angular.module('video-ads')
   .controller('ListCtrl', function ($scope, $location, videoAdService) {
     $scope.videoAds = [];
     $scope.params = {};
-    $scope.currentPage;
-    $scope.totalItems;
     $scope.showSearchBar = true;
     $scope.params.filter = 'active';
 
@@ -29,8 +27,7 @@ angular.module('video-ads')
 
     $scope.changeOrder = function (newOrder, reverse) {
       $scope.params.orderBy = newOrder;
-      //TODO: This is not how reverse should be working, since some of them have - in front of them already.
-      if (reverse){
+      if (reverse) {
         $scope.params.orderBy = "-" + newOrder;
       }
       //Setting currentPage to 1 will trigger the currentPage watch to fire
@@ -47,6 +44,11 @@ angular.module('video-ads')
 
     $scope.changePage = function () {
       $scope.params.page = $scope.currentPage;
+      $scope.updateList();
+    };
+
+    $scope.search = function () {
+      $scope.params.search = $scope.searchTerm;
       $scope.updateList();
     };
   });

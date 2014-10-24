@@ -24,21 +24,12 @@ describe('Controller: video-ads.ListCtrl', function () {
 
   });
 
-  describe("Functions that call updateList", function () {
-
+  describe("updateList:", function () {
     it('updateList should populate $scope.videoads', function () {
       $httpBackend.expectGET($scope.vidoeAdListEndpoint).respond(videoAdFactory.videoad.list);
       $scope.updateList();
       $httpBackend.flush();
-    });
 
-    it('changePage should populate videoads and totalItems', function () {
-      $httpBackend.expectGET($scope.vidoeAdListEndpoint).respond(videoAdFactory.videoad.list);
-      $scope.changePage();
-      $httpBackend.flush();
-    });
-
-    afterEach(function () {
       var data = videoAdFactory.videoad.list;
       expect($scope.videoAds.length).toBe(data.results.length);
       expect($scope.totalItems).toBe(data.count);
@@ -47,25 +38,33 @@ describe('Controller: video-ads.ListCtrl', function () {
     });
   });
 
-  describe("Pagination", function () {
+  describe("Pagination:", function () {
     beforeEach(function () {
       $httpBackend.expectGET($scope.videoAdListEndpoint)
         .respond(videoAdFactory.videoad.paginatedList(_.range(1, 5)));
+    });
+
+    it('changePage should populate videoads and totalItems', function () {
+      $scope.changePage();
+      $httpBackend.flush();
+      expect($scope.videoAds.length).toBe(4);
+      expect($scope.totalItems).toBe(20);
     });
 
     it("updatePage should set currentPage, fire off a request", function () {
       $scope.currentPage = 2;
       $scope.changePage();
       expect($scope.currentPage).toBe(2);
+      $httpBackend.flush();
     });
 
     it("changeFilter should set currentPage to 1, get ads", function () {
       $scope.changeFilter("active");
       expect($scope.currentPage).toBe(1);
+      $httpBackend.flush();
     });
 
     afterEach(function () {
-      $httpBackend.flush();
       expect(
         _.pluck($scope.videoAds, "id")
       ).toEqual(_.range(1, 5));
@@ -103,7 +102,22 @@ describe('Controller: video-ads.ListCtrl', function () {
       $httpBackend.verifyNoOutstandingExpectation();
     });
   });
-
+  
+  describe("Searching:", function () {
+    beforeEach(function () {
+      $httpBackend.expectGET($scope.videoAdListEndpoint)
+        .respond(videoAdFactory.videoad.paginatedList(_.range(1, 5)));
+      });
+    it("Searching fires off request, and populates $scope.searchTerm", function () {
+      $scope.searchTerm = "bacon";
+      $scope.search();
+      expect($scope.searchTerm).toBe("bacon");
+    });
+    afterEach(function () {
+      $httpBackend.verifyNoOutstandingRequest();
+      $httpBackend.verifyNoOutstandingExpectation();
+    });
+  });
   it('newVideoAd should change location to create page', function () {
     $scope.newVideoAd();
     expect($location.path()).toBe('/new/');
