@@ -240,6 +240,11 @@ ul {
 
 .poster-chart {
 	position: relative;
+	a:hover {
+		img {
+			opacity: .7;
+		}
+	}
 	.chart {
 		bottom: 10%;
 		position: absolute;

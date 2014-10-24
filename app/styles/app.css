@@ -7257,7 +7257,11 @@ ul {
 .poster-chart {
   position: relative;
 }
-/* line 243, app.scss */
+/* line 244, app.scss */
+.poster-chart a:hover img {
+  opacity: .7;
+}
+/* line 248, app.scss */
 .poster-chart .chart {
   bottom: 10%;
   position: absolute;
