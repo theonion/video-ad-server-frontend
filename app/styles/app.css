@@ -7205,6 +7205,13 @@ ul {
   margin-bottom: 1rem;
 }
 /* line 195, app.scss */
+.video-ad li {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* line 202, app.scss */
 .video-ad img {
   border: 1px solid #f4f2f2;
   margin-bottom: 1rem;
@@ -7213,11 +7220,11 @@ ul {
   width: 100%;
 }
 
-/* line 204, app.scss */
+/* line 211, app.scss */
 .poster-chart {
   position: relative;
 }
-/* line 206, app.scss */
+/* line 213, app.scss */
 .poster-chart .chart {
   bottom: 10%;
   position: absolute;

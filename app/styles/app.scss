@@ -192,6 +192,13 @@ ul {
 
 .video-ad {
 	margin-bottom: 1rem;
+  	li {
+  		//Handle long titles and URLs
+  		display: block;
+	  	overflow: hidden;
+	  	text-overflow: ellipsis;
+	  	white-space: nowrap;
+  	}
 	img {
 		border: 1px solid $lt-gray;
 		margin-bottom: 1rem;
