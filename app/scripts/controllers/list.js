@@ -4,6 +4,7 @@ angular.module('video-ads')
     $scope.videoAds = [];
     $scope.params = {};
     $scope.show_search_bar = true;
+    $scope.searchTerm = "";
     $scope.currentPage = 1;
     $scope.totalItems = 0;
     $scope.params.filter = 'active';
