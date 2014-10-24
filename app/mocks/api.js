@@ -40,7 +40,7 @@ angular.module('video-ads.mockApi')
 
   var _getListObject = function (arrayOfIds, pageNumber) {
     if (_.isUndefined(arrayOfIds)){
-      arrayOfIds = _.range(5);
+      arrayOfIds = _.range(12);
     }
     if (_.isUndefined(pageNumber)){
       pageNumber = 1;

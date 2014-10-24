@@ -1,10 +1,11 @@
 'use strict';
-//TODO: Change the active keyword to something more descriptive
 angular.module('video-ads')
   .controller('ListCtrl', function ($scope, $location, videoAdService) {
     $scope.videoAds = [];
     $scope.params = {};
-    $scope.showSearchBar = true;
+    $scope.show_search_bar = true;
+    $scope.currentPage = 1;
+    $scope.totalItems = 0;
     $scope.params.filter = 'active';
 
     $scope.updateList = function () {
@@ -25,19 +26,18 @@ angular.module('video-ads')
       $location.path('/new/');
     };
 
-    $scope.changeOrder = function (newOrder, reverse) {
-      $scope.params.orderBy = newOrder;
-      if (reverse) {
-        $scope.params.orderBy = "-" + newOrder;
+    $scope.changeOrder = function () {
+      $scope.params.orderBy = $scope.orderBy;
+      if ($scope.reverse) {
+        $scope.params.orderBy = "-" + $scope.orderBy;
       }
       //Setting currentPage to 1 will trigger the currentPage watch to fire
       $scope.currentPage = 1;
       $scope.updateList();
     };
 
-    $scope.changeFilter = function (newFilter) {
+    $scope.changeFilter = function () {
       //This will trigger the above watch statement, which will trigger an updateList()
-      $scope.params.filter = newFilter;
       $scope.currentPage = 1;
       $scope.updateList();
     };

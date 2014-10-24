@@ -80,19 +80,25 @@ describe('Controller: video-ads.ListCtrl', function () {
     });
 
     it("updateList should be called when the active ordering changes, page should be set to 1", function () {
-      $scope.changeOrder("delivery", false);
+      $scope.orderBy = "delivery";
+      $scope.reverse = false;
+      $scope.changeOrder();
       $httpBackend.flush();
       expect($scope.currentPage).toBe(1);
     });
 
     it("parameter should be populated with the correct value when reverse is false", function () {
-      $scope.changeOrder("start", false);
+      $scope.orderBy = "start";
+      $scope.reverse = false;
+      $scope.changeOrder();
       $httpBackend.flush();
       expect($scope.params.orderBy).toBe("start");
     });
 
     it("parameter should be populated with the correct value when reverse is true", function () {
-      $scope.changeOrder("start", true);
+      $scope.orderBy = "start";
+      $scope.reverse = true;
+      $scope.changeOrder();
       $httpBackend.flush();
       expect($scope.params.orderBy).toBe("-start");
     });
@@ -112,6 +118,7 @@ describe('Controller: video-ads.ListCtrl', function () {
       $scope.searchTerm = "bacon";
       $scope.search();
       expect($scope.searchTerm).toBe("bacon");
+      expect($scope.params.search).toBe("bacon");
     });
     afterEach(function () {
       $httpBackend.verifyNoOutstandingRequest();
