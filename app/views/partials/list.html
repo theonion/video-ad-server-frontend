@@ -20,7 +20,7 @@
 		<h2>Sort</h2>
 		<ul class="nav nav-sidebar">
 			<li>					
-				<a href="" ng-click="orderBy = 'delivery'; reverse=!reverse; changeOrder();" ng-class="{active:active == 'delivery'}">
+				<a href="" ng-click="orderBy = 'delivery'; reverse=!reverse; changeOrder();" ng-class="{active:orderBy == 'delivery'}">
 					<i class="fa fa-bar-chart"></i> Delivery <i class="fa" ng-class="{'fa-chevron-up' : orderBy == 'delivery', 'fa-chevron-down' : orderBy == 'delivery' && !reverse}"></i>
 				</a>
 			</li>
