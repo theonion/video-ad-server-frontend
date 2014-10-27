@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "dependencies": {},
   "devDependencies": {
+    "connect-modrewrite": "^0.7.9",
     "grunt": "^0.4.1",
     "grunt-autoprefixer": "^0.7.3",
     "grunt-concurrent": "^0.5.0",
@@ -27,12 +28,12 @@
     "grunt-usemin": "^2.1.1",
     "grunt-wiredep": "^1.7.0",
     "jshint-stylish": "^0.2.0",
-    "karma-script-launcher": "~0.1.0",
-    "karma-sauce-launcher": "~0.2.10",
     "karma": "^0.12.24",
     "karma-chrome-launcher": "^0.1.5",
     "karma-jasmine": "^0.1.5",
     "karma-phantomjs-launcher": "^0.1.4",
+    "karma-sauce-launcher": "~0.2.10",
+    "karma-script-launcher": "~0.1.0",
     "load-grunt-tasks": "^0.4.0",
     "time-grunt": "^0.3.1"
   },

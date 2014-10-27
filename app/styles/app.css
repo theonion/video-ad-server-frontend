@@ -7148,7 +7148,42 @@ ul {
   margin-bottom: 0;
 }
 
-/* line 155, app.scss */
+/* line 153, app.scss */
+.login-container {
+  background: url(http://static.wixstatic.com/media/d60a88_c9f9eb4e5d6d4b7bb895b17c6af1dd1c.gif_srz_2496_954_85_22_0.50_1.20_0.00_gif_srz) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: fixed;
+  height: 100%;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+
+/* line 166, app.scss */
+.login-form {
+  background: black;
+  left: 50%;
+  padding: 3rem;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+/* line 177, app.scss */
+.login-form button,
+.login-form input {
+  margin: 1rem 0;
+  border-radius: 0;
+  width: 100%;
+}
+
+/* line 187, app.scss */
 .targeting-group {
   border: 1px solid #a1bfd7;
   border-radius: 4px;
@@ -7157,61 +7192,61 @@ ul {
   padding: 5px;
 }
 
-/* line 162, app.scss */
+/* line 194, app.scss */
 .targeting-row .form-control {
   float: left;
   margin: 5px 2px 5px 2px;
 }
 
-/* line 166, app.scss */
+/* line 198, app.scss */
 .targeting-row-container {
   margin: 0px auto 0px auto;
 }
-/* line 168, app.scss */
+/* line 200, app.scss */
 .targeting-row-container .btn {
   width: auto;
 }
 
-/* line 172, app.scss */
+/* line 204, app.scss */
 .targeting-group .col {
   padding: 0 2px;
 }
 
-/* line 174, app.scss */
+/* line 206, app.scss */
 .add-targeting-button {
   margin: 4px auto 4px auto;
 }
 
-/* line 180, app.scss */
+/* line 212, app.scss */
 .pixel-group {
   width: 400px;
 }
 
-/* line 183, app.scss */
+/* line 215, app.scss */
 .pixel-group .pixel {
   margin-bottom: 10px;
   overflow: hidden;
 }
 
-/* line 187, app.scss */
+/* line 219, app.scss */
 .pixel-group .pixel .btn {
   color: darkred;
   line-height: 20px;
   padding: 0;
 }
 
-/* line 193, app.scss */
+/* line 225, app.scss */
 .video-ad {
   margin-bottom: 1rem;
 }
-/* line 195, app.scss */
+/* line 227, app.scss */
 .video-ad li {
   display: block;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-/* line 202, app.scss */
+/* line 234, app.scss */
 .video-ad img {
   border: 1px solid #f4f2f2;
   margin-bottom: 1rem;
@@ -7220,11 +7255,15 @@ ul {
   width: 100%;
 }
 
-/* line 211, app.scss */
+/* line 243, app.scss */
 .poster-chart {
   position: relative;
 }
-/* line 213, app.scss */
+/* line 246, app.scss */
+.poster-chart a:hover img {
+  opacity: .7;
+}
+/* line 250, app.scss */
 .poster-chart .chart {
   bottom: 10%;
   position: absolute;
