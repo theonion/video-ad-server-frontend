@@ -6,6 +6,10 @@ before_script:
   - 'bower install  '
 script:
   - 'grunt karma'
+cache:
+  directories:
+    - bower_components
+    - node_modules
 addons:
   sauce_connect:
     username: onion_webtech
