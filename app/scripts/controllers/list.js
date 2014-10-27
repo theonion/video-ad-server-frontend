@@ -58,4 +58,28 @@ angular.module('video-ads')
       $scope.params.search = $scope.searchTerm;
       $scope.updateList();
     };
+
+    $scope.chartConfig = {
+      options: {
+        chart: {
+          type: 'pie'
+        }
+      },
+      series: [{
+        dataLabels: {
+          enabled: false,
+        },
+        startAngle: -90,
+        endAngle: 90,
+        center: ['50%', '75%'],
+        innerSize: '50%',
+        name: 'Browser share',
+        data: [10, 90]
+      }],
+      title: {
+        text: 'Hello'
+      },
+      loading: false
+    };
+
   });

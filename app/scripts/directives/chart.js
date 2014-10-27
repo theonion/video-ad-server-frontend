@@ -9,6 +9,28 @@ angular.module('video-ads')
         impressions: '@impressions'
       },
       controller: function($scope) {
+      $scope.chartConfig = {
+        options: {
+          chart: {
+            type: 'pie'
+          }
+        },
+        series: [{
+          dataLabels: {
+            enabled: false,
+          },
+          startAngle: -90,
+          endAngle: 90,
+          center: ['50%', '75%'],
+          innerSize: '50%',
+          name: 'Browser share',
+          data: [parseInt($scope.impressions), (100 - parseInt($scope.impressions))]
+        }],
+        title: {
+          text: 'Hello'
+        },
+        loading: false
+      };
         $scope.chartOptions = {
           animation: false,
           showTooltips: false,

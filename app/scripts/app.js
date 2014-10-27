@@ -8,6 +8,7 @@ angular.module('video-ads', [
   'ui.bootstrap',
   'autocomplete',
   'restangular',
+  'highcharts-ng',
   'angles'
 ])
   .constant("STATIC_URL", "/static/")
