@@ -56,6 +56,12 @@ module.exports = function(config) {
     // list of files / patterns to exclude
     exclude: [],
 
+    sauceLabs: {
+      testName: 'Bulbs CMS Karma Tests',
+      tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER,
+      startConnect: false
+    },
+
     // web server port
     port: 8080,
 

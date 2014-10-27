@@ -6,3 +6,5 @@ before_script:
   - 'bower install'
 script:
   - 'grunt karma'
+addons:
+  sauce_connect: true
