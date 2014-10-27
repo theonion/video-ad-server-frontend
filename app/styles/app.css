@@ -7007,6 +7007,38 @@ button.close {
   }
 }
 /* line 26, app.scss */
+html {
+  font-size: 62.5%;
+}
+
+/* line 30, app.scss */
+body {
+  color: #3A3A3A;
+  font-family: 'Arimo',Helvetica,Arial,sans-serif;
+  font-size: 1.4rem;
+  padding-top: 70px;
+}
+
+/* line 37, app.scss */
+h2 {
+  color: rgba(226, 226, 226, 0.4);
+  font-size: 1.3rem;
+  padding: 0 15px;
+  text-transform: uppercase;
+}
+
+/* line 44, app.scss */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* line 49, app.scss */
+a {
+  text-decoration: none;
+}
+
+/* line 55, app.scss */
 .visuallyhidden {
   clip: rect(0 0 0 0);
   height: 1px;
@@ -7018,63 +7050,27 @@ button.close {
   position: absolute;
 }
 
-/* line 37, app.scss */
-html {
-  font-size: 62.5%;
-}
-
-/* line 41, app.scss */
-body {
-  color: #3A3A3A;
-  font-family: 'Arimo',Helvetica,Arial,sans-serif;
-  font-size: 1.4rem;
-  padding-top: 70px;
-}
-
-/* line 48, app.scss */
-a {
-  color: #33C5F3;
-}
-/* line 50, app.scss */
-a.active {
-  color: #2a6496;
-}
-
-/* line 55, app.scss */
-h2 {
-  color: white;
-  font-size: 1.3rem;
-  padding: 0 15px;
-  text-transform: uppercase;
-}
-
-/* line 62, app.scss */
-ul {
-  list-style: none;
-  padding: 0;
-}
-
-/* line 69, app.scss */
+/* line 65, app.scss */
 .nav li > a {
   cursor: pointer;
 }
 
-/* line 73, app.scss */
+/* line 69, app.scss */
 .navbar-inverse {
   background-color: #202729;
 }
 
-/* line 77, app.scss */
+/* line 73, app.scss */
 .navbar-form {
   border: 0;
 }
 
-/* line 82, app.scss */
+/* line 78, app.scss */
 .navbar-brand img {
   max-height: 23px;
 }
 
-/* line 89, app.scss */
+/* line 85, app.scss */
 .sidebar {
   background-color: #202729;
   bottom: 0;
@@ -7087,40 +7083,104 @@ ul {
   top: 51px;
   z-index: 1000;
 }
-/* line 100, app.scss */
+/* line 96, app.scss */
 .sidebar button {
   border: 0;
   border-radius: 0;
   padding: 10%;
   width: 100%;
 }
-/* line 107, app.scss */
-.sidebar li a {
-  color: #BDB5B5;
+
+/* line 104, app.scss */
+.nav-sidebar {
+  border-bottom: 1px solid #d8d8d8;
+  padding-bottom: 15px;
 }
-/* line 109, app.scss */
-.sidebar li a.active {
-  color: #2a6496;
+/* line 107, app.scss */
+.nav-sidebar:last-of-type {
+  border-bottom: 0;
+}
+/* line 110, app.scss */
+.nav-sidebar li {
+  padding: 10px 15px;
 }
 /* line 112, app.scss */
-.sidebar li a:hover {
-  color: #2a6496;
-  background-color: transparent;
+.nav-sidebar li a {
+  color: white;
+  display: inline;
+  padding: 0;
+}
+/* line 116, app.scss */
+.nav-sidebar li a.active {
+  color: #008d52;
+}
+/* line 118, app.scss */
+.nav-sidebar li a.active:hover {
+  color: #008d52;
+}
+/* line 122, app.scss */
+.nav-sidebar li a:hover {
+  background: transparent !important;
+  color: rgba(255, 255, 255, 0.8);
 }
 
-/* line 120, app.scss */
-.fa-toggle-off,
-.fa-toggle-on {
-  color: #FE621E;
+/* line 133, app.scss */
+.video-ad {
+  margin-bottom: 3rem;
+}
+/* line 135, app.scss */
+.video-ad a {
+  color: #3A3A3A;
+  text-decoration: none;
+}
+/* line 139, app.scss */
+.video-ad ul {
+  background: #f2f2f2;
+  border: 1px solid #d8d8d8;
+  padding: 3%;
+}
+/* line 143, app.scss */
+.video-ad ul:hover {
+  background: #e2e2e2;
+}
+/* line 147, app.scss */
+.video-ad li {
+  display: block;
+  line-height: 1.75;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* line 155, app.scss */
+.video-ad img {
+  margin-bottom: 1rem;
+  position: relative;
+  width: 100%;
+}
+/* line 160, app.scss */
+.video-ad .name {
+  font-size: 1.5rem;
+  font-weight: 700;
 }
 
-/* line 127, app.scss */
+/* line 166, app.scss */
+.poster-chart {
+  position: relative;
+}
+/* line 168, app.scss */
+.poster-chart .chart {
+  bottom: 10%;
+  position: absolute;
+  right: 5%;
+}
+
+/* line 177, app.scss */
 .video-preview {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   padding: 0;
 }
 
-/* line 132, app.scss */
+/* line 182, app.scss */
 .alert {
   opacity: 0;
   left: 0;
@@ -7135,20 +7195,72 @@ ul {
   -o-transition: all 200ms cubic-bezier(0.25, 0.25, 0.84, 0.325);
   transition: all 200ms cubic-bezier(0.25, 0.25, 0.84, 0.325);
 }
-/* line 141, app.scss */
+/* line 191, app.scss */
 .alert.show {
   display: block;
   opacity: 1;
 }
 
-/* line 147, app.scss */
+/* line 197, app.scss */
 .delivery {
   height: 34px;
   line-height: 3;
   margin-bottom: 0;
 }
 
-/* line 153, app.scss */
+/* line 205, app.scss */
+.targeting-group {
+  border: 1px solid #a1bfd7;
+  border-radius: 4px;
+  clear: left;
+  margin: 0 0 10px 0;
+  padding: 5px;
+}
+
+/* line 212, app.scss */
+.targeting-row .form-control {
+  float: left;
+  margin: 5px 2px 5px 2px;
+}
+
+/* line 216, app.scss */
+.targeting-row-container {
+  margin: 0px auto 0px auto;
+}
+/* line 218, app.scss */
+.targeting-row-container .btn {
+  width: auto;
+}
+
+/* line 222, app.scss */
+.targeting-group .col {
+  padding: 0 2px;
+}
+
+/* line 224, app.scss */
+.add-targeting-button {
+  margin: 4px auto 4px auto;
+}
+
+/* line 230, app.scss */
+.pixel-group {
+  width: 400px;
+}
+
+/* line 233, app.scss */
+.pixel-group .pixel {
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+/* line 237, app.scss */
+.pixel-group .pixel .btn {
+  color: darkred;
+  line-height: 20px;
+  padding: 0;
+}
+
+/* line 245, app.scss */
 .login-container {
   background: url(http://static.wixstatic.com/media/d60a88_c9f9eb4e5d6d4b7bb895b17c6af1dd1c.gif_srz_2496_954_85_22_0.50_1.20_0.00_gif_srz) no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -7162,7 +7274,7 @@ ul {
   width: 100%;
 }
 
-/* line 166, app.scss */
+/* line 258, app.scss */
 .login-form {
   background: black;
   left: 50%;
@@ -7175,97 +7287,10 @@ ul {
   -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
-/* line 177, app.scss */
+/* line 269, app.scss */
 .login-form button,
 .login-form input {
   margin: 1rem 0;
   border-radius: 0;
   width: 100%;
-}
-
-/* line 187, app.scss */
-.targeting-group {
-  border: 1px solid #a1bfd7;
-  border-radius: 4px;
-  clear: left;
-  margin: 0 0 10px 0;
-  padding: 5px;
-}
-
-/* line 194, app.scss */
-.targeting-row .form-control {
-  float: left;
-  margin: 5px 2px 5px 2px;
-}
-
-/* line 198, app.scss */
-.targeting-row-container {
-  margin: 0px auto 0px auto;
-}
-/* line 200, app.scss */
-.targeting-row-container .btn {
-  width: auto;
-}
-
-/* line 204, app.scss */
-.targeting-group .col {
-  padding: 0 2px;
-}
-
-/* line 206, app.scss */
-.add-targeting-button {
-  margin: 4px auto 4px auto;
-}
-
-/* line 212, app.scss */
-.pixel-group {
-  width: 400px;
-}
-
-/* line 215, app.scss */
-.pixel-group .pixel {
-  margin-bottom: 10px;
-  overflow: hidden;
-}
-
-/* line 219, app.scss */
-.pixel-group .pixel .btn {
-  color: darkred;
-  line-height: 20px;
-  padding: 0;
-}
-
-/* line 225, app.scss */
-.video-ad {
-  margin-bottom: 1rem;
-}
-/* line 227, app.scss */
-.video-ad li {
-  display: block;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-/* line 234, app.scss */
-.video-ad img {
-  border: 1px solid #f4f2f2;
-  margin-bottom: 1rem;
-  padding: 2%;
-  position: relative;
-  width: 100%;
-}
-
-/* line 243, app.scss */
-.poster-chart {
-  position: relative;
-}
-/* line 246, app.scss */
-.poster-chart a:hover img {
-  opacity: .7;
-}
-/* line 250, app.scss */
-.poster-chart .chart {
-  bottom: 10%;
-  position: absolute;
-  right: 5%;
 }

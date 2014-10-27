@@ -3,7 +3,7 @@
 <div class="row">
 	<div class="col-sm-3 col-md-2 sidebar">
 		<button class="btn btn-default add-btn btn-success" ng-click="newVideoAd();">
-			<span><i class="fa fa-file-video-o"></i> Add Video</span>
+			<span><i class="fa fa-video-camera"></i> Add Video</span>
 		</button>
 		<h2>Filter</h2>
 		<ul class="nav nav-sidebar">
@@ -50,9 +50,9 @@
 	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 		<ul class="video-ad-container col-md-12">
 			<li ng-repeat="videoad in videoAds" class="video-ad col-md-3">
-				<ul>
-					<li class="poster-chart">
-						<a href="/edit/{{videoad.id}}/">
+				<a href="/edit/{{videoad.id}}/">
+					<ul>
+						<li class="poster-chart">
 							<img src="images/thumb.png" alt=""/>
 							<span ng-show="{{videoad.delivery}} != 100">
 								<impressionschart impressions="{{videoad.delivery}}" class="chart"></impressionschart>
@@ -60,16 +60,16 @@
 							<span ng-show="{{videoad.delivery}} >= 100">
 								<i class="fa fa-check-circle-o complete"></i>
 							</span>
-						</a>
-					</li>
-					<li><a class="name" href="/edit/{{videoad.id}}/">{{videoad.name}}</a></li>
-					<li>Client: Old Spice</li>
-					<li>Delivery: {{videoad.delivery}}%</li>
-					<li>Start: {{videoad.start|convertToLocal}}</li>
-					<li>End: {{videoad.end|convertToLocal}}</li>
-					<li ng-show="videoad.vast_url">VAST: {{videoad.vast_url}}</li>
-					<li ng-hide="videoad.vast_url">{{videoad.video.name}}</li>
-				</ul>
+						</li>
+						<li class="name">{{videoad.name}}</li>
+						<li>Client: Old Spice</li>
+						<li>Delivery: {{videoad.delivery}}%</li>
+						<li>Start: {{videoad.start|convertToLocal}}</li>
+						<li>End: {{videoad.end|convertToLocal}}</li>
+						<li ng-show="videoad.vast_url">VAST: {{videoad.vast_url}}</li>
+						<li ng-hide="videoad.vast_url">{{videoad.video.name}}</li>
+					</ul>
+				</a>
 			</li><!--EO Video Ad -->
 		</ul><!-- EO Video Ads Container -->
 		<pagination total-items="totalItems" items-per-page="5" ng-model="$parent.currentPage"></pagination>
