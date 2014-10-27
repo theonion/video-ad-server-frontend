@@ -1,10 +1,29 @@
+'use strict';
 // Karma configuration
 // http://karma-runner.github.io/0.12/config/configuration-file.html
 // Generated on 2014-10-14 using
 // generator-karma 0.8.3
 
 module.exports = function(config) {
-  'use strict';
+
+  var customLaunchers = {
+    'SL_Chrome': {
+      base: 'SauceLabs',
+      browserName: 'chrome'
+    },
+    'SL_Firefox': {
+      base: 'SauceLabs',
+      browserName: 'firefox',
+      version: '27'
+    }
+  };
+  // 'SL_Safari': {
+  //   base: 'SauceLabs',
+  //   browserName: 'safari',
+  //   platform: 'OS X 10.9',
+  //   version: '7'
+  // }  
+
 
   config.set({
     // enable / disable watching file and executing tests whenever any file changes
@@ -52,13 +71,14 @@ module.exports = function(config) {
 
     // Which plugins to enable
     plugins: [
+      'karma-chrome-launcher',
       'karma-phantomjs-launcher',
       'karma-jasmine'
     ],
 
     // Continuous Integration mode
     // if true, it capture browsers, run tests and exit
-    singleRun: true,
+    singleRun: false,
 
     colors: true,
 
@@ -73,4 +93,26 @@ module.exports = function(config) {
     // URL root prevent conflicts with the site root
     // urlRoot: '_karma_'
   });
+
+  if (process.env.TRAVIS) {
+    var buildLabel = 'TRAVIS #' + process.env.TRAVIS_BUILD_NUMBER + ' (' + process.env.TRAVIS_BUILD_ID + ')';
+
+    config.captureTimeout = 0; // rely on SL timeout
+    config.singleRun = true;
+    config.autoWatch = false;
+    config.sauceLabs = {
+      build: buildLabel,
+      startConnect: false,
+      tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER
+    };
+
+    config.customLaunchers = customLaunchers;
+    config.browsers = Object.keys(customLaunchers);
+    config.singleRun = true;
+    config.reporters.push('saucelabs');
+  } else {
+    config.singleRun = false;
+    config.autoWatch = true;
+    config.browsers = ['Chrome'];
+  }
 };
