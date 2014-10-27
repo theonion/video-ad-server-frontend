@@ -3,9 +3,9 @@
 <div class="login-container">
 	<div class="login-form">
 		<form>
-			<input type="text" class="form-control" placeholder="Name" required>
-			<input type="text" class="form-control" placeholder="Password" required>
-			<button class="btn add-btn btn-success" type="submit" ng-click="">
+			<input type="text" class="form-control" ng-model="username" placeholder="Name" required>
+			<input type="text" class="form-control" ng-model="password" placeholder="Password" required>
+			<button class="btn add-btn btn-success" type="submit" ng-click="submitLogin()">
 				<span>Login</span>
 			</button>
 		</form>
