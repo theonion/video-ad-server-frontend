@@ -7164,7 +7164,9 @@ ul {
 
 /* line 166, app.scss */
 .login-form {
+  background: black;
   left: 50%;
+  padding: 3rem;
   position: absolute;
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
@@ -7173,7 +7175,7 @@ ul {
   -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
-/* line 175, app.scss */
+/* line 177, app.scss */
 .login-form button,
 .login-form input {
   margin: 1rem 0;
@@ -7181,7 +7183,7 @@ ul {
   width: 100%;
 }
 
-/* line 185, app.scss */
+/* line 187, app.scss */
 .targeting-group {
   border: 1px solid #a1bfd7;
   border-radius: 4px;
@@ -7190,61 +7192,61 @@ ul {
   padding: 5px;
 }
 
-/* line 192, app.scss */
+/* line 194, app.scss */
 .targeting-row .form-control {
   float: left;
   margin: 5px 2px 5px 2px;
 }
 
-/* line 196, app.scss */
+/* line 198, app.scss */
 .targeting-row-container {
   margin: 0px auto 0px auto;
 }
-/* line 198, app.scss */
+/* line 200, app.scss */
 .targeting-row-container .btn {
   width: auto;
 }
 
-/* line 202, app.scss */
+/* line 204, app.scss */
 .targeting-group .col {
   padding: 0 2px;
 }
 
-/* line 204, app.scss */
+/* line 206, app.scss */
 .add-targeting-button {
   margin: 4px auto 4px auto;
 }
 
-/* line 210, app.scss */
+/* line 212, app.scss */
 .pixel-group {
   width: 400px;
 }
 
-/* line 213, app.scss */
+/* line 215, app.scss */
 .pixel-group .pixel {
   margin-bottom: 10px;
   overflow: hidden;
 }
 
-/* line 217, app.scss */
+/* line 219, app.scss */
 .pixel-group .pixel .btn {
   color: darkred;
   line-height: 20px;
   padding: 0;
 }
 
-/* line 223, app.scss */
+/* line 225, app.scss */
 .video-ad {
   margin-bottom: 1rem;
 }
-/* line 225, app.scss */
+/* line 227, app.scss */
 .video-ad li {
   display: block;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-/* line 232, app.scss */
+/* line 234, app.scss */
 .video-ad img {
   border: 1px solid #f4f2f2;
   margin-bottom: 1rem;
@@ -7253,15 +7255,15 @@ ul {
   width: 100%;
 }
 
-/* line 241, app.scss */
+/* line 243, app.scss */
 .poster-chart {
   position: relative;
 }
-/* line 244, app.scss */
+/* line 246, app.scss */
 .poster-chart a:hover img {
   opacity: .7;
 }
-/* line 248, app.scss */
+/* line 250, app.scss */
 .poster-chart .chart {
   bottom: 10%;
   position: absolute;
