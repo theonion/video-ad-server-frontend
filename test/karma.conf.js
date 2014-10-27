@@ -115,7 +115,6 @@ module.exports = function(config) {
 
     config.customLaunchers = customLaunchers;
     config.browsers = Object.keys(customLaunchers);
-    config.singleRun = true;
     config.reporters.push('saucelabs');
   } else {
     config.singleRun = false;
