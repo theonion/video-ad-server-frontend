@@ -12,7 +12,7 @@ angular.module('video-ads')
                 if (response.status == 401) {
                     //TODO: redirect to login path
                 }
-                return resposne || $q.when(response);
+                return response || $q.when(response);
             }
         }
     })
