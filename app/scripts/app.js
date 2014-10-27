@@ -8,8 +8,7 @@ angular.module('video-ads', [
   'ui.bootstrap',
   'autocomplete',
   'restangular',
-  'angles',
-  'ng-token-auth'
+  'angles'
 ])
   .constant("STATIC_URL", "/static/")
   .config(function($locationProvider, $httpProvider, $routeProvider, $sceDelegateProvider) {
@@ -17,13 +16,15 @@ angular.module('video-ads', [
 
     $locationProvider.html5Mode(true);
 
-    $httpProvider.defaults.headers.post['X-CSRFToken'] = $('input[name=csrfmiddlewaretoken]').val();
-
     $routeProvider
       .when('/', {
         templateUrl: '/views/partials/list.html',
         controller: 'ListCtrl',
         reloadOnSearch: false
+      })
+      .when('/login', {
+        templateUrl: '/views/partials/login.html',
+        controller: 'LoginCtrl'
       })
       .when('/edit/:videoAdId/', {
         templateUrl: '/views/partials/form.html',
