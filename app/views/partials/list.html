@@ -52,10 +52,17 @@
 			<li ng-repeat="videoad in videoAds" class="video-ad col-md-3">
 				<ul>
 					<li class="poster-chart">
-						<img src="images/thumb.png" alt=""/>
-						<impressionschart impressions="{{videoad.delivery}}" class="chart"></impressionschart>
+						<a href="/edit/{{videoad.id}}/">
+							<img src="images/thumb.png" alt=""/>
+							<span ng-show="{{videoad.delivery}} != 100">
+								<impressionschart impressions="{{videoad.delivery}}" class="chart"></impressionschart>
+							</span>
+							<span ng-show="{{videoad.delivery}} >= 100">
+								<i class="fa fa-check-circle-o complete"></i>
+							</span>
+						</a>
 					</li>
-					<li><a href="/edit/{{videoad.id}}/">{{videoad.name}}</a></li>
+					<li><a class="name" href="/edit/{{videoad.id}}/">{{videoad.name}}</a></li>
 					<li>Client: Old Spice</li>
 					<li>Delivery: {{videoad.delivery}}%</li>
 					<li>Start: {{videoad.start|convertToLocal}}</li>

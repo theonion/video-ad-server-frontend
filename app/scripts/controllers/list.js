@@ -1,6 +1,6 @@
 'use strict';
 angular.module('video-ads')
-  .controller('ListCtrl', function($scope, $location, videoAdService) {
+  .controller('ListCtrl', function($scope, $location, videoAdService, $routeParams) {
     $scope.videoAds = [];
     if (_.isEmpty($location.search())) {
       $scope.params = {};
@@ -11,6 +11,8 @@ angular.module('video-ads')
     $scope.searchTerm = "";
     $scope.currentPage = 1;
     $scope.totalItems = 0;
+    $scope.params.filter = 'active';
+    $scope.params = $routeParams;
 
     $scope.updateList = function() {
       if ($scope.params.filter === undefined) {
