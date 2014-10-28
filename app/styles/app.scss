@@ -1,63 +1,30 @@
-// Import custom build of Bootstrap
-// components. Override or extend here
+///////////////////////////
+// ********************* //
+//    Video Ad Server    //
+// ********************* //
+///////////////////////////
+
+
+/* Vendor Dependencies */
 
 @import "bootstrap-custom";
 
-//Global Variables
+/* Authored Dependencies */
 
-$body-color: #3A3A3A;
-$lt-gray: #f4f2f2;
-$drk-gray: #e2e2e2;
-$active: #008d52;
-
-//Custom Mixins 
-
-@mixin ease($property: all, $time: 200ms) {
--webkit-transition: $property $time cubic-bezier(0.250, 0.250, 0.840, 0.325); 
-   -moz-transition: $property $time cubic-bezier(0.250, 0.250, 0.840, 0.325); 
-    -ms-transition: $property $time cubic-bezier(0.250, 0.250, 0.840, 0.325); 
-     -o-transition: $property $time cubic-bezier(0.250, 0.250, 0.840, 0.325); 
-        transition: $property $time cubic-bezier(0.250, 0.250, 0.840, 0.325);
-}
-
-//Global Elements 
+@import "global/reset";
+@import "global/colors";
+@import "global/mixins";
+@import "global/typography";
+@import "global/helpers";
 
 
-html {
-	font-size: 62.5%;
-}
+/* Global Elements */ 
 
 body {
 	color: $body-color;
-	font-family: 'Arimo',Helvetica,Arial,sans-serif;
+	font-family: $sans-serif;
 	font-size: 1.4rem;
 	padding-top: 70px;
-}
-
-h2 {
-	color: rgba(226, 226, 226, .4);
-	font-size: 1.3rem;
-	padding: 0 15px;
-	text-transform: uppercase;
-}
-
-ul {
-	list-style: none;
-	padding: 0;
-}
-
-a {
-	text-decoration: none;
-}
-
-//Global Classes 
-
-.visuallyhidden { 
-  clip: rect(0 0 0 0);
-  height: 1px; width: 1px;
-  margin: -1px; padding: 0; border: 0;
-  overflow: hidden; 
-  position: absolute; 
 }
 
 //Bootstrap Navbar Overrides
@@ -108,7 +75,7 @@ a {
 		border-bottom: 0;
 	}
 	li {
-		padding: 10px 15px;
+		padding: 15px;
 		a {
 			color: white;
 			display: inline;
@@ -140,6 +107,7 @@ a {
 		background: #f2f2f2;
 		border: 1px solid #d8d8d8;
 		padding: 3%;
+		@include ease(all, 100ms);
 		&:hover {
 			background: #e2e2e2;
 		}
@@ -166,7 +134,7 @@ a {
 .poster-chart {
 	position: relative;
 	.chart {
-		bottom: -8px;
+		bottom: 0;
 		position: absolute;
 		right: 0;
 		width: 75px;

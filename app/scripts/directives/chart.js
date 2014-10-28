@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('video-ads')
-  .directive('delivery', function() {
+  .directive('deliveryChart', function() {
     return {
       restrict: 'E',
       templateUrl: STATIC_URL + 'partials/chart.html',
