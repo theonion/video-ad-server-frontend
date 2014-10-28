@@ -15,7 +15,6 @@
     "bootstrap-filestyle": "~1.0.5",
     "bootstrap-sass-official": "~3.2.0",
     "videojs": "4.7.1",
-    "angles": "*",
     "highcharts": "~4.0.4",
     "highcharts-ng": "~0.0.7"
   },
