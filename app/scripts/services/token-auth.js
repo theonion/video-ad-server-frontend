@@ -9,13 +9,16 @@ angular.module('video-ads')
                 return config;
             },
             'responseError': function(response) {
-                if (response.status == 403) {
-                    var deferred = $q.defer();
-                    httpRequestBuffer.append(response.config, deferred)
-                    $rootScope.$broadcast('auth-forbidden', response);
+                //TODO: Add config to ignoreAuthModule for token refresponse || $q.when(response);resh
+                if (!response.config.ignoreAuthModule) {
+                    if (response.status == 403) {
+                        var deferred = $q.defer();
+                        httpRequestBuffer.append(response.config, deferred)
+                        $rootScope.$broadcast('auth-forbidden', response);
+                    }
                 }
-
-                return response || $q.when(response);
+                //TODO: Propery error responses
+                return $q.reject(response);
             }
         }
     })
@@ -32,18 +35,23 @@ angular.module('video-ads')
         }
         _refreshToken = function() {
             //TODO: Move this into a constant
+            //TODO: add config to ignoreAuthModule for token refresh
             return $http.post("/api-token-refresh", {
-                "token": $window.sessionStorage.token
-            }).success(function(data, status, error) {
-                $window.sessionStorage.token = response.data.token;
-                httpRequestBuffer.retryAll()
-            }).error(function(response, status, error) {
-                httpRequestBuffer.rejectAll(error);
-                //todo: change to a constant
-                $location.path("/login");
-            });
+                    "token": $window.sessionStorage.token
+                }, {
+                    "ignoreAuthModule": true
+                }).success(function(response) {
+                    $window.sessionStorage.token = response.token;
+                    httpRequestBuffer.retryAll()
+                })
+                .error(function() {
+                    httpRequestBuffer.rejectAll();
+                    //todo: change to a constant
+                    $location.path("/login");
+                });
         }
 
+        //TODO: add in passed param
         $rootScope.$watch("auth-forbidden", function() {
             _refreshToken();
         });
