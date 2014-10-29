@@ -34,40 +34,32 @@ describe('Service: video-ads.token-auth', function() {
             $httpBackend.flush();
             expect($window.sessionStorage.token).toBe(tokenValue);
         });
-
-        it("user makes a request, but is denied, so is sent to the login page", function() {
-            $httpBackend.expectGET(testEndpoints.videoAdList).respond(403);
-            $http.get("/api/v1/videoads/");
-            $httpBackend.flush();
-            expect($location.path()).toBe("/login");
-        });
     });
 
     describe("A request is made, but the token is expired", function() {
         it("refreshes the token, resends the request", function() {
             //we send the initial request, and it is denied 
-            $httpBackend.expectGET(testEndpoints.videoadlist).respond(403);
+            $httpBackend.expectGET(testEndpoints.videoadlist).respond(403, {});
             $http.get("/api/v1/videoads");
-            $httpBackend.flush();
             //we expect the token to automatically be refreshed.. 
-            var newtokenvalue = "newtoken";
-            $httpBackend.expectPOST(testEndpoints.tokenrefreshpath).respond(200, {
-                "token": newtokenvalue
+            var newTokenValue = "newtoken";
+            $httpBackend.expectPOST(testEndpoints.tokenRefreshPath).respond(200, {
+                "data": {
+                    "token": newTokenValue
+                }
             });
-            $httpBackend.flush();
-            //And to attempt the old request once again, this time successfully
             $httpBackend.expectGET(testEndpoints.videoAdList).respond(200, videoAdFactory.list);
+            //And to attempt the old request once again, this time successfully
             $httpBackend.flush();
             expect($window.sessionStorage.token).toBe(newTokenValue);
         });
 
         it("tries to refresh token, but it is too late", function() {
             //we send the initial request, and it is denied 
-            $httpBackend.expectGET(testEndpoints.videoadlist).respond(403);
+            $httpBackend.expectGET(testEndpoints.videoadlist).respond(403, {});
+            $httpBackend.expectPOST(testEndpoints.tokenRefreshPath).respond(403, {});
             $http.get("/api/v1/videoads/");
-            $httpBackend.flush();
             //We try and refresh the token, but it fails
-            $httpBackend.expectPOST(testEndpoints.tokenrefreshpath).respond(403);
             $httpBackend.flush();
             //So we are redirected to the login page
             expect($location.path).toBe("/login");
