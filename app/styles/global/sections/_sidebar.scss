@@ -1,0 +1,53 @@
+///////////////////////////
+// ********************* //
+//       Sidebar         //
+// ********************* //
+///////////////////////////
+
+
+.sidebar {
+	background-color: #202729;	
+	bottom: 0;
+	display: block;
+	left: 0;
+	padding: 0;
+	overflow-x: hidden;
+	overflow-y: auto;
+	position: fixed;
+	top: 51px;
+	z-index: 1000;
+	button {
+		border: 0;
+		border-radius: 0;
+		padding: 10%;
+		width: 100%;
+	}
+}
+
+.nav-sidebar {
+	border-bottom: 1px solid #d8d8d8;
+	padding-bottom: 15px;
+	&:last-of-type {
+		border-bottom: 0;
+	}
+	li {
+		padding: 10px 0;
+	}
+	a {
+		color: white;
+		cursor: pointer;
+		display: inline;
+		padding: 0;
+		&.active {
+			color: $active;
+			&:hover {
+				color: $active;
+			}
+		}
+		&:hover {
+			//Override Bootsrap evil
+			background: transparent!important;
+			color: rgba(255, 255, 255, .8);
+		}
+	}
+}

@@ -58,4 +58,5 @@ angular.module('video-ads')
       $scope.params.search = $scope.searchTerm;
       $scope.updateList();
     };
+
   });

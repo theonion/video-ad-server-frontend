@@ -1,0 +1,61 @@
+///////////////////////////
+// ********************* //
+//    Video Ad Form      //
+// ********************* //
+///////////////////////////
+
+// Most of these styles are cut and paste
+// from the old setup. TODO: cleanup
+
+//Form View
+
+.video-preview {
+	margin-bottom: 10px;
+	padding: 0;
+}
+
+.delivery {
+    height: 34px;
+	line-height: 3;
+    margin-bottom: 0;
+}
+
+//Targeting
+
+.targeting-group {
+	border: 1px solid rgba(161, 191, 215, 1);
+	border-radius: 4px;
+    clear: left;
+	margin: 0 0 10px 0;
+	padding: 5px;
+}
+.targeting-row .form-control{
+	float: left;
+	margin: 5px 2px 5px 2px;
+}
+.targeting-row-container{
+	margin: 0px auto 0px auto;
+	.btn {
+		width: auto;
+	}
+}
+.targeting-group .col { padding: 0 2px; }
+
+.add-targeting-button{
+	margin: 4px auto 4px auto;
+}
+
+//Pixels
+
+.pixel-group {
+    width: 400px;
+}
+.pixel-group .pixel{
+	margin-bottom: 10px;
+    overflow: hidden;
+}
+.pixel-group .pixel .btn{
+	color: darkred;
+    line-height: 20px;
+	padding: 0;
+}

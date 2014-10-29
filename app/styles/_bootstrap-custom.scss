@@ -1,3 +1,9 @@
+///////////////////////////
+// ********************* //
+//   Bootstrap Custom   //
+// ********************* //
+///////////////////////////
+
 // Core variables and mixins
 @import "../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/variables";
 @import "../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins";
@@ -5,6 +11,7 @@
 // Reset and dependencies
 @import "../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/normalize";
 @import "../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/print";
+
 // TODO: We are currently including the CDN version of Bootstrap Glyphicons since
 // this is not properly importing
 //@import "../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/glyphicons";
