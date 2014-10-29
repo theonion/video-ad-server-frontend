@@ -37,3 +37,6 @@ bower_components
 
 dist/
 *.sublime*
+
+#DS_Store
+.DS_Store
