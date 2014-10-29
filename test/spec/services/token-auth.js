@@ -61,7 +61,7 @@ describe('Service: video-ads.token-auth', function() {
         it("tries to refresh token, but it is too late", function() {
             //we send the initial request, and it is denied 
             $httpBackend.expectGET(testEndpoints.videoadlist).respond(403, '');
-            $httpBackend.expectPOST(testEndpoints.tokenRefreshPath).respond(500, '');
+            $httpBackend.expectPOST(testEndpoints.tokenRefreshPath).respond(403, '');
             $http.get("/api/v1/videoads/");
             //We try and refresh the token, but it fails
             $httpBackend.flush();
