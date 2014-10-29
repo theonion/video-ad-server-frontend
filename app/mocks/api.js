@@ -1,20 +1,24 @@
 angular.module('video-ads.mockApi')
 //TODO: change to a better name, in constants syntax
 .constant("testEndpoints", {
-  "videoAdList": /^\/api\/v1\/videoads\/\?*.*/,
+  "videoAdList": /^\/api\/v1\/videoads\/*\?*.*/,
   "videoAdDetail": /^\/api\/v1\/videoads\/[0-9]+\//,
   "exclusions": /\/api\/v1\/exclusions\//,
   "zencoder": /app.zencoder.com\/.*/,
   "partials": /partials/,
   "exclusionPartials": /exclusion\/global\/partials.*/,
-  "tokenAuthPath": 'api-token-auth'
+  "tokenAuthPath": '/api-token-auth',
+  "tokenRefreshPath": "/api-token-refresh"
 })
   .run(
     ['$httpBackend', 'mockVideoAdFactory', 'zenCoderProgress', 'exclusions', 'testEndpoints',
       function($httpBackend, mockVideoAdFactory, zenCoderProgress, exclusions, testEndpoints) {
         $httpBackend.whenGET(testEndpoints.partials).passThrough();
         $httpBackend.whenGET(testEndpoints.exclusionPartials).passThrough();
-        $httpBackend.whenGET(testEndpoints.tokenAuthPath).respond({
+        $httpBackend.whenPOST(testEndpoints.tokenAuthPath).respond({
+          "token": "baconisdelicious"
+        });
+        $httpBackend.whenPOST(testEndpoints.tokenRefreshPath).respond({
           "token": "baconisdelicious"
         });
         $httpBackend.whenGET(testEndpoints.videoAdDetail).respond(mockVideoAdFactory.videoad.detail);
