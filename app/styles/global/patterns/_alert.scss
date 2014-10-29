@@ -4,18 +4,14 @@
 // ********************* //
 ///////////////////////////
 
-
 .alert{
-	opacity: 0;
+	border-radius: 0;
+	display: none;
+	height: 50px;
 	left: 0;
 	position: fixed;
 	text-align: center;
 	top: 0;
 	width: 100%;
 	z-index: 5000;
-	@include ease;
-	&.show {
-		display: block;
-		opacity: 1;
-	}
 }

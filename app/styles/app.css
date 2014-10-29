@@ -7099,25 +7099,17 @@ h2 {
 }
 
 /* Patterns */
-/* line 8, global/patterns/_alert.scss */
+/* line 7, global/patterns/_alert.scss */
 .alert {
-  opacity: 0;
+  border-radius: 0;
+  display: none;
+  height: 50px;
   left: 0;
   position: fixed;
   text-align: center;
   top: 0;
   width: 100%;
   z-index: 5000;
-  -webkit-transition: all 200ms cubic-bezier(0.25, 0.25, 0.84, 0.325);
-  -moz-transition: all 200ms cubic-bezier(0.25, 0.25, 0.84, 0.325);
-  -ms-transition: all 200ms cubic-bezier(0.25, 0.25, 0.84, 0.325);
-  -o-transition: all 200ms cubic-bezier(0.25, 0.25, 0.84, 0.325);
-  transition: all 200ms cubic-bezier(0.25, 0.25, 0.84, 0.325);
-}
-/* line 17, global/patterns/_alert.scss */
-.alert.show {
-  display: block;
-  opacity: 1;
 }
 
 /* line 8, global/patterns/_videoad.scss */
