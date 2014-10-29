@@ -78,9 +78,10 @@ angular.module('video-ads')
 
     $scope.saveVideoAd = function () {
       if (!_.isUndefined($routeParams.videoAdId)) {
+        $('.alert-success').fadeIn().delay(1000).fadeOut();
         $scope.videoad.save();
       } else {
-        //TODO: Error messaging
+        $('.alert-danger').fadeIn().delay(1000).fadeOut();
         videoAdService.post($scope.videoad)
           .then(function (data) {
             $location.path('/edit/' + data.id);
