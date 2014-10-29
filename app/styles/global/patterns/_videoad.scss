@@ -1,0 +1,50 @@
+///////////////////////////
+// ********************* //
+//       Video Ad        //
+// ********************* //
+///////////////////////////
+
+
+.video-ad {
+	margin-bottom: 3rem;
+	a {
+		color: $body-color;
+		text-decoration: none;
+	}
+	ul {
+		background: #f2f2f2;
+		border: 1px solid #d8d8d8;
+		padding: 3%;
+		@include ease(all, 100ms);
+		&:hover {
+			background: #e2e2e2;
+		}
+	}
+  	li {
+  		//Handle long titles and URLs
+  		display: block;
+  		line-height: 1.75;
+	  	overflow: hidden;
+	  	text-overflow: ellipsis;
+	  	white-space: nowrap;
+  	}
+	img {
+		margin-bottom: 1rem;		
+		position: relative;
+		width: 100%;
+	}
+	.name {
+		font-size: 1.5rem;
+		font-weight: 700;
+	}
+}
+
+.poster-chart {
+	position: relative;
+	.chart {
+		bottom: 0;
+		position: absolute;
+		right: 0;
+		width: 75px;
+	}
+}
