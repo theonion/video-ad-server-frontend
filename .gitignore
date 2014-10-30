@@ -40,3 +40,5 @@ dist/
 
 #DS_Store
 .DS_Store
+
+.tmp/

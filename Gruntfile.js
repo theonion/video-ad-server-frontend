@@ -238,14 +238,18 @@ module.exports = function(grunt) {
           html: {
             steps: {
               js: ['concat', 'uglifyjs'],
-              css: ['cssmin']
+              css: ['concat', 'cssmin']
             },
-            post: {}
+            post: {},
+            blockReplacements: {
+              devOnly: function(block) {
+                return "";
+              }
+            }
           }
         }
       }
     },
-
     // Performs rewrites based on filerev and the useminPrepare configuration
     usemin: {
       html: ['<%= yeoman.dist %>/{,*/}*.html'],
@@ -254,33 +258,6 @@ module.exports = function(grunt) {
         assetsDirs: ['<%= yeoman.dist %>', '<%= yeoman.dist %>/images']
       }
     },
-
-    // The following *-min tasks will produce minified files in the dist folder
-    // By default, your `index.html`'s <!-- Usemin block --> will take care of
-    // minification. These next options are pre-configured if you do not wish
-    // to use the Usemin blocks.
-    // cssmin: {
-    //   dist: {
-    //     files: {
-    //       '<%= yeoman.dist %>/styles/main.css': [
-    //         '.tmp/styles/{,*/}*.css'
-    //       ]
-    //     }
-    //   }
-    // },
-    // uglify: {
-    //   dist: {
-    //     files: {
-    //       '<%= yeoman.dist %>/scripts/scripts.js': [
-    //         '<%= yeoman.dist %>/scripts/scripts.js'
-    //       ]
-    //     }
-    //   }
-    // },
-    // concat: {
-    //   dist: {}
-    // },
-
     imagemin: {
       dist: {
         files: [{
@@ -291,7 +268,6 @@ module.exports = function(grunt) {
         }]
       }
     },
-
     svgmin: {
       dist: {
         files: [{
@@ -320,6 +296,34 @@ module.exports = function(grunt) {
         }]
       }
     },
+    
+    //ngtemplates settings
+    ngtemplates: {
+      bulbsCmsApp: {
+        cwd: '<%= yeoman.app %>',
+        src: 'views/{,*/}*.html',
+        dest: '.tmp/concat/scripts/templates.js',
+        options: {
+          url:    function (url) { return '/' + url; },
+          htmlmin: {
+            collapseBooleanAttributes:      true,
+            collapseWhitespace:             true,
+            removeAttributeQuotes:          true,
+            removeComments:                 true,
+            removeEmptyAttributes:          true,
+            removeRedundantAttributes:      true,
+            removeScriptTypeAttributes:     true,
+            removeStyleLinkTypeAttributes:  true
+          }
+        }
+      }
+    },
+
+    concat: {
+      options: {
+        separator: grunt.util.linefeed,
+      }
+    },
 
     // ng-annotate tries to make the code safe for minification automatically
     // by using the Angular long form for dependency injection.
@@ -328,7 +332,7 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: '.tmp/concat/scripts',
-          src: ['*.js', '!oldieshim.js'],
+          src: ['app/scripts/app.js', '!oldieshim.js'],
           dest: '.tmp/concat/scripts'
         }]
       }
@@ -437,6 +441,7 @@ module.exports = function(grunt) {
     'autoprefixer',
     'concat',
     'ngAnnotate',
+    'ngtemplates',
     'copy:dist',
     'cdnify',
     'cssmin',
