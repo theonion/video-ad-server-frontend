@@ -33,6 +33,10 @@
 @import "global/forms/login-form";
 @import "global/forms/videoad-form";
 
+/* Angular */
+
+@import "global/angular/fade";
+
 /* Global Elements */ 
 
 body {
@@ -41,4 +45,3 @@ body {
 	font-size: 1.4rem;
 	padding-top: 70px;
 }
-

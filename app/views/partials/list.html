@@ -48,11 +48,11 @@
 		</ul>
 	</div>
 	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-		<div class="loading" ng-if="loading">
-			<i class="fa fa-spinner fa-spin"></i> Loading...
+		<div class="loading col-md-12" ng-if="loading">
+			<span>L<i class="fa fa-spinner fa-spin"></i>ading</span>
 		</div>
 		<div class="loading" ng-if="!loading && errors">
-			Oh noes! Something went amuck. Holler at us: foo@foo.com
+			<span>Oh noes! Something went amuck. Holler at us: foo@foo.com</span>
 		</div>
 		<ul class="video-ad-container col-md-12" ng-if="!loading && !errors">
 			<li ng-repeat="videoad in videoAds" class="video-ad col-md-3">

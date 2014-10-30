@@ -7171,7 +7171,14 @@ h2 {
 
 /* line 8, global/patterns/_loading.scss */
 .loading {
-  font-size: 3rem;
+  font-size: 4rem;
+  margin-top: 25%;
+  text-align: center;
+  text-transform: uppercase;
+}
+/* line 13, global/patterns/_loading.scss */
+.loading span {
+  margin-top: 50%;
 }
 
 /* Sections */
@@ -7341,11 +7348,57 @@ h2 {
   padding: 0;
 }
 
+/* Angular */
+/* line 7, global/angular/_fade.scss */
+.fade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  opacity: 1;
+}
+
+/* line 15, global/angular/_fade.scss */
+.fade.ng-enter,
+.fade.ng-leave {
+  background: black;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease;
+}
+
+/* line 23, global/angular/_fade.scss */
+.fade.ng-enter {
+  opacity: 0;
+}
+
+/* line 26, global/angular/_fade.scss */
+.fade.ng-enter-active {
+  opacity: 1;
+}
+
+/* line 29, global/angular/_fade.scss */
+.fade.ng-leave {
+  opacity: 1;
+}
+
+/* line 32, global/angular/_fade.scss */
+.fade.ng-leave-active {
+  opacity: 0;
+}
+
 /* Global Elements */
-/* line 38, app.scss */
+/* line 42, app.scss */
 body {
   color: #3A3A3A;
   font-family: "Arimo", Helvetica, Arial, sans-serif;
   font-size: 1.4rem;
   padding-top: 70px;
+}
+
+/* line 49, app.scss */
+html, body {
+  height: 100%;
 }

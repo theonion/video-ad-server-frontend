@@ -2,36 +2,53 @@
 <html lang="en" ng-app="video-ads-dev">
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- TODO: Can't use this block title thing.  -->
+
 		<title>Onion Video Ad Server</title>
 
-        <!-- TODO: change this over to work with bower crap, reference django-bulbs  -->
+    <!-- Stylesheets -->
+
+    <!-- Date range picker -->
 		<link rel="stylesheet" type="text/css" media="all" href="/bower_components/bootstrap-daterangepicker/daterangepicker-bs3.css" />
+    <!-- Jquery Video Upload -->
 		<link rel="stylesheet" type="text/css" media="all" href="/styles/jquery-video-upload.css" />
+    <!-- VideoJS -->
     <link rel="stylesheet" type="text/css" media="all" href="/bower_components/videojs/dist/video-js/video-js.css" rel="stylesheet">
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" type="text/css" media="all" href="/bower_components/font-awesome/css/font-awesome.css" />
+    <!-- Glyphicons aren't compiling at the moment, we need this -->
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+    <!-- Google Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Arimo:400,700' rel='stylesheet' type='text/css'>
+    <!-- App stylesheet, always last -->
     <link rel="stylesheet" type="text/css" media="all" href="/styles/app.css" />
+
+    <!-- VideoJS -->
     <script type="text/javascript" src="/bower_components/videojs/dist/video-js/video.js"></script>
+
+    <!-- Base href For Angular Routes -->
     <base href="/">
-	</head>
+	
+  </head>
 	<body>
 
+    <!-- The View -->
 		<div class="container-fluid" ng-view>
 		</div>
-    <!-- TODO: change this over to work with bower crap, reference django-bulbs  -->
-    <script type="text/javascript">var STATIC_URL = "/views/";</script>
-		<script type="application/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js" ></script>
-		<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
+    <!-- TODO: do we need this?? Let's not need this -->
+    <script type="text/javascript">var STATIC_URL = "/views/";</script>
+
+    <!-- Vendor Dependencies -->
+    <script type="text/javascript" src="/bower_components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 		<script type="application/javascript" src="scripts/jquery-video-upload.js" ></script>
 		<script type="application/javascript" src="/videos/videoAttrs.js" ></script>
 
+    <!-- Bower Components -->
 		<script type="text/javascript" src="/bower_components/moment/moment.js"></script>
   	<script type="text/javascript" src="/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-  	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.2/angular.js"></script>
-  	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.js"></script>
+    <script type="text/javascript" src="/bower_components/angular/angular.js"></script>
+    <script type="text/javascript" src="/bower_components/angular-route/angular-route.js"></script>
   	<script type="text/javascript" src="/bower_components/angular-cookies/angular-cookies.js"></script>
     <script type="text/javascript" src="/bower_components/angular-mocks/angular-mocks.js"></script>
   	<script type="text/javascript" src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
@@ -39,28 +56,43 @@
   	<script type="text/javascript" src="/bower_components/underscore/underscore-min.js"></script>
     <script type="text/javascript" src="/bower_components/highcharts/highcharts.js"></script>
     <script type="text/javascript" src="/bower_components/highcharts-ng/src/highcharts-ng.js"></script>
+
+    <!-- Mocks -->
     <script type="text/javascript" src="mocks/app.js"></script>
     <script type="text/javascript" src="mocks/mock-data.js"></script>
     <script type="text/javascript" src="mocks/api.js"></script>
+
+    <!-- Angular App -->
   	<script type="text/javascript" src="scripts/app.js"></script>
   	<script type="text/javascript" src="scripts/autocomplete.js"></script>
+
+    <!-- Controllers -->
     <script type="text/javascript" src="scripts/controllers/exclusion.js"></script>
     <script type="text/javascript" src="scripts/controllers/video-ad-form.js"></script>
     <script type="text/javascript" src="scripts/controllers/list.js"></script>
     <script type="text/javascript" src="scripts/controllers/login.js"></script>
+
+    <!-- Directives -->
     <script type="text/javascript" src="scripts/directives/delivery.js"></script>
     <script type="text/javascript" src="scripts/directives/pixels.js"></script>
     <script type="text/javascript" src="scripts/directives/targeting.js"></script>
     <script type="text/javascript" src="scripts/directives/videoupload.js"></script>
+    <script type="text/javascript" src="scripts/directives/chart.js"></script>
+
+    <!-- Services -->
     <script type="text/javascript" src="scripts/services/video-ad.js"></script>
     <script type="text/javascript" src="scripts/services/token-auth.js"></script>
-    <script type="text/javascript" src="scripts/directives/chart.js"></script>
+
+    <!-- Filters -->
     <script type="text/javascript" src="scripts/filters/converttolocal.js"></script>
+
+    <!-- VideoJS -->
     <script>
       videojs.options.flash.swf = "bower_components/videojs/dist/video-js/video-js.swf"
     </script>
     <script type="text/javascript">
         angular.module('video-ads-dev', ["video-ads", "video-ads.mockApi"]);
     </script>
+
 	</body>
 </html>
