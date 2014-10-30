@@ -7105,6 +7105,7 @@ h2 {
   display: none;
   height: 50px;
   left: 0;
+  line-height: 1.5;
   position: fixed;
   text-align: center;
   top: 0;
@@ -7166,6 +7167,11 @@ h2 {
   position: absolute;
   right: 0;
   width: 75px;
+}
+
+/* line 8, global/patterns/_loading.scss */
+.loading {
+  font-size: 3rem;
 }
 
 /* Sections */
@@ -7336,7 +7342,7 @@ h2 {
 }
 
 /* Global Elements */
-/* line 37, app.scss */
+/* line 38, app.scss */
 body {
   color: #3A3A3A;
   font-family: "Arimo", Helvetica, Arial, sans-serif;
