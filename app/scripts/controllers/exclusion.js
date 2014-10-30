@@ -35,9 +35,9 @@ angular.module('video-ads')
                 url: '/api/v1/exclusions/' + $routeParams.exclusionName + '/',
                 data: data
             }).success(function(data){
-                $scope.successful = true;
+                $('.alert-success').fadeIn().delay(1000).fadeOut()
             }).error(function(data){
-                $scope.errors = true;
+                $('.alert-danger').fadeIn().delay(1000).fadeOut()
             });
         };
     });
