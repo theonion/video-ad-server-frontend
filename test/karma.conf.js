@@ -45,6 +45,7 @@ module.exports = function(config) {
       'bower_components/angular-mocks/angular-mocks.js',
       'bower_components/angular-cookies/angular-cookies.js',
       'bower_components/angular-route/angular-route.js',
+      'bower_components/angular-animate/angular-animate.js',
       'bower_components/restangular/dist/restangular.js',
       'bower_components/highcharts/highcharts.js',
       'bower_components/highcharts-ng/src/highcharts-ng.js',
