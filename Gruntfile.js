@@ -178,7 +178,6 @@ module.exports = function(grunt) {
     wiredep: {
       app: {
         src: ['<%= yeoman.app %>/index.html'],
-        ignorePath: /\.\.\//
       },
       sass: {
         src: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
@@ -215,15 +214,21 @@ module.exports = function(grunt) {
       }
     },
 
-    // Renames files for browser caching purposes
-    filerev: {
+    uglify: {
+      options: {
+        mangle: false, //https://github.com/theonion/bulbs-cms/issues/4
+        sourceMap: true,
+        sourceMapIncludeSources: true
+      },
       dist: {
-        src: [
-          '<%= yeoman.dist %>/scripts/{,*/}*.js',
-          '<%= yeoman.dist %>/styles/{,*/}*.css',
-          '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
-          '<%= yeoman.dist %>/styles/fonts/*'
-        ]
+        files: {
+          '<%= yeoman.dist %>/scripts/templates.js': [
+            '.tmp/concat/scripts/templates.js'
+          ],
+          '<%= yeoman.dist %>/scripts/app.min.js': [
+            '.tmp/concat/scripts/scripts/**/*.js',
+          ]
+        }
       }
     },
 
@@ -237,7 +242,7 @@ module.exports = function(grunt) {
         flow: {
           html: {
             steps: {
-              js: ['concat', 'uglifyjs'],
+              js: ['uglify'],
               css: ['concat', 'cssmin']
             },
             post: {},
@@ -250,12 +255,14 @@ module.exports = function(grunt) {
         }
       }
     },
+
+    
     // Performs rewrites based on filerev and the useminPrepare configuration
     usemin: {
       html: ['<%= yeoman.dist %>/{,*/}*.html'],
       css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
       options: {
-        assetsDirs: ['<%= yeoman.dist %>', '<%= yeoman.dist %>/images']
+        assetsDirs: ['<%= yeoman.dist %>']
       }
     },
     imagemin: {
@@ -279,27 +286,27 @@ module.exports = function(grunt) {
       }
     },
 
-    htmlmin: {
-      dist: {
-        options: {
-          collapseWhitespace: true,
-          conservativeCollapse: true,
-          collapseBooleanAttributes: true,
-          removeCommentsFromCDATA: true,
-          removeOptionalTags: true
-        },
-        files: [{
-          expand: true,
-          cwd: '<%= yeoman.dist %>',
-          src: ['*.html', 'views/{,*/}*.html'],
-          dest: '<%= yeoman.dist %>'
-        }]
-      }
-    },
+    // htmlmin: {
+    //   dist: {
+    //     options: {
+    //       collapseWhitespace: true,
+    //       conservativeCollapse: true,
+    //       collapseBooleanAttributes: true,
+    //       removeCommentsFromCDATA: true,
+    //       removeOptionalTags: true
+    //     },
+    //     files: [{
+    //       expand: true,
+    //       cwd: '<%= yeoman.dist %>',
+    //       src: ['*.html', 'views/{,*/}*.html'],
+    //       dest: '<%= yeoman.dist %>'
+    //     }]
+    //   }
+    // },
     
     //ngtemplates settings
     ngtemplates: {
-      bulbsCmsApp: {
+      'video-ads': {
         cwd: '<%= yeoman.app %>',
         src: 'views/{,*/}*.html',
         dest: '.tmp/concat/scripts/templates.js',
@@ -331,17 +338,10 @@ module.exports = function(grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: '.tmp/concat/scripts',
-          src: ['app/scripts/app.js', '!oldieshim.js'],
+          cwd: '<%= yeoman.app %>',
+          src: 'scripts/{,*/}*.js',
           dest: '.tmp/concat/scripts'
         }]
-      }
-    },
-
-    // Replace Google CDN references
-    cdnify: {
-      dist: {
-        html: ['<%= yeoman.dist %>/*.html']
       }
     },
 
@@ -357,8 +357,6 @@ module.exports = function(grunt) {
             '*.{ico,png,txt}',
             '.htaccess',
             '*.html',
-            'bower_components/**/*',
-            'views/{,*/}*.html',
             'images/{,*/}*.{webp}',
             'fonts/*'
           ]
@@ -367,11 +365,6 @@ module.exports = function(grunt) {
           cwd: '.tmp/images',
           dest: '<%= yeoman.dist %>/images',
           src: ['generated/*']
-        }, {
-          expand: true,
-          cwd: '.',
-          src: 'bower_components/bootstrap-sass-official/assets/fonts/bootstrap/*',
-          dest: '<%= yeoman.dist %>'
         }]
       },
       styles: {
@@ -380,6 +373,12 @@ module.exports = function(grunt) {
         dest: '.tmp/styles/',
         src: '{,*/}*.css'
       }
+      // vendorjs: {
+      //   expand: true,
+      //   cwd: 'bower_components',
+      //   dest: '.tmp/vendor/',
+      //   src: '**/*.js'
+      // }
     },
 
     // Run some tasks in parallel to speed up the build process
@@ -443,12 +442,10 @@ module.exports = function(grunt) {
     'ngAnnotate',
     'ngtemplates',
     'copy:dist',
-    'cdnify',
     'cssmin',
     'uglify',
-    'filerev',
     'usemin',
-    'htmlmin'
+    // 'htmlmin'
   ]);
 
   grunt.registerTask('default', [
