@@ -16,6 +16,8 @@ module.exports = function(grunt) {
   // Load grunt tasks automatically
   require('load-grunt-tasks')(grunt);
 
+  grunt.log.write(grunt);
+
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
 
@@ -95,7 +97,7 @@ module.exports = function(grunt) {
                 '/bower_components',
                 connect.static('./bower_components')
               ),
-              connect.static(appConfig.app)
+              connect.static(appConfig.dist)
             ];
           }
         }
@@ -227,7 +229,8 @@ module.exports = function(grunt) {
           ],
           '<%= yeoman.dist %>/scripts/app.min.js': [
             '.tmp/concat/scripts/scripts/**/*.js',
-          ]
+          ],
+          // '<%= yeoman.dist %>/scripts/vendor.min.js': this.wiredep.js 
           // '<%= yeoman.dist %>/scripts/vendor.min.js': [
           //   '.tmp/vendor/**/*.js',
           // ]
@@ -245,15 +248,10 @@ module.exports = function(grunt) {
         flow: {
           html: {
             steps: {
-              js: ['uglify'],
+              js: ['uglifyjs'],
               css: ['concat', 'cssmin']
             },
-            post: {},
-            blockReplacements: {
-              devOnly: function(block) {
-                return "";
-              }
-            }
+            post: {}
           }
         }
       }
@@ -262,10 +260,10 @@ module.exports = function(grunt) {
     
     // Performs rewrites based on filerev and the useminPrepare configuration
     usemin: {
-      html: ['<%= yeoman.dist %>/{,*/}*.html'],
+      html: ['<%= yeoman.dist %>/index.html'],
       css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
       options: {
-        assetsDirs: ['<%= yeoman.dist %>']
+        assetsDirs: ['<%= yeoman.dist %>', '<%= yeoman.dist %>/scripts', '<%= yeoman.dist %>/styles']
       }
     },
     imagemin: {
@@ -289,24 +287,6 @@ module.exports = function(grunt) {
       }
     },
 
-    // htmlmin: {
-    //   dist: {
-    //     options: {
-    //       collapseWhitespace: true,
-    //       conservativeCollapse: true,
-    //       collapseBooleanAttributes: true,
-    //       removeCommentsFromCDATA: true,
-    //       removeOptionalTags: true
-    //     },
-    //     files: [{
-    //       expand: true,
-    //       cwd: '<%= yeoman.dist %>',
-    //       src: ['*.html', 'views/{,*/}*.html'],
-    //       dest: '<%= yeoman.dist %>'
-    //     }]
-    //   }
-    // },
-    
     //ngtemplates settings
     ngtemplates: {
       'video-ads': {
@@ -375,12 +355,6 @@ module.exports = function(grunt) {
         cwd: '<%= yeoman.app %>/styles',
         dest: '.tmp/styles/',
         src: '{,*/}*.css'
-      },
-      vendorjs: {
-        expand: true,
-        cwd: 'bower_components',
-        dest: '.tmp/vendor/',
-        src: '**/*.js'
       }
     },
 
