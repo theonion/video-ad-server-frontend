@@ -13,6 +13,8 @@ angular.module('video-ads')
     $scope.totalItems = 0;
     $scope.params.filter = 'active';
     $scope.params = $routeParams;
+    $scope.loading = true;
+    $scope.errors = false;
 
     $scope.updateList = function() {
       if ($scope.params.filter === undefined) {
@@ -22,8 +24,13 @@ angular.module('video-ads')
       videoAdService.getList([$scope.params]).then(function(data) {
         $scope.videoAds = data;
         $scope.totalItems = data.meta.count;
+        $scope.loading = false;
+      }, function(progress) {
+          $scope.loading = true;
       }, function(error) {
-        console.log(error);
+          $scope.loading = false;
+          $scope.errors = true;
+          console.log(error);
       });
     };
 
