@@ -14,7 +14,7 @@
     <!-- VideoJS -->
     <link rel="stylesheet" type="text/css" media="all" href="/bower_components/videojs/dist/video-js/video-js.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link rel="stylesheet" type="text/css" media="all" href="/bower_components/font-awesome/css/font-awesome.css" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <!-- Glyphicons aren't compiling at the moment, we need this -->
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
     <!-- Google Fonts -->
@@ -32,7 +32,9 @@
 	<body>
 
     <!-- The View -->
-		<div class="container-fluid" ng-view>
+    <div ng-include src='"views/partials/navbar.html"' ng-controller="ListCtrl"></div>
+
+		<div class="container-fluid fade" ng-view>
 		</div>
 
     <!-- TODO: do we need this?? Let's not need this -->
@@ -56,6 +58,7 @@
   	<script type="text/javascript" src="/bower_components/underscore/underscore-min.js"></script>
     <script type="text/javascript" src="/bower_components/highcharts/highcharts.js"></script>
     <script type="text/javascript" src="/bower_components/highcharts-ng/src/highcharts-ng.js"></script>
+    <script type="text/javascript" src="/bower_components/angular-animate/angular-animate.js"></script>
 
     <!-- Mocks -->
     <script type="text/javascript" src="mocks/app.js"></script>

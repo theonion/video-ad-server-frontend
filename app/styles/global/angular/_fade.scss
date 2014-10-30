@@ -5,7 +5,7 @@
 ///////////////////////////
 
 .fade {
-    position: absolute;
+    position: relative;
     top: 0;
     left: 0;
     right: 0;
@@ -14,11 +14,11 @@
 }
 .fade.ng-enter,
 .fade.ng-leave {
-    background: black;
-    -webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    -o-transition: all 1s ease;
-    transition: all 1s ease;
+    background: white;
+    -webkit-transition: all .25s ease;
+    -moz-transition: all .25s ease;
+    -o-transition: all .25s ease;
+    transition: all .25s ease;
 }
 .fade.ng-enter {
     opacity: 0;

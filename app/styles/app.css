@@ -7351,7 +7351,7 @@ h2 {
 /* Angular */
 /* line 7, global/angular/_fade.scss */
 .fade {
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
   right: 0;
@@ -7362,11 +7362,11 @@ h2 {
 /* line 15, global/angular/_fade.scss */
 .fade.ng-enter,
 .fade.ng-leave {
-  background: black;
-  -webkit-transition: all 1s ease;
-  -moz-transition: all 1s ease;
-  -o-transition: all 1s ease;
-  transition: all 1s ease;
+  background: white;
+  -webkit-transition: all .25s ease;
+  -moz-transition: all .25s ease;
+  -o-transition: all .25s ease;
+  transition: all .25s ease;
 }
 
 /* line 23, global/angular/_fade.scss */
@@ -7396,9 +7396,4 @@ body {
   font-family: "Arimo", Helvetica, Arial, sans-serif;
   font-size: 1.4rem;
   padding-top: 70px;
-}
-
-/* line 49, app.scss */
-html, body {
-  height: 100%;
 }
