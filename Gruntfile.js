@@ -228,6 +228,9 @@ module.exports = function(grunt) {
           '<%= yeoman.dist %>/scripts/app.min.js': [
             '.tmp/concat/scripts/scripts/**/*.js',
           ]
+          // '<%= yeoman.dist %>/scripts/vendor.min.js': [
+          //   '.tmp/vendor/**/*.js',
+          // ]
         }
       }
     },
@@ -372,13 +375,13 @@ module.exports = function(grunt) {
         cwd: '<%= yeoman.app %>/styles',
         dest: '.tmp/styles/',
         src: '{,*/}*.css'
+      },
+      vendorjs: {
+        expand: true,
+        cwd: 'bower_components',
+        dest: '.tmp/vendor/',
+        src: '**/*.js'
       }
-      // vendorjs: {
-      //   expand: true,
-      //   cwd: 'bower_components',
-      //   dest: '.tmp/vendor/',
-      //   src: '**/*.js'
-      // }
     },
 
     // Run some tasks in parallel to speed up the build process
@@ -438,6 +441,7 @@ module.exports = function(grunt) {
     'useminPrepare',
     'concurrent:dist',
     'autoprefixer',
+    'copy',
     'concat',
     'ngAnnotate',
     'ngtemplates',
