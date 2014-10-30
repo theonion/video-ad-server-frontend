@@ -7105,6 +7105,7 @@ h2 {
   display: none;
   height: 50px;
   left: 0;
+  line-height: 1.5;
   position: fixed;
   text-align: center;
   top: 0;
@@ -7166,6 +7167,18 @@ h2 {
   position: absolute;
   right: 0;
   width: 75px;
+}
+
+/* line 8, global/patterns/_loading.scss */
+.loading {
+  font-size: 4rem;
+  margin-top: 25%;
+  text-align: center;
+  text-transform: uppercase;
+}
+/* line 13, global/patterns/_loading.scss */
+.loading span {
+  margin-top: 50%;
 }
 
 /* Sections */
@@ -7335,8 +7348,49 @@ h2 {
   padding: 0;
 }
 
+/* Angular */
+/* line 7, global/angular/_fade.scss */
+.fade {
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  opacity: 1;
+}
+
+/* line 15, global/angular/_fade.scss */
+.fade.ng-enter,
+.fade.ng-leave {
+  background: white;
+  -webkit-transition: all .25s ease;
+  -moz-transition: all .25s ease;
+  -o-transition: all .25s ease;
+  transition: all .25s ease;
+}
+
+/* line 23, global/angular/_fade.scss */
+.fade.ng-enter {
+  opacity: 0;
+}
+
+/* line 26, global/angular/_fade.scss */
+.fade.ng-enter-active {
+  opacity: 1;
+}
+
+/* line 29, global/angular/_fade.scss */
+.fade.ng-leave {
+  opacity: 1;
+}
+
+/* line 32, global/angular/_fade.scss */
+.fade.ng-leave-active {
+  opacity: 0;
+}
+
 /* Global Elements */
-/* line 37, app.scss */
+/* line 42, app.scss */
 body {
   color: #3A3A3A;
   font-family: "Arimo", Helvetica, Arial, sans-serif;

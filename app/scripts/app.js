@@ -5,6 +5,7 @@
 angular.module('video-ads', [
   'ngCookies',
   'ngRoute',
+  'ngAnimate',
   'ui.bootstrap',
   'autocomplete',
   'restangular',

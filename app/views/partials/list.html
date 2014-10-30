@@ -1,5 +1,3 @@
-<div ng-include src='"views/partials/navbar.html"'></div>
-
 <div class="row">
 	<div class="col-sm-3 col-md-2 sidebar">
 		<button class="btn btn-default add-btn btn-success" ng-click="newVideoAd();">
@@ -48,7 +46,13 @@
 		</ul>
 	</div>
 	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-		<ul class="video-ad-container col-md-12">
+		<div class="loading col-md-12" ng-if="loading">
+			<span>L<i class="fa fa-spinner fa-spin"></i>ading</span>
+		</div>
+		<div class="loading" ng-if="!loading && errors">
+			<span>Oh noes! Something went amuck. Holler at us: foo@foo.com</span>
+		</div>
+		<ul class="video-ad-container col-md-12 fade" ng-if="!loading && !errors">
 			<li ng-repeat="videoad in videoAds" class="video-ad col-md-3">
 				<a href="/edit/{{videoad.id}}/">
 					<ul>
@@ -72,7 +76,7 @@
 				</a>
 			</li><!--EO Video Ad -->
 		</ul><!-- EO Video Ads Container -->
-		<pagination total-items="totalItems" items-per-page="5" ng-model="$parent.currentPage"></pagination>
+		<pagination total-items="totalItems" items-per-page="5" ng-model="$parent.currentPage" ng-if="!loading && !errors"></pagination>
 	</div>
 	    	
 </div>
