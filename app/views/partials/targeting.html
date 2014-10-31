@@ -19,7 +19,7 @@
 						</div>
 						<div class="col-md-1 col">
 							<button class="btn btn-danger form-control" type="submit" ng-click="removeTargetingRow($parent.$index, $index);">
-								<i class="glyphicon glyphicon-remove"></i></button>
+								<i class="fa fa-remove"></i></button>
 						</div>
 					</div>
 				</div>
@@ -29,9 +29,9 @@
 			<div class="targeting-row">
 				<div class="targeting-row-container row">
 			        <div class="col-md-8 col">
-			        	<button class="btn btn-success btn-sm form-control add-targeting-button" type="submit" ng-click="addTargetingRow($index);"><i class="glyphicon glyphicon-plus"></i> Add Row</button>
+			        	<button class="btn btn-success btn-sm form-control add-targeting-button" type="submit" ng-click="addTargetingRow($index);"><i class="fa fa-plus"></i> Add Row</button>
 
-				        <button class="btn btn-sm btn-warning remove-group form-control" ng-click="removeTargetingGroup($index);"><i class="glyphicon glyphicon-remove"></i> Delete group</button>
+				        <button class="btn btn-sm btn-warning remove-group form-control" ng-click="removeTargetingGroup($index);"><i class="fa fa-remove"></i> Delete group</button>
 		        	</div>
 		        	<div class="priority col-md-3 col">
 				    	<select class="form-control" ng-model="group['priority']" ng-options="priority for priority in priorities"></select>
