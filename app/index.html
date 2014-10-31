@@ -27,7 +27,8 @@
     <base href="/">
 	
   </head>
-	<body>
+	
+  <body>
 
     <!-- The View -->
     <div ng-include src='"views/partials/navbar.html"' ng-controller="ListCtrl"></div>
@@ -35,9 +36,11 @@
 		<div class="container-fluid fade" ng-view>
 		</div>
 
+    <!-- TODO: do we need this?? Let's not need this
+    <script type="text/javascript">var STATIC_URL = "/views/";</script>
+
     <!-- Vendor Dependencies -->
     <script type="text/javascript" src="/bower_components/jquery/dist/jquery.js"></script>
-    <script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 		<script type="application/javascript" src="scripts/jquery-video-upload.js" ></script>
 		<script type="application/javascript" src="/videos/videoAttrs.js" ></script>
 

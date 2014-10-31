@@ -58,12 +58,7 @@
 					<ul>
 						<li class="poster-chart">
 							<img src="images/thumb.png" alt=""/>
-							<span ng-show="{{videoad.delivery}} != 100">
-								<delivery-chart impressions="{{videoad.delivery}}" class="chart"></delivery-chart>
-							</span>
-							<span ng-show="{{videoad.delivery}} >= 100">
-								<i class="fa fa-check-circle-o complete"></i>
-							</span>
+							<delivery-chart impressions="{{videoad.delivery}}" class="chart"></delivery-chart>
 						</li>
 						<li class="name">{{videoad.name}}</li>
 						<li>Client: Old Spice</li>
