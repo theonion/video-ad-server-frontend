@@ -35,7 +35,6 @@ bower_components
 # Sass Cache
 .sass-cache
 
-dist/
 *.sublime*
 
 #DS_Store
