@@ -8350,17 +8350,12 @@ h2 {
 }
 
 /* line 50, global/forms/_videoad-form.scss */
-.pixel-group {
-  width: 400px;
-}
-
-/* line 53, global/forms/_videoad-form.scss */
 .pixel-group .pixel {
   margin-bottom: 10px;
   overflow: hidden;
 }
 
-/* line 57, global/forms/_videoad-form.scss */
+/* line 54, global/forms/_videoad-form.scss */
 .pixel-group .pixel .btn {
   color: darkred;
   line-height: 20px;
