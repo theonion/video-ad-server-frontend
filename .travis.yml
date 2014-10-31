@@ -10,5 +10,9 @@ cache:
   directories:
     - bower_components
     - node_modules
+env:
+  global:
+    - secure: NjLuiap22D0Y11maJLOgnMI6RYk9XZQDUsnCw4vHC8/svPPWCfW7lV5mLriG45EAePMkLPcNZriOhHt2O2eYSiN+z9c/pjNU5Yh2reB8vqRFbo8WhnaniJinSqipP/TWLOE7yPGY4ZltDl53N2fHnRAdqHbWqIJwTT5Wr7iSt2U=
+    - secure: RNGsUOZtDlzuVxblFFyJMsRhlQw803Bt/9LKRst3tiQo+n8cpi4vgTPULJ3edub43unYAoRMvmdRC2Dxh1TwCql4qRxGqQoQQoX4oloUciGTy3SYY6fXkruuVqlITGOtaozcTvKcgH/U1479O5WvgOPlDhV76OMHHmmWXKeNWWc=
 addons:
   sauce_connect: true
