@@ -97,7 +97,7 @@ module.exports = function(grunt) {
                 '/bower_components',
                 connect.static('./bower_components')
               ),
-              connect.static(appConfig.dist)
+              connect.static(appConfig.app)
             ];
           }
         }
@@ -294,7 +294,6 @@ module.exports = function(grunt) {
         src: 'views/{,*/}*.html',
         dest: '.tmp/concat/scripts/templates.js',
         options: {
-          url:    function (url) { return '/' + url; },
           htmlmin: {
             collapseBooleanAttributes:      true,
             collapseWhitespace:             true,

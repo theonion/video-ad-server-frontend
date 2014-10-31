@@ -5,22 +5,17 @@
 		<title>Onion Video Ad Server</title>
         <!-- Stylesheets -->
         <!-- Date range picker -->
-		<link rel="stylesheet" type="text/css" media="all" href="/bower_components/bootstrap-daterangepicker/daterangepicker-bs3.css" />
-        <!-- Jquery Video Upload -->
-		<link rel="stylesheet" type="text/css" media="all" href="/styles/jquery-video-upload.css" />
-        <!-- VideoJS -->
-        <link rel="stylesheet" type="text/css" media="all" href="/bower_components/videojs/dist/video-js/video-js.css" rel="stylesheet">
-        <!-- Font Awesome -->
-        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-        <!-- Glyphicons aren't compiling at the moment, we need this -->
-        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
-        <!-- Google Fonts -->
-        <link href='http://fonts.googleapis.com/css?family=Arimo:400,700' rel='stylesheet' type='text/css'>
-        <!-- App stylesheet, always last -->
+        <!-- build:css css/app.css -->
+        <!-- bower:css -->
+        <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="../bower_components/bootstrap-daterangepicker/daterangepicker-bs3.css" />
+        <link rel="stylesheet" href="../bower_components/videojs/dist/video-js/video-js.css" />
+        <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.css" />
+        <!-- endbower -->
         <link rel="stylesheet" type="text/css" media="all" href="/styles/app.css" />
+        <!-- endbuild -->
 
         <!-- VideoJS -->
-        <script type="text/javascript" src="/bower_components/videojs/dist/video-js/video.js"></script>
 
         <!-- Base href For Angular Routes -->
         <base href="/">
@@ -64,20 +59,19 @@
         <script src="../bower_components/highcharts/modules/exporting.js"></script>
         <script src="../bower_components/highcharts-ng/dist/highcharts-ng.js"></script>
         <script src="../bower_components/angular-animate/angular-animate.js"></script>
-        <script src="../bower_components/angular-mocks/angular-mocks.js"></script>
-        <script src="../bower_components/angular-scenario/angular-scenario.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
+        <script src="../bower_components/angular-mocks/angular-mocks.js"></script>
+        <script src="../bower_components/angular-scenario/angular-scenario.js"></script>
+
         <script>
           videojs.options.flash.swf = "bower_components/videojs/dist/video-js/video-js.swf"
         </script>
 
-        <!-- build:js dev -->
         <!-- Mocks -->
         <script type="text/javascript" src="mocks/app.js"></script>
         <script type="text/javascript" src="mocks/mock-data.js"></script>
         <script type="text/javascript" src="mocks/api.js"></script>
-        <!-- endbuild -->
 
         <!-- build:js scripts/app.min.js -->
         <!-- Angular App -->
@@ -110,10 +104,8 @@
 
         <!-- endbuild -->
         
-        <!-- build:js devDeclare -->
         <script type="text/javascript">
             angular.module('video-ads-dev', ["video-ads", "video-ads.mockApi"]);
         </script>
-        <!-- endbuild -->
 	</body>
 </html>
