@@ -3,8 +3,6 @@
 angular.module('video-ads')
     .controller('ExclusionCtrl', function ($scope, $http, $routeParams) {
         $scope.exclusion = {};
-        $scope.success = false;
-        $scope.errors = false;
 
         $scope.page_targets = [
             'dfp_adchannel',
