@@ -16,6 +16,8 @@ module.exports = function(grunt) {
   // Load grunt tasks automatically
   require('load-grunt-tasks')(grunt);
 
+  grunt.log.write(grunt);
+
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
 
@@ -178,7 +180,6 @@ module.exports = function(grunt) {
     wiredep: {
       app: {
         src: ['<%= yeoman.app %>/index.html'],
-        ignorePath: /\.\.\//
       },
       sass: {
         src: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
@@ -215,15 +216,25 @@ module.exports = function(grunt) {
       }
     },
 
-    // Renames files for browser caching purposes
-    filerev: {
+    uglify: {
+      options: {
+        mangle: false, //https://github.com/theonion/bulbs-cms/issues/4
+        sourceMap: true,
+        sourceMapIncludeSources: true
+      },
       dist: {
-        src: [
-          '<%= yeoman.dist %>/scripts/{,*/}*.js',
-          '<%= yeoman.dist %>/styles/{,*/}*.css',
-          '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
-          '<%= yeoman.dist %>/styles/fonts/*'
-        ]
+        files: {
+          '<%= yeoman.dist %>/scripts/templates.js': [
+            '.tmp/concat/scripts/templates.js'
+          ],
+          '<%= yeoman.dist %>/scripts/app.min.js': [
+            '.tmp/concat/scripts/scripts/**/*.js',
+          ],
+          // '<%= yeoman.dist %>/scripts/vendor.min.js': this.wiredep.js 
+          // '<%= yeoman.dist %>/scripts/vendor.min.js': [
+          //   '.tmp/vendor/**/*.js',
+          // ]
+        }
       }
     },
 
@@ -237,8 +248,8 @@ module.exports = function(grunt) {
         flow: {
           html: {
             steps: {
-              js: ['concat', 'uglifyjs'],
-              css: ['cssmin']
+              js: ['uglifyjs'],
+              css: ['concat', 'cssmin']
             },
             post: {}
           }
@@ -246,41 +257,15 @@ module.exports = function(grunt) {
       }
     },
 
+    
     // Performs rewrites based on filerev and the useminPrepare configuration
     usemin: {
-      html: ['<%= yeoman.dist %>/{,*/}*.html'],
+      html: ['<%= yeoman.dist %>/index.html'],
       css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
       options: {
-        assetsDirs: ['<%= yeoman.dist %>', '<%= yeoman.dist %>/images']
+        assetsDirs: ['<%= yeoman.dist %>', '<%= yeoman.dist %>/scripts', '<%= yeoman.dist %>/styles']
       }
     },
-
-    // The following *-min tasks will produce minified files in the dist folder
-    // By default, your `index.html`'s <!-- Usemin block --> will take care of
-    // minification. These next options are pre-configured if you do not wish
-    // to use the Usemin blocks.
-    // cssmin: {
-    //   dist: {
-    //     files: {
-    //       '<%= yeoman.dist %>/styles/main.css': [
-    //         '.tmp/styles/{,*/}*.css'
-    //       ]
-    //     }
-    //   }
-    // },
-    // uglify: {
-    //   dist: {
-    //     files: {
-    //       '<%= yeoman.dist %>/scripts/scripts.js': [
-    //         '<%= yeoman.dist %>/scripts/scripts.js'
-    //       ]
-    //     }
-    //   }
-    // },
-    // concat: {
-    //   dist: {}
-    // },
-
     imagemin: {
       dist: {
         files: [{
@@ -291,7 +276,6 @@ module.exports = function(grunt) {
         }]
       }
     },
-
     svgmin: {
       dist: {
         files: [{
@@ -303,21 +287,30 @@ module.exports = function(grunt) {
       }
     },
 
-    htmlmin: {
-      dist: {
+    //ngtemplates settings
+    ngtemplates: {
+      'video-ads': {
+        cwd: '<%= yeoman.app %>',
+        src: 'views/{,*/}*.html',
+        dest: '.tmp/concat/scripts/templates.js',
         options: {
-          collapseWhitespace: true,
-          conservativeCollapse: true,
-          collapseBooleanAttributes: true,
-          removeCommentsFromCDATA: true,
-          removeOptionalTags: true
-        },
-        files: [{
-          expand: true,
-          cwd: '<%= yeoman.dist %>',
-          src: ['*.html', 'views/{,*/}*.html'],
-          dest: '<%= yeoman.dist %>'
-        }]
+          htmlmin: {
+            collapseBooleanAttributes:      true,
+            collapseWhitespace:             true,
+            removeAttributeQuotes:          true,
+            removeComments:                 true,
+            removeEmptyAttributes:          true,
+            removeRedundantAttributes:      true,
+            removeScriptTypeAttributes:     true,
+            removeStyleLinkTypeAttributes:  true
+          }
+        }
+      }
+    },
+
+    concat: {
+      options: {
+        separator: grunt.util.linefeed,
       }
     },
 
@@ -327,17 +320,10 @@ module.exports = function(grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: '.tmp/concat/scripts',
-          src: ['*.js', '!oldieshim.js'],
+          cwd: '<%= yeoman.app %>',
+          src: 'scripts/{,*/}*.js',
           dest: '.tmp/concat/scripts'
         }]
-      }
-    },
-
-    // Replace Google CDN references
-    cdnify: {
-      dist: {
-        html: ['<%= yeoman.dist %>/*.html']
       }
     },
 
@@ -353,8 +339,6 @@ module.exports = function(grunt) {
             '*.{ico,png,txt}',
             '.htaccess',
             '*.html',
-            'bower_components/**/*',
-            'views/{,*/}*.html',
             'images/{,*/}*.{webp}',
             'fonts/*'
           ]
@@ -363,11 +347,6 @@ module.exports = function(grunt) {
           cwd: '.tmp/images',
           dest: '<%= yeoman.dist %>/images',
           src: ['generated/*']
-        }, {
-          expand: true,
-          cwd: '.',
-          src: 'bower_components/bootstrap-sass-official/assets/fonts/bootstrap/*',
-          dest: '<%= yeoman.dist %>'
         }]
       },
       styles: {
@@ -435,15 +414,15 @@ module.exports = function(grunt) {
     'useminPrepare',
     'concurrent:dist',
     'autoprefixer',
+    'copy',
     'concat',
     'ngAnnotate',
+    'ngtemplates',
     'copy:dist',
-    'cdnify',
     'cssmin',
     'uglify',
-    'filerev',
     'usemin',
-    'htmlmin'
+    // 'htmlmin'
   ]);
 
   grunt.registerTask('default', [
