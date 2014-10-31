@@ -4,6 +4,8 @@
 // ********************* //
 ///////////////////////////
 
+@icon-font-path: "../bootstrap/fonts/";
+
 // Core variables and mixins
 @import "../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/variables";
 @import "../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins";
@@ -14,7 +16,7 @@
 
 // TODO: We are currently including the CDN version of Bootstrap Glyphicons since
 // this is not properly importing
-//@import "../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/glyphicons";
+@import "../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/glyphicons";
 
 // Core CSS
 @import "../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/scaffolding";
