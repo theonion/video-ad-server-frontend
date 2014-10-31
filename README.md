@@ -1,4 +1,4 @@
-Onion Video Ads ![Onion Video Ads] (https://magnum.travis-ci.com/theonion/video-ad-server-frontend.svg?token=oh8fGhpeVrGWCTDxLkSh&branch=master)
+Onion Video Ads ![Onion Video Ads] (https://travis-ci.org/theonion/video-ad-server-frontend.svg)
 ---------------
 
 Development
