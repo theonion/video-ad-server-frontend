@@ -4,7 +4,7 @@ angular.module('video-ads')
   .directive('deliveryChart', function() {
     return {
       restrict: 'E',
-      templateUrl: STATIC_URL + 'partials/chart.html',
+      templateUrl: 'views/partials/chart.html',
       scope: {
         impressions: '@impressions'
       },

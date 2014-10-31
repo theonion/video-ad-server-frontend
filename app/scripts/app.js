@@ -7,11 +7,9 @@ angular.module('video-ads', [
   'ngRoute',
   'ngAnimate',
   'ui.bootstrap',
-  'autocomplete',
   'restangular',
   'highcharts-ng'
 ])
-  .constant("STATIC_URL", "/static/")
   .config(function($locationProvider, $httpProvider, $routeProvider, $sceDelegateProvider) {
     $sceDelegateProvider.resourceUrlWhitelist(['self', 'http://assets.onionstatic.com/videoads/*']);
 

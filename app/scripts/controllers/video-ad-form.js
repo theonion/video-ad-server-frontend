@@ -18,7 +18,8 @@ angular.module('video-ads')
     $scope.user_targets = [
       'city',
       'region',
-      'country_code'];
+      'country_code'
+    ];
 
     $scope.initVideoAd = function () {
       if (!$scope.videoad.targeting) {

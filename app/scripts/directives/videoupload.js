@@ -3,7 +3,7 @@
 angular.module('video-ads')
 	.directive('videoUpload', function ($http, $window, $timeout) {
 		return {
-			templateUrl: STATIC_URL + 'partials/videoUpload.html',
+			templateUrl: 'views/partials/videoUpload.html',
 			scope: {
 				'videoad': '='
 			},
