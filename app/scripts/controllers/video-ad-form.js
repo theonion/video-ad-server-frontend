@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('video-ads')
-  .controller('FormCtrl', function ($scope, $routeParams, videoAdService, $location) {
+  .controller('FormCtrl', ['$scope', '$routeParams', 'videoAdService', '$location', function ($scope, $routeParams, videoAdService, $location) {
     $scope.success = false;
     $scope.errors = false;
     $scope.videoad = {};
@@ -90,4 +90,4 @@ angular.module('video-ads')
       }
     };
     $scope.getAndInitVideoAd();
-  });
+  }]);

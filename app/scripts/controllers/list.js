@@ -1,9 +1,12 @@
 'use strict';
 angular.module('video-ads')
-  .controller('ListCtrl', function($scope, $location, videoAdService, $routeParams) {
+  .controller('ListCtrl', ['$scope', '$location', 'videoAdService', '$routeParams', function($scope, $location, videoAdService, $routeParams) {
     $scope.videoAds = [];
     if (_.isEmpty($location.search())) {
-      $scope.params = {};
+      $scope.params = {
+        'page_size': 5,
+        'filter': 'active'
+      };
     } else {
       $scope.params = $location.search();
     }
@@ -11,8 +14,6 @@ angular.module('video-ads')
     $scope.searchTerm = "";
     $scope.currentPage = 1;
     $scope.totalItems = 0;
-    $scope.params.filter = 'active';
-    $scope.params = $routeParams;
     $scope.loading = true;
     $scope.errors = false;
 
@@ -34,7 +35,6 @@ angular.module('video-ads')
       });
     };
 
-    $scope.updateList();
 
     $scope.newVideoAd = function() {
       $location.path('/new/');
@@ -66,4 +66,6 @@ angular.module('video-ads')
       $scope.updateList();
     };
 
-  });
+    $scope.updateList();
+
+  }]);
