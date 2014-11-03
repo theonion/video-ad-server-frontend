@@ -12,3 +12,11 @@
      -o-transition: $property $time cubic-bezier(0.250, 0.250, 0.840, 0.325); 
         transition: $property $time cubic-bezier(0.250, 0.250, 0.840, 0.325);
 }
+
+@mixin spin {
+-webkit-animation: spin 1s infinite linear;
+   -moz-animation: spin 1s infinite linear;
+    -ms-animation: spin 1s infinite linear;
+	 -o-animation: spin 1s infinite linear;
+	    animation: spin 1s infinite linear;
+}
