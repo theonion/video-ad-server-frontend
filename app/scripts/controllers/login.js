@@ -5,9 +5,6 @@ angular.module('video-ads')
         $scope.username = "";
         $scope.password = "";
         $scope.submitLogin = function() {
-            authService.login($scope.username, $scope.password)
-            .success(function(){
-                $location.path('/');
-            });
+            authService.login($scope.username, $scope.password);
         }
     });

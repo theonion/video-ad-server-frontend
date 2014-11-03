@@ -21,7 +21,7 @@ angular.module('video-ads')
         $scope.params.filter = "active";
       }
       $location.search($scope.params);
-      videoAdService.getList([$scope.params]).then(function(data) {
+      videoAdService.getList($scope.params).then(function(data) {
         $scope.videoAds = data;
         $scope.totalItems = data.meta.count;
         $scope.loading = false;
