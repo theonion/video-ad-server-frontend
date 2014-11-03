@@ -1,5 +1,5 @@
 angular.module('video-ads')
-    .factory('authInterceptor', function($rootScope, $q, $window, $location, httpRequestBuffer) {
+    .factory('authInterceptor', ['$rootScope', '$q','$window', '$location', '$injector','httpRequestBuffer', function($rootScope, $q, $window, $location, $injector, httpRequestBuffer) {
         return {
             'request': function(config) {
                 config.headers = config.headers || {};
@@ -13,17 +13,18 @@ angular.module('video-ads')
                     if (response.status == 403) {
                         var deferred = $q.defer();
                         httpRequestBuffer.append(response.config, deferred)
-                        $rootScope.$broadcast('auth-forbidden', response);
+                        var authService = $injector.get("authService");
+                        authService.refreshToken();
                     }
                 }
                 return $q.reject(response);
             }
         }
-    })
-    .config(function($httpProvider) {
+    }])
+    .config(['$httpProvider', function($httpProvider) {
         $httpProvider.interceptors.push('authInterceptor');
-    })
-    .service("authService", function($window, $http, $rootScope, $location, httpRequestBuffer) {
+    }])
+    .service("authService", ['$window', '$http', '$rootScope', '$location', 'httpRequestBuffer', function($window, $http, $rootScope, $location, httpRequestBuffer) {
         var _login = function(username, password) {
             return $http.post("/api-token-auth/", {'username': username, 'password': password})
                 .then(function(response) {
@@ -45,15 +46,12 @@ angular.module('video-ads')
                     $location.path("/login");
                 });
         }
-
-        $rootScope.$watch("auth-forbidden", function() {
-            _refreshToken();
-        });
+        
         return {
             login: _login,
             refreshToken: _refreshToken
         }
-    })
+    }])
 // Thanks to witoldsz/angular-http-auth
 .factory('httpRequestBuffer', ['$injector',
     function($injector) {
