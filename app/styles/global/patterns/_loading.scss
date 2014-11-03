@@ -14,3 +14,12 @@
 		margin-top: 50%;
 	}
 }
+
+.loader {
+	border: solid 2px $active;
+	display: inline-block;
+	height: 3rem;
+	margin: 0 1rem;
+	width: 3rem;
+	@include spin;
+}
