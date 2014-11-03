@@ -149,12 +149,17 @@ module.exports = function(grunt) {
     // Empties folders to start fresh
     clean: {
       dist: {
+        js: [
+          '<%= yeoman.dist %>/{,*/}*.js',
+          '<%= yeoman.dist %>/{,*/}*.js.map'
+        ],
+        css: [
+          '<%= yeoman.dist %>/{,*/}*.css'
+        ],        
         files: [{
           dot: true,
           src: [
-            '.tmp',
-            '<%= yeoman.dist %>/{,*/}*',
-            '!<%= yeoman.dist %>/.git*'
+            ".tmp"
           ]
         }]
       },
@@ -225,16 +230,12 @@ module.exports = function(grunt) {
       },
       dist: {
         files: {
-          '<%= yeoman.dist %>/scripts/templates.js': [
+          '<%= yeoman.dist %>/js/templates.js': [
             '.tmp/concat/scripts/templates.js'
           ],
-          '<%= yeoman.dist %>/scripts/app.min.js': [
+          '<%= yeoman.dist %>/js/app.min.js': [
             '.tmp/concat/scripts/scripts/**/*.js',
-          ],
-          // '<%= yeoman.dist %>/scripts/vendor.min.js': this.wiredep.js 
-          // '<%= yeoman.dist %>/scripts/vendor.min.js': [
-          //   '.tmp/vendor/**/*.js',
-          // ]
+          ]
         }
       }
     },
@@ -264,7 +265,7 @@ module.exports = function(grunt) {
       html: ['<%= yeoman.dist %>/index.html'],
       css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
       options: {
-        assetsDirs: ['<%= yeoman.dist %>', '<%= yeoman.dist %>/scripts', '<%= yeoman.dist %>/styles']
+        assetsDirs: ['<%= yeoman.dist %>', '<%= yeoman.dist %>/js', '<%= yeoman.dist %>/styles']
       }
     },
     imagemin: {
