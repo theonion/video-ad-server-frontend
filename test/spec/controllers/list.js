@@ -15,7 +15,7 @@ describe('Controller: video-ads.ListCtrl', function () {
       $location = _$location_;
       videoAdFactory = _mockVideoAdFactory_;
       $scope = _$rootScope_.$new();
-      $scope.vidoeAdListEndpoint = /\/api\/v1\/videoads\/.*/;
+      $scope.vidoeAdListEndpoint = /\/api\/advertisements\/.*/;
       _$controller_("ListCtrl", {
         $scope: $scope,
         $httpBackend: $httpBackend

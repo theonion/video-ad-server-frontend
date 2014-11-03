@@ -41,7 +41,7 @@ describe('Service: video-ads.token-auth', function() {
             //we send the initial request, and it is denied 
             var returnedData;
             $httpBackend.expectGET(testEndpoints.videoadlist).respond(403, {});
-            $http.get("/api/v1/videoads").then(
+            $http.get("/api/advertisements/").then(
                 function(data) {
                     returnedData = returnedData;
                 }
@@ -62,7 +62,7 @@ describe('Service: video-ads.token-auth', function() {
             //we send the initial request, and it is denied 
             $httpBackend.expectGET(testEndpoints.videoadlist).respond(403, '');
             $httpBackend.expectPOST(testEndpoints.tokenRefreshPath).respond(403, '');
-            $http.get("/api/v1/videoads/");
+            $http.get("/api/v1/advertisements/");
             //We try and refresh the token, but it fails
             $httpBackend.flush();
             //So we are redirected to the login page

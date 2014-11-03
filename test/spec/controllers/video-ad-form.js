@@ -18,8 +18,8 @@ describe('Controller: video-ads.FormCtrl', function (){
             $scope = _$rootScope_.$new();
             $routeParams = {};
             //TODO: get rid of these horrid regexs attached to the scope
-            $scope.vidoeAdListEndpoint = /\/api\/v1\/videoads\//
-            $scope.videoAdDetailRegex = /^\/api\/v1\/videoads\/[0-9]+\//;
+            $scope.vidoeAdListEndpoint = /\/api\/advertisements\//
+            $scope.videoAdDetailRegex = /^\/api\/advertisements\/[0-9]+\//;
             _$controller_("FormCtrl", {
                 $scope: $scope,
                 $location: _$location_,
