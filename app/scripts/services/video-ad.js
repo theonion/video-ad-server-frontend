@@ -3,10 +3,10 @@
 angular.module("video-ads")
 	.factory('videoAdService', 
         function (Restangular) {
-    		Restangular.setBaseUrl("/api/v1/");
+    		Restangular.setBaseUrl("/api/");
     		Restangular.setRequestSuffix("/");
 
-            return Restangular.service("videoads");
+            return Restangular.service("advertisements");
 	})
     .config(function (RestangularProvider) {
         // Restangular likes lists to be returned as lists. DRF returns lists as a JSON object, with the list of objects inside of the response.results object.

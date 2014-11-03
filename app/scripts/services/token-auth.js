@@ -24,14 +24,15 @@ angular.module('video-ads')
         $httpProvider.interceptors.push('authInterceptor');
     })
     .service("authService", function($window, $http, $rootScope, $location, httpRequestBuffer) {
-        _login = function(username, password) {
-            return $http.post("/api-token-auth")
+        var _login = function(username, password) {
+            return $http.post("/api-token-auth/", {'username': username, 'password': password})
                 .then(function(response) {
                     $window.sessionStorage.token = response.data.token;
+                    $location.path('/');
                 });
         }
-        _refreshToken = function() {
-            return $http.post("/api-token-refresh", {
+        var _refreshToken = function() {
+            return $http.post("/api-token-refresh/", {
                     "token": $window.sessionStorage.token
                 }, {
                     "ignoreAuthModule": true
