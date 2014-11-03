@@ -19,6 +19,7 @@ angular.module('video-ads')
               margin: 0,
               width: 75,
             },
+            exporting: { enabled: false },
             credits: { enabled: false },
             tooltip: { enabled: false },
             colors: ['#008d52', '#e2e2e2'],
