@@ -1,7 +1,65 @@
-<input type="text" class="form-control fake-input" value="{{videoad.video.name}}" disabled>
-<label class="btn btn-default pull-right s3uploadButton" ng-click="chooseFile();" ng-show="!videoad.video.status || videoad.video.status == 0 || videoad.video.status == 3">Choose File</label>
-<label class="btn btn-danger pull-right s3uploadButton" ng-click="clearFile();" ng-show="videoad.video.status == 1">Clear</label>
-<label class="btn btn-danger pull-right s3uploadButton" ng-click="abort();" ng-show="videoad.video.status == 2">Abort</label>
-<div class="progress progress-striped active s3uploadProgress" style="display:none;"><div class="progress-bar" style="width: 0%"><span class="pull-left">Encoding...</span></div></div>
+<div class="container" ng-repeat="video in videoad.videos" ng-show="videoad.videos.length > 0">
 
-<input type="file" name="video" class="form-control" style="position:absolute; left:-6000px;" />
+  <input ng-model="videoad.videos[$index].id" value="{{video.id}}" type="hidden" />
+
+  <div class="form-group" ng-show="video.name">
+    <label class="col-md-3 ">Name</label>
+    <div class="col-md-9"><input type="text" class="form-control" value="{{video.name}}" ng-model="videoad.videos[$index].name" /></div>
+  </div>
+
+  <div class="form-group" ng-show="!video.name">
+    <input type="text" class="form-control fake-input" value="{{video.name}}" disabled>
+    <label class="btn btn-default pull-right s3uploadButton" ng-click="chooseFile();" ng-show="!video.status || video.status == 0 || video.status == 3">Choose File</label>
+    <label class="btn btn-danger pull-right s3uploadButton" ng-click="clearFile();" ng-show="video.status == 1">Clear</label>
+    <label class="btn btn-danger pull-right s3uploadButton" ng-click="abort();" ng-show="video.status == 2">Abort</label>
+    <div class="progress progress-striped active s3uploadProgress" style="display:none;"><div class="progress-bar" style="width: 0%"><label class="pull-left">Encoding...</label></div></div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-md-3 ">Poster</label>
+    <div class="col-md-9"><input type="url" class="form-control" value="{{video.poster}}" ng-model="videoad.videos[$index].poster" /></div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-md-3 ">Runtime</label>
+    <div class="col-md-4"><input type="datetime" class="form-control" value="{{video.start}}" ng-model="videoad.videos[$index].start" /></div>
+    <label class="col-md-1">to</label>
+    <div class="col-md-4"><input type="datetime" class="form-control" value="{{video.end}}" ng-model="videoad.videos[$index].end" /></div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-md-3 ">Impression Target</label>
+    <div class="col-md-9"><input type="number" class="form-control" value="{{video.impression_target}}" ng-model="videoad.videos[$index].impression_target" /></div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-md-4">Impression Count</label>
+    <label class="col-md-4">Start Count</label>
+    <label class="col-md-4">1st Qtr Count</label>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-4"><input class="form-control" value="{{video.impression_count}}" disabled /></div>
+    <div class="col-md-4"><input class="form-control" value="{{video.start_count}}" disabled /></div>
+    <div class="col-md-4"><input class="form-control" value="{{video.first_quartile_count}}" disabled /></div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-md-4">Midpoint Count</label>
+    <label class="col-md-4">3rd Qtr Count</label>
+    <label class="col-md-4">Complete Count</label>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-4"><input class="form-control" value="{{video.midpoint_count}}" disabled /></div>
+    <div class="col-md-4"><input class="form-control" value="{{video.third_qartile_count}}" disabled /></div>
+    <div class="col-md-4"><input class="form-control" value="{{video.complete_count}}" disabled /></div>
+  </div>
+
+  <div><p>&nbsp;</p><p>&nbsp;</p></div>
+
+</div>
+
+<div class="container">
+  <button class="btn btn-success" type="submit" ng-click="addVideo();">Add Video</button>
+</div>
