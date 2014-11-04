@@ -7,12 +7,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
+    </div>
+    <div ng-if="show_search_bar" class="navbar-collapse collapse fade">
       <a class="navbar-brand" href="/">
         <h1 class="visuallyhidden">Onion Video Server</h1>
         <img src="images/logo-white.png" alt="Logo"/>
       </a>
-    </div>
-    <div ng-if="show_search_bar" class="navbar-collapse collapse fade">
       <form class="navbar-form navbar-right" ng-submit="search();">
         <input type="text" class="form-control" placeholder="Search" ng-model="$parent.searchTerm">
       </form>
