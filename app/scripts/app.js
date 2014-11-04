@@ -11,7 +11,7 @@ angular.module('video-ads', [
   'highcharts-ng'
 ])
   .config(function($locationProvider, $httpProvider, $routeProvider, $sceDelegateProvider) {
-    $sceDelegateProvider.resourceUrlWhitelist(['self', 'http://assets.onionstatic.com/videoads/*']);
+    $sceDelegateProvider.resourceUrlWhitelist(['self', 'http://assets.onionstatic.com/videoads/*', 'http://onionwebtech.s3.amazonaws.com/videoads/**']);
 
     $locationProvider.html5Mode(true);
 

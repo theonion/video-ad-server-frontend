@@ -5,7 +5,8 @@ angular.module('video-ads')
 		return {
 			templateUrl: 'views/partials/videoUpload.html',
 			scope: {
-				'videoad': '='
+				'videoad': '=',
+        'target': '='
 			},
 			link: function($scope, elem, attrs){
 				$scope.errors = false;
@@ -15,6 +16,10 @@ angular.module('video-ads')
 					2: "In Progress",
 					3: "Failed"
 				};
+
+        $scope.addVideo = function() {
+          $scope.target.push({});
+        };
 
 				var fileInput = elem.find('input[type="file"]');
 				var button = elem.find('label.btn');
