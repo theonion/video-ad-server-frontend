@@ -45,15 +45,14 @@ describe('Controller: video-ads.ListCtrl', function () {
     });
 
     it('changePage should populate videoads and totalItems', function () {
-      $scope.changePage();
+      $scope.pageChanged(1);
       $httpBackend.flush();
       expect($scope.videoAds.length).toBe(4);
       expect($scope.totalItems).toBe(20);
     });
 
     it("updatePage should set currentPage, fire off a request", function () {
-      $scope.currentPage = 2;
-      $scope.changePage();
+      $scope.pageChanged(2);
       expect($scope.currentPage).toBe(2);
       $httpBackend.flush();
     });

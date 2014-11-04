@@ -4,7 +4,7 @@ angular.module('video-ads')
     $scope.videoAds = [];
     if (_.isEmpty($location.search())) {
       $scope.params = {
-        'page_size': 5,
+        'page_size': 8,
         'filter': 'active'
       };
     } else {
