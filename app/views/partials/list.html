@@ -71,7 +71,7 @@
 				</a>
 			</li><!--EO Video Ad -->
 		</ul><!-- EO Video Ads Container -->
-		<pagination total-items="totalItems" items-per-page="5" ng-model="$parent.currentPage" ng-if="!loading && !errors"></pagination>
+		   <pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged(pageNo)"></pagination>
 	</div>
 	    	
 </div>

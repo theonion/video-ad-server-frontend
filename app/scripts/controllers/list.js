@@ -26,15 +26,16 @@ angular.module('video-ads')
         $scope.videoAds = data;
         $scope.totalItems = data.meta.count;
         $scope.loading = false;
-      }, function(progress) {
-          $scope.loading = true;
-      }, function(error) {
+      }, 
+      function(error) {
           $scope.loading = false;
           $scope.errors = true;
           console.log(error);
+      },
+      function(progress) {
+          $scope.loading = true;
       });
     };
-
 
     $scope.newVideoAd = function() {
       $location.path('/new/');
@@ -56,7 +57,7 @@ angular.module('video-ads')
       $scope.updateList();
     };
 
-    $scope.changePage = function() {
+    $scope.pageChanged = function() {
       $scope.params.page = $scope.currentPage;
       $scope.updateList();
     };
