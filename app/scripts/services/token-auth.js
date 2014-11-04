@@ -9,12 +9,14 @@ angular.module('video-ads')
                 return config;
             },
             'responseError': function(response) {
-                if (!response.config.ignoreAuthModule) {
-                    if (response.status == 403) {
-                        var deferred = $q.defer();
-                        httpRequestBuffer.append(response.config, deferred)
-                        var authService = $injector.get("authService");
-                        authService.refreshToken();
+                if (!_.isUndefined(response.config)){
+                    if (!response.config.ignoreAuthModule) {
+                        if (response.status == 403) {
+                            var deferred = $q.defer();
+                            httpRequestBuffer.append(response.config, deferred)
+                            var authService = $injector.get("authService");
+                            authService.refreshToken();
+                        }
                     }
                 }
                 return $q.reject(response);
