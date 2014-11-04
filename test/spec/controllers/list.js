@@ -5,6 +5,7 @@ describe('Controller: video-ads.ListCtrl', function () {
   var $httpBackend,
     $scope,
     $location,
+    $rootScope,
     videoAdFactory;
 
   beforeEach(function () {
@@ -13,6 +14,7 @@ describe('Controller: video-ads.ListCtrl', function () {
     inject(function (_$httpBackend_, _$rootScope_, _$controller_, _mockVideoAdFactory_, _$location_) {
       $httpBackend = _$httpBackend_;
       $location = _$location_;
+      $rootScope = _$rootScope_;
       videoAdFactory = _mockVideoAdFactory_;
       $scope = _$rootScope_.$new();
       $scope.vidoeAdListEndpoint = /\/api\/advertisements\/.*/;
@@ -52,8 +54,9 @@ describe('Controller: video-ads.ListCtrl', function () {
     });
 
     it("updatePage should set currentPage, fire off a request", function () {
-      $scope.pageChanged(2);
-      expect($scope.currentPage).toBe(2);
+      $scope.currentPage = 2;
+      $scope.pageChanged();
+      expect($scope.params.page).toBe(2);
       $httpBackend.flush();
     });
 
@@ -114,9 +117,8 @@ describe('Controller: video-ads.ListCtrl', function () {
         .respond(videoAdFactory.videoad.paginatedList(_.range(1, 5)));
       });
     it("Searching fires off request, and populates $scope.searchTerm", function () {
-      $scope.searchTerm = "bacon";
-      $scope.search();
-      expect($scope.searchTerm).toBe("bacon");
+      $rootScope.$broadcast("search", "bacon");
+      $httpBackend.flush();
       expect($scope.params.search).toBe("bacon");
     });
     afterEach(function () {
