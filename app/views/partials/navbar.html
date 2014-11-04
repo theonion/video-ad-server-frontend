@@ -12,9 +12,9 @@
         <img src="images/logo-white.png" alt="Logo"/>
       </a>
     </div>
-    <div ng-if="show_search_bar" class="navbar-collapse collapse fade" ng-submit="search();">
-      <form class="navbar-form navbar-right">
-        <input type="text" class="form-control" placeholder="Search" ng-model="$parent.$parent.searchTerm">
+    <div ng-if="show_search_bar" class="navbar-collapse collapse fade">
+      <form class="navbar-form navbar-right" ng-submit="search();">
+        <input type="text" class="form-control" placeholder="Search" ng-model="$parent.searchTerm">
       </form>
     </div>
   </div>
