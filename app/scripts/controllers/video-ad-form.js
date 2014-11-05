@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('video-ads')
-  .controller('FormCtrl', ['$scope', '$routeParams', 'videoAdService', '$location', function ($scope, $routeParams, videoAdService, $location) {
+  .controller('FormCtrl', ['$scope', '$routeParams', 'videoAdService', '$location', '$rootScope',function ($scope, $routeParams, videoAdService, $location, $rootScope) {
+    $rootScope.$emit('hide_search_bar');
     $scope.success = false;
     $scope.errors = false;
     $scope.videoad = {};
