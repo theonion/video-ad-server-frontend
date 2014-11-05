@@ -1,79 +1,256 @@
 angular.module('video-ads.mockApi')
-  .constant("videoAd", {
-    "start": "2014-10-15T05:00:00Z",
-    "end": "2014-10-17T05:00:00Z",
-    "targeting": {
-      "page": [{
-        "priority": "medium",
-        "rules": [
-          [
+  .constant("videoAd", {  
+  "id":1,
+  "name":"Ad 1",
+  "client":null,
+  "campaign":null,
+  "start":"2000-01-01T00:00:00Z",
+  "end":"2020-12-31T23:59:59Z",
+  "impression_target":0,
+  "impression_count":0,
+  "vast_url":"/vast/1",
+  "click_through":"https://www.google.com/?q=clubelpaso",
+  "gam_attribute":"",
+  "targeting":{  
+    "page":[  
+      {  
+        "priority":"low",
+        "rules":[  
+          [  
             "dfp_adchannel",
             "is",
-            "news"
+            "delicious"
           ],
-          [
-            "dfp_site",
+          [  
+            "dfp_pagetype",
             "is not",
-            "theonion"
+            "cool"
           ]
         ]
-      }],
-      "user": [{
-        "priority": "medium",
-        "rules": [
-          [
-            "User Targeting group 1",
-            "is",
-            "bacon"
-          ]
-        ]
-      }, {
-        "priority": "medium",
-        "rules": [
-          [
-            "User Targeting group 2",
-            "is",
-            "bacon"
-          ]
-        ]
-      }]
+      }
+    ],
+    "user":[  
+
+    ]
+  },
+  "pixels":{  
+    "impression":[  
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=impression",
+      "http://vastrack.theonion.com/tracking.gif?video=2&event=impression",
+      "http://vastrack.theonion.com/tracking.gif?video=4&event=impression",
+      "http://vastrack.theonion.com/tracking.gif?video=5&event=impression",
+      "http://vastrack.theonion.com/tracking.gif?video=7&event=impression",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=impression",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=impression",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=impression",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=impression",
+      "http://vastrack.theonion.com/tracking.gif?video=2&event=impression",
+      "http://vastrack.theonion.com/tracking.gif?video=4&event=impression",
+      "http://vastrack.theonion.com/tracking.gif?video=5&event=impression",
+      "http://vastrack.theonion.com/tracking.gif?video=7&event=impression",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=impression",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=impression",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=impression",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=impression",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=impression",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=impression",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=impression",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=impression",
+      "http://vastrack.theonion.com/tracking.gif?video=10&event=impression",
+      "http://vastrack.theonion.com/tracking.gif?video=2&event=impression",
+      "http://vastrack.theonion.com/tracking.gif?video=4&event=impression",
+      "http://vastrack.theonion.com/tracking.gif?video=5&event=impression",
+      "http://vastrack.theonion.com/tracking.gif?video=7&event=impression",
+      "http://vastrack.theonion.com/tracking.gif?video=10&event=impression"
+    ],
+    "complete":[  
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=complete",
+      "http://vastrack.theonion.com/tracking.gif?video=2&event=complete",
+      "http://vastrack.theonion.com/tracking.gif?video=4&event=complete",
+      "http://vastrack.theonion.com/tracking.gif?video=5&event=complete",
+      "http://vastrack.theonion.com/tracking.gif?video=7&event=complete",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=complete",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=complete",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=complete",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=complete",
+      "http://vastrack.theonion.com/tracking.gif?video=2&event=complete",
+      "http://vastrack.theonion.com/tracking.gif?video=4&event=complete",
+      "http://vastrack.theonion.com/tracking.gif?video=5&event=complete",
+      "http://vastrack.theonion.com/tracking.gif?video=7&event=complete",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=complete",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=complete",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=complete",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=complete",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=complete",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=complete",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=complete",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=complete",
+      "http://vastrack.theonion.com/tracking.gif?video=10&event=complete",
+      "http://vastrack.theonion.com/tracking.gif?video=2&event=complete",
+      "http://vastrack.theonion.com/tracking.gif?video=4&event=complete",
+      "http://vastrack.theonion.com/tracking.gif?video=5&event=complete",
+      "http://vastrack.theonion.com/tracking.gif?video=7&event=complete",
+      "http://vastrack.theonion.com/tracking.gif?video=10&event=complete"
+    ],
+    "thirdQuartile":[  
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=thirdQuartile",
+      "http://vastrack.theonion.com/tracking.gif?video=2&event=thirdQuartile",
+      "http://vastrack.theonion.com/tracking.gif?video=4&event=thirdQuartile",
+      "http://vastrack.theonion.com/tracking.gif?video=5&event=thirdQuartile",
+      "http://vastrack.theonion.com/tracking.gif?video=7&event=thirdQuartile",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=thirdQuartile",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=thirdQuartile",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=thirdQuartile",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=thirdQuartile",
+      "http://vastrack.theonion.com/tracking.gif?video=2&event=thirdQuartile",
+      "http://vastrack.theonion.com/tracking.gif?video=4&event=thirdQuartile",
+      "http://vastrack.theonion.com/tracking.gif?video=5&event=thirdQuartile",
+      "http://vastrack.theonion.com/tracking.gif?video=7&event=thirdQuartile",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=thirdQuartile",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=thirdQuartile",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=thirdQuartile",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=thirdQuartile",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=thirdQuartile",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=thirdQuartile",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=thirdQuartile",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=thirdQuartile",
+      "http://vastrack.theonion.com/tracking.gif?video=10&event=thirdQuartile",
+      "http://vastrack.theonion.com/tracking.gif?video=2&event=thirdQuartile",
+      "http://vastrack.theonion.com/tracking.gif?video=4&event=thirdQuartile",
+      "http://vastrack.theonion.com/tracking.gif?video=5&event=thirdQuartile",
+      "http://vastrack.theonion.com/tracking.gif?video=7&event=thirdQuartile",
+      "http://vastrack.theonion.com/tracking.gif?video=10&event=thirdQuartile"
+    ],
+    "clickThrough":[  
+
+    ],
+    "midpoint":[  
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=midpoint",
+      "http://vastrack.theonion.com/tracking.gif?video=2&event=midpoint",
+      "http://vastrack.theonion.com/tracking.gif?video=4&event=midpoint",
+      "http://vastrack.theonion.com/tracking.gif?video=5&event=midpoint",
+      "http://vastrack.theonion.com/tracking.gif?video=7&event=midpoint",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=midpoint",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=midpoint",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=midpoint",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=midpoint",
+      "http://vastrack.theonion.com/tracking.gif?video=2&event=midpoint",
+      "http://vastrack.theonion.com/tracking.gif?video=4&event=midpoint",
+      "http://vastrack.theonion.com/tracking.gif?video=5&event=midpoint",
+      "http://vastrack.theonion.com/tracking.gif?video=7&event=midpoint",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=midpoint",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=midpoint",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=midpoint",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=midpoint",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=midpoint",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=midpoint",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=midpoint",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=midpoint",
+      "http://vastrack.theonion.com/tracking.gif?video=10&event=midpoint",
+      "http://vastrack.theonion.com/tracking.gif?video=2&event=midpoint",
+      "http://vastrack.theonion.com/tracking.gif?video=4&event=midpoint",
+      "http://vastrack.theonion.com/tracking.gif?video=5&event=midpoint",
+      "http://vastrack.theonion.com/tracking.gif?video=7&event=midpoint",
+      "http://vastrack.theonion.com/tracking.gif?video=10&event=midpoint"
+    ],
+    "start":[  
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=start",
+      "http://vastrack.theonion.com/tracking.gif?video=2&event=start",
+      "http://vastrack.theonion.com/tracking.gif?video=4&event=start",
+      "http://vastrack.theonion.com/tracking.gif?video=5&event=start",
+      "http://vastrack.theonion.com/tracking.gif?video=7&event=start",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=start",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=start",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=start",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=start",
+      "http://vastrack.theonion.com/tracking.gif?video=2&event=start",
+      "http://vastrack.theonion.com/tracking.gif?video=4&event=start",
+      "http://vastrack.theonion.com/tracking.gif?video=5&event=start",
+      "http://vastrack.theonion.com/tracking.gif?video=7&event=start",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=start",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=start",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=start",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=start",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=start",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=start",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=start",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=start",
+      "http://vastrack.theonion.com/tracking.gif?video=10&event=start",
+      "http://vastrack.theonion.com/tracking.gif?video=2&event=start",
+      "http://vastrack.theonion.com/tracking.gif?video=4&event=start",
+      "http://vastrack.theonion.com/tracking.gif?video=5&event=start",
+      "http://vastrack.theonion.com/tracking.gif?video=7&event=start",
+      "http://vastrack.theonion.com/tracking.gif?video=10&event=start"
+    ],
+    "firstQuartile":[  
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=firstQuartile",
+      "http://vastrack.theonion.com/tracking.gif?video=2&event=firstQuartile",
+      "http://vastrack.theonion.com/tracking.gif?video=4&event=firstQuartile",
+      "http://vastrack.theonion.com/tracking.gif?video=5&event=firstQuartile",
+      "http://vastrack.theonion.com/tracking.gif?video=7&event=firstQuartile",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=firstQuartile",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=firstQuartile",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=firstQuartile",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=firstQuartile",
+      "http://vastrack.theonion.com/tracking.gif?video=2&event=firstQuartile",
+      "http://vastrack.theonion.com/tracking.gif?video=4&event=firstQuartile",
+      "http://vastrack.theonion.com/tracking.gif?video=5&event=firstQuartile",
+      "http://vastrack.theonion.com/tracking.gif?video=7&event=firstQuartile",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=firstQuartile",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=firstQuartile",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=firstQuartile",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=firstQuartile",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=firstQuartile",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=firstQuartile",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=firstQuartile",
+      "http://vastrack.theonion.com/tracking.gif?video=1&event=firstQuartile",
+      "http://vastrack.theonion.com/tracking.gif?video=10&event=firstQuartile",
+      "http://vastrack.theonion.com/tracking.gif?video=2&event=firstQuartile",
+      "http://vastrack.theonion.com/tracking.gif?video=4&event=firstQuartile",
+      "http://vastrack.theonion.com/tracking.gif?video=5&event=firstQuartile",
+      "http://vastrack.theonion.com/tracking.gif?video=7&event=firstQuartile",
+      "http://vastrack.theonion.com/tracking.gif?video=10&event=firstQuartile"
+    ]
+  },
+  "videos":[  
+    {  
+      "id":1,
+      "name":"Video 1",
+      "poster":"",
+      "input":"",
+      "start":null,
+      "end":null,
+      "impression_target":null,
+      "impression_count":0,
+      "start_count":0,
+      "first_quartile_count":0,
+      "midpoint_count":0,
+      "third_quartile_count":0,
+      "complete_count":0,
+      "sources":[  
+
+      ]
     },
-    "pixels": {
-      "impression": [
-        "asf"
-      ],
-      "complete": [
-        "zxcv"
-      ],
-      "thirdQuartile": [
-        "zzzz"
-      ],
-      "clickThrough": [
-        "asdf"
-      ],
-      "midpoint": [
-        "eeee"
-      ],
-      "start": [],
-      "firstQuartile": []
-    },
-    "video": {
-      "id": 3,
-      "name": "spacetestSMALL_512kb.mp4",
-      "status": 2,
-      "job_id": 120463745
-    },
-    "is_running": true,
-    "impressions": 0,
-    "delivery": null,
-    "url": "http://videoads.theonion.com/vast/3.xml",
-    "id": null,
-    "name": "Name of Video Add",
-    "impression_target": 9000,
-    "click_through": "http://www.google.com",
-    "gam_attribute": "gamattr",
-    "vast_url": "http://www.example.com"
-  })
+    {  
+      "id":10,
+      "name":"sample_mpeg4.mp4",
+      "poster":null,
+      "input":null,
+      "start":null,
+      "end":null,
+      "impression_target":null,
+      "impression_count":null,
+      "start_count":0,
+      "first_quartile_count":0,
+      "midpoint_count":0,
+      "third_quartile_count":0,
+      "complete_count":0,
+      "sources":[  
+
+      ]
+    }
+  ]
+})
   .constant("zenCoderProgress", {
     "state": "finished",
     "input": {
