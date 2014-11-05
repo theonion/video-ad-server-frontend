@@ -1,3 +1,4 @@
+'use strict';
 describe('Service: video-ads.token-auth', function() {
 
     var $httpBackend,
@@ -24,32 +25,32 @@ describe('Service: video-ads.token-auth', function() {
         });
     });
 
-    describe("login", function() {
-        it("Succeeds, token session variable is set", function() {
-            var tokenValue = "bacon";
+    describe('login', function() {
+        it('Succeeds, token session variable is set', function() {
+            var tokenValue = 'bacon';
             $httpBackend.expectPOST(testEndpoints.tokenAuthPath).respond(200, {
-                "token": tokenValue
+                'token': tokenValue
             });
-            authService.login("user", "pass");
+            authService.login('user', 'pass');
             $httpBackend.flush();
             expect($window.sessionStorage.token).toBe(tokenValue);
         });
     });
 
-    describe("A request is made, but the token is expired", function() {
-        it("refreshes the token, resends the request, fires the callback", function() {
-            //we send the initial request, and it is denied 
+    describe('A request is made, but the token is expired', function() {
+        it('refreshes the token, resends the request, fires the callback', function() {
+            //we send the initial request, and it is denied
             var returnedData;
             $httpBackend.expectGET(testEndpoints.videoadlist).respond(403, {});
-            $http.get("/api/advertisements/").then(
+            $http.get('/api/advertisements/').then(
                 function(data) {
-                    returnedData = returnedData;
+                    returnedData = data;
                 }
             );
-            //we expect the token to automatically be refreshed.. 
-            var newTokenValue = "newtoken";
+            //we expect the token to automatically be refreshed..
+            var newTokenValue = 'newtoken';
             $httpBackend.expectPOST(testEndpoints.tokenRefreshPath).respond(200, {
-                "token": newTokenValue
+                'token': newTokenValue
             });
             $httpBackend.expectGET(testEndpoints.videoAdList).respond(200, videoAdFactory.list);
             //And to attempt the old request once again, this time successfully
@@ -58,15 +59,24 @@ describe('Service: video-ads.token-auth', function() {
             expect(returnedData).toBe(videoAdFactory.list);
         });
 
-        it("tries to refresh token, but it is too late", function() {
-            //we send the initial request, and it is denied 
+        it('tries to refresh token, but it is too late', function() {
+            //we send the initial request, and it is denied
             $httpBackend.expectGET(testEndpoints.videoadlist).respond(403, '');
             $httpBackend.expectPOST(testEndpoints.tokenRefreshPath).respond(403, '');
-            $http.get("/api/v1/advertisements/");
+            $http.get('/api/v1/advertisements/');
             //We try and refresh the token, but it fails
             $httpBackend.flush();
             //So we are redirected to the login page
-            expect($location.path()).toBe("/login");
+            expect($location.path()).toBe('/login');
+        });
+
+        it('refreshes token, but still doesnt have permission', function(){
+          $httpBackend.expectGET(testEndpoints.videoadlist).respond(403, '');
+          $httpBackend.expectPOST(testEndpoints.tokenRefreshPath).respond(200, '')
+            .respond({'token': 'bacon'});
+          $http.get('/api/v1/advertisements/');
+          $httpBackend.expectGET(testEndpoints.videoadlist).respond(403, '');
+          $httpBackend.flush();
         });
     });
     afterEach(function() {
