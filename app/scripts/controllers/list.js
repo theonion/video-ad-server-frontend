@@ -68,6 +68,8 @@ angular.module('video-ads')
       $scope.updateList();
     });
 
+    $rootScope.$emit("hide_search_bar");
+
     $scope.updateList();
 
   }]);

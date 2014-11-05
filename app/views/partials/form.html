@@ -45,7 +45,7 @@
       <div class="form-group">
         <label for="impressionTarget" class="col-md-3 control-label">Impression Target</label>
         <div class="col-md-2">
-          <input type="number" class="form-control" placeholder="Impression Target" ng-model="videoad.impression_target" disabled>
+          <input type="number" class="form-control" placeholder="Impression Target" ng-model="videoad.impression_target">
         </div>
         <label for="impressionTarget" class="col-md-2 control-label">Total Impressions</label>
         <div class="col-md-2">
@@ -53,7 +53,7 @@
         </div>
       </div>
 
-      <div class="form-group">
+      <div class="form-group" ng-if="{{ videoad.delivery }} != 0">
         <div class="col-md-3">&nbsp;</div>
         <div class="col-md-6">
           <div class="progress progress-striped delivery" delivery videoad="videoad">
@@ -61,7 +61,7 @@
         </div>
       </div>
 
-      <div class="form-group group-margin">
+      <div class="form-group">
         <label for="clickThrough" class="col-md-3 control-label">Clickthrough</label>
         <div class="col-md-6">
           <input type="url" class="form-control" placeholder="Clickthrough URL" ng-model="videoad.click_through">
@@ -103,12 +103,12 @@
       <div class="form-group group-margin">
         <label for="video" class="col-md-3 control-label">Videos</label>
         <!-- TODO: pass relevant info to this directive (specifically the current ad) -->
-        <video-field></video-field>
+        <video-field class="col-md-6"></video-field>
         </div>
       </div>
 
 
-      <div id="save-button" class="form-group group-margin">
+      <div id="save-button" class="col-md-12 group-margin">
         <label class="col-md-3">&nbsp;</label>
         <div class="col-md-6">
           <button type="submit" class="btn btn-primary" ng-click="saveVideoAd();">Save</button>
