@@ -5,7 +5,12 @@
 ///////////////////////////
 
 
+// Using prefix 'on-' to Onion namespace
+// styles that clash with Bootstrap
+// ie: .on-fade v .fade
+
 /* Vendor Dependencies */
+
 @import "bootstrap-custom";
 
 /* Authored Dependencies */

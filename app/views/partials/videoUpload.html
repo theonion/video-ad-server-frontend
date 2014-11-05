@@ -1,10 +1,12 @@
-<div class="container" ng-repeat="video in videoad.videos" ng-show="videoad.videos.length > 0">
+<div class="row videos-container" ng-repeat="video in videoad.videos" ng-show="videoad.videos.length > 0">
 
   <input ng-model="videoad.videos[$index].id" value="{{video.id}}" type="hidden" />
 
+  <img src="images/thumb.png" src="{{video.poster}}" ng-model="videoad.videos[$index].poster" data-toggle="modal" data-target="#myModal" alt=""/>
+
   <div class="form-group" ng-show="video.name">
-    <label class="col-md-3 ">Name</label>
-    <div class="col-md-9"><input type="text" class="form-control" value="{{video.name}}" ng-model="videoad.videos[$index].name" /></div>
+    <label class="col-sm-3 ">Name</label>
+    <div class="col-sm-9"><input type="text" class="form-control" value="{{video.name}}" ng-model="videoad.videos[$index].name" /></div>
   </div>
 
   <div class="form-group" ng-show="!video.name">
@@ -13,11 +15,6 @@
     <label class="btn btn-danger pull-right s3uploadButton" ng-click="clearFile();" ng-show="video.status == 1">Clear</label>
     <label class="btn btn-danger pull-right s3uploadButton" ng-click="abort();" ng-show="video.status == 2">Abort</label>
     <div class="progress progress-striped active s3uploadProgress" style="display:none;"><div class="progress-bar" style="width: 0%"><label class="pull-left">Encoding...</label></div></div>
-  </div>
-
-  <div class="form-group">
-    <label class="col-md-3 ">Poster</label>
-    <div class="col-md-9"><input type="url" class="form-control" value="{{video.poster}}" ng-model="videoad.videos[$index].poster" /></div>
   </div>
 
   <div class="form-group">
@@ -60,6 +57,4 @@
 
 </div>
 
-<div class="container">
-  <button class="btn btn-success" type="submit" ng-click="addVideo();">Add Video</button>
-</div>
+<button class="btn btn-success" type="submit" ng-click="addVideo();">Add Video</button>

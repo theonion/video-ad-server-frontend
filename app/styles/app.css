@@ -8382,9 +8382,28 @@ h2 {
   padding: 0;
 }
 
+/* line 66, global/forms/_videoad-form.scss */
+.videos-container {
+  margin: 0;
+}
+/* line 68, global/forms/_videoad-form.scss */
+.videos-container label {
+  padding-top: 8px;
+}
+/* line 71, global/forms/_videoad-form.scss */
+.videos-container img {
+  margin-bottom: 15px;
+  width: 100%;
+}
+/* line 74, global/forms/_videoad-form.scss */
+.videos-container img:hover {
+  cursor: pointer;
+  opacity: .8;
+}
+
 /* Angular */
 /* line 7, global/angular/_fade.scss */
-.fade {
+.on-fade {
   position: relative;
   top: 0;
   left: 0;
@@ -8394,8 +8413,8 @@ h2 {
 }
 
 /* line 15, global/angular/_fade.scss */
-.fade.ng-enter,
-.fade.ng-leave {
+.on-fade.ng-enter,
+.on-fade.ng-leave {
   background: white;
   -webkit-transition: all .25s ease;
   -moz-transition: all .25s ease;
@@ -8404,27 +8423,27 @@ h2 {
 }
 
 /* line 23, global/angular/_fade.scss */
-.fade.ng-enter {
+.on-fade.ng-enter {
   opacity: 0;
 }
 
 /* line 26, global/angular/_fade.scss */
-.fade.ng-enter-active {
+.on-fade.ng-enter-active {
   opacity: 1;
 }
 
 /* line 29, global/angular/_fade.scss */
-.fade.ng-leave {
+.on-fade.ng-leave {
   opacity: 1;
 }
 
 /* line 32, global/angular/_fade.scss */
-.fade.ng-leave-active {
+.on-fade.ng-leave-active {
   opacity: 0;
 }
 
 /* Global Elements */
-/* line 41, app.scss */
+/* line 46, app.scss */
 body {
   color: #3A3A3A;
   font-family: "Arimo", Helvetica, Arial, sans-serif;

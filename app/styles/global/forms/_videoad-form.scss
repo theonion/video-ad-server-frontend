@@ -60,3 +60,23 @@
     line-height: 20px;
 	padding: 0;
 }
+
+// Videos
+
+.videos-container {
+	margin: 0;
+	label {
+		padding-top: 8px;
+	}
+	img {
+		margin-bottom: 15px;
+		width: 100%;
+		&:hover {
+			cursor: pointer;
+			opacity: .8;
+		}
+	}
+}
+
+
+
