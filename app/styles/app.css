@@ -8330,7 +8330,12 @@ h2 {
   margin-bottom: 0;
 }
 
-/* line 25, global/forms/_videoad-form.scss */
+/* line 23, global/forms/_videoad-form.scss */
+.group-margin {
+  margin: 4% 0;
+}
+
+/* line 29, global/forms/_videoad-form.scss */
 .targeting-group {
   border: 1px solid #a1bfd7;
   border-radius: 4px;
@@ -8339,38 +8344,38 @@ h2 {
   padding: 5px;
 }
 
-/* line 32, global/forms/_videoad-form.scss */
+/* line 36, global/forms/_videoad-form.scss */
 .targeting-row .form-control {
   float: left;
   margin: 5px 2px 5px 2px;
 }
 
-/* line 36, global/forms/_videoad-form.scss */
+/* line 40, global/forms/_videoad-form.scss */
 .targeting-row-container {
   margin: 0px auto 0px auto;
 }
-/* line 38, global/forms/_videoad-form.scss */
+/* line 42, global/forms/_videoad-form.scss */
 .targeting-row-container .btn {
   width: auto;
 }
 
-/* line 42, global/forms/_videoad-form.scss */
+/* line 46, global/forms/_videoad-form.scss */
 .targeting-group .col {
   padding: 0 2px;
 }
 
-/* line 44, global/forms/_videoad-form.scss */
+/* line 48, global/forms/_videoad-form.scss */
 .add-targeting-button {
   margin: 4px auto 4px auto;
 }
 
-/* line 50, global/forms/_videoad-form.scss */
+/* line 54, global/forms/_videoad-form.scss */
 .pixel-group .pixel {
   margin-bottom: 10px;
   overflow: hidden;
 }
 
-/* line 54, global/forms/_videoad-form.scss */
+/* line 58, global/forms/_videoad-form.scss */
 .pixel-group .pixel .btn {
   color: darkred;
   line-height: 20px;
