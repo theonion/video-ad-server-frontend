@@ -5,7 +5,8 @@
     <button ng-click="removeVideo();" class="btn btn-danger"><span class="fa fa-trash-o"></span></button></div>
 </div>
 <div ng-if="!article.video && !uploadProgress" class="video-upload-container" style="position: relative;">
-  <button ng-click="uploadVideo();" class="btn btn-success" style="width: 100%;"><span class="fa fa-film"></span> Upload Video</button>
+  <button ng-click="uploadVideo();" class="btn btn-success" style="width: 100%;"><span class="fa fa-video-camera"></span>Upload Video</button>
+  <input type='file' id='{{index}}-file-field' style='display:none;'></input>
 </div>
 <div ng-if="!article.video && uploadProgress">
   <div class="progress">
