@@ -14,7 +14,7 @@
           <h4 class="modal-title" id="myModalLabel">Video Preview:</h4>
         </div>
         <div class="modal-body">
-          <video class="video-js vjs-default-skin" controls preload="auto" width="100%" height="100%" poster="{{video.poster}}" ng-repeat="video in videoad.videos" ng-show="video.id > 0">
+          <video class="video-js vjs-default-skin" controls preload="auto" width="100%" height="100%" poster="{{video.poster}}">
             <source ng-src="{{source.url}}" type="{{source.content_type}}" ng-repeat="source in video.sources" />
             <p class="vjs-no-js">
               To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>

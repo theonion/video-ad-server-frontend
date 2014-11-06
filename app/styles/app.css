@@ -8384,21 +8384,30 @@ h2 {
 
 /* line 66, global/forms/_videoad-form.scss */
 .videos-container {
-  margin: 0;
+  border: 1px solid #a1bfd7;
+  border-radius: 4px;
+  clear: left;
+  padding: 2%;
+  margin: 0 0 3% 0;
 }
-/* line 68, global/forms/_videoad-form.scss */
+/* line 72, global/forms/_videoad-form.scss */
 .videos-container label {
   padding-top: 8px;
 }
-/* line 71, global/forms/_videoad-form.scss */
-.videos-container img {
+
+/* line 77, global/forms/_videoad-form.scss */
+.poster-image {
+  float: left;
+}
+/* line 79, global/forms/_videoad-form.scss */
+.poster-image button {
   margin-bottom: 15px;
   width: 100%;
 }
-/* line 74, global/forms/_videoad-form.scss */
-.videos-container img:hover {
-  cursor: pointer;
-  opacity: .8;
+/* line 83, global/forms/_videoad-form.scss */
+.poster-image img {
+  margin-bottom: 15px;
+  width: 100%;
 }
 
 /* Angular */
