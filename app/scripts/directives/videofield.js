@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('video-ads')
-  .directive('videoField', function (Zencoder, $scope) {
+  .directive('videoField', function (Zencoder) {
     return {
       templateUrl: 'views/partials/video-field.html',
       restrict: 'E',

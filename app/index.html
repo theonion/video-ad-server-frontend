@@ -60,12 +60,12 @@
     <script src="../bower_components/angular-animate/angular-animate.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
-    
+
 
     <script>
-      videojs.options.flash.swf = "bower_components/videojs/dist/video-js/video-js.swf"
+      videojs.options.flash.swf = 'bower_components/videojs/dist/video-js/video-js.swf';
     </script>
-    
+
     <script src="../bower_components/angular-mocks/angular-mocks.js"></script>
     <script src="../bower_components/angular-scenario/angular-scenario.js"></script>
     <!-- Mocks -->
@@ -86,6 +86,7 @@
     <!-- Services -->
     <script type="text/javascript" src="scripts/services/video-ad.js"></script>
     <script type="text/javascript" src="scripts/services/token-auth.js"></script>
+    <script type="text/javascript" src="scripts/services/zencoder.js"></script>
 
     <!-- Directives -->
     <script type="text/javascript" src="scripts/directives/delivery.js"></script>
@@ -93,15 +94,16 @@
     <script type="text/javascript" src="scripts/directives/targeting.js"></script>
     <script type="text/javascript" src="scripts/directives/chart.js"></script>
     <script type="text/javascript" src="scripts/directives/navbar.js"></script>
+    <script type="text/javascript" src="scripts/directives/videofield.js"></script>
 
     <!-- Filters -->
     <script type="text/javascript" src="scripts/filters/converttolocal.js"></script>
     <!-- VideoJS -->
 
     <!-- endbuild -->
-    
+
     <script type="text/javascript">
-        angular.module('video-ads-dev', ["video-ads", "video-ads.mockApi"]);
+        angular.module('video-ads-dev', ['video-ads', 'video-ads.mockApi']);
     </script>
 	</body>
 </html>
