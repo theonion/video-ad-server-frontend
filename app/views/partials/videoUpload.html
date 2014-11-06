@@ -1,65 +1,95 @@
-<div class="container" ng-repeat="video in videoad.videos" ng-show="videoad.videos.length > 0">
+<div class="row videos-container" ng-repeat="video in videoad.videos" ng-show="videoad.videos.length > 0">
 
   <input ng-model="videoad.videos[$index].id" value="{{video.id}}" type="hidden" />
 
-  <div class="form-group" ng-show="video.name">
-    <label class="col-md-3 ">Name</label>
-    <div class="col-md-9"><input type="text" class="form-control" value="{{video.name}}" ng-model="videoad.videos[$index].name" /></div>
+  <div class="poster-image col-sm-12 col-md-4" ng-show="video.name">
+    <img src="images/thumb.png" ng-model="videoad.videos[$index].poster" alt=""/>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+      <i class="fa fa-film"></i> Play Video
+    </button>
+    <button type="button" class="btn btn-danger">
+      <i class="fa fa-remove"></i> Delete Video
+    </button>
   </div>
 
-  <div class="form-group" ng-show="!video.name">
-    <input type="text" class="form-control fake-input" value="{{video.name}}" disabled>
-    <label class="btn btn-default pull-right s3uploadButton" ng-click="chooseFile();" ng-show="!video.status || video.status == 0 || video.status == 3">Choose File</label>
-    <label class="btn btn-danger pull-right s3uploadButton" ng-click="clearFile();" ng-show="video.status == 1">Clear</label>
-    <label class="btn btn-danger pull-right s3uploadButton" ng-click="abort();" ng-show="video.status == 2">Abort</label>
-    <div class="progress progress-striped active s3uploadProgress" style="display:none;"><div class="progress-bar" style="width: 0%"><label class="pull-left">Encoding...</label></div></div>
+  <div class="poster-image col-sm-12 col-md-4" ng-show="!video.name">
+    <input type="hidden" class="form-control fake-input" value="{{video.name}}" disabled>
+    <button class="btn btn-success">
+      <i class="fa fa-video-camera"></i> Choose File
+    </button>
   </div>
 
-  <div class="form-group">
-    <label class="col-md-3 ">Poster</label>
-    <div class="col-md-9"><input type="url" class="form-control" value="{{video.poster}}" ng-model="videoad.videos[$index].poster" /></div>
-  </div>
+  <div class="col-sm-12 col-md-8">
 
-  <div class="form-group">
-    <label class="col-md-3 ">Runtime</label>
-    <div class="col-md-4"><input type="datetime" class="form-control" value="{{video.start}}" ng-model="videoad.videos[$index].start" /></div>
-    <label class="col-md-1">to</label>
-    <div class="col-md-4"><input type="datetime" class="form-control" value="{{video.end}}" ng-model="videoad.videos[$index].end" /></div>
-  </div>
+    <div class="form-group" ng-show="video.name">
+      <label class="col-md-4 col-md-offset-1">Name</label>
+      <div class="col-md-7">
+        <input type="text" class="form-control" value="{{video.name}}" ng-model="videoad.videos[$index].name" disabled />
+      </div>
+    </div>
 
-  <div class="form-group">
-    <label class="col-md-3 ">Impression Target</label>
-    <div class="col-md-9"><input type="number" class="form-control" value="{{video.impression_target}}" ng-model="videoad.videos[$index].impression_target" /></div>
-  </div>
+    <div class="form-group">
+      <label class="col-md-4 col-md-offset-1">Runtime</label>
+      <div class="col-md-2">
+        <input type="datetime" class="form-control" value="{{video.start}}" ng-model="videoad.videos[$index].start" />
+      </div>
+      <label class="col-md-1">to</label>
+      <div class="col-md-2">
+        <input type="datetime" class="form-control" value="{{video.end}}" ng-model="videoad.videos[$index].end" />
+      </div>
+    </div>
 
-  <div class="form-group">
-    <label class="col-md-4">Impression Count</label>
-    <label class="col-md-4">Start Count</label>
-    <label class="col-md-4">1st Qtr Count</label>
-  </div>
+    <div class="form-group">
+      <label class="col-md-4 col-md-offset-1">Impression Target</label>
+      <div class="col-md-7">
+        <input type="number" class="form-control" value="{{video.impression_target}}" ng-model="videoad.videos[$index].impression_target" />
+      </div>
+    </div>
 
-  <div class="form-group">
-    <div class="col-md-4"><input class="form-control" value="{{video.impression_count}}" disabled /></div>
-    <div class="col-md-4"><input class="form-control" value="{{video.start_count}}" disabled /></div>
-    <div class="col-md-4"><input class="form-control" value="{{video.first_quartile_count}}" disabled /></div>
-  </div>
+    <div class="form-group">
+      <label class="col-md-4 col-md-offset-1">Impression Count</label>
+      <div class="col-md-7">
+        <input type="number" class="form-control" value="{{video.impression_count}}" disabled />
+      </div>
+    </div>
 
-  <div class="form-group">
-    <label class="col-md-4">Midpoint Count</label>
-    <label class="col-md-4">3rd Qtr Count</label>
-    <label class="col-md-4">Complete Count</label>
-  </div>
+    <div class="form-group">
+      <label class="col-md-4 col-md-offset-1">Start Count</label>
+      <div class="col-md-7">
+        <input type="number" class="form-control" value="{{video.start_count}}" disabled />
+      </div>
+    </div>
 
-  <div class="form-group">
-    <div class="col-md-4"><input class="form-control" value="{{video.midpoint_count}}" disabled /></div>
-    <div class="col-md-4"><input class="form-control" value="{{video.third_qartile_count}}" disabled /></div>
-    <div class="col-md-4"><input class="form-control" value="{{video.complete_count}}" disabled /></div>
-  </div>
+    <div class="form-group">
+      <label class="col-md-4 col-md-offset-1">1st Qtr Count</label>
+      <div class="col-md-7">
+        <input type="number" class="form-control" value="{{first_quartile_count}}" disabled />
+      </div>
+    </div>
 
-  <div><p>&nbsp;</p><p>&nbsp;</p></div>
+    <div class="form-group">
+      <label class="col-md-4 col-md-offset-1">Midpoint Count</label>
+      <div class="col-md-7">
+        <input type="number" class="form-control" value="{{video.midpoint_count}}" disabled />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-md-4 col-md-offset-1">3rd Qtr Count</label>
+      <div class="col-md-7">
+        <input type="number" class="form-control" value="{{video.third_quartile_count}}" disabled />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-md-4 col-md-offset-1">Complete Count</label>
+      <div class="col-md-7">
+        <input type="number" class="form-control" value="{{video.complete_count}}" disabled />
+      </div>
+    </div>
+
+  </div>
 
 </div>
 
-<div class="container">
-  <button class="btn btn-success" type="submit" ng-click="addVideo();">Add Video</button>
-</div>
+<button class="btn btn-success" type="submit" ng-click="addVideo();">Add Video</button>
