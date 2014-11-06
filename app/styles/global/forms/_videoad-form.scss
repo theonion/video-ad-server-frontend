@@ -60,3 +60,31 @@
     line-height: 20px;
 	padding: 0;
 }
+
+// Videos
+
+.videos-container {
+	border: 1px solid #a1bfd7;
+	border-radius: 4px;
+	clear: left;
+	padding: 2%;
+	margin: 0 0 3% 0;
+	label {
+		padding-top: 8px;
+	}
+}
+
+.poster-image {
+	float: left;
+	button {
+		margin-bottom: 15px;
+		width: 100%;
+	}
+	img {
+		margin-bottom: 15px;
+		width: 100%;
+	}
+}
+
+
+

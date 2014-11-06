@@ -12,6 +12,7 @@
   "newcap": true,
   "noarg": true,
   "quotmark": "single",
+  "trailing": true,
   "regexp": true,
   "undef": true,
   "unused": true,
@@ -19,6 +20,8 @@
   "trailing": true,
   "smarttabs": true,
   "globals": {
-    "angular": false
+    "angular": false,
+    "_": false,
+    "$": false
   }
 }
