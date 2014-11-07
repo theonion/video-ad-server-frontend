@@ -1,9 +1,9 @@
-<div class="row videos-container" ng-repeat="video in videoad.videos" ng-show="videoad.videos.length > 0">
+<div class="row videos-container">
 
-  <input ng-model="videoad.videos[$index].id" value="{{video.id}}" type="hidden" />
+  <input ng-model="video.id" value="{{video.id}}" type="hidden" />
 
   <div class="poster-image col-sm-12 col-md-4" ng-show="video.name">
-    <img src="images/thumb.png" ng-model="videoad.videos[$index].poster" alt=""/>
+    <img src="images/thumb.png" ng-model="video.poster" alt=""/>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
       <i class="fa fa-film"></i> Play Video
     </button>
@@ -14,8 +14,8 @@
 
   <div class="poster-image col-sm-12 col-md-4" ng-show="!video.name">
     <input type="hidden" class="form-control fake-input" value="{{video.name}}" disabled>
-    <button class="btn btn-success">
-      <i class="fa fa-video-camera"></i> Choose File
+    <video-field index='index' video='video' adid='adid'/>
+    <button class="btn btn-success" video-field video='video'>
     </button>
   </div>
 
@@ -24,25 +24,25 @@
     <div class="form-group" ng-show="video.name">
       <label class="col-md-4 col-md-offset-1">Name</label>
       <div class="col-md-7">
-        <input type="text" class="form-control" value="{{video.name}}" ng-model="videoad.videos[$index].name" disabled />
+        <input type="text" class="form-control" value="{{video.name}}" ng-model="video.name" disabled />
       </div>
     </div>
 
     <div class="form-group">
       <label class="col-md-4 col-md-offset-1">Runtime</label>
       <div class="col-md-2">
-        <input type="datetime" class="form-control" value="{{video.start}}" ng-model="videoad.videos[$index].start" />
+        <input type="datetime" class="form-control" value="{{video.start}}" ng-model="video.start" />
       </div>
       <label class="col-md-1">to</label>
       <div class="col-md-2">
-        <input type="datetime" class="form-control" value="{{video.end}}" ng-model="videoad.videos[$index].end" />
+        <input type="datetime" class="form-control" value="{{video.end}}" ng-model="video.end" />
       </div>
     </div>
 
     <div class="form-group">
       <label class="col-md-4 col-md-offset-1">Impression Target</label>
       <div class="col-md-7">
-        <input type="number" class="form-control" value="{{video.impression_target}}" ng-model="videoad.videos[$index].impression_target" />
+        <input type="number" class="form-control" value="{{video.impression_target}}" ng-model="video.impression_target" />
       </div>
     </div>
 
@@ -87,9 +87,6 @@
         <input type="number" class="form-control" value="{{video.complete_count}}" disabled />
       </div>
     </div>
-
   </div>
 
 </div>
-
-<button class="btn btn-success" type="submit" ng-click="addVideo();">Add Video</button>

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('video-ads')
-  .controller('FormCtrl', ['$scope', '$routeParams', 'videoAdService', '$location', '$rootScope',function ($scope, $routeParams, videoAdService, $location, $rootScope) {
+  .controller('FormCtrl', ['$scope', '$routeParams', 'videoAdService', '$location', '$rootScope', function($scope, $routeParams, videoAdService, $location, $rootScope) {
     $rootScope.$emit('hide_search_bar');
     $scope.success = false;
     $scope.errors = false;
@@ -22,7 +22,7 @@ angular.module('video-ads')
       'country_code'
     ];
 
-    $scope.initVideoAd = function () {
+    $scope.initVideoAd = function() {
       if (!$scope.videoad.targeting) {
         $scope.videoad.targeting = {};
       }
@@ -52,43 +52,49 @@ angular.module('video-ads')
 
       $('#runtime').val(inputVal);
 
-      $('#runtime').daterangepicker(pickerOptions, function (start, end) {
+      $('#runtime').daterangepicker(pickerOptions, function(start, end) {
         $scope.videoad.start = moment(start, 'YYYY-MM-DD hh:mm A').utc().format();
         $scope.videoad.end = moment(end, 'YYYY-MM-DD hh:mm A').utc().format();
       });
     };
 
-    $scope.getAndInitVideoAd = function () {
+    $scope.getAndInitVideoAd = function() {
       if (_.isUndefined($routeParams.videoAdId)) {
         $scope.videoAdId = {};
         $scope.initVideoAd();
       }
       videoAdService.one($routeParams.videoAdId).get().then(
-        function (data) {
+        function(data) {
           $scope.videoad = data;
           $scope.initVideoAd();
         },
-        function (data) {
+        function(data) {
           console.log(data);
         }
       );
     };
 
-    $scope.addTargetingKey = function (key) {
+    $scope.addTargetingKey = function(key) {
       $scope.targetingKey = key;
     };
 
-    $scope.saveVideoAd = function () {
+    $scope.saveVideoAd = function() {
       if (!_.isUndefined($routeParams.videoAdId)) {
         $('.alert-success').fadeIn().delay(1000).fadeOut();
         $scope.videoad.save();
       } else {
         $('.alert-danger').fadeIn().delay(1000).fadeOut();
         videoAdService.post($scope.videoad)
-          .then(function (data) {
+          .then(function(data) {
             $location.path('/edit/' + data.id);
           });
       }
+    };
+
+    $scope.addVideo = function() {
+      $scope.videoad.videos.push({
+        adId: $scope.videoad.id
+      });
     };
     $scope.getAndInitVideoAd();
   }]);

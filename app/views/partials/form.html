@@ -1,6 +1,4 @@
-<div class="row">
-  <div ng-include src='"views/partials/navbar.html"'></div>
-
+<div class="row video-ad-form">
   <!-- Alert Message -->
   <div class="alert alert-success">Success</div>
   <div class="alert alert-danger">Error</div>
@@ -10,7 +8,8 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+          </button>
           <h4 class="modal-title" id="myModalLabel">Video Preview:</h4>
         </div>
         <div class="modal-body">
@@ -110,19 +109,13 @@
         </div>
       </div>
 
-      <div class="form-group group-margin">
-        <label for="video" class="col-md-3 control-label">Videos</label>
-        <div class="col-md-6" video-upload target="videoad.videos" videoad="videoad">
+      <div class="form-group" ng-repeat="video in videoad.videos">
+        <label for="video" class="col-md-3 control-label">Video: {{videoad.id}}</label>
+        <div class="col-md-6" ng-show="videoad.videos.length > 0">
+          <video-edit-form index='$index' adid='videoad.id' video="video"></video-edit-form>
         </div>
       </div>
-
-      <div id="save-button" class="form-group">
-        <label class="col-md-3">&nbsp;</label>
-        <div class="col-md-6">
-          <button type="submit" class="btn btn-primary" ng-click="saveVideoAd();">Save</button>
-        </div>
-      </div>
-
     </form>
+    <button class="btn btn-success col-md-offset-3" type="submit" ng-click="addVideo();"><i class="fa fa-plus"></i> Add Video</button>
   </div>
 </div>
