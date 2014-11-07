@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('video-ads')
-  .directive('videoUpload', function() {
+  .directive('videoEditForm', function() {
     return {
-      templateUrl: 'views/partials/videoUpload.html',
+      templateUrl: 'views/partials/video-edit-form.html',
       scope: {
         'video': '=',
         'adid': '=',
