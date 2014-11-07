@@ -1,8 +1,8 @@
 'use strict';
 angular.module('video-ads')
-  .controller('ListCtrl', ['$scope', '$location', 'videoAdService', '$routeParams', '$rootScope',function($scope, $location, videoAdService, $routeParams, $rootScope) {
+  .controller('ListCtrl', ['$scope', '$location', 'videoAdService', '$routeParams', '$rootScope', function($scope, $location, videoAdService, $routeParams, $rootScope) {
     $scope.videoAds = [];
-    $rootScope.$emit("show_search_bar");
+    $rootScope.$emit('show_search_bar');
     if (_.isEmpty($location.search())) {
       $scope.params = {
         'page_size': 8,
@@ -11,7 +11,7 @@ angular.module('video-ads')
     } else {
       $scope.params = $location.search();
     }
-    $scope.searchTerm = "";
+    $scope.searchTerm = '';
     $scope.currentPage = 1;
     $scope.totalItems = 0;
     $scope.loading = true;
@@ -19,22 +19,22 @@ angular.module('video-ads')
 
     $scope.updateList = function() {
       if ($scope.params.filter === undefined) {
-        $scope.params.filter = "active";
+        $scope.params.filter = 'active';
       }
       $location.search($scope.params);
       videoAdService.getList($scope.params).then(function(data) {
-        $scope.videoAds = data;
-        $scope.totalItems = data.meta.count;
-        $scope.loading = false;
-      }, 
-      function(error) {
+          $scope.videoAds = data;
+          $scope.totalItems = data.meta.count;
+          $scope.loading = false;
+        },
+        function(error) {
           $scope.loading = false;
           $scope.errors = true;
           console.log(error);
-      },
-      function(progress) {
+        },
+        function() {
           $scope.loading = true;
-      });
+        });
     };
 
     $scope.newVideoAd = function() {
@@ -44,7 +44,7 @@ angular.module('video-ads')
     $scope.changeOrder = function() {
       $scope.params.orderBy = $scope.orderBy;
       if ($scope.reverse) {
-        $scope.params.orderBy = "-" + $scope.orderBy;
+        $scope.params.orderBy = '-' + $scope.orderBy;
       }
       //Setting currentPage to 1 will trigger the currentPage watch to fire
       $scope.currentPage = 1;
@@ -62,7 +62,7 @@ angular.module('video-ads')
       $scope.updateList();
     };
 
-    $rootScope.$on("search", function(event, searchTerm){
+    $rootScope.$on('search', function(event, searchTerm) {
       event.preventDefault();
       $scope.params.search = searchTerm;
       $scope.updateList();

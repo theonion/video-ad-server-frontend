@@ -3,9 +3,9 @@
 angular.module('video-ads')
   .service('Zencoder', function Zencoder($http, $q) {
 
-    this.uploadToS3AndEncode = function(file, videoObject){
+    this.uploadToS3AndEncode = function(file, videoObject) {
       uploadToS3(file, videoObject.encoding_payload)
-        .then(function(){
+        .then(function() {
           encode(videoObject);
         });
     };
@@ -23,16 +23,18 @@ angular.module('video-ads')
       formData.append('file', file);
 
       //todo: use a vanilla XMLHttpRequest in heyea
-      $http.post(s3Config.upload_endpoint, formData,{
-          'ignoreAuthorizationHeader': true,
-          'headers':{'Content-Type': 'multipart/form-data'}
-        }).then(
+      $http.post(s3Config.upload_endpoint, formData, {
+        'ignoreAuthorizationHeader': true,
+        'headers': {
+          'Content-Type': 'multipart/form-data'
+        }
+      }).then(
         //Success
-        function () {
+        function() {
           s3deferred.resolve(file);
         },
         //Error
-        function (response) {
+        function(response) {
           s3deferred.reject(response);
         });
 
@@ -46,20 +48,20 @@ angular.module('video-ads')
       $http({
         method: 'POST',
         url: 'api/videos/' + videoObject.id + '/encode'
-      }).success(function (data) {
+      }).success(function(data) {
         videoObject.attrs.encode_status_endpoints = data;
         encodeDeferred.resolve(videoObject);
-      }).error(function (data) {
+      }).error(function(data) {
         encodeDeferred.reject(data);
       });
 
       return encodeDeferred.promise;
     }
-    this.encode = function (videoId) {
+    this.encode = function(videoId) {
       encode({
         attrs: {
           id: videoId
         }
       });
     };
-});
+  });

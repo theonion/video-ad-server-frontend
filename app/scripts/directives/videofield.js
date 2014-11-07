@@ -22,14 +22,14 @@ angular.module('video-ads')
             var file = event.target.files[0];
             //TODO: validation messaging.
             $scope.validateVideoFile(file)
-              .then(function(){
-                  $scope.addVideoToAdvertisement(file)
-                .then(function(){
-                  var videoObject = $scope.video;
-                  Zencoder.uploadToS3AndEncode($scope.file, videoObject);
-                }).then(function(){
-                  clickDeferred.resolve();
-                });
+              .then(function() {
+                $scope.addVideoToAdvertisement(file)
+                  .then(function() {
+                    var videoObject = $scope.video;
+                    Zencoder.uploadToS3AndEncode($scope.file, videoObject);
+                  }).then(function() {
+                    clickDeferred.resolve();
+                  });
               });
           });
           fileField.click();
