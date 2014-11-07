@@ -25,8 +25,9 @@ angular.module('video-ads')
       //todo: use a vanilla XMLHttpRequest in heyea
       $http.post(s3Config.upload_endpoint, formData, {
         'ignoreAuthorizationHeader': true,
+        transformRequest: angular.identity,
         'headers': {
-          'Content-Type': 'multipart/form-data'
+          'Content-Type': undefined
         }
       }).then(
         //Success
@@ -47,7 +48,7 @@ angular.module('video-ads')
 
       $http({
         method: 'POST',
-        url: 'api/videos/' + videoObject.id + '/encode'
+        url: 'api/videos/' + videoObject.id + '/encode/'
       }).success(function(data) {
         videoObject.attrs.encode_status_endpoints = data;
         encodeDeferred.resolve(videoObject);
