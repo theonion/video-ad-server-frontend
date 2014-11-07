@@ -5,7 +5,9 @@ angular.module('video-ads')
             'request': function(config) {
                 config.headers = config.headers || {};
                 if ($window.sessionStorage.token) {
+                  if (!config.ignoreAuthorizationHeader){
                     config.headers.Authorization = 'JWT ' + $window.sessionStorage.token;
+                  }
                 }
                 return config;
             },

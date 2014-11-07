@@ -4,7 +4,6 @@ angular.module('video-ads')
   .directive('videoField', function(Zencoder, $q, $http) {
     return {
       templateUrl: 'views/partials/video-field.html',
-      controller: 'FormCtrl',
       scope: {
         video: '=',
         index: '=',
@@ -26,8 +25,8 @@ angular.module('video-ads')
               .then(function(){
                   $scope.addVideoToAdvertisement(file)
                 .then(function(){
-                  var s3Config = $scope.video.encoding_payload;
-                  Zencoder.uploadVideo($scope.file, s3Config);
+                  var videoObject = $scope.video;
+                  Zencoder.uploadToS3AndEncode($scope.file, videoObject);
                 }).then(function(){
                   clickDeferred.resolve();
                 });
@@ -43,15 +42,15 @@ angular.module('video-ads')
           if (file) {
             if (file.size > (1024 * 1024 * 1024)) {
               validateVideoFileDeferred.reject('Upload file cannot be larger than 1024MB.');
+            } else if (file.type.indexOf('video/') !== 0) {
+              validateVideoFileDeferred.reject('You must upload a video file.');
+            } else {
+              validateVideoFileDeferred.resolve();
             }
 
-            if (file.type.indexOf('video/') !== 0) {
-              validateVideoFileDeferred.reject('You must upload a video file.');
-            }
-          } else {
             validateVideoFileDeferred.reject('Please select a file.');
           }
-          return validateVideoFileDeferred.resolve();
+          return validateVideoFileDeferred.promise;
         };
 
         $scope.addVideoToAdvertisement = function(file) {
