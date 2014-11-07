@@ -17,8 +17,9 @@ angular.module('video-ads')
 
         $scope.uploadVideo = function() {
           var fileField = $('#' + $scope.index + '-file-field');
-          var clickDeferred = $q.defer();
+          fileField.unbind('change');
           fileField.bind('change', function(event) {
+            var clickDeferred = $q.defer();
             var file = event.target.files[0];
             //TODO: validation messaging.
             $scope.validateVideoFile(file)
@@ -33,8 +34,6 @@ angular.module('video-ads')
               });
           });
           fileField.click();
-
-          return clickDeferred.promise;
         };
 
         $scope.validateVideoFile = function(file) {
