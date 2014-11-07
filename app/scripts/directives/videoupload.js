@@ -5,9 +5,9 @@ angular.module('video-ads')
 		return {
 			templateUrl: 'views/partials/videoUpload.html',
 			scope: {
-				'video': '=video',
-				'adId': '=adId'
-			},
-			link: function(){}
+				'video': '=',
+				'adid': '=',
+				'index': '='
+			}
 		};
 	});

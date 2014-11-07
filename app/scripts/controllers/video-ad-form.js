@@ -92,7 +92,9 @@ angular.module('video-ads')
     };
 
     $scope.addVideo = function(){
-      $scope.videoad.videos.push({});
+      $scope.videoad.videos.push({
+        adId: $scope.videoad.id
+      });
     };
     $scope.getAndInitVideoAd();
   }]);

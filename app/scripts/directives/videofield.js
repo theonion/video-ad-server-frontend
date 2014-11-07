@@ -4,11 +4,11 @@ angular.module('video-ads')
   .directive('videoField', function(Zencoder, $q, $http) {
     return {
       templateUrl: 'views/partials/video-field.html',
+      controller: 'FormCtrl',
       scope: {
-        video: '=video',
-        index: '=index',
-        s3Config: '=s3Config',
-        advertisementId: '=adId'
+        video: '=',
+        index: '=',
+        adid: '='
       },
       link: function postLink($scope) {
 
@@ -54,8 +54,8 @@ angular.module('video-ads')
           console.log(file);
           console.log($scope.advertisementId);
           return $http.post('/api/videos/', {
-            'advertisement': $scope.advertisementId,
-            'name': file.title
+            'advertisement': $scope.adid,
+            'name': file.name
           }).then(function(response) {
             $scope.video = response.data;
           });
