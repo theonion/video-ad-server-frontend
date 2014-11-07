@@ -11,6 +11,9 @@ angular.module('video-ads')
             $rootScope.$on("hide_search_bar", function(){
                 $scope.show_search_bar = false;
             });
+            $scope.saveVideoAd = function() {
+                $rootScope.$emit("save_video_ad");
+            };
 
             $rootScope.$on("show_search_bar", function(){
                 $scope.show_search_bar = true;

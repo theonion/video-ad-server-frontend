@@ -8318,24 +8318,29 @@ h2 {
 }
 
 /* line 12, global/forms/_videoad-form.scss */
+.video-ad-form {
+  margin-bottom: 10%;
+}
+
+/* line 16, global/forms/_videoad-form.scss */
 .video-preview {
   margin-bottom: 10px;
   padding: 0;
 }
 
-/* line 17, global/forms/_videoad-form.scss */
+/* line 21, global/forms/_videoad-form.scss */
 .delivery {
   height: 34px;
   line-height: 3;
   margin-bottom: 0;
 }
 
-/* line 23, global/forms/_videoad-form.scss */
+/* line 27, global/forms/_videoad-form.scss */
 .group-margin {
   margin: 4% 0;
 }
 
-/* line 29, global/forms/_videoad-form.scss */
+/* line 33, global/forms/_videoad-form.scss */
 .targeting-group {
   border: 1px solid #a1bfd7;
   border-radius: 4px;
@@ -8344,45 +8349,45 @@ h2 {
   padding: 5px;
 }
 
-/* line 36, global/forms/_videoad-form.scss */
+/* line 40, global/forms/_videoad-form.scss */
 .targeting-row .form-control {
   float: left;
   margin: 5px 2px 5px 2px;
 }
 
-/* line 40, global/forms/_videoad-form.scss */
+/* line 44, global/forms/_videoad-form.scss */
 .targeting-row-container {
   margin: 0px auto 0px auto;
 }
-/* line 42, global/forms/_videoad-form.scss */
+/* line 46, global/forms/_videoad-form.scss */
 .targeting-row-container .btn {
   width: auto;
 }
 
-/* line 46, global/forms/_videoad-form.scss */
+/* line 50, global/forms/_videoad-form.scss */
 .targeting-group .col {
   padding: 0 2px;
 }
 
-/* line 48, global/forms/_videoad-form.scss */
+/* line 52, global/forms/_videoad-form.scss */
 .add-targeting-button {
   margin: 4px auto 4px auto;
 }
 
-/* line 54, global/forms/_videoad-form.scss */
+/* line 58, global/forms/_videoad-form.scss */
 .pixel-group .pixel {
   margin-bottom: 10px;
   overflow: hidden;
 }
 
-/* line 58, global/forms/_videoad-form.scss */
+/* line 62, global/forms/_videoad-form.scss */
 .pixel-group .pixel .btn {
   color: darkred;
   line-height: 20px;
   padding: 0;
 }
 
-/* line 66, global/forms/_videoad-form.scss */
+/* line 70, global/forms/_videoad-form.scss */
 .videos-container {
   border: 1px solid #a1bfd7;
   border-radius: 4px;
@@ -8390,24 +8395,31 @@ h2 {
   padding: 2%;
   margin: 0 0 3% 0;
 }
-/* line 72, global/forms/_videoad-form.scss */
+/* line 76, global/forms/_videoad-form.scss */
 .videos-container label {
   padding-top: 8px;
 }
 
-/* line 77, global/forms/_videoad-form.scss */
+/* line 81, global/forms/_videoad-form.scss */
 .poster-image {
   float: left;
 }
-/* line 79, global/forms/_videoad-form.scss */
+/* line 83, global/forms/_videoad-form.scss */
 .poster-image button {
   margin-bottom: 15px;
   width: 100%;
 }
-/* line 83, global/forms/_videoad-form.scss */
+/* line 87, global/forms/_videoad-form.scss */
 .poster-image img {
   margin-bottom: 15px;
   width: 100%;
+}
+
+/* line 95, global/forms/_videoad-form.scss */
+.save-videoad {
+  height: 40px;
+  margin: 5px;
+  width: 10%;
 }
 
 /* Angular */

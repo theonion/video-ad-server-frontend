@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row video-ad-form">
   <!-- Alert Message -->
   <div class="alert alert-success">Success</div>
   <div class="alert alert-danger">Error</div>
@@ -109,23 +109,13 @@
         </div>
       </div>
 
-      <div class="form-group group-margin">
-        <label for="video" class="col-md-3 control-label">Videos</label>
-        Video ad id outside: {{videoad.id}}
-        <div class="row videos-container" ng-repeat="video in videoad.videos" ng-show="videoad.videos.length > 0">
-          <video-upload index='$index' class="col-md-6" adid='videoad.id' video="video"></video-upload>
-          Video ad id inside: {{videoad.id}}
+      <div class="form-group" ng-repeat="video in videoad.videos">
+        <label for="video" class="col-md-3 control-label">Video: {{videoad.id}}</label>
+        <div class="col-md-6" ng-show="videoad.videos.length > 0">
+          <video-upload index='$index' adid='videoad.id' video="video"></video-upload>
         </div>
-        <button class="btn btn-success" type="submit" ng-click="addVideo();">Add Video</button>
       </div>
+    </form>
+    <button class="btn btn-success col-md-offset-3" type="submit" ng-click="addVideo();"><i class="fa fa-plus"></i> Add Video</button>
   </div>
-
-  <div id="save-button" class="form-group">
-    <label class="col-md-3">&nbsp;</label>
-    <div class="col-md-6">
-    </div>
-  </div>
-
-  </form>
-</div>
 </div>
