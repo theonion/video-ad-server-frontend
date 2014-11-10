@@ -17,24 +17,24 @@ angular.module('video-ads', [
 
     $routeProvider
       .when('/', {
-        templateUrl: 'views/partials/list.html',
+        templateUrl: '/components/list/list.html',
         controller: 'ListCtrl',
         reloadOnSearch: false
       })
       .when('/login', {
-        templateUrl: 'views/partials/login.html',
+        templateUrl: '/components/login/login.html',
         controller: 'LoginCtrl'
       })
       .when('/edit/:videoAdId/', {
-        templateUrl: 'views/partials/form.html',
+        templateUrl: '/components/detail/form.html',
         controller: 'FormCtrl'
       })
       .when('/new/', {
-        templateUrl: 'views/partials/form.html',
+        templateUrl: '/components/detail/form.html',
         controller: 'FormCtrl'
       })
       .when('/exclusion/:exclusionName/', {
-        templateUrl: 'views/partials/exclusion.html',
+        templateUrl: '/components/exclusion/exclusion.html',
         controller: 'ExclusionCtrl'
       })
       .otherwise({

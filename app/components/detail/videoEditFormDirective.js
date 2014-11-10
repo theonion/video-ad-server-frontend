@@ -3,7 +3,7 @@
 angular.module('video-ads')
   .directive('videoEditForm', function() {
     return {
-      templateUrl: 'views/partials/video-edit-form.html',
+      templateUrl: 'components/detail/video-edit-form.html',
       scope: {
         'video': '=',
         'adid': '=',

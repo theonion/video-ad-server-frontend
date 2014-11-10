@@ -3,7 +3,7 @@
 angular.module('video-ads')
 	.directive('pixels', function() {
 		return {
-			templateUrl: 'views/partials/pixels.html',
+			templateUrl: 'components/detail/pixels.html',
 			scope: {
 				'videoad': '=',
 				'pixels': '='

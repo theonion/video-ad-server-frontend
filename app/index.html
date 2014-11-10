@@ -66,42 +66,61 @@
       videojs.options.flash.swf = 'bower_components/videojs/dist/video-js/video-js.swf';
     </script>
 
-    <script src="../bower_components/angular-mocks/angular-mocks.js"></script>
-    <script src="../bower_components/angular-scenario/angular-scenario.js"></script>
     <!-- Mocks -->
+		<script src="../bower_components/angular-mocks/angular-mocks.js"></script>
+    <script src="../bower_components/angular-scenario/angular-scenario.js"></script>
     <script type="text/javascript" src="mocks/app.js"></script>
     <script type="text/javascript" src="mocks/mock-data.js"></script>
     <script type="text/javascript" src="mocks/api.js"></script>
+		<!-- end Mocks -->
 
-    <!-- build:js js/app.min.js -->
+		<!-- build:js js/app.min.js -->
     <!-- Angular App -->
-  	<script type="text/javascript" src="scripts/app.js"></script>
+  	<script type="text/javascript" src="app.js"></script>
+		<!-- end Angular App -->
+		<!-- Components -->
+			<!-- Detail -->
+			 <script src="components/detail/pixelsDirective.js"></script>
+			 <script src="components/detail/targetingDirective.js"></script>
+			 <script src="components/detail/videoEditFormDirective.js"></script>
+			 <script src="components/detail/zencoderService.js"></script>
+			 <script src="components/detail/videoAdFormController.js"></script>
+			 <script src="components/detail/videoFieldDirective.js"></script>
+			<!-- end Detail-->
+			<!-- Exclusion -->
+			 <script src="components/exclusion/exclusionDirective.js"></script>
+			<!-- end Exclusion -->
+			<!-- List -->
+				<script src="components/list/listController.js"></script>
+			<!-- end List -->
+			<!-- Login -->
+				<script src="components/login/loginController.js"></script>
+			<!-- end Login -->
+		<!-- end Components -->
 
-    <!-- Controllers -->
-    <script type="text/javascript" src="scripts/controllers/exclusion.js"></script>
-    <script type="text/javascript" src="scripts/controllers/video-ad-form.js"></script>
-    <script type="text/javascript" src="scripts/controllers/list.js"></script>
-    <script type="text/javascript" src="scripts/controllers/login.js"></script>
-
-    <!-- Services -->
-    <script type="text/javascript" src="scripts/services/video-ad.js"></script>
-    <script type="text/javascript" src="scripts/services/token-auth.js"></script>
-    <script type="text/javascript" src="scripts/services/zencoder.js"></script>
-
-    <!-- Directives -->
-    <script type="text/javascript" src="scripts/directives/delivery.js"></script>
-    <script type="text/javascript" src="scripts/directives/pixels.js"></script>
-    <script type="text/javascript" src="scripts/directives/targeting.js"></script>
-    <script type="text/javascript" src="scripts/directives/chart.js"></script>
-    <script type="text/javascript" src="scripts/directives/navbar.js"></script>
-    <script type="text/javascript" src="scripts/directives/videofield.js"></script>
-    <script type="text/javascript" src="scripts/directives/videoeditform.js"></script>
-
-    <!-- Filters -->
-    <script type="text/javascript" src="scripts/filters/converttolocal.js"></script>
-    <!-- VideoJS -->
-
+		<!-- Shared -->
+			<!-- Auth -->
+				<script src="shared/auth/tokenAuthService.js"></script>
+			<!-- end Auth -->
+			<!-- Chart -->
+				<script src="shared/chart/chartDirective.js"></script>
+			<!-- end Chart -->
+			<!-- Convert To Local -->
+				<script src="shared/converttolocal/convertToLocalFilter.js"></script>
+			<!-- end Convert To Local -->
+			<!-- Delivery -->
+				<script src="shared/delivery/deliveryDirective.js"></script>
+			<!-- end Deliver -->
+			<!-- Navbar -->
+				<script src="shared/navbar/navbarDirective.js"></script>
+			<!-- end Navbar -->
+			<!-- Video Ads -->
+				<script src="shared/videoads/videoAdService.js"></script>
+			<!-- end VideoAds -->
+		<!-- end Shared -->
     <!-- endbuild -->
+
+
 
     <script type="text/javascript">
         angular.module('video-ads-dev', ['video-ads', 'video-ads.mockApi']);

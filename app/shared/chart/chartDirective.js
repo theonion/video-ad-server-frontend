@@ -4,7 +4,7 @@ angular.module('video-ads')
   .directive('deliveryChart', function() {
     return {
       restrict: 'E',
-      templateUrl: 'views/partials/chart.html',
+      templateUrl: 'shared/chart/chart.html',
       scope: {
         impressions: '@impressions'
       },
@@ -38,7 +38,7 @@ angular.module('video-ads')
             innerSize: '50%',
             name: 'Delivery',
             data: [
-              parseInt($scope.impressions), 
+              parseInt($scope.impressions),
               (100 - parseInt($scope.impressions))
             ]
           }],

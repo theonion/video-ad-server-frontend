@@ -4,7 +4,7 @@ angular.module('video-ads')
   .directive('navBar', function() {
     return {
         'restrict': 'E',
-        'templateUrl': 'views/partials/navbar.html',
+        'templateUrl': 'shared/navbar/navbar.html',
         'controller': function($scope, $rootScope) {
             $scope.show_search_bar = false;
             $scope.searchTerm = "";
