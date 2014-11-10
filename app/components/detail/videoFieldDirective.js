@@ -3,7 +3,7 @@
 angular.module('video-ads')
   .directive('videoField', function(Zencoder, $q, $http) {
     return {
-      templateUrl: 'views/partials/video-field.html',
+      templateUrl: 'components/detail/video-field.html',
       scope: {
         video: '=',
         index: '=',

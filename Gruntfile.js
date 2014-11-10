@@ -39,7 +39,7 @@ module.exports = function(grunt) {
         tasks: ['wiredep']
       },
       js: {
-        files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
+        files: ['<%= yeoman.app %>/{,*/}*.js'],
         tasks: ['build:dist', 'newer:jshint:all'],
         options: {
           livereload: '<%= connect.options.livereload %>'
@@ -135,7 +135,7 @@ module.exports = function(grunt) {
       all: {
         src: [
           'Gruntfile.js',
-          '<%= yeoman.app %>/scripts/{,*/}*.js'
+          '<%= yeoman.app %>/{,*/}*.js'
         ]
       },
       test: {
@@ -200,7 +200,7 @@ module.exports = function(grunt) {
         cssDir: '<%= yeoman.app %>/styles',
         generatedImagesDir: '.tmp/images/generated',
         imagesDir: '<%= yeoman.app %>/images',
-        javascriptsDir: '<%= yeoman.app %>/scripts',
+        javascriptsDir: '<%= yeoman.app %>/',
         fontsDir: '<%= yeoman.app %>/styles/fonts',
         importPath: './bower_components',
         httpImagesPath: '/images',
@@ -234,7 +234,7 @@ module.exports = function(grunt) {
             '.tmp/concat/scripts/templates.js'
           ],
           '<%= yeoman.dist %>/js/app.min.js': [
-            '.tmp/concat/scripts/scripts/**/*.js',
+            '.tmp/concat/scripts/**/*.js',
           ]
         }
       }
@@ -293,7 +293,7 @@ module.exports = function(grunt) {
     ngtemplates: {
       'video-ads': {
         cwd: '<%= yeoman.app %>',
-        src: 'views/{,*/}*.html',
+        src: ['shared/**/*.html', 'components/**/*.html'],
         dest: '.tmp/concat/scripts/templates.js',
         options: {
           htmlmin: {
@@ -323,7 +323,7 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: '<%= yeoman.app %>',
-          src: 'scripts/{,*/}*.js',
+          src: '{,*/}*.js',
           dest: '.tmp/concat/scripts'
         }]
       }

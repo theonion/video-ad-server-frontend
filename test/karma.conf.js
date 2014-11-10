@@ -22,7 +22,7 @@ module.exports = function(config) {
   //   browserName: 'safari',
   //   platform: 'OS X 10.9',
   //   version: '7'
-  // }  
+  // }
 
 
   config.set({
@@ -47,11 +47,12 @@ module.exports = function(config) {
       'bower_components/angular-route/angular-route.js',
       'bower_components/angular-animate/angular-animate.js',
       'bower_components/restangular/dist/restangular.js',
+      'bower_components/bootstrap-daterangepicker/daterangepicker.js',
+      'bower_components/moment/moment.js',
       'bower_components/highcharts/highcharts.js',
       'bower_components/highcharts-ng/src/highcharts-ng.js',
-      'app/scripts/**/*.js',
       'app/mocks/app.js',
-      'app/mocks/**/*.js',
+      'app/**/*.js',
       'test/spec/**/*.js'
     ],
 

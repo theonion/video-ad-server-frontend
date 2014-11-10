@@ -3,7 +3,7 @@
 angular.module('video-ads')
   .directive('targeting', function () {
     return {
-      templateUrl: 'views/partials/targeting.html',
+      templateUrl: 'components/detail/targeting.html',
       scope: {
         'target': '=',
         'targets': '='
