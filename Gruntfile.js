@@ -67,7 +67,7 @@ module.exports = function(grunt) {
               ]),
               mountFolder(connect, '.tmp'),
               mountFolder(connect, 'app')
-            ]
+            ];
           }
         },
         files: [
@@ -159,7 +159,7 @@ module.exports = function(grunt) {
         files: [{
           dot: true,
           src: [
-            ".tmp"
+            '.tmp'
           ]
         }]
       },

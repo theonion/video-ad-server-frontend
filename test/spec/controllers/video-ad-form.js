@@ -18,9 +18,9 @@ describe('Controller: video-ads.FormCtrl', function (){
             $scope = _$rootScope_.$new();
             $routeParams = {};
             //TODO: get rid of these horrid regexs attached to the scope
-            $scope.vidoeAdListEndpoint = /\/api\/advertisements\//
+            $scope.vidoeAdListEndpoint = /\/api\/advertisements\//;
             $scope.videoAdDetailRegex = /^\/api\/advertisements\/[0-9]+\//;
-            _$controller_("FormCtrl", {
+            _$controller_('FormCtrl', {
                 $scope: $scope,
                 $location: _$location_,
                 $httpBackend: $httpBackend,
@@ -30,12 +30,12 @@ describe('Controller: video-ads.FormCtrl', function (){
     });
 
     it('Add targeting key sets $scope.targetingKey', function(){
-        var targetingKeyValue = "bacon";
+        var targetingKeyValue = 'bacon';
         $scope.addTargetingKey(targetingKeyValue);
         expect($scope.targetingKey).toBe(targetingKeyValue);
     });
 
-    describe("when $scope.videoAdId is undefined", function(){
+    describe('when $scope.videoAdId is undefined', function(){
         
         it('getAndInitVideoAd does not call out and properly popultes $scope.videoad', function() {
             $scope.getAndInitVideoAd(undefined);
@@ -43,7 +43,7 @@ describe('Controller: video-ads.FormCtrl', function (){
         });
 
         it('saveVideoAd POSTS to proper path', function(){
-            $location.path("/new");
+            $location.path('/new');
             $routeParams.videoAdId = undefined;
             $httpBackend.expectPOST($scope.vidoeAdListEndpoint).respond(200, videoAdFactory.videoad.detail);
             $scope.saveVideoAd();
@@ -52,12 +52,12 @@ describe('Controller: video-ads.FormCtrl', function (){
         });
     });
 
-    describe("when $scope.videoAdId is defined", function(){
+    describe('when $scope.videoAdId is defined', function(){
         beforeEach(function(){
             $routeParams.videoAdId = videoAdFactory.videoad.detail.id;
         });
 
-        it("getAndInitVideoAd calls out to the server, fetches correct data", function(){
+        it('getAndInitVideoAd calls out to the server, fetches correct data', function(){
             $httpBackend.expectGET($scope.videoAdDetailRegex).respond(200, videoAdFactory.videoad.detail);
             $scope.getAndInitVideoAd($routeParams.videoAdId);
             $httpBackend.flush();
@@ -65,7 +65,7 @@ describe('Controller: video-ads.FormCtrl', function (){
             expect($scope.videoad.fromServer).toBe(true);
         });
 
-        it("saveVideoAd PUTS to proper path", function(){
+        it('saveVideoAd PUTS to proper path', function(){
             //Prepare the variables for the test
             $httpBackend.expectGET($scope.videoAdDetailRegex).respond(200, videoAdFactory.videoad.detail);
             $scope.getAndInitVideoAd($routeParams.videoAdId);

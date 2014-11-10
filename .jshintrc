@@ -19,10 +19,10 @@
   "strict": true,
   "trailing": true,
   "smarttabs": true,
+  "jquery": true,
   "globals": {
     "angular": false,
     "_": false,
-    "$": false,
-    "moment": true
+    "moment": false
   }
 }

@@ -18,7 +18,7 @@ describe('Controller: video-ads.ListCtrl', function () {
       videoAdFactory = _mockVideoAdFactory_;
       $scope = _$rootScope_.$new();
       $scope.vidoeAdListEndpoint = /\/api\/advertisements\/.*/;
-      _$controller_("ListCtrl", {
+      _$controller_('ListCtrl', {
         $scope: $scope,
         $httpBackend: $httpBackend
       });
@@ -26,7 +26,7 @@ describe('Controller: video-ads.ListCtrl', function () {
 
   });
 
-  describe("updateList:", function () {
+  describe('updateList:', function () {
     it('updateList should populate $scope.videoads', function () {
       $httpBackend.expectGET($scope.vidoeAdListEndpoint).respond(videoAdFactory.videoad.list);
       $scope.updateList();
@@ -40,7 +40,7 @@ describe('Controller: video-ads.ListCtrl', function () {
     });
   });
 
-  describe("Pagination:", function () {
+  describe('Pagination:', function () {
     beforeEach(function () {
       $httpBackend.expectGET($scope.videoAdListEndpoint)
         .respond(videoAdFactory.videoad.paginatedList(_.range(1, 5)));
@@ -53,56 +53,56 @@ describe('Controller: video-ads.ListCtrl', function () {
       expect($scope.totalItems).toBe(20);
     });
 
-    it("updatePage should set currentPage, fire off a request", function () {
+    it('updatePage should set currentPage, fire off a request', function () {
       $scope.currentPage = 2;
       $scope.pageChanged();
       expect($scope.params.page).toBe(2);
       $httpBackend.flush();
     });
 
-    it("changeFilter should set currentPage to 1, get ads", function () {
-      $scope.changeFilter("active");
+    it('changeFilter should set currentPage to 1, get ads', function () {
+      $scope.changeFilter('active');
       expect($scope.currentPage).toBe(1);
       $httpBackend.flush();
     });
 
     afterEach(function () {
       expect(
-        _.pluck($scope.videoAds, "id")
+        _.pluck($scope.videoAds, 'id')
       ).toEqual(_.range(1, 5));
       $httpBackend.verifyNoOutstandingRequest();
       $httpBackend.verifyNoOutstandingExpectation();
     });
   });
 
-  describe("Ordering:", function () {
+  describe('Ordering:', function () {
     beforeEach(function () {
       $httpBackend.expectGET($scope.videoAdListEndpoint)
         .respond(videoAdFactory.videoad.paginatedList(_.range(1, 5)));
     });
 
-    it("updateList should be called when the active ordering changes, page should be set to 1", function () {
-      $scope.orderBy = "delivery";
+    it('updateList should be called when the active ordering changes, page should be set to 1', function () {
+      $scope.orderBy = 'delivery';
       $scope.reverse = false;
       $scope.changeOrder();
       $httpBackend.flush();
       expect($scope.currentPage).toBe(1);
     });
 
-    it("parameter should be populated with the correct value when reverse is false", function () {
-      $scope.orderBy = "start";
+    it('parameter should be populated with the correct value when reverse is false', function () {
+      $scope.orderBy = 'start';
       $scope.reverse = false;
       $scope.changeOrder();
       $httpBackend.flush();
-      expect($scope.params.orderBy).toBe("start");
+      expect($scope.params.orderBy).toBe('start');
     });
 
-    it("parameter should be populated with the correct value when reverse is true", function () {
-      $scope.orderBy = "start";
+    it('parameter should be populated with the correct value when reverse is true', function () {
+      $scope.orderBy = 'start';
       $scope.reverse = true;
       $scope.changeOrder();
       $httpBackend.flush();
-      expect($scope.params.orderBy).toBe("-start");
+      expect($scope.params.orderBy).toBe('-start');
     });
 
     afterEach(function () {
@@ -111,15 +111,15 @@ describe('Controller: video-ads.ListCtrl', function () {
     });
   });
   
-  describe("Searching:", function () {
+  describe('Searching:', function () {
     beforeEach(function () {
       $httpBackend.expectGET($scope.videoAdListEndpoint)
         .respond(videoAdFactory.videoad.paginatedList(_.range(1, 5)));
       });
-    it("Searching fires off request, and populates $scope.searchTerm", function () {
-      $rootScope.$broadcast("search", "bacon");
+    it('Searching fires off request, and populates $scope.searchTerm', function () {
+      $rootScope.$broadcast('search', 'bacon');
       $httpBackend.flush();
-      expect($scope.params.search).toBe("bacon");
+      expect($scope.params.search).toBe('bacon');
     });
     afterEach(function () {
       $httpBackend.verifyNoOutstandingRequest();

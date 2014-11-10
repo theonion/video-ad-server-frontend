@@ -69,7 +69,7 @@ angular.module('video-ads.mockApi')
       'videoad': {
         'list': _getListObject(),
         'paginatedList': function(arrayOfIds, pageNumber) {
-          return _getListObject(arrayOfIds, pageNumber)
+          return _getListObject(arrayOfIds, pageNumber);
         },
         'detail': _getVideoAd()
       }
