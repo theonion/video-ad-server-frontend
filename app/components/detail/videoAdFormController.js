@@ -39,7 +39,7 @@ angular.module('video-ads')
         format: 'YYYY-MM-DD hh:mm A'
       };
 
-      var inputVal = "";
+      var inputVal = '';
       if ($scope.videoad.start) {
         pickerOptions.startDate = moment.utc($scope.videoad.start).local().format('YYYY-MM-DD hh:mm A');
         inputVal += pickerOptions.startDate;
@@ -47,7 +47,7 @@ angular.module('video-ads')
 
       if ($scope.videoad.end) {
         pickerOptions.endDate = moment.utc($scope.videoad.end).local().format('YYYY-MM-DD hh:mm A');
-        inputVal += " - " + pickerOptions.endDate;
+        inputVal += ' - ' + pickerOptions.endDate;
       }
 
       $('#runtime').val(inputVal);
