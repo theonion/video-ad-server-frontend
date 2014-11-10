@@ -293,7 +293,7 @@ module.exports = function(grunt) {
     ngtemplates: {
       'video-ads': {
         cwd: '<%= yeoman.app %>',
-        src: '(components|shared)/{,*/}*.html',
+        src: ['shared/**/*.html', 'components/**/*.html'],
         dest: '.tmp/concat/scripts/templates.js',
         options: {
           htmlmin: {
