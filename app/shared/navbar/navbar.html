@@ -6,9 +6,9 @@
         <img src="images/logo-white.png" alt="Logo"/>
       </a>
     </div>
-    <form ng-if="show_search_bar" class="navbar-form navbar-right" ng-submit="search();">
+    <form class="navbar-form navbar-right" ng-show="showSearchBar" ng-submit="search();">
       <input type="text" class="form-control" placeholder="Search" ng-model="$parent.searchTerm">
     </form>
-    <button type="submit" class="btn btn-success save-videoad pull-right" ng-click="saveVideoAd();">Save</button>
+    <button type="submit" class="btn btn-success save-videoad pull-right" ng-show="showSaveButton" ng-click="saveVideoAd();">Save</button>
   </div>
 </div>

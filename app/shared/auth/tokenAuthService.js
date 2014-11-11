@@ -12,7 +12,7 @@ angular.module('video-ads')
         return config;
       },
       'responseError': function(response) {
-        if (!response.config.headers.ignoreAuthModule) {
+        if (response.config && !response.config.headers.ignoreAuthModule) {
           if (response.status === 403) {
             var deferred = $q.defer();
             httpRequestBuffer.append(response.config, deferred);

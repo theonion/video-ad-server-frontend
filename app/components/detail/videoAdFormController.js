@@ -3,9 +3,12 @@
 angular.module('video-ads')
   .controller('FormCtrl', ['$scope', '$routeParams', 'videoAdService', '$location', '$rootScope', function($scope, $routeParams, videoAdService, $location, $rootScope) {
     $rootScope.$emit('hide_search_bar');
+    $rootScope.showSaveButton = true;
+    $rootScope.showSearchBar = false;
     $scope.success = false;
     $scope.errors = false;
     $scope.videoad = {};
+    $scope.opened = false;
     //TODO: Magic strings could be moved into constants?
     $scope.page_targets = [
       'dfp_adchannel',
@@ -49,13 +52,6 @@ angular.module('video-ads')
         pickerOptions.endDate = moment.utc($scope.videoad.end).local().format('YYYY-MM-DD hh:mm A');
         inputVal += ' - ' + pickerOptions.endDate;
       }
-
-      $('#runtime').val(inputVal);
-
-      $('#runtime').daterangepicker(pickerOptions, function(start, end) {
-        $scope.videoad.start = moment(start, 'YYYY-MM-DD hh:mm A').utc().format();
-        $scope.videoad.end = moment(end, 'YYYY-MM-DD hh:mm A').utc().format();
-      });
     };
 
     $scope.getAndInitVideoAd = function() {
@@ -90,6 +86,10 @@ angular.module('video-ads')
           });
       }
     };
+
+    $rootScope.$on('save-video-ad', function(){
+      $scope.saveVideoAd();
+    });
 
     $scope.addVideo = function() {
       $scope.videoad.videos.push({

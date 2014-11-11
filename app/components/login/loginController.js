@@ -2,7 +2,8 @@
 
 angular.module('video-ads')
     .controller('LoginCtrl', function($scope, authService, $location, $rootScope) {
-        $rootScope.$emit('hide_search_bar');
+        $rootScope.showSearchBar = false;
+        $rootScope.showSaveButton = false;
         $scope.username = '';
         $scope.password = '';
         $scope.submitLogin = function() {

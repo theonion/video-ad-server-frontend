@@ -2,7 +2,8 @@
 angular.module('video-ads')
   .controller('ListCtrl', ['$scope', '$location', 'videoAdService', '$routeParams', '$rootScope', function($scope, $location, videoAdService, $routeParams, $rootScope) {
     $scope.videoAds = [];
-    $rootScope.$emit('show_search_bar');
+    $rootScope.showSearchBar = true;
+    $rootScope.showSaveButton = false;
     if (_.isEmpty($location.search())) {
       $scope.params = {
         'page_size': 8,
