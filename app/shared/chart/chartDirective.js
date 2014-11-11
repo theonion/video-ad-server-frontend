@@ -51,5 +51,5 @@ angular.module('video-ads')
           loading: false
         };
       }
-    }
+    };
   });

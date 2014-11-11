@@ -8,8 +8,6 @@ angular.module('video-ads')
     $scope.success = false;
     $scope.errors = false;
     $scope.videoad = {};
-    $scope.opened = false;
-    //TODO: Magic strings could be moved into constants?
     $scope.page_targets = [
       'dfp_adchannel',
       'dfp_pagetype',

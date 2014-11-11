@@ -52,6 +52,17 @@
       </div>
 
       <div class="form-group">
+        <label for="startDate" class="col-md-3 control-label">Start Date</label>
+        <div class="col-md-2">
+          <input type="text" ng-model="videoad.start" datepicker/>
+        </div>
+        <label for="impressionTarget" class="col-md-2 control-label">End Date</label>
+        <div class="col-md-2">
+          <input type="text" ng-model="videoad.end" datepicker/>
+        </div>
+      </div>
+
+      <div class="form-group">
         <label for="impressionTarget" class="col-md-3 control-label">Impression Target</label>
         <div class="col-md-2">
           <input type="number" class="form-control" placeholder="Impression Target" ng-model="videoad.impression_target" disabled>
