@@ -23,35 +23,6 @@ angular.module('video-ads')
       'country_code'
     ];
 
-    $scope.initVideoAd = function() {
-      if (!$scope.videoad.targeting) {
-        $scope.videoad.targeting = {};
-      }
-      if (!$scope.videoad.targeting.page) {
-        $scope.videoad.targeting.page = [];
-      }
-      if (!$scope.videoad.targeting.user) {
-        $scope.videoad.targeting.user = [];
-      }
-      $scope.videoad.video = $scope.videoad.video || {};
-      var pickerOptions = {
-        timePicker: true,
-        timePickerIncrement: 30,
-        format: 'YYYY-MM-DD hh:mm A'
-      };
-
-      var inputVal = '';
-      if ($scope.videoad.start) {
-        pickerOptions.startDate = moment.utc($scope.videoad.start).local().format('YYYY-MM-DD hh:mm A');
-        inputVal += pickerOptions.startDate;
-      }
-
-      if ($scope.videoad.end) {
-        pickerOptions.endDate = moment.utc($scope.videoad.end).local().format('YYYY-MM-DD hh:mm A');
-        inputVal += ' - ' + pickerOptions.endDate;
-      }
-    };
-
     $scope.getAndInitVideoAd = function() {
       if (_.isUndefined($routeParams.videoAdId)) {
         $scope.videoAdId = {};
@@ -66,6 +37,19 @@ angular.module('video-ads')
           console.log(data);
         }
       );
+    };
+
+    $scope.initVideoAd = function() {
+      if (!$scope.videoad.targeting) {
+        $scope.videoad.targeting = {};
+      }
+      if (!$scope.videoad.targeting.page) {
+        $scope.videoad.targeting.page = [];
+      }
+      if (!$scope.videoad.targeting.user) {
+        $scope.videoad.targeting.user = [];
+      }
+      $scope.videoad.video = $scope.videoad.video || {};
     };
 
     $scope.addTargetingKey = function(key) {
@@ -85,7 +69,7 @@ angular.module('video-ads')
       }
     };
 
-    $rootScope.$on('save-video-ad', function(){
+    $scope.$on('save-video-ad', function(){
       $scope.saveVideoAd();
     });
 

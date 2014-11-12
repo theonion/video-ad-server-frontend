@@ -6,11 +6,17 @@ angular.module('video-ads')
         'date': '='
       },
       replace: true,
-      template: '<input ng-model="date" type="text"/>',
-      link: function(scope, element){
-        element.datetimepicker({format: 'Y-m-d h:m'});
-        scope.$watch('date', function(){
-          scope.date = $filter('convertToLocal')(scope.date);
+      require:'ngModel',
+      template: '<input class="form-control" ng-model="date" type="text"/>',
+      link: function(scope, element, attrs, ngModel){
+        element.datetimepicker({format: 'Y-m-d h:m A', startDate: new Date()});
+        var formatter = function(value){
+          return $filter('convertToLocal')(value);
+        };
+        ngModel.$formatters.unshift(formatter);
+
+        ngModel.$parsers.unshift(function(value){
+          return moment(value).format('YYYY-MM-DDTHH:mm:DDZZ');
         });
       }
     };
