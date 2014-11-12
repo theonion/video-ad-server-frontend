@@ -127,6 +127,6 @@
         </div>
       </div>
     </form>
-    <button class="btn btn-success col-md-offset-3" type="submit" ng-click="addVideo();"><i class="fa fa-plus"></i> Add Video</button>
+    <button class="btn btn-success col-md-offset-3" type="submit" ng-disabled='videoad.id === null || videoad.id === undefined' ng-click="addVideo();"><i class="fa fa-plus"></i> Add Video</button>
   </div>
 </div>

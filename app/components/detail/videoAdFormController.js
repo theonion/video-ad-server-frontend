@@ -25,9 +25,10 @@ angular.module('video-ads')
 
     $scope.getAndInitVideoAd = function() {
       if (_.isUndefined($routeParams.videoAdId)) {
-        $scope.videoAdId = {};
+        $scope.videoad = {};
+        $scope.videoad.id = null;
         $scope.initVideoAd();
-      }
+      } else {
       videoAdService.one($routeParams.videoAdId).get().then(
         function(data) {
           $scope.videoad = data;
@@ -37,7 +38,9 @@ angular.module('video-ads')
           console.log(data);
         }
       );
+    }
     };
+
 
     $scope.initVideoAd = function() {
       if (!$scope.videoad.targeting) {
@@ -49,7 +52,7 @@ angular.module('video-ads')
       if (!$scope.videoad.targeting.user) {
         $scope.videoad.targeting.user = [];
       }
-      $scope.videoad.video = $scope.videoad.video || {};
+      $scope.videoad.videos = $scope.videoad.videos || [];
     };
 
     $scope.addTargetingKey = function(key) {
