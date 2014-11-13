@@ -97,6 +97,10 @@ module.exports = function(grunt) {
                 '/bower_components',
                 connect.static('./bower_components')
               ),
+              connect().use(
+                '/static',
+                connect.static('./dist')
+              ),
               connect.static(appConfig.app)
             ];
           }
@@ -155,11 +159,12 @@ module.exports = function(grunt) {
         ],
         css: [
           '<%= yeoman.dist %>/{,*/}*.css'
-        ],        
+        ],
         files: [{
           dot: true,
           src: [
-            '.tmp'
+            '.tmp',
+            '<%= yeoman.dist %>/images/{,*/}*.css'
           ]
         }]
       },
@@ -259,7 +264,7 @@ module.exports = function(grunt) {
       }
     },
 
-    
+
     // Performs rewrites based on filerev and the useminPrepare configuration
     usemin: {
       html: ['<%= yeoman.dist %>/index.html'],
