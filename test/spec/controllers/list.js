@@ -54,8 +54,8 @@ describe('Controller: video-ads.ListCtrl', function () {
     });
 
     it('updatePage should set currentPage, fire off a request', function () {
-      $scope.currentPage = 2;
-      $scope.pageChanged();
+      var currentPage = 2;
+      $scope.pageChanged(currentPage);
       expect($scope.params.page).toBe(2);
       $httpBackend.flush();
     });
@@ -110,7 +110,7 @@ describe('Controller: video-ads.ListCtrl', function () {
       $httpBackend.verifyNoOutstandingExpectation();
     });
   });
-  
+
   describe('Searching:', function () {
     beforeEach(function () {
       $httpBackend.expectGET($scope.videoAdListEndpoint)
