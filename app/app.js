@@ -16,8 +16,8 @@ angular.module('video-ads', [
 
     $routeProvider
       .when('/', {
-        templateUrl: 'components/list/list.html',
-        controller: 'ListCtrl',
+        templateUrl: 'components/videoAdList/videoAdList.html',
+        controller: 'VideoAdListController',
         reloadOnSearch: false
       })
       .when('/login', {
@@ -25,11 +25,11 @@ angular.module('video-ads', [
         controller: 'LoginCtrl'
       })
       .when('/edit/:videoAdId/', {
-        templateUrl: 'components/detail/form.html',
+        templateUrl: 'components/detail/videoAdDetail.html',
         controller: 'FormCtrl'
       })
       .when('/new/', {
-        templateUrl: 'components/detail/form.html',
+        templateUrl: 'components/detail/videoAdDetail.html',
         controller: 'FormCtrl'
       })
       .when('/exclusion/:exclusionName/', {

@@ -20,7 +20,7 @@
      * Config
      */
     var moduleName = 'video-ads';
-    var templatePath = 'components/list/dirPagination.tpl.html';
+    var templatePath = 'components/videoAdList/dirPagination.tpl.html';
 
     /**
      * Module

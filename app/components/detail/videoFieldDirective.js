@@ -3,7 +3,7 @@
 angular.module('video-ads')
   .directive('videoField', function(Zencoder, $q, $http) {
     return {
-      templateUrl: 'components/detail/video-field.html',
+      templateUrl: 'components/detail/videoField.html',
       transclude: true,
       controller: function($scope) {
 
