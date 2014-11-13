@@ -123,7 +123,7 @@
       <div class="form-group" ng-repeat="video in videoad.videos">
         <label for="video" class="col-md-3 control-label">Video: {{videoad.id}}</label>
         <div class="col-md-6" ng-show="videoad.videos.length > 0">
-          <video-edit-form index='$index' adid='videoad.id' video="video"></video-edit-form>
+          <video-edit-form index='$index' adid='videoad.id' video="videoad.videos[$index]"></video-edit-form>
         </div>
       </div>
     </form>

@@ -4,12 +4,8 @@ angular.module('video-ads')
   .directive('videoField', function(Zencoder, $q, $http) {
     return {
       templateUrl: 'components/detail/video-field.html',
-      scope: {
-        video: '=',
-        index: '=',
-        adid: '='
-      },
-      link: function postLink($scope) {
+      transclude: true,
+      controller: function($scope) {
 
         $scope.removeVideo = function() {
           $scope.video = null;

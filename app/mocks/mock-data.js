@@ -1,5 +1,5 @@
 angular.module('video-ads.mockApi')
-  .constant('videoAd', {  
+  .constant('videoAd', {
   'id':1,
   'name':'Ad 1',
   'client':null,
@@ -11,17 +11,17 @@ angular.module('video-ads.mockApi')
   'vast_url':'/vast/1',
   'click_through':'https://www.google.com/?q=clubelpaso',
   'gam_attribute':'',
-  'targeting':{  
-    'page':[  
-      {  
+  'targeting':{
+    'page':[
+      {
         'priority':'low',
-        'rules':[  
-          [  
+        'rules':[
+          [
             'dfp_adchannel',
             'is',
             'delicious'
           ],
-          [  
+          [
             'dfp_pagetype',
             'is not',
             'cool'
@@ -29,36 +29,36 @@ angular.module('video-ads.mockApi')
         ]
       }
     ],
-    'user':[  
+    'user':[
 
     ]
   },
-  'pixels':{  
-    'impression':[  
+  'pixels':{
+    'impression':[
       'http://vastrack.theonion.com/tracking.gif?video=1&event=impression'
     ],
-    'complete':[  
+    'complete':[
       'http://vastrack.theonion.com/tracking.gif?video=1&event=complete'
 
     ],
-    'thirdQuartile':[  
+    'thirdQuartile':[
       'http://vastrack.theonion.com/tracking.gif?video=1&event=thirdQuartile'
     ],
-    'clickThrough':[  
+    'clickThrough':[
       'http://vastrack.theonion.com/tracking.gif?video=1&event=clickThrough'
     ],
-    'midpoint':[  
+    'midpoint':[
       'http://vastrack.theonion.com/tracking.gif?video=1&event=midpoint'
     ],
-    'start':[  
+    'start':[
       'http://vastrack.theonion.com/tracking.gif?video=1&event=start'
     ],
-    'firstQuartile':[  
+    'firstQuartile':[
       'http://vastrack.theonion.com/tracking.gif?video=1&event=firstQuartile'
     ]
   },
-  'videos':[  
-    {  
+  'videos':[
+    {
       'id':1,
       'name':'Video 1',
       'poster':'',
@@ -72,11 +72,11 @@ angular.module('video-ads.mockApi')
       'midpoint_count':0,
       'third_quartile_count':0,
       'complete_count':0,
-      'sources':[  
+      'sources':[
 
       ]
     },
-    {  
+    {
       'id':10,
       'name':'sample_mpeg4.mp4',
       'poster':null,
@@ -90,7 +90,7 @@ angular.module('video-ads.mockApi')
       'midpoint_count':0,
       'third_quartile_count':0,
       'complete_count':0,
-      'sources':[  
+      'sources':[
 
       ]
     }
@@ -408,4 +408,20 @@ angular.module('video-ads.mockApi')
   },
   'id':1,
   'name':'global'
+}).constant('video', {
+      'id':1,
+  'name':'Video 1',
+  'poster':'',
+  'input':'',
+  'start':null,
+  'end':null,
+  'impression_target':null,
+  'impression_count':0,
+  'start_count':0,
+  'first_quartile_count':0,
+  'midpoint_count':0,
+  'third_quartile_count':0,
+  'complete_count':0,
+  'sources':[
+  ]
 });

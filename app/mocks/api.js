@@ -9,11 +9,12 @@ angular.module('video-ads.mockApi')
   'partials': /\.html/,
   'exclusionPartials': /exclusion\/global\/partials.*/,
   'tokenAuthPath': '/api-token-auth/',
-  'tokenRefreshPath': '/api-token-refresh/'
+  'tokenRefreshPath': '/api-token-refresh/',
+  'videoList': '/api/videos/'
 })
   .run(
-    ['$httpBackend', 'mockVideoAdFactory', 'zenCoderProgress', 'exclusions', 'testEndpoints',
-      function($httpBackend, mockVideoAdFactory, zenCoderProgress, exclusions, testEndpoints) {
+    ['$httpBackend', 'mockVideoAdFactory', 'zenCoderProgress', 'exclusions', 'testEndpoints', 'video',
+      function($httpBackend, mockVideoAdFactory, zenCoderProgress, exclusions, testEndpoints, video) {
         $httpBackend.whenGET(testEndpoints.partials).passThrough();
         $httpBackend.whenGET(testEndpoints.exclusionPartials).passThrough();
         $httpBackend.whenPOST(testEndpoints.tokenAuthPath).respond({
@@ -25,6 +26,7 @@ angular.module('video-ads.mockApi')
         $httpBackend.whenGET(testEndpoints.videoAdDetail).respond(mockVideoAdFactory.videoad.detail);
         $httpBackend.whenGET(testEndpoints.videoAdList).respond(mockVideoAdFactory.videoad.list);
         $httpBackend.whenPOST(testEndpoints.videoAdList).respond(200, mockVideoAdFactory.videoad.detail);
+        $httpBackend.whenPOST(testEndpoints.videoList).respond(200, video);
         $httpBackend.whenGET(testEndpoints.zencoder).respond(zenCoderProgress);
         $httpBackend.whenGET(testEndpoints.exclusions).respond(exclusions);
       }

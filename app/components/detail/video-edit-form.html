@@ -7,15 +7,11 @@
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
       <i class="fa fa-film"></i> Play Video
     </button>
-    <button type="button" class="btn btn-danger">
-      <i class="fa fa-remove"></i> Delete Video
-    </button>
   </div>
 
   <div class="poster-image col-sm-12 col-md-4" ng-show="!video.name">
     <input type="hidden" class="form-control fake-input" value="{{video.name}}" disabled>
-    <video-field index='index' video='video' adid='adid'/>
-    <button class="btn btn-success" video-field video='video'>
+    <video-field></video-field>
     </button>
   </div>
 
