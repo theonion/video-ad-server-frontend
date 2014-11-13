@@ -58,7 +58,8 @@ angular.module('video-ads')
       $scope.updateList();
     };
 
-    $scope.pageChanged = function() {
+    $scope.pageChanged = function(newPage) {
+      $scope.currentPage = newPage;
       $scope.params.page = $scope.currentPage;
       $scope.updateList();
     };
