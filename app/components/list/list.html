@@ -18,11 +18,6 @@
 		<h2>Sort</h2>
 		<ul class="nav nav-sidebar">
 			<li>
-				<a href="" ng-click="orderBy = 'delivery'; reverse=!reverse; changeOrder();" ng-class="{active:orderBy == 'delivery'}">
-					<i class="fa fa-bar-chart"></i> Delivery <i class="fa" ng-class="{'fa-chevron-up' : orderBy == 'delivery', 'fa-chevron-down' : orderBy == 'delivery' && !reverse}"></i>
-				</a>
-			</li>
-			<li>
 				<a ng-click="orderBy = 'start'; reverse=!reverse; changeOrder();" ng-class="{active:orderBy == 'start'}">
 					<i class="fa fa-calendar"></i> Start Date
 					<i class="fa" ng-class="{'fa-chevron-up' : orderBy == 'start', 'fa-chevron-down' : orderBy == 'start' && !reverse}"></i>
