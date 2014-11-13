@@ -62,7 +62,7 @@
 						</li>
 						<li class="name">{{videoad.name}}</li>
 						<li>Client: {{videoad.client}}</li>
-						<li>Delivery: {{videoad.delivery}}%</li>
+						<li>Delivery: {{(videoad.impression_count / videoad.impression_target) * 100 |number: 0}}%</li>
 						<li>Start: {{videoad.start|convertToLocal}}</li>
 						<li>End: {{videoad.end|convertToLocal}}</li>
 						<li ng-show="videoad.vast_url">VAST: {{videoad.vast_url}}</li>

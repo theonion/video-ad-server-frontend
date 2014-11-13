@@ -39,7 +39,8 @@ angular.module('video-ads.mockApi')
       newVideoAd.id = _.isUndefined(id) ? _.random(100) : id;
       newVideoAd.name += ' ' + newVideoAd.id;
       //Create a random number for delivery for graph prettyness
-      newVideoAd.delivery = _.random(100);
+      newVideoAd.impression_target = _.random(100);
+      newVideoAd.impression_count = _.random(100);
       return newVideoAd;
     };
 

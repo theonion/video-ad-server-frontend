@@ -2,7 +2,6 @@
 
 angular.module('video-ads')
   .controller('FormCtrl', ['$scope', '$routeParams', 'videoAdService', '$location', '$rootScope', function($scope, $routeParams, videoAdService, $location, $rootScope) {
-    $rootScope.$emit('hide_search_bar');
     $rootScope.showSaveButton = true;
     $rootScope.showSearchBar = false;
     $scope.success = false;

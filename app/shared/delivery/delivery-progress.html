@@ -1,3 +1,3 @@
 <div class="progress-bar" role="progressbar" style="width: {{ videoad.delivery }}%;">
-    <span class="delivery">{{ videoad.delivery }}%</span>
+    <span class="delivery">{{ (videoad.impression_count / videoad.impression_target) * 100 |number: 0 }}%</span>
 </div>

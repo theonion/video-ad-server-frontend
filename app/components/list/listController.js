@@ -47,14 +47,14 @@ angular.module('video-ads')
       if ($scope.reverse) {
         $scope.params.orderBy = '-' + $scope.orderBy;
       }
-      //Setting currentPage to 1 will trigger the currentPage watch to fire
       $scope.currentPage = 1;
+      $scope.params.page = 1;
       $scope.updateList();
     };
 
     $scope.changeFilter = function() {
-      //This will trigger the above watch statement, which will trigger an updateList()
       $scope.currentPage = 1;
+      $scope.params.page = 1;
       $scope.updateList();
     };
 
