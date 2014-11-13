@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Controller: video-ads.ListCtrl', function () {
+describe('Controller: video-ads.VideoAdListController', function () {
 
   var $httpBackend,
     $scope,
@@ -18,7 +18,7 @@ describe('Controller: video-ads.ListCtrl', function () {
       videoAdFactory = _mockVideoAdFactory_;
       $scope = _$rootScope_.$new();
       $scope.vidoeAdListEndpoint = /\/api\/advertisements\/.*/;
-      _$controller_('ListCtrl', {
+      _$controller_('VideoAdListController', {
         $scope: $scope,
         $httpBackend: $httpBackend
       });

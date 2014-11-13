@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Controller: video-ads.FormCtrl', function (){
+describe('Controller: video-ads.VideoAdDetail', function (){
 
     var $httpBackend,
         $scope,
@@ -20,7 +20,7 @@ describe('Controller: video-ads.FormCtrl', function (){
             //TODO: get rid of these horrid regexs attached to the scope
             $scope.vidoeAdListEndpoint = /\/api\/advertisements\//;
             $scope.videoAdDetailRegex = /^\/api\/advertisements\/[0-9]+\//;
-            _$controller_('FormCtrl', {
+            _$controller_('VideoAdDetailController', {
                 $scope: $scope,
                 $location: _$location_,
                 $httpBackend: $httpBackend,
@@ -36,7 +36,7 @@ describe('Controller: video-ads.FormCtrl', function (){
     });
 
     describe('when $scope.videoAdId is undefined', function(){
-        
+
         it('getAndInitVideoAd does not call out and properly popultes $scope.videoad', function() {
             $scope.getAndInitVideoAd(undefined);
             expect($scope.videoad.fromServer).toBe(undefined);
@@ -70,7 +70,7 @@ describe('Controller: video-ads.FormCtrl', function (){
             $httpBackend.expectGET($scope.videoAdDetailRegex).respond(200, videoAdFactory.videoad.detail);
             $scope.getAndInitVideoAd($routeParams.videoAdId);
             $httpBackend.flush();
-            
+
             //Do the actual test
             $httpBackend.expectPUT($scope.videoAdDetailRegex).respond(200, videoAdFactory.videoad.detail);
             $scope.saveVideoAd();

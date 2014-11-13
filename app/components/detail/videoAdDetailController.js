@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('video-ads')
-  .controller('FormCtrl', ['$scope', '$routeParams', 'videoAdService', '$location', '$rootScope', function($scope, $routeParams, videoAdService, $location, $rootScope) {
+  .controller('VideoAdDetailController', ['$scope', '$routeParams', 'videoAdService', '$location', '$rootScope', function($scope, $routeParams, videoAdService, $location, $rootScope) {
     $rootScope.showSaveButton = true;
     $rootScope.showSearchBar = false;
     $scope.success = false;
