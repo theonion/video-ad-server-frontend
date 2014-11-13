@@ -70,7 +70,8 @@ angular.module('video-ads')
     });
 
     $rootScope.$on('clearSearch', function(){
-      $scope.params = _.without($scope.params, 'search');
+      $scope.params = _.omit($scope.params, 'search');
+      $scope.updateList();
     });
 
     $scope.updateList();
