@@ -14,6 +14,10 @@ angular.module('video-ads')
             $scope.search = function(){
                 $rootScope.$broadcast('search', $scope.searchTerm);
             };
+            $scope.clearSearch = function(){
+              $rootScope.$broadcast('clearSearch');
+              $scope.searchTerm = '';
+            };
         }
     };
   });

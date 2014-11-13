@@ -6,9 +6,10 @@
         <img src="images/logo-white.png" alt="Logo"/>
       </a>
     </div>
-    <form class="navbar-form navbar-right" ng-show="showSearchBar" ng-submit="search();">
-      <input type="text" class="form-control" placeholder="Search" ng-model="searchTerm">
-    </form>
+    <div class="navbar-form navbar-right" ng-show="showSearchBar">
+      <input type="search" class="form-control" placeholder="Search" ng-model="searchTerm" ng-keypress="($event.which === 13)?search():0;">
+      <button ng-show='showSearchBar' class="btn btn-small btn-danger" ng-click="clearSearch()"><i class='glyphicon glyphicon-remove'></i></button>
+    </div>
     <button type="submit" class="btn btn-success save-videoad pull-right" ng-show="showSaveButton" ng-click="saveVideoAd();">Save</button>
   </div>
 </div>

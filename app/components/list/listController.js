@@ -12,7 +12,6 @@ angular.module('video-ads')
     } else {
       $scope.params = $location.search();
     }
-    $scope.searchTerm = '';
     $scope.currentPage = 1;
     $scope.totalItems = 0;
     $scope.loading = true;
@@ -65,9 +64,13 @@ angular.module('video-ads')
     };
 
     $rootScope.$on('search', function(event, searchTerm) {
+      $scope.params.search  = searchTerm;
       event.preventDefault();
-      $scope.params.search = searchTerm;
       $scope.updateList();
+    });
+
+    $rootScope.$on('clearSearch', function(){
+      $scope.params = _.without($scope.params, 'search');
     });
 
     $scope.updateList();
