@@ -28,6 +28,11 @@
 	margin: 4% 0;
 }
 
+.ng-invalid-required {
+	border-color: red;
+  outline-color: red;
+}
+
 //Targeting
 
 .targeting-group {
@@ -97,6 +102,3 @@
 	margin: 5px;
 	width: 10%;
 }
-
-
-

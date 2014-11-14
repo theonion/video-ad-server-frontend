@@ -8340,7 +8340,13 @@ h2 {
   margin: 4% 0;
 }
 
-/* line 33, global/forms/_videoad-form.scss */
+/* line 31, global/forms/_videoad-form.scss */
+.ng-invalid-required {
+  border-color: red;
+  outline-color: red;
+}
+
+/* line 38, global/forms/_videoad-form.scss */
 .targeting-group {
   border: 1px solid #a1bfd7;
   border-radius: 4px;
@@ -8349,45 +8355,45 @@ h2 {
   padding: 5px;
 }
 
-/* line 40, global/forms/_videoad-form.scss */
+/* line 45, global/forms/_videoad-form.scss */
 .targeting-row .form-control {
   float: left;
   margin: 5px 2px 5px 2px;
 }
 
-/* line 44, global/forms/_videoad-form.scss */
+/* line 49, global/forms/_videoad-form.scss */
 .targeting-row-container {
   margin: 0px auto 0px auto;
 }
-/* line 46, global/forms/_videoad-form.scss */
+/* line 51, global/forms/_videoad-form.scss */
 .targeting-row-container .btn {
   width: auto;
 }
 
-/* line 50, global/forms/_videoad-form.scss */
+/* line 55, global/forms/_videoad-form.scss */
 .targeting-group .col {
   padding: 0 2px;
 }
 
-/* line 52, global/forms/_videoad-form.scss */
+/* line 57, global/forms/_videoad-form.scss */
 .add-targeting-button {
   margin: 4px auto 4px auto;
 }
 
-/* line 58, global/forms/_videoad-form.scss */
+/* line 63, global/forms/_videoad-form.scss */
 .pixel-group .pixel {
   margin-bottom: 10px;
   overflow: hidden;
 }
 
-/* line 62, global/forms/_videoad-form.scss */
+/* line 67, global/forms/_videoad-form.scss */
 .pixel-group .pixel .btn {
   color: darkred;
   line-height: 20px;
   padding: 0;
 }
 
-/* line 70, global/forms/_videoad-form.scss */
+/* line 75, global/forms/_videoad-form.scss */
 .videos-container {
   border: 1px solid #a1bfd7;
   border-radius: 4px;
@@ -8395,27 +8401,27 @@ h2 {
   padding: 2%;
   margin: 0 0 3% 0;
 }
-/* line 76, global/forms/_videoad-form.scss */
+/* line 81, global/forms/_videoad-form.scss */
 .videos-container label {
   padding-top: 8px;
 }
 
-/* line 81, global/forms/_videoad-form.scss */
+/* line 86, global/forms/_videoad-form.scss */
 .poster-image {
   float: left;
 }
-/* line 83, global/forms/_videoad-form.scss */
+/* line 88, global/forms/_videoad-form.scss */
 .poster-image button {
   margin-bottom: 15px;
   width: 100%;
 }
-/* line 87, global/forms/_videoad-form.scss */
+/* line 92, global/forms/_videoad-form.scss */
 .poster-image img {
   margin-bottom: 15px;
   width: 100%;
 }
 
-/* line 95, global/forms/_videoad-form.scss */
+/* line 100, global/forms/_videoad-form.scss */
 .save-videoad {
   height: 40px;
   margin: 5px;

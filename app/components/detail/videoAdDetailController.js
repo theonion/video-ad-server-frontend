@@ -59,24 +59,28 @@ angular.module('video-ads')
     };
 
     $scope.saveVideoAd = function() {
-      if (!_.isUndefined($routeParams.videoAdId)) {
-        $scope.videoad.save().then(function(){
-          $('.alert-success').fadeIn().delay(1000).fadeOut();
-        }, function(){
-          $('.alert-danger').fadeIn().delay(1000).fadeOut();
-        });
-      } else {
-        videoAdService.post($scope.videoad)
-          .then(function(data) {
-              $('.alert-success').fadeIn().delay(1000).fadeOut(500,
-                function(){
-                  $location.path('/edit/' + data.id);
-                  $scope.$apply();
-                });
-          },
-          function(){
+      if ($scope.videoAdDetailForm.$valid){
+        if (!_.isUndefined($routeParams.videoAdId)) {
+          $scope.videoad.save().then(function(){
+            $('.alert-success').fadeIn().delay(1000).fadeOut();
+          }, function(){
             $('.alert-danger').fadeIn().delay(1000).fadeOut();
           });
+        } else {
+          videoAdService.post($scope.videoad)
+            .then(function(data) {
+                $('.alert-success').fadeIn().delay(1000).fadeOut(500,
+                  function(){
+                    $location.path('/edit/' + data.id);
+                    $scope.$apply();
+                  });
+            },
+            function(){
+              $('.alert-danger').fadeIn().delay(1000).fadeOut();
+            });
+        }
+      } else {
+        $('.alert-danger').fadeIn().delay(1000).fadeOut();
       }
     };
 

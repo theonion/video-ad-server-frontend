@@ -1,7 +1,10 @@
 <div class="row video-ad-form">
   <!-- Alert Message -->
   <div class="alert alert-success">Success</div>
-  <div class="alert alert-danger">Error</div>
+  <ng-messages for="videoAdDetailForm.$error" class="alert alert-danger">
+    <ng-message when="required">Please fill in all required fields.</ng-message>
+    <ng-message when="uploadError">Something went wrong with the video upload.</ng-message>
+  </ng-messages>
 
   <!-- Video Preview Modal -->
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -26,39 +29,39 @@
 
 
   <div class="col-md-12">
-    <form class="form-horizontal">
+    <ng-form class="form-horizontal" name='videoAdDetailForm' novalidate>
 
       <input type="hidden" ng-model="videoad.id" name="id" value="{{videoad.id}}" />
 
       <div class="form-group">
         <label for="name" class="col-md-3 control-label">Name</label>
         <div class="col-md-6">
-          <input type="text" class="form-control" placeholder="Advertisement Name" ng-model="videoad.name" required>
+          <input type="text" name="Name" class="form-control" placeholder="Advertisement Name" required ng-model="videoad.name" required>
         </div>
       </div>
 
       <div class="form-group">
         <label for="client" class="col-md-3 control-label">Client</label>
         <div class="col-md-6">
-          <input type="text" class="form-control" placeholder="Client Name" ng-model="videoad.client">
+          <input type="text" name="Client" class="form-control" placeholder="Client Name" required ng-model="videoad.client">
         </div>
       </div>
 
       <div class="form-group">
         <label for="campaign" class="col-md-3 control-label">Campaign Name</label>
         <div class="col-md-6">
-          <input type="text" class="form-control" placeholder="Campaign Name" ng-model="videoad.campaign">
+          <input type="text" name="Campaign" class="form-control" placeholder="Campaign Name" required ng-model="videoad.campaign">
         </div>
       </div>
 
       <div class="form-group">
         <label for="startDate" class="col-md-3 control-label">Start Date</label>
         <div class="col-md-2">
-          <datepicker type="text" date="videoad.start"></datepicker>
+          <datepicker required type="text" date="videoad.start"></datepicker>
         </div>
         <label for="endDate" class="col-md-2 control-label">End Date</label>
         <div class="col-md-2">
-          <datepicker type="text" date="videoad.end"></datepicker>
+          <datepicker required type="text" date="videoad.end"></datepicker>
         </div>
       </div>
 
@@ -126,7 +129,7 @@
           <video-edit-form index='$index' adid='videoad.id' video="videoad.videos[$index]"></video-edit-form>
         </div>
       </div>
-    </form>
+    </ng-form>
     <button class="btn btn-success col-md-offset-3" type="submit" ng-disabled='videoad.id === null || videoad.id === undefined' ng-click="addVideo();"><i class="fa fa-plus"></i> Add Video</button>
   </div>
 </div>
