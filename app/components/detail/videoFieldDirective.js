@@ -16,6 +16,13 @@ angular.module('video-ads')
           fileField.unbind('change');
           fileField.bind('change', function(event) {
             var clickDeferred = $q.defer();
+            clickDeferred.promise.then(
+              function(){
+                $('.alert-success').fadeIn().delay(1000).fadeOut();
+              },
+              function(){
+                $('.alert-danger').fadeIn().delay(1000).fadeOut();
+              });
             var file = event.target.files[0];
             //TODO: validation messaging.
             $scope.validateVideoFile(file)
