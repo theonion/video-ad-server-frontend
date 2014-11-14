@@ -26,11 +26,11 @@ angular.module('video-ads', [
       })
       .when('/edit/:videoAdId/', {
         templateUrl: 'components/detail/videoAdDetail.html',
-        controller: 'FormCtrl'
+        controller: 'VideoAdDetailController'
       })
       .when('/new/', {
         templateUrl: 'components/detail/videoAdDetail.html',
-        controller: 'FormCtrl'
+        controller: 'VideoAdDetailController'
       })
       .when('/exclusion/:exclusionName/', {
         templateUrl: 'components/exclusion/exclusion.html',

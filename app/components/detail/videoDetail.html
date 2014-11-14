@@ -3,7 +3,7 @@
   <input ng-model="video.id" value="{{video.id}}" type="hidden" />
 
   <div class="poster-image col-sm-12 col-md-4" ng-show="video.name">
-    <img ng-src="{{video.poster}}" alt=""/>
+    <img ng-src="{{video.poster | placeholder}}" alt=""/>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
       <i class="fa fa-film"></i> Play Video
     </button>
