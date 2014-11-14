@@ -49,8 +49,7 @@ angular.module('video-ads')
       $http({
         method: 'POST',
         url: 'api/videos/' + videoObject.id + '/encode/'
-      }).success(function(data) {
-        videoObject.attrs.encode_status_endpoints = data;
+      }).success(function() {
         encodeDeferred.resolve(videoObject);
       }).error(function(data) {
         encodeDeferred.reject(data);
