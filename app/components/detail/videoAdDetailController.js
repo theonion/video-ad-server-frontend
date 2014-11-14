@@ -60,13 +60,22 @@ angular.module('video-ads')
 
     $scope.saveVideoAd = function() {
       if (!_.isUndefined($routeParams.videoAdId)) {
-        $('.alert-success').fadeIn().delay(1000).fadeOut();
-        $scope.videoad.save();
+        $scope.videoad.save().then(function(){
+          $('.alert-success').fadeIn().delay(1000).fadeOut();
+        }, function(){
+          $('.alert-danger').fadeIn().delay(1000).fadeOut();
+        });
       } else {
-        $('.alert-danger').fadeIn().delay(1000).fadeOut();
         videoAdService.post($scope.videoad)
           .then(function(data) {
-            $location.path('/edit/' + data.id);
+              $('.alert-success').fadeIn().delay(1000).fadeOut(500,
+                function(){
+                  $location.path('/edit/' + data.id);
+                  $scope.$apply();
+                });
+          },
+          function(){
+            $('.alert-danger').fadeIn().delay(1000).fadeOut();
           });
       }
     };

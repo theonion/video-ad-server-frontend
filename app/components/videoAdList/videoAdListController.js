@@ -71,6 +71,8 @@ angular.module('video-ads')
 
     $rootScope.$on('clearSearch', function(){
       $scope.params = _.omit($scope.params, 'search');
+      $scope.currentPage = 1;
+      $scope.params.page = 1;
       $scope.updateList();
     });
 
