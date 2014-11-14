@@ -22,6 +22,16 @@ angular.module('video-ads')
       'country_code'
     ];
 
+    var defaultPixelsObject = {
+      'impression': [],
+      'clickThrough': [],
+      'complete': [],
+      'firstQuartile':[],
+      'midpoint': [],
+      'start': [],
+      'thirdQuartile': []
+    };
+
     $scope.getAndInitVideoAd = function() {
       if (_.isUndefined($routeParams.videoAdId)) {
         $scope.videoad = {};
@@ -52,6 +62,7 @@ angular.module('video-ads')
         $scope.videoad.targeting.user = [];
       }
       $scope.videoad.videos = $scope.videoad.videos || [];
+      $scope.videoad.pixels = $scope.videoad.pixels || defaultPixelsObject;
     };
 
     $scope.addTargetingKey = function(key) {
