@@ -18,13 +18,15 @@ angular.module('video-ads')
             var clickDeferred = $q.defer();
             clickDeferred.promise.then(
               function(){
+                $('.alert-info').fadeOut();
                 $('.alert-success').fadeIn().delay(1000).fadeOut();
               },
               function(){
+                $('.alert-info').fadeOut();
                 $('.alert-danger').fadeIn().delay(1000).fadeOut();
               });
             var file = event.target.files[0];
-            //TODO: validation messaging.
+            $('.alert-info').fadeIn();
             $scope.validateVideoFile(file)
               .then(function() {
                 $scope.addVideoToAdvertisement(file)
