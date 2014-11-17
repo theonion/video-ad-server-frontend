@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('video-ads')
-    .controller('ExclusionCtrl', function ($scope, $http, $routeParams) {
+    .controller('ExclusionCtrl', function ($scope, $http) {
         $scope.exclusion = {};
         $scope.exclusion.targeting = {};
         $scope.exclusion.targeting.page = [];

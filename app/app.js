@@ -6,7 +6,6 @@ angular.module('video-ads', [
   'ngCookies',
   'ngRoute',
   'ngAnimate',
-  'ngMessages',
   'restangular',
   'highcharts-ng'
 ])

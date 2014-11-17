@@ -26,7 +26,7 @@ angular.module('video-ads')
       'impression': [],
       'clickThrough': [],
       'complete': [],
-      'firstQuartile':[],
+      'firstQuartile': [],
       'midpoint': [],
       'start': [],
       'thirdQuartile': []
@@ -38,16 +38,16 @@ angular.module('video-ads')
         $scope.videoad.id = null;
         $scope.initVideoAd();
       } else {
-      videoAdService.one($routeParams.videoAdId).get().then(
-        function(data) {
-          $scope.videoad = data;
-          $scope.initVideoAd();
-        },
-        function(data) {
-          console.log(data);
-        }
-      );
-    }
+        videoAdService.one($routeParams.videoAdId).get().then(
+          function(data) {
+            $scope.videoad = data;
+            $scope.initVideoAd();
+          },
+          function(data) {
+            console.log(data);
+          }
+        );
+      }
     };
 
 
@@ -70,32 +70,33 @@ angular.module('video-ads')
     };
 
     $scope.saveVideoAd = function() {
-      if ($scope.videoAdDetailForm.$valid){
+      if ($scope.videoAdDetailForm.$valid) {
         if (!_.isUndefined($routeParams.videoAdId)) {
-          $scope.videoad.save().then(function(){
+          $scope.videoad.save().then(function() {
             $('.alert-success').fadeIn().delay(1000).fadeOut();
-          }, function(){
+          }, function() {
             $('.alert-danger').fadeIn().delay(1000).fadeOut();
           });
         } else {
           videoAdService.post($scope.videoad)
-            .then(function(data) {
+            .then(
+              function(data) {
                 $('.alert-success').fadeIn().delay(1000).fadeOut(500,
-                  function(){
-                    $location.path('/edit/' + data.id);
+                  function() {
+                    $location.path('/edit/' + data.id + '/');
                     $scope.$apply();
                   });
-            },
-            function(){
-              $('.alert-danger').fadeIn().delay(1000).fadeOut();
-            });
+              },
+              function() {
+                $('.alert-danger').fadeIn().delay(1000).fadeOut();
+              });
         }
       } else {
         $('.alert-danger').fadeIn().delay(1000).fadeOut();
       }
     };
 
-    $scope.$on('save-video-ad', function(){
+    $scope.$on('save-video-ad', function() {
       $scope.saveVideoAd();
     });
 

@@ -44,17 +44,21 @@ describe('Controller: video-ads.VideoAdDetail', function (){
 
         it('saveVideoAd POSTS to proper path', function(){
             $location.path('/new');
+            $scope.videoAdDetailForm = {};
+            $scope.videoAdDetailForm.$valid = true;
             $routeParams.videoAdId = undefined;
             $httpBackend.expectPOST($scope.vidoeAdListEndpoint).respond(200, videoAdFactory.videoad.detail);
             $scope.saveVideoAd();
             $httpBackend.flush();
-            expect($location.path()).toBe('/edit/' + videoAdFactory.videoad.detail.id);
         });
     });
 
     describe('when $scope.videoAdId is defined', function(){
         beforeEach(function(){
             $routeParams.videoAdId = videoAdFactory.videoad.detail.id;
+            //We aren't here to test the videoAdDetailForm object
+            $scope.videoAdDetailForm = {};
+            $scope.videoAdDetailForm.$valid = true;
         });
 
         it('getAndInitVideoAd calls out to the server, fetches correct data', function(){
