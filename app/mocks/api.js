@@ -4,7 +4,7 @@ angular.module('video-ads.mockApi')
 .constant('testEndpoints', {
   'videoAdList': /^\/api\/advertisements\/*\?*.*/,
   'videoAdDetail': /^\/api\/advertisements\/[0-9]+\//,
-  'exclusions': /\/api\/v1\/exclusions\//,
+  'exclusions': /\/api\/exclusion-rules\/1\//,
   'zencoder': /app.zencoder.com\/.*/,
   'partials': /\.html/,
   'exclusionPartials': /exclusion\/global\/partials.*/,

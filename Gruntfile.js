@@ -359,7 +359,11 @@ module.exports = function(grunt) {
           cwd: 'bower_components/bootstrap/fonts',
           dest: '<%= yeoman.dist %>/fonts/bootstrap',
           src: '*'
-
+        }, {
+          expand: true,
+          cwd: 'bower_components/videojs/dist/video-js/font',
+          dest: '<%= yeoman.dist %>/css/fonts/',
+          src: '*'
         }]
       },
       styles: {
@@ -367,7 +371,7 @@ module.exports = function(grunt) {
         cwd: '<%= yeoman.app %>/styles',
         dest: '.tmp/styles/',
         src: '{,*/}*.css'
-      },
+      }
     },
 
     // Run some tasks in parallel to speed up the build process
@@ -384,7 +388,6 @@ module.exports = function(grunt) {
         'svgmin'
       ]
     },
-
     // Test settings
     karma: {
       unit: {
