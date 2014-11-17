@@ -354,6 +354,12 @@ module.exports = function(grunt) {
           cwd: '.tmp/images',
           dest: '<%= yeoman.dist %>/images',
           src: ['generated/*']
+        }, {
+          expand: true,
+          cwd: 'bower_components/bootstrap/fonts',
+          dest: '<%= yeoman.dist %>/fonts/bootstrap',
+          src: '*'
+
         }]
       },
       styles: {
@@ -361,7 +367,7 @@ module.exports = function(grunt) {
         cwd: '<%= yeoman.app %>/styles',
         dest: '.tmp/styles/',
         src: '{,*/}*.css'
-      }
+      },
     },
 
     // Run some tasks in parallel to speed up the build process
