@@ -53,20 +53,18 @@ angular.module('video-ads')
       }).success(function(response) {
         var zencoderProgressEndpoint = response.json;
         var progressInterval = $interval(function(){
-          $http.get(zencoderProgressEndpoint, {},{
-            'ignoreAuthorizationHeader': true
-          }).then(function(response){
-            if (response.data.progress === 100){
+          $http({ url: zencoderProgressEndpoint, method:'GET', 'ignoreAuthorizationHeader': true}).then(function(response){
+            if (response.data.state === 'finished'){
               encodeDeferred.resolve(videoObject);
-              progressInterval();
-            } else if (response.data.status === 'failed'){
+              $interval.cancel(progressInterval);
+            } else if (response.data.state === 'failed'){
               $rootScope.$broadcast(AlertEvents.ERROR, 'An error has occured.');
-              progressInterval();
+              $interval.cancel(progressInterval);
             } else {
               $rootScope.$broadcast(AlertEvents.INFO, 'Encoding: ' + response.data.progress);
             }
           });
-        }, 500);
+        }, 1000);
       }).error(function(data) {
         encodeDeferred.reject(data);
       });
