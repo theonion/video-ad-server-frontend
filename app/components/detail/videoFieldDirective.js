@@ -5,7 +5,7 @@ angular.module('video-ads')
     return {
       templateUrl: 'components/detail/videoField.html',
       transclude: true,
-      controller: function($scope) {
+      controller: function($scope, $rootScope, AlertEvents) {
         $scope.removeVideo = function() {
           $scope.video = null;
         };
@@ -14,27 +14,18 @@ angular.module('video-ads')
           var fileField = $('#' + $scope.index + '-file-field');
           fileField.unbind('change');
           fileField.bind('change', function(event) {
-            var clickDeferred = $q.defer();
-            clickDeferred.promise.then(
-              function(){
-                $('.alert-info').fadeOut();
-                $('.alert-success').fadeIn().delay(1000).fadeOut();
-              },
-              function(){
-                $('.alert-info').fadeOut();
-                $('.alert-danger').fadeIn().delay(1000).fadeOut();
-              });
             var file = event.target.files[0];
             $('.alert-info').fadeIn();
             $scope.validateVideoFile(file)
               .then(function() {
                 $scope.addVideoToAdvertisement(file)
                   .then(function() {
-                    var videoObject = $scope.video;
-                    Zencoder.uploadToS3AndEncode(file, videoObject);
+                    Zencoder.uploadToS3AndEncode(file, $scope.video);
                   }).then(function() {
-                    clickDeferred.resolve();
+                    $rootScope.$broadcast(AlertEvents.SUCCESS, 'Video Uploaded');
                   });
+              }, function(error){
+                $rootScope.$broadcast(AlertEvents.ERROR, error);
               });
           });
           fileField.click();
@@ -58,6 +49,7 @@ angular.module('video-ads')
 
         $scope.addVideoToAdvertisement = function(file) {
           return $http.post('/api/videos/', {
+            //TODO: kill off this magic string
             'advertisement': $scope.adid,
             'name': file.name
           }).then(function(response) {

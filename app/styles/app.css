@@ -8122,7 +8122,6 @@ h2 {
 /* line 7, global/patterns/_alert.scss */
 .alert {
   border-radius: 0;
-  display: none;
   height: 50px;
   left: 0;
   line-height: 1.5;

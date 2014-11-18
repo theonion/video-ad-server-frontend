@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('video-ads')
-  .service('Zencoder', function Zencoder($http, $q) {
+  .service('Zencoder', function Zencoder($http, $q, $interval, $rootScope, AlertEvents) {
 
     this.uploadToS3AndEncode = function(file, videoObject) {
       uploadToS3(file, videoObject.encoding_payload)
@@ -22,6 +22,7 @@ angular.module('video-ads')
       formData.append('signature', s3Config.signature);
       formData.append('file', file);
 
+      $rootScope.$broadcast(AlertEvents.INFO, 'Uploading...');
       $http.post(s3Config.upload_endpoint, formData, {
         'ignoreAuthorizationHeader': true,
         transformRequest: angular.identity,
@@ -36,8 +37,6 @@ angular.module('video-ads')
         //Error
         function(response) {
           s3deferred.reject(response);
-        }, function(progress){
-          console.log(progress);
         });
 
       return s3deferred.promise;
@@ -46,23 +45,32 @@ angular.module('video-ads')
 
     function encode(videoObject) {
       var encodeDeferred = $q.defer();
-
+      $rootScope.$broadcast(AlertEvents.INFO, 'Beginning Encoding');
+      //TODO: kill off this magic string
       $http({
         method: 'POST',
         url: 'api/videos/' + videoObject.id + '/encode/'
-      }).success(function() {
-        encodeDeferred.resolve(videoObject);
+      }).success(function(response) {
+        var zencoderProgressEndpoint = response.json;
+        var progressInterval = $interval(function(){
+          $http.get(zencoderProgressEndpoint, {},{
+            'ignoreAuthorizationHeader': true
+          }).then(function(response){
+            if (response.data.progress === 100){
+              encodeDeferred.resolve(videoObject);
+              progressInterval();
+            } else if (response.data.status === 'failed'){
+              $rootScope.$broadcast(AlertEvents.ERROR, 'An error has occured.');
+              progressInterval();
+            } else {
+              $rootScope.$broadcast(AlertEvents.INFO, 'Encoding: ' + response.data.progress);
+            }
+          });
+        }, 500);
       }).error(function(data) {
         encodeDeferred.reject(data);
       });
 
       return encodeDeferred.promise;
     }
-    this.encode = function(videoId) {
-      encode({
-        attrs: {
-          id: videoId
-        }
-      });
-    };
   });

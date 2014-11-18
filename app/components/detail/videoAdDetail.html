@@ -1,12 +1,5 @@
 <div class="row video-ad-form">
-  <!-- Alert Message -->
-  <div class="alert alert-success">Success</div>
-  <div class="alert alert-info">Uploading ...</div>
-  <ng-messages for="videoAdDetailForm.$error" class="alert alert-danger">
-    <ng-message when="required">Please fill in all required fields.</ng-message>
-    <ng-message when="uploadError">Something went wrong with the video upload.</ng-message>
-  </ng-messages>
-
+  <alert></alert>
   <!-- Video Preview Modal -->
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
