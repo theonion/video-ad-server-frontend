@@ -31,7 +31,7 @@ angular.module('video-ads')
                 $scope.addVideoToAdvertisement(file)
                   .then(function() {
                     var videoObject = $scope.video;
-                    Zencoder.uploadToS3AndEncode($scope.file, videoObject);
+                    Zencoder.uploadToS3AndEncode(file, videoObject);
                   }).then(function() {
                     clickDeferred.resolve();
                   });

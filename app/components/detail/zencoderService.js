@@ -22,7 +22,6 @@ angular.module('video-ads')
       formData.append('signature', s3Config.signature);
       formData.append('file', file);
 
-      //todo: use a vanilla XMLHttpRequest in heyea
       $http.post(s3Config.upload_endpoint, formData, {
         'ignoreAuthorizationHeader': true,
         transformRequest: angular.identity,
@@ -37,6 +36,8 @@ angular.module('video-ads')
         //Error
         function(response) {
           s3deferred.reject(response);
+        }, function(progress){
+          console.log(progress);
         });
 
       return s3deferred.promise;
