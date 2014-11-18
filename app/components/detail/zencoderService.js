@@ -1,16 +1,17 @@
 'use strict';
 
 angular.module('video-ads')
-  .service('Zencoder', function Zencoder($http, $q, $interval, $rootScope, AlertEvents) {
+  .service('Zencoder', function Zencoder($http, $q, $interval) {
 
-    this.uploadToS3AndEncode = function(file, videoObject) {
-      uploadToS3(file, videoObject.encoding_payload)
-        .then(function() {
-          encode(videoObject);
-        });
+    this.uploadToS3AndEncode = function(config) {
+      var file = config.file;
+      var videoObject = config.videoObject;
+      return uploadToS3(file, videoObject)
+        .then(encode);
     };
 
-    function uploadToS3(file, s3Config) {
+    function uploadToS3(file, videoObject) {
+      var s3Config = videoObject.encoding_payload;
       var s3deferred = $q.defer();
 
       var formData = new FormData();
@@ -21,8 +22,7 @@ angular.module('video-ads')
       formData.append('policy', s3Config.policy);
       formData.append('signature', s3Config.signature);
       formData.append('file', file);
-
-      $rootScope.$broadcast(AlertEvents.INFO, 'Uploading...');
+      s3deferred.notify('Upload beginning...');
       $http.post(s3Config.upload_endpoint, formData, {
         'ignoreAuthorizationHeader': true,
         transformRequest: angular.identity,
@@ -32,11 +32,13 @@ angular.module('video-ads')
       }).then(
         //Success
         function() {
-          s3deferred.resolve(file);
+          s3deferred.resolve(videoObject);
         },
         //Error
         function(response) {
           s3deferred.reject(response);
+        }, function(update){
+          s3deferred.notify(update);
         });
 
       return s3deferred.promise;
@@ -45,7 +47,7 @@ angular.module('video-ads')
 
     function encode(videoObject) {
       var encodeDeferred = $q.defer();
-      $rootScope.$broadcast(AlertEvents.INFO, 'Beginning Encoding');
+      encodeDeferred.notify('Encoding beginning...');
       //TODO: kill off this magic string
       $http({
         method: 'POST',
@@ -58,10 +60,10 @@ angular.module('video-ads')
               encodeDeferred.resolve(videoObject);
               $interval.cancel(progressInterval);
             } else if (response.data.state === 'failed'){
-              $rootScope.$broadcast(AlertEvents.ERROR, 'An error has occured.');
+              encodeDeferred.reject('Encoding has failed.');
               $interval.cancel(progressInterval);
             } else {
-              $rootScope.$broadcast(AlertEvents.INFO, 'Encoding: ' + response.data.progress);
+              encodeDeferred.notify('Encoding: ' + response.data.progress);
             }
           });
         }, 1000);
