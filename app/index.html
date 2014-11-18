@@ -86,6 +86,9 @@
 			 <script type="text/javascript" src="components/detail/videoAdDetailController.js"></script>
 			 <script type="text/javascript" src="components/detail/videoFieldDirective.js"></script>
 			<!-- end Detail-->
+			<!-- videoPlayerModal -->
+			 <script type="text/javascript" src="shared/videoplayermodal/videoPlayerModalDirective.js"></script>
+			<!-- end videoPlayerModal -->
 			<!-- Exclusion -->
 			 <script type="text/javascript" src="components/exclusion/exclusionController.js"></script>
 			<!-- end Exclusion -->
@@ -129,7 +132,10 @@
 
 
     <script type="text/javascript">
-        angular.module('video-ads-dev', ['video-ads', 'video-ads.mockApi']);
+        angular.module('video-ads-dev', ['video-ads', 'video-ads.mockApi'])
+				.config(function($sceProvider){
+			    $sceProvider.enabled(false);
+			  });
     </script>
 	</body>
 </html>

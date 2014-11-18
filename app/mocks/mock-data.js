@@ -72,9 +72,18 @@ angular.module('video-ads.mockApi')
       'midpoint_count':0,
       'third_quartile_count':0,
       'complete_count':0,
-      'sources':[
-
-      ]
+      'sources':[ {
+        bitrate: null,
+        content_type: 'video/mp4',
+        url: 'http://vjs.zencdn.net/v/oceans.mp4',
+        width: 400
+      },
+      {
+        bitrate: null,
+        content_type: 'video/webm',
+        url: 'http://vjs.zencdn.net/v/oceans.mp4',
+        width: 400
+      }]
     },
     {
       'id':10,

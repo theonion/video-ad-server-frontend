@@ -6,7 +6,6 @@ angular.module('video-ads')
       templateUrl: 'components/detail/videoField.html',
       transclude: true,
       controller: function($scope) {
-
         $scope.removeVideo = function() {
           $scope.video = null;
         };

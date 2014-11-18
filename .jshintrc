@@ -23,6 +23,7 @@
   "globals": {
     "angular": false,
     "_": false,
-    "moment": false
+    "moment": false,
+    "videojs": false
   }
 }
