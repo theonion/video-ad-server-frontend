@@ -7,22 +7,20 @@ angular.module('video-ads')
       var uploadToS3AndEncodeDeferred = $q.defer();
       var file = config.file;
       var videoObject = config.videoObject;
+      var successCallback = function(success){
+        uploadToS3AndEncodeDeferred.resolve(success);
+      };
+      var errorCallback = function(error){
+        uploadToS3AndEncodeDeferred.reject(error);
+      };
+      var notifyCallback = function(notify){
+        uploadToS3AndEncodeDeferred.notify(notify);
+      };
+
       uploadToS3(file, videoObject)
-        .then(encode,
-          function(error){
-            uploadToS3AndEncodeDeferred.reject(error);
-          },
-          function(message){
-            uploadToS3AndEncodeDeferred.notify(message);
-          })
-        .then(
-          function(success){
-            uploadToS3AndEncodeDeferred.resolve(success);
-          }, function(error){
-            uploadToS3AndEncodeDeferred.reject(error);
-          }, function(notify){
-            uploadToS3AndEncodeDeferred.notify(notify);
-          });
+        .then(encode, errorCallback, notifyCallback)
+        .then(successCallback, errorCallback, notifyCallback);
+
       return uploadToS3AndEncodeDeferred.promise;
     };
 
@@ -38,31 +36,33 @@ angular.module('video-ads')
       formData.append('policy', s3Config.policy);
       formData.append('signature', s3Config.signature);
       formData.append('file', file);
-      $http.post(s3Config.upload_endpoint, formData, {
-        'ignoreAuthorizationHeader': true,
-        transformRequest: angular.identity,
-        'headers': {
-          'Content-Type': undefined
-        }
-      }).then(
-        //Success
-        function() {
-          s3deferred.resolve(videoObject);
-        },
-        //Error
-        function(response) {
-          s3deferred.reject(response);
-        }, function(){
-          s3deferred.notify('Upload beginning...');
-        });
+      //We use XMLHttpRequest here becuase angular's http methods don't support progress updates.
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', s3Config.upload_endpoint);
 
+      xhr.upload.onprogress = function(e) {
+        if (e.lengthComputable){
+          s3deferred.notify('Upload ' + Math.round(e.loaded/e.total*100) + '% complete');
+        } else {
+          s3deferred.notify('Uploading...');
+        }
+      };
+
+      xhr.onload = function(){
+        s3deferred.resolve(videoObject);
+      };
+
+      xhr.addEventListener('error', function(e){
+        s3deferred.reject(e);
+      });
+
+      xhr.send(formData);
       return s3deferred.promise;
 
     }
 
     function encode(videoObject) {
       var encodeDeferred = $q.defer();
-      encodeDeferred.notify('Encoding beginning...');
       //TODO: kill off this magic string
       $http({
         method: 'POST',
@@ -79,7 +79,9 @@ angular.module('video-ads')
               $interval.cancel(progressInterval);
             } else {
               if (!_.isUndefined(response.data.progress)){
-                encodeDeferred.notify('Encoding: ' + response.data.progress);
+                encodeDeferred.notify('Encoding: ' + Math.round(response.data.progress) + '%');
+              } else {
+                encodeDeferred.notify('Encoding beginning...');
               }
             }
           });
@@ -87,7 +89,6 @@ angular.module('video-ads')
       }).error(function(data) {
         encodeDeferred.reject(data);
       });
-
       return encodeDeferred.promise;
     }
   });

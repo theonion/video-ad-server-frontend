@@ -31,6 +31,12 @@ angular.module('video-ads')
                   }, 2000);
                 }, function(message){
                   $rootScope.$broadcast(AlertEvents.INFO, message);
+                }).then(function(){
+                  // We reload the video after all of the fun is over, in order to update it with the new sources.
+                  $http.get('/api/videos/' + $scope.video.id + '/')
+                  .then(function(response){
+                    $scope.video = response.data;
+                  });
                 });
           });
           fileField.click();
