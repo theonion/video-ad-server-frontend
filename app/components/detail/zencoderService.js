@@ -7,13 +7,13 @@ angular.module('video-ads')
       var uploadToS3AndEncodeDeferred = $q.defer();
       var file = config.file;
       var videoObject = config.videoObject;
-      var successCallback = function(success){
+      var successCallback = function(success) {
         uploadToS3AndEncodeDeferred.resolve(success);
       };
-      var errorCallback = function(error){
+      var errorCallback = function(error) {
         uploadToS3AndEncodeDeferred.reject(error);
       };
-      var notifyCallback = function(notify){
+      var notifyCallback = function(notify) {
         uploadToS3AndEncodeDeferred.notify(notify);
       };
 
@@ -41,19 +41,20 @@ angular.module('video-ads')
       xhr.open('POST', s3Config.upload_endpoint);
 
       xhr.upload.onprogress = function(e) {
-        if (e.lengthComputable){
-          s3deferred.notify('Upload ' + Math.round(e.loaded/e.total*100) + '% complete');
+        if (e.lengthComputable) {
+          s3deferred.notify('Upload ' + Math.round(e.loaded / e.total * 100) + '% complete');
         } else {
           s3deferred.notify('Uploading...');
         }
       };
 
-      xhr.onload = function(){
+      xhr.onload = function() {
+        s3deferred.notify('Upload Complete. Begin Encoding.');
         s3deferred.resolve(videoObject);
       };
 
-      xhr.addEventListener('error', function(e){
-        s3deferred.reject(e);
+      xhr.addEventListener('error', function() {
+        s3deferred.reject('Upload failed.');
       });
 
       xhr.send(formData);
@@ -69,19 +70,21 @@ angular.module('video-ads')
         url: 'api/videos/' + videoObject.id + '/encode/'
       }).success(function(response) {
         var zencoderProgressEndpoint = response.json;
-        var progressInterval = $interval(function(){
-          $http({ url: zencoderProgressEndpoint, method:'GET', 'ignoreAuthorizationHeader': true}).then(function(response){
-            if (response.data.state === 'finished'){
+        var progressInterval = $interval(function() {
+          $http({
+            url: zencoderProgressEndpoint,
+            method: 'GET',
+            'ignoreAuthorizationHeader': true
+          }).then(function(response) {
+            if (response.data.state === 'finished') {
               encodeDeferred.resolve(videoObject);
               $interval.cancel(progressInterval);
-            } else if (response.data.state === 'failed'){
+            } else if (response.data.state === 'failed') {
               encodeDeferred.reject('Encoding has failed.');
               $interval.cancel(progressInterval);
             } else {
-              if (!_.isUndefined(response.data.progress)){
+              if (!_.isUndefined(response.data.progress)) {
                 encodeDeferred.notify('Encoding: ' + Math.round(response.data.progress) + '%');
-              } else {
-                encodeDeferred.notify('Encoding beginning...');
               }
             }
           });
