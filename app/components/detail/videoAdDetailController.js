@@ -73,30 +73,38 @@ angular.module('video-ads')
       if ($scope.videoAdDetailForm.$valid) {
         if (!_.isUndefined($routeParams.videoAdId)) {
           $scope.videoad.save().then(function() {
-           $rootScope.$broadcast(AlertEvents.SUCCESS, 'Saved');
-           $timeout(function(){$rootScope.$broadcast(AlertEvents.CLEAR);}, 2000);
+            $rootScope.$broadcast(AlertEvents.SUCCESS, 'Saved');
+            $timeout(function() {
+              $rootScope.$broadcast(AlertEvents.CLEAR);
+            }, 2000);
           }, function() {
-           $rootScope.$broadcast(AlertEvents.ERROR, 'Something went wrong with saving the video. Please call your friendly sysadmin.');
-           $timeout(function(){$rootScope.$broadcast(AlertEvents.CLEAR);}, 2000);
+            $rootScope.$broadcast(AlertEvents.ERROR, 'Something went wrong with saving the video. Please call your friendly sysadmin.');
+            $timeout(function() {
+              $rootScope.$broadcast(AlertEvents.CLEAR);
+            }, 2000);
           });
         } else {
           videoAdService.post($scope.videoad)
             .then(
               function(data) {
                 $rootScope.$broadcast(AlertEvents.SUCCESS, 'Saved');
-                $timeout(function(){
+                $timeout(function() {
                   $location.path('/edit/' + data.id + '/');
                   $scope.$apply();
                 }, 2000);
               },
               function() {
                 $rootScope.$broadcast(AlertEvents.ERROR, 'Something went wrong with saving the video. Please call your friendly sysadmin.');
-                $timeout(function(){$rootScope.$broadcast(AlertEvents.CLEAR);}, 2000);
+                $timeout(function() {
+                  $rootScope.$broadcast(AlertEvents.CLEAR);
+                }, 2000);
               });
         }
       } else {
-          $rootScope.$broadcast(AlertEvents.ERROR, 'Please fill in all required fields.');
-        $timeout(function(){$rootScope.$broadcast(AlertEvents.CLEAR);}, 2000);
+        $rootScope.$broadcast(AlertEvents.ERROR, 'Please fill in all required fields.');
+        $timeout(function() {
+          $rootScope.$broadcast(AlertEvents.CLEAR);
+        }, 2000);
       }
     };
 
