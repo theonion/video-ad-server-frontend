@@ -46,6 +46,9 @@ angular.module('video-ads')
               if (_.isEmpty(response.data.sources)) {
                 $timeout(fetchNewVideoObject, 2000);
               } else {
+                //We set them like this first because if we just do response.data, it MESSES EVERYTHING UP, and the changes aren't detected.
+                $scope.video.sources = response.data.sources;
+                $scope.video.poster = response.data.poster;
                 $scope.video = response.data;
                 $timeout(function() {
                   $rootScope.$broadcast(AlertEvents.CLEAR);
