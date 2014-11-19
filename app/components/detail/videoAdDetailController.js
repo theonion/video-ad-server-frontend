@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('video-ads')
-  .controller('VideoAdDetailController', ['$scope', '$routeParams', 'videoAdService', '$location', '$rootScope', function($scope, $routeParams, videoAdService, $location, $rootScope) {
+  .controller('VideoAdDetailController', ['$scope', '$routeParams', 'videoAdService', '$location', '$rootScope', 'AlertEvents', '$timeout', function($scope, $routeParams, videoAdService, $location, $rootScope, AlertEvents, $timeout) {
     $rootScope.showSaveButton = true;
     $rootScope.showSearchBar = false;
     $scope.success = false;
@@ -73,26 +73,30 @@ angular.module('video-ads')
       if ($scope.videoAdDetailForm.$valid) {
         if (!_.isUndefined($routeParams.videoAdId)) {
           $scope.videoad.save().then(function() {
-            $('.alert-success').fadeIn().delay(1000).fadeOut();
+           $rootScope.$broadcast(AlertEvents.SUCCESS, 'Saved');
+           $timeout(function(){$rootScope.$broadcast(AlertEvents.CLEAR);}, 2000);
           }, function() {
-            $('.alert-danger').fadeIn().delay(1000).fadeOut();
+           $rootScope.$broadcast(AlertEvents.ERROR, 'Something went wrong with saving the video. Please call your friendly sysadmin.');
+           $timeout(function(){$rootScope.$broadcast(AlertEvents.CLEAR);}, 2000);
           });
         } else {
           videoAdService.post($scope.videoad)
             .then(
               function(data) {
-                $('.alert-success').fadeIn().delay(1000).fadeOut(500,
-                  function() {
-                    $location.path('/edit/' + data.id + '/');
-                    $scope.$apply();
-                  });
+                $rootScope.$broadcast(AlertEvents.SUCCESS, 'Saved');
+                $timeout(function(){
+                  $location.path('/edit/' + data.id + '/');
+                  $scope.$apply();
+                }, 2000);
               },
               function() {
-                $('.alert-danger').fadeIn().delay(1000).fadeOut();
+                $rootScope.$broadcast(AlertEvents.ERROR, 'Something went wrong with saving the video. Please call your friendly sysadmin.');
+                $timeout(function(){$rootScope.$broadcast(AlertEvents.CLEAR);}, 2000);
               });
         }
       } else {
-        $('.alert-danger').fadeIn().delay(1000).fadeOut();
+          $rootScope.$broadcast(AlertEvents.ERROR, 'Please fill in all required fields.');
+        $timeout(function(){$rootScope.$broadcast(AlertEvents.CLEAR);}, 2000);
       }
     };
 
