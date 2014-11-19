@@ -9,6 +9,7 @@ angular.module('video-ads')
       require:'ngModel',
       template: '<input class="form-control" ng-model="date" type="text"/>',
       link: function(scope, element, attrs, ngModel){
+        scope.required = attrs.required || false;
         element.datetimepicker({
           format: 'Y-m-d h:i A',
           startDate: new Date(),
@@ -20,7 +21,12 @@ angular.module('video-ads')
         ngModel.$formatters.unshift(formatter);
 
         ngModel.$parsers.unshift(function(value){
-          return moment(value).format('YYYY-MM-DDTHH:mm:DDZZ');
+          var momentFormat = 'YYYY-MM-DDTHH:mm:DDZZ';
+          if (value){
+            return moment(value).format(momentFormat);
+          } else {
+            return moment().format(momentFormat);
+          }
         });
       }
     };

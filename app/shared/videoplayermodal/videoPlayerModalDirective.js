@@ -12,6 +12,8 @@ angular.module('video-ads')
         scope.player = videojs(currentVideo, {
           'controls': true,
           'autoplay': false,
+          'width': 'auto',
+          'height': 'auto'
         });
 
         element.find('.modal').on('hidden.bs.modal', function(){
