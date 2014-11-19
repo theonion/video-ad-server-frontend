@@ -4,10 +4,26 @@ angular.module('video-ads')
   .service('Zencoder', function Zencoder($http, $q, $interval) {
 
     this.uploadToS3AndEncode = function(config) {
+      var uploadToS3AndEncodeDeferred = $q.defer();
       var file = config.file;
       var videoObject = config.videoObject;
-      return uploadToS3(file, videoObject)
-        .then(encode);
+      uploadToS3(file, videoObject)
+        .then(encode,
+          function(error){
+            uploadToS3AndEncodeDeferred.reject(error);
+          },
+          function(message){
+            uploadToS3AndEncodeDeferred.notify(message);
+          })
+        .then(
+          function(success){
+            uploadToS3AndEncodeDeferred.resolve(success);
+          }, function(error){
+            uploadToS3AndEncodeDeferred.reject(error);
+          }, function(notify){
+            uploadToS3AndEncodeDeferred.notify(notify);
+          });
+      return uploadToS3AndEncodeDeferred.promise;
     };
 
     function uploadToS3(file, videoObject) {
@@ -22,7 +38,6 @@ angular.module('video-ads')
       formData.append('policy', s3Config.policy);
       formData.append('signature', s3Config.signature);
       formData.append('file', file);
-      s3deferred.notify('Upload beginning...');
       $http.post(s3Config.upload_endpoint, formData, {
         'ignoreAuthorizationHeader': true,
         transformRequest: angular.identity,
@@ -37,8 +52,8 @@ angular.module('video-ads')
         //Error
         function(response) {
           s3deferred.reject(response);
-        }, function(update){
-          s3deferred.notify(update);
+        }, function(){
+          s3deferred.notify('Upload beginning...');
         });
 
       return s3deferred.promise;
@@ -63,7 +78,9 @@ angular.module('video-ads')
               encodeDeferred.reject('Encoding has failed.');
               $interval.cancel(progressInterval);
             } else {
-              encodeDeferred.notify('Encoding: ' + response.data.progress);
+              if (!_.isUndefined(response.data.progress)){
+                encodeDeferred.notify('Encoding: ' + response.data.progress);
+              }
             }
           });
         }, 1000);

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('video-ads')
-  .directive('videoField', function(Zencoder, $q, $http) {
+  .directive('videoField', function(Zencoder, $q, $http, $timeout) {
     return {
       templateUrl: 'components/detail/videoField.html',
       transclude: true,
@@ -21,8 +21,14 @@ angular.module('video-ads')
               .then(
                 function() {
                   $rootScope.$broadcast(AlertEvents.SUCCESS, 'Video Uploaded');
+                  $timeout(function(){
+                    $rootScope.$broadcast(AlertEvents.CLEAR);
+                  }, 2000);
                 }, function(error){
                   $rootScope.$broadcast(AlertEvents.ERROR, error);
+                  $timeout(function(){
+                    $rootScope.$broadcast(AlertEvents.CLEAR);
+                  }, 2000);
                 }, function(message){
                   $rootScope.$broadcast(AlertEvents.INFO, message);
                 });
@@ -40,7 +46,6 @@ angular.module('video-ads')
             } else {
               validateVideoFileDeferred.resolve(file);
             }
-
             validateVideoFileDeferred.reject('Please select a file.');
           }
           return validateVideoFileDeferred.promise;
