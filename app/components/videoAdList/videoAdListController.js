@@ -27,10 +27,9 @@ angular.module('video-ads')
           $scope.totalItems = data.meta.count;
           $scope.loading = false;
         },
-        function(error) {
+        function() {
           $scope.loading = false;
           $scope.errors = true;
-          console.log(error);
         },
         function() {
           $scope.loading = true;

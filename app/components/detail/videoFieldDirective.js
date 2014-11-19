@@ -21,9 +21,7 @@ angular.module('video-ads')
               .then(
                 function() {
                   $rootScope.$broadcast(AlertEvents.SUCCESS, 'Upload Complete');
-                  $timeout(function() {
-                    $rootScope.$broadcast(AlertEvents.CLEAR);
-                  }, 2000);
+
                 },
                 function(error) {
                   $rootScope.$broadcast(AlertEvents.ERROR, error);
@@ -35,15 +33,25 @@ angular.module('video-ads')
                   if (!_.isUndefined(message)) {
                     $rootScope.$broadcast(AlertEvents.INFO, message);
                   }
-                }).then(function() {
-                // We reload the video after all of the fun is over, in order to update it with the new sources.
-                $http.get('/api/videos/' + $scope.video.id + '/')
-                  .then(function(response) {
-                    $scope.video = response.data;
-                  });
-              });
+                })
+              .then(fetchNewVideoObject);
           });
           fileField.click();
+        };
+
+        var fetchNewVideoObject = function() {
+          // We reload the video after all of the fun is over, in order to update it with the new sources.
+          $http.get('/api/videos/' + $scope.video.id + '/')
+            .then(function(response) {
+              if (_.isEmpty(response.data.sources)) {
+                $timeout(fetchNewVideoObject, 2000);
+              } else {
+                $scope.video = response.data;
+                $timeout(function() {
+                  $rootScope.$broadcast(AlertEvents.CLEAR);
+                }, 2000);
+              }
+            });
         };
 
         $scope.validateVideoFile = function(file) {
