@@ -5,8 +5,9 @@ angular.module('video-ads')
     return {
         'restrict': 'E',
         'templateUrl': 'shared/navbar/navbar.html',
-        'controller': function($scope, $rootScope) {
+        'controller': function($scope, $rootScope, logoUrl) {
             $scope.searchTerm = '';
+            $scope.logoUrl = logoUrl;
             $scope.saveVideoAd = function(){
                 $rootScope.$broadcast('save-video-ad');
             };
