@@ -11,7 +11,7 @@
         <div class="modal-header">
           <h4 class="modal-title" id="myModalLabel">Your video sir...</h4>
         </div>
-        <div class="modal-body">
+        <div class="modal-body video-modal">
           <video class="video-js vjs-default-skin">
               <source ng-repeat='source in video.sources' ng-src="{{source.url}}" type="{{source.content_type}}"/>
           </video>
