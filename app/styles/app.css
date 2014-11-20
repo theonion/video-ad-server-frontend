@@ -8168,19 +8168,20 @@ h2 {
 .video-ad img {
   margin-bottom: 1rem;
   position: relative;
+  max-height: 134px;
   width: 100%;
 }
-/* line 36, global/patterns/_videoad.scss */
+/* line 37, global/patterns/_videoad.scss */
 .video-ad .name {
   font-size: 1.5rem;
   font-weight: 700;
 }
 
-/* line 42, global/patterns/_videoad.scss */
+/* line 43, global/patterns/_videoad.scss */
 .poster-chart {
   position: relative;
 }
-/* line 44, global/patterns/_videoad.scss */
+/* line 45, global/patterns/_videoad.scss */
 .poster-chart .chart {
   bottom: 0;
   position: absolute;
