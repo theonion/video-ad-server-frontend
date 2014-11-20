@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('video-ads')
-    .controller('ExclusionCtrl', function ($scope, $http) {
+    .controller('ExclusionCtrl', function ($scope, $http, $rootScope, AlertEvents, $timeout) {
         $scope.exclusion = {};
         $scope.exclusion.targeting = {};
         $scope.exclusion.targeting.page = [];
@@ -39,9 +39,15 @@ angular.module('video-ads')
                 url: '/api/exclusion-rules/' + $scope.exclusion.id + '/',
                 data: data
             }).success(function(){
-                $('.alert-success').fadeIn().delay(1000).fadeOut();
+                $rootScope.$broadcast(AlertEvents.SUCCESS, 'Saved. You\'re welcome.');
+                $timeout(function() {
+                  $rootScope.$broadcast(AlertEvents.CLEAR);
+                }, 2000);
             }).error(function(){
-                $('.alert-danger').fadeIn().delay(1000).fadeOut();
+                $rootScope.$broadcast(AlertEvents.ERROR, 'Something went wrong with saving this exclustion. Please call your friendly sysadmin.');
+                $timeout(function() {
+                  $rootScope.$broadcast(AlertEvents.CLEAR);
+                }, 2000);
             });
         };
     });
