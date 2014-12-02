@@ -1,0 +1,3 @@
+[submodule "dist"]
+	path = dist
+	url = git@github.com:theonion/bower-onion-video-ad-server-frontend.git
