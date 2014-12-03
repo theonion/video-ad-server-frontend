@@ -93,9 +93,16 @@
       </div>
 
       <div class="form-group">
-        <label for="vast_url" class="col-md-3 control-label">VAST URL</label>
+        <label for="vast_url" class="col-md-3 control-label">Direct URL</label>
         <div class="col-md-6">
-          <input type="text" class="form-control" placeholder="VAST URL" ng-model="videoad.vast_url" disabled>
+          <input type="text" class="form-control" ng-model="videoad.direct_url" disabled>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="vast_url" class="col-md-3 control-label">External VAST URL</label>
+        <div class="col-md-6">
+          <input type="text" class="form-control" placeholder="VAST URL" ng-model="videoad.vast_url">
         </div>
       </div>
 
