@@ -16,3 +16,5 @@ env:
     - secure: RNGsUOZtDlzuVxblFFyJMsRhlQw803Bt/9LKRst3tiQo+n8cpi4vgTPULJ3edub43unYAoRMvmdRC2Dxh1TwCql4qRxGqQoQQoX4oloUciGTy3SYY6fXkruuVqlITGOtaozcTvKcgH/U1479O5WvgOPlDhV76OMHHmmWXKeNWWc=
 addons:
   sauce_connect: true
+git:
+  submodules: false
