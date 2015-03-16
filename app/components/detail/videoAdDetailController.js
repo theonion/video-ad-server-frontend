@@ -16,7 +16,7 @@ angular.module('video-ads')
       'dfp_site',
       'dfp_articleid',
       'dfp_contentid',
-      'dfp_featuretype'
+      'dfp_feature'
     ];
     $scope.user_targets = [
       'city',
