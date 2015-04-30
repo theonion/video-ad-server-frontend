@@ -20,7 +20,9 @@ angular.module('video-ads')
       'target_video_id',
       'target_channel',
       'target_series',
-      'target_season'
+      'target_season',
+      'target_special_coverage',
+      'target_host_channel'
     ];
     $scope.user_targets = [
       'city',
